@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          CUMA zeyno
+          CUMA zeyno abc
         </a>
       </header>
     </div>
