@@ -1,0 +1,37 @@
+.CategoryButton {
+    background-color: gray;
+    font-size: 1em;
+    height: 10vh;
+    width: 10vw;
+}
+
+.CategoryButton a {
+    display: block;
+}
+
+.FilterButton {
+    background-color: #d5f9ff;
+    height: auto;
+    width: 10vw;
+}
+
+.FilterButton button {
+    border: none;
+    border-radius: 1em;
+    color: white;
+    width: auto;
+    height: 3em;
+    display: block;
+    background-color: #26384a;
+    margin: 1em;
+    transition-duration: .15s;
+}
+
+.FilterButton button:hover {
+    color: #161715;
+    background-color: #ffffff;
+}
+
+.FilterButton button:active {
+    background-color: #97358a;
+}
