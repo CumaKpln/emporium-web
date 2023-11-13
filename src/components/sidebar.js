@@ -1,7 +1,7 @@
 import React from "react";
-import "../Styles/aside.css";
+import "../Styles/sidebar.css";
 
-const Aside = () => {
+const Sidebar = () => {
   return (
     <div className="aside container" style={{ height: "60vh" }}>
       <h2>Kategoriler</h2>
@@ -15,4 +15,4 @@ const Aside = () => {
   );
 };
 
-export default Aside;
+export default Sidebar;

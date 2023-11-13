@@ -1,6 +1,6 @@
 import React from "react";
 import Article from "./Article";
-import Aside from "./Aside";
+import Sidebar from "./sidebar";
 
 const Main = () => {
   return (
@@ -8,7 +8,7 @@ const Main = () => {
       <div className="main">
           <div className="d-flex">
             <div className="col-md-3">
-              <Aside />
+              <Sidebar />
             </div>
             <div className="col-md-9">
               <Article />
