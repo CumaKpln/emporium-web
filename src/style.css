@@ -1,0 +1,20 @@
+.CategoryButton {
+    background-color: gray;
+    font-size: 1em;
+    height: 10vh;
+    width: 10vw;
+}
+
+.CategoryButton a {
+    display: block;
+}
+
+.FilterButton {
+    background-color: aquamarine;
+    height: auto;
+    width: 10vw;
+}
+
+.FilterButton button {
+    display: block;
+}
