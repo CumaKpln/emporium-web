@@ -1,9 +1,10 @@
 import React from 'react'
+import '../Styles/article.css'
 
 const Article = () => {
   return (
-    <div className='bg-primary' style={{height:"60vh"}}>
-      kaplan
+    <div className='article' style={{height:"60vh"}}>
+      
     </div>
   )
 }
