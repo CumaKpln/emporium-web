@@ -7,10 +7,10 @@ const Main = () => {
     <>
       <div className="main">
           <div className="d-flex">
-            <div className="col-md-3">
+            <div className="col-md-2">
               <Sidebar />
             </div>
-            <div className="col-md-9">
+            <div className="col-md-10">
               <Article />
             </div>
 

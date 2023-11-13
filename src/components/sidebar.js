@@ -3,7 +3,7 @@ import "../Styles/sidebar.css";
 
 const Sidebar = () => {
   return (
-    <div className="aside container" style={{ height: "60vh" }}>
+    <div className="sidebar" style={{ height: "60vh" }}>
       <h2>Kategoriler</h2>
      
       <ul>
