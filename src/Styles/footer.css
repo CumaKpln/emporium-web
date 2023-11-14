@@ -1,0 +1,17 @@
+*{
+    box-sizing: border-box;
+}
+.footer-logo img {
+    max-height: 10vh;
+    cursor: pointer;
+}
+
+ul{
+    cursor: pointer;
+    list-style: none;
+    
+}
+ul>li:hover{
+    text-decoration: underline;
+    
+}

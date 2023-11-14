@@ -16,8 +16,8 @@ function Ürünler() {
             {Object.keys(menuItems).map((urunKey) => {
                 const urun = menuItems[urunKey];
                 return (
-                    <div key={urunKey} style={{cursor:"pointer"}}>
-                        <img src={urun.image} alt=""style={{width:"auto",height:"100px"}} />
+                    <div className='img' key={urunKey} style={{cursor:"pointer" }}>
+                        <img src={urun.image} alt=""style={{width:"100%",height:"100px" }} />
                         <p className='fs-6'>{urun.desc}</p>
                     </div>
                 );
