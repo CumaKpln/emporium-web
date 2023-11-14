@@ -19,7 +19,7 @@ const Navbar = () => {
                   width="20"
                   height="20"
                   fill="currentColor"
-                  class="bi bi-search"
+                  className="bi bi-search"
                   viewBox="0 0 16 16"
                 >
                   <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
@@ -65,31 +65,31 @@ const Navbar = () => {
         </div>
       </nav>
 
-      <nav id="nav2" class="navbar bg-body-tertiary">
-        <div class="container">
+      <nav id="nav2" className="navbar bg-body-tertiary">
+        <div className="container">
           <div className="nav-logo">
             <img src={logo} alt="logo-png" />
           </div>
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasNavbar"
             aria-controls="offcanvasNavbar"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
           <div
-            class="offcanvas offcanvas-end"
-            tabindex="-1"
+            className="offcanvas offcanvas-end"
+            tabIndex="-1"
             id="offcanvasNavbar"
             aria-labelledby="offcanvasNavbarLabel"
           >
             <div className="nav-logo">
               <img src={logo} alt="logo-png" />
             </div>
-            <div class="offcanvas-body">
+            <div className="offcanvas-body">
               <div className="nav-search">
                 <input type="search" placeholder="Arama yapınız" />
                 <div className="search-icon">
@@ -98,7 +98,7 @@ const Navbar = () => {
                     width="20"
                     height="20"
                     fill="currentColor"
-                    class="bi bi-search"
+                    className="bi bi-search"
                     viewBox="0 0 16 16"
                   >
                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
@@ -108,35 +108,67 @@ const Navbar = () => {
             </div>
             <div className="right-navbar">
               <div className="account">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="25"
-                  height="25"
-                  fill="currentColor"
-                  className="bi bi-person-circle"
-                  viewBox="0 0 16 16"
+                <a
+                  href="/#"
+                  style={{
+                    color: "black",
+                    textDecoration: "none",
+                    display: "flex",
+                    gap: "25px",
+                  }}
                 >
-                  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                  <path
-                    fillRule="evenodd"
-                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
-                  />
-                </svg>
-                <div> <span>Hesabım</span> </div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="25"
+                    height="25"
+                    fill="currentColor"
+                    className="bi bi-person-circle"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                    <path
+                      fillRule="evenodd"
+                      d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+                    />
+                  </svg>
+                  <div>
+                    {" "}
+                    <span>Hesabım</span>{" "}
+                  </div>
+                </a>
                 {/* buraya kullanıcı username gelecek */}
               </div>
               <div className="fav-icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="25"
-                  height="25"
-                  fill="currentColor"
-                  className="bi bi-star-fill"
-                  viewBox="0 0 16 16"
+                <a
+                  href="/#"
+                  style={{
+                    color: "black",
+                    textDecoration: "none",
+                    display: "flex",
+                    gap: "25px",
+                  }}
                 >
-                  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                </svg>
-                <div className="fav"> <span>Favoriler</span> </div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="25"
+                    height="25"
+                    fill="currentColor"
+                    className="bi bi-star-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                  </svg>
+                  <div className="fav">
+                    {" "}
+                    <span>Favoriler</span>{" "}
+                  </div>
+                </a>
+              </div>
+              <div className="cat">
+                <a href="#/">
+                  {" "}
+                  <span>Kategoriler</span>
+                </a>{" "}
               </div>
               <button className="advert-btn" type="button">
                 <span>İlan ver</span>
