@@ -1,5 +1,8 @@
-*{
+* {
     margin: 0;
     padding: 0;
-    
+}
+
+.row{
+    max-height: 58vh;
 }

@@ -3,9 +3,7 @@
     margin: 0;
 }
 
-.sidebar{
-    border: 1px solid gray;
-}
+
 
 h2 {
     padding: 20px;
@@ -27,5 +25,5 @@ h2 {
 .categories button:hover {
     background-color: #00008B;
     color: white;
-    border-radius:10px  0px 0px 10px;
+    border-radius: 10px 0px 0px 10px;
 }
