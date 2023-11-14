@@ -35,3 +35,39 @@
 .FilterButton button:active {
     background-color: #97358a;
 }
+
+.Card {
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20vw;
+    height: 40vh;
+    min-width: 150px;
+    min-height: 300px;
+    margin: 2rem;
+    background-color: #d5f9ff;
+    transition: .4s;
+}
+
+.Card:hover {
+    background-color: #97358a;
+    box-shadow: .5em .5em #161715AA;
+}
+
+.Card img {
+    border-radius: 0.2em;
+    margin: 1em;
+    display: block;
+    width: 7.5em;
+    height: 7.5em;
+}
+
+.Card p {
+    margin: 1em;
+    font-size: .5em;
+}
+
+.Card h1 {
+    font-size: 2vw;
+}
