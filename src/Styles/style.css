@@ -41,13 +41,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 20vw;
-    height: 40vh;
-    min-width: 150px;
-    min-height: 300px;
-    margin: 2rem;
+    width: 10vw;
+    height: 20vh;
+    min-width: 5vw;
+    min-height: 10vh;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    margin-left: 2vw;
+    margin-right: 2vw;
     background-color: #d5f9ff;
     transition: .4s;
+    grid-column: span;
 }
 
 .Card:hover {
@@ -65,9 +69,26 @@
 
 .Card p {
     margin: 1em;
-    font-size: .5em;
+    font-size: .5vw;
+    grid-column: span 2;
+    /* Each item spans two columns */
+    grid-row: 1;
+    /* Placed in the first row */
 }
 
 .Card h1 {
-    font-size: 2vw;
+    font-size: 1vw;
+}
+
+.Panel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20vh, 1fr));
+    gap: 10px;
+    /* Optional gap between grid items */
+    max-width: 60vw;
+    /* Set a maximum width for the container */
+    margin: 0 auto;
+    /* Center the container */
+    padding: 20px;
+    /* Optional padding */
 }
