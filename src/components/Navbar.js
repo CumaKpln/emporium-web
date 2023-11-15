@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "../images/logo.png";
 import "../Styles/navbar.css";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -8,9 +9,13 @@ const Navbar = () => {
       <nav className="navbar" id="nav">
         <div className="container">
           <div className="left-navbar">
-            <div className="nav-logo">
-              <img src={logo} alt="logo-png" />
-            </div>
+            <Link to="/">
+              {" "}
+              <div className="nav-logo">
+                <img src={logo} alt="logo-png" />
+              </div>
+            </Link>
+
             <div className="nav-search">
               <input type="search" placeholder="Arama yapınız" />
               <div className="search-icon">
@@ -28,6 +33,7 @@ const Navbar = () => {
             </div>
           </div>
           <div className="right-navbar">
+            {" "}
             <div className="account">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +49,7 @@ const Navbar = () => {
                   d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
                 />
               </svg>
-              <div> Hesap </div>
+              <div className="hesap"> Hesap </div>
               {/* buraya kullanıcı username gelecek */}
             </div>
             <div className="fav-icon">
@@ -58,10 +64,12 @@ const Navbar = () => {
                 <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
               </svg>
             </div>
-            <button type="button" >
-              <a href="./ürünYükleme"></a>
-              <span>İlan ver</span>
-            </button>
+            <Link to="/urun-yukle">
+              {" "}
+              <button type="button">
+                <span>İlan ver</span>
+              </button>
+            </Link>
           </div>
         </div>
       </nav>
@@ -171,9 +179,11 @@ const Navbar = () => {
                   <span>Kategoriler</span>
                 </a>{" "}
               </div>
-              <button className="advert-btn" type="button">
-                <span>İlan ver</span>
-              </button>
+              <Link to="/urun-yukle">
+                <button className="advert-btn" type="button">
+                  <span>İlan ver</span>
+                </button>
+              </Link>
             </div>
           </div>
         </div>
