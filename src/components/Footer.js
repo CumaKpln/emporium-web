@@ -7,13 +7,17 @@ const Footer = () => {
     <footer style={{ background: "LightBlue", minHeight: "30vh" }}>
       <div className="container pt-5">
         <div className="row pb-5">
-          <div className="col-sm-3">
+
+          <div id="logo" className="col-sm-3">
             <div className="footer-logo">
               <img src={logo} alt="logo-png" />
             </div>
           </div>
-          <div className="col-sm-9">
+
+          <div className="col-sm-9 ">
+            {/*linklerin olduğu yer*/}
             <div
+              id="footer-links"
               className="row"
               style={{
                 alignItems: "center",
@@ -38,8 +42,8 @@ const Footer = () => {
                   <li>Kullanım Koşulları</li>
                 </ul>
               </div>
-              <div className="col-sm-3">
-                <div style={{ display: "flex", flexDirection: "column" }}>
+              <div className="col-sm-3 ">
+                <div style={{ display: "flex", flexDirection: "column", marginLeft:"32px"}}>
                   <h5>İletişim</h5>
                   <div className="d-flex gap-3 ">
                     <svg

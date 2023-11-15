@@ -1,5 +1,5 @@
 import React from "react";
-import   "../src/Styles/urunler.css";
+import   "../Styles/urunler.css";
 
 function Ürünler() {
   const menuItems = {
