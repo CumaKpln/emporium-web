@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "../../Styles/urunYükle.css";
-import FotoYükle from "./fotoYükle";
 
 const UrunYükle = () => {
   const [title, setTitle] = useState("");
@@ -49,14 +48,26 @@ const UrunYükle = () => {
   // Ürün bilgileri için state'leri tanımlandı
   const [productName, setProductName] = useState("");
   const [productAddress, setProductAddress] = useState("");
-  // const [productDescription, setProductDescription] = useState("");
   const [price, setPrice] = useState("");
   const [brand, setBrand] = useState("");
+  const [selectedFiles, setSelectedFiles] = useState([])
+
+  const handleFileChange = (event) => {
+    const files = event.target.files;
+    const filesArray = Array.from(files);
+    setSelectedFiles(filesArray);
+  };
 
   // Form submit işlemi
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("Form gönderildi!"); // Form submit olayını kontrol etmek için bu satırı ekleyebilirsiniz
+    if (selectedFiles.length > 0) {
+      console.log("Seçilen dosyalar:", selectedFiles);
+      // apiden geri çağırma işlemleri burada yapılacak//
+    } else {
+      alert("Lütfen fotoğraf yükleyiniz")
+    }
     console.log("Ürün bilgileri:", {
       title,
       description,
@@ -78,7 +89,15 @@ const UrunYükle = () => {
         <div className="col-md-4 col-sm-2 col-1"></div>
         <div className="col-md-4 col-sm-8 col-10">
           <div className="product-foto">
-            <FotoYükle />
+          <label htmlFor="fileInput">Fotoğrafları Seçin:</label>
+          <input
+            type="file"
+            id="fileInput"
+            onChange={handleFileChange}
+            accept="image/*"
+            multiple 
+            required
+          />
           </div>
           <form onSubmit={handleSubmit}>
             {/* Ürün başlığı giriş alanı */}
