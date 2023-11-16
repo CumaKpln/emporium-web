@@ -34,7 +34,8 @@ const Navbar = () => {
           </div>
           <div className="right-navbar">
             {" "}
-            <div className="account">
+            <Link to="/hesabım" >
+                <div className="account">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="25"
@@ -52,6 +53,8 @@ const Navbar = () => {
               <div className="hesap"> Hesap </div>
               {/* buraya kullanıcı username gelecek */}
             </div>
+            </Link>
+          
             <div className="fav-icon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
