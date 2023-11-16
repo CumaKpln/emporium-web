@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/hesabim" element={<Hesap />} />
-        <Route path="/urun-yukle" element={<UrunYükle />} />
+        <Route path="/ilan-ver" element={<UrunYükle />} />
       </Routes>
     </>
   );
