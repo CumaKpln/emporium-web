@@ -2,7 +2,7 @@ import "./App.css";
 import Main from "./components/Main";
 import Hesap from "./components/hesap";
 import { Routes, Route } from "react-router-dom";
-import UrunYükle from "./components/ürünYükleme/urunYükle";
+import UrunYükle from "./components/urunYükle";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
