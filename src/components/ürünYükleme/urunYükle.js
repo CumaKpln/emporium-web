@@ -25,31 +25,31 @@ const UrunYükle = () => {
             <option value="ev">Ev</option>
           </>
         );
-        case "vasıta":
-          return (
-            <>
-              <option value="">Alt Kategori Seçiniz</option>
-              <option value="Araba">Araba</option>
-              <option value="motorsiklet">Motorsiklet</option>
-            </>
-          ); 
-          case "elektronik-esya":
-          return (
-            <>
-              <option value="">Alt Kategori Seçiniz</option>
-              <option value="Araba">Televizyon</option>
-              <option value="motorsiklet">Telefon</option>
-            </>
-          );
+      case "vasıta":
+        return (
+          <>
+            <option value="">Alt Kategori Seçiniz</option>
+            <option value="Araba">Araba</option>
+            <option value="motorsiklet">Motorsiklet</option>
+          </>
+        );
+      case "elektronik-esya":
+        return (
+          <>
+            <option value="">Alt Kategori Seçiniz</option>
+            <option value="Araba">Televizyon</option>
+            <option value="motorsiklet">Telefon</option>
+          </>
+        );
       default:
         return <option value="">Kategori Seçiniz</option>;
     }
   };
 
-  // Ürün bilgileri için state'leri tanımla
+  // Ürün bilgileri için state'leri tanımlandı
   const [productName, setProductName] = useState("");
   const [productAddress, setProductAddress] = useState("");
-  const [productDescription, setProductDescription] = useState("");
+  // const [productDescription, setProductDescription] = useState("");
   const [price, setPrice] = useState("");
   const [brand, setBrand] = useState("");
 
@@ -64,28 +64,22 @@ const UrunYükle = () => {
       subCategory,
       productName,
       productAddress,
-      productDescription,
       price,
       brand,
+      
+
     });
     // Burada bu bilgileri bir API'ye göndermek veya işlemek için gerekli adımları yapabilirsiniz.
   };
-  
 
   return (
     <div className="container product-update">
-      
-      <h1>Ürün Yükleme Sayfası</h1>
-      
-       
-          {/*fotoğraf yükleme alanı*/}
-
+      <div className="row">
+        <div className="col-md-4 col-sm-2 col-1"></div>
+        <div className="col-md-4 col-sm-8 col-10">
           <div className="product-foto">
             <FotoYükle />
           </div>
-       
-        
-          {" "}
           <form onSubmit={handleSubmit}>
             {/* Ürün başlığı giriş alanı */}
             <div className="product-title">
@@ -122,7 +116,7 @@ const UrunYükle = () => {
                 <option value="">Kategori Seçiniz</option>
                 <option value="emlak">Emlak</option>
                 <option value="vasıta">Vasıta</option>
-                <option value="elektronik-esya">elektronik eşya</option>
+                <option value="elektronik-esya">Elektronik Eşya</option>
               </select>
             </div>
 
@@ -183,14 +177,13 @@ const UrunYükle = () => {
                 required
               />
             </div>
-
-             <button  type="submit">Ürünü Yükle</button>
+            {/* Formun gönderme butonu */}
+            <button type="submit">Ürünü Yükle</button>
           </form>
-          {/* Formun gönderme butonu */}
-         
         </div>
-  
-  
+        <div className="col-md-4 col-sm-2 col-1"></div>
+      </div>
+    </div>
   );
 };
 

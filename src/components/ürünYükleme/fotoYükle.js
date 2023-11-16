@@ -16,12 +16,13 @@ const FotoYükle = () => {
       console.log("Seçilen dosyalar:", selectedFiles);
       // apiden geri çağırma işlemleri burada yapılacak//
     } else {
-      alert("Lütfen fotoğraf yükleyiniz");
+      alert("Lütfen fotoğraf yükleyiniz")
     }
   };
 
   return (
     <div>
+      
       <form onSubmit={handleSubmit}>
         <div className="main">
           <label htmlFor="fileInput">Fotoğrafları Seçin:</label>
@@ -30,11 +31,11 @@ const FotoYükle = () => {
             id="fileInput"
             onChange={handleFileChange}
             accept="image/*"
-            multiple
+            multiple 
             required
           />
         </div>
-        <button type="submit">Gönder</button>
+        
       </form>
     </div>
   );

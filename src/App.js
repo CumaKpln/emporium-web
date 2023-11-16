@@ -16,7 +16,7 @@ function App() {
         <Route path="/ilan-ver" element={<UrunYükle />} />
         <Route path="/hesabım" element={<Hesap />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </>
   );
 }
