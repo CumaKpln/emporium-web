@@ -10,14 +10,13 @@ const UrunYükle = () => {
 
   // Ürün bilgileri için state'leri tanımlandı
   const [productName, setProductName] = useState("");
-  const [productAddress, setProductAddress] = useState("");
+  const [productAddress] = useState("");
   const [price, setPrice] = useState("");
   const [brand, setBrand] = useState("");
   const [city, setCity] = useState("");
   const [neighbourhood, setNeighbourhood] = useState("");
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [isUploaded, setIsUploaded] = useState(false);
-
 
   // Kategori değiştiğinde alt kategoriyi sıfırla
   const handleCategoryChange = (e) => {
@@ -56,7 +55,7 @@ const UrunYükle = () => {
         return <option value="">Kategori Seçiniz</option>;
     }
   };
-
+  // fotoğraf işlemi
   const handleFileChange = (event) => {
     const files = event.target.files;
     const filesArray = Array.from(files);
@@ -66,14 +65,13 @@ const UrunYükle = () => {
   // Form submit işlemi
   const handleSubmit = (event) => {
     event.preventDefault();
-   
+
     if (selectedFiles.length > 0) {
       console.log("Seçilen dosyalar:", selectedFiles);
       setIsUploaded(true);
       // apiden geri çağırma işlemleri burada yapılacak//
-    } else {
-      alert("Lütfen fotoğraf yükleyiniz");
-    }
+    } 
+    //ürün bilgilerini consola yazdırma
     console.log("Ürün bilgileri:", {
       title,
       description,
@@ -94,6 +92,10 @@ const UrunYükle = () => {
     setCity(e.target.value);
     setDistrict("");
     setNeighbourhood("");
+  };
+
+  const getBrand = () => {
+    setBrand("");
   };
 
   const getDistricts = () => {
@@ -150,6 +152,14 @@ const UrunYükle = () => {
             <option value="">Mahalle Seçiniz</option>
             <option value="Sugözü">Sugözü</option>
             <option value="Konyaaltı">Konyaaltı</option>
+          </>
+        );
+      case "Konyaaltı":
+        return (
+          <>
+            <option value="">Mahalle Seçiniz</option>
+            <option value="Arapsuyu">Arapsuyu</option>
+            <option value="Uncalı">Uncalı</option>
           </>
         );
       case "Kadıköy":
@@ -231,7 +241,6 @@ const UrunYükle = () => {
   };
 
   return (
-   
     <div className="container product-update">
       <div className="row">
         <div className="col-md-4 col-sm-2 col-1"></div>
@@ -340,7 +349,6 @@ const UrunYükle = () => {
                 </select>
               </div>
             )}
-
             {district && (
               <div className="product-neighbourhood">
                 <label htmlFor="neighbourhood">Mahalle:</label>
@@ -355,13 +363,14 @@ const UrunYükle = () => {
                 </select>
               </div>
             )}
- <div>
-    {isUploaded && (
-      <div className="alert alert-info" role="alert">
-        Ürün Yüklendi
-      </div>
-    )}
-  </div>
+            {/* alert div i */}
+            <div>
+              {isUploaded && (
+                <div className="alert alert-info" role="alert">
+                  Ürün Yüklendi
+                </div>
+              )}
+            </div>
             <div className="product-price">
               <label htmlFor="price">Fiyat:</label>
               <input
@@ -372,20 +381,39 @@ const UrunYükle = () => {
                 required
               />
             </div>
-            <div className="product-brand">
-              <label htmlFor="brand">Ürün Markası:</label>
-              <br />
-              <input
-                type="text"
-                id="brand"
-                value={brand}
-                onChange={(e) => setBrand(e.target.value)}
-                required
-              />
-            </div>
-            {/*
-           
-        
+
+            {category === "vasıta" ? (
+              <div className="product-brand">
+                <label htmlFor="brand">Ürün Markası:</label>
+                <br />
+                <select
+                  id="brand"
+                  value={brand}
+                  required
+                  onChange={(e) => setBrand(e.target.value)}
+                >
+                  <option value="">Marka Seçiniz</option>
+                  <option value="BMW">BMW</option>
+                  <option value="Mercedes">Mercedes</option>
+                </select>
+              </div>
+            ) : category === "elektronik-esya" ? (
+              <div className="product-brand">
+                <label htmlFor="brand">Ürün Markası:</label>
+                <br />
+                <select
+                  id="brand"
+                  value={brand}
+                  required
+                  onChange={(e) => setBrand(e.target.value)}
+                >
+                  <option value="">Marka Seçiniz</option>
+                  <option value="BMW">BMW</option>
+                  <option value="Mercedes">Mercedes</option>
+                  getBrand()
+                </select>
+              </div>
+            ) : null}
             {/* Formun gönderme butonu */}
             <button type="submit">Ürünü Yükle</button>
           </form>
