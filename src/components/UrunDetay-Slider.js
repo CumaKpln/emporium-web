@@ -1,21 +1,14 @@
 import React from "react";
-import './slider.css'
-import foto1 from "./resimler/3.jpg";
-import foto2 from "./resimler/indir.jpeg";
-import foto3 from "./resimler/vice.jpeg";
-import foto4 from "./resimler/O.jpg";
-import foto5 from "./resimler/indir1.jpeg";
-import foto6 from "./resimler/kuş.jpeg";
+import '../Styles/UrunDetay-Slider.css'
 
 function Slider({ selectedImageIndex, onSliderChange }) {
-  const images = [foto1, foto2, foto3, foto4, foto5, foto6];
+  const images = [];
 
   const handleSlide = (index) => {
     onSliderChange(index);
   };
-
   return (
-    <div>
+  
       <div className="row">
         <div className="col-md-12">
          
@@ -34,10 +27,10 @@ function Slider({ selectedImageIndex, onSliderChange }) {
                       : "carousel-item"
                   }
                 >
-                 <div  className="w-100 slider-fotos">
+                 <div className="w-100 slider-fotos">
                  <img
                   id="slide-img" 
-                    src={image}
+                    src={this.props.menuItems.urun.image}
                     
                     alt={`Slide ${index + 1}`}
                   />
@@ -81,7 +74,7 @@ function Slider({ selectedImageIndex, onSliderChange }) {
         </div>
         <div className="col-md-6"></div>
       </div>
-    </div>
+    
   );
 }
 

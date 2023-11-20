@@ -4,15 +4,14 @@ function Icerik() {
   const [aktifTab, setAktifTab] = useState("ilanDetaylari");
 
   return (
-    <div className="icerik">
+    <div className="icerik mb-5">
       <div className="card text-center">
         <div className="card-header">
           <ul className="nav nav-tabs card-header-tabs">
             <li className="nav-item">
               <a
-                className={`nav-link ${
-                  aktifTab === "ilanDetaylari" ? "active" : ""
-                }`}
+                className={`nav-link ${aktifTab === "ilanDetaylari" ? "active" : ""
+                  }`}
                 onClick={() => setAktifTab("ilanDetaylari")}
                 href="#!"
               >
@@ -45,7 +44,7 @@ function Icerik() {
           )}
         </div>
       </div>
-      </div>
+    </div>
   );
 }
 
