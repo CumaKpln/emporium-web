@@ -36,7 +36,7 @@ function UrunDetay() {
           </div>
           <div className="col-md-6">
             <div className="row main-row">
-              <div className="col-md-6 text-decoration-none ">
+              <div className="col-md-6  ">
                 <Detay />
               </div>
               <div className="col-md-6">

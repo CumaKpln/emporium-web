@@ -1,4 +1,4 @@
-
+import "../Styles/urundetay-detay.css"
 
 function Detay() {
   return (
