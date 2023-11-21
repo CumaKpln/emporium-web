@@ -1,3 +1,6 @@
+
+import "./detay.css";
+
 import "../Styles/urundetay-detay.css"
 
 function Detay() {
