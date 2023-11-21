@@ -1,4 +1,3 @@
-import './urunSahibi.css';
 function Sahip() {
   return (
     <div className="urunSahibi">

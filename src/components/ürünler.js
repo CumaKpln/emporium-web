@@ -1,6 +1,7 @@
 import React from "react";
 import   "../Styles/urunler.css";
 
+
 function Ürünler() {
   const menuItems = {
     urun: {

@@ -5,8 +5,13 @@ import Card from "./Card";
 import Detay from "./detay";
 import Sahip from "./urunSahibi";
 import Icerik from "./icerik";
+import Slider from "./UrunDetay-Slider";
+import Card from "./UrunDetay-Cards";
+import Detay from "./UrunDetay-Detay";
+import Sahip from "./UrunDetay-Sahip";
+import Icerik from "./UrunDetay-Açıklama";
 
-function App() {
+function UrunDetay() {
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
   const [isButtonClicked, setIsButtonClicked] = useState(false);
 
@@ -45,7 +50,7 @@ function App() {
           </div>
           <div className="col-md-6">
             <div className="row main-row">
-              <div className="col-md-6">
+              <div className="col-md-6  ">
                 <Detay />
               </div>
               <div className="col-md-6">
@@ -63,4 +68,4 @@ function App() {
   );
 }
 
-export default App;
+export default UrunDetay;

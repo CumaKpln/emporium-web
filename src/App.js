@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import UrunYükle from "./components/urunYükle";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import UrunDetay from "./components/UrunDetay";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/hesabim" element={<Hesap />} />
         <Route path="/ilan-ver" element={<UrunYükle />} />
         <Route path="/hesabım" element={<Hesap />} />
+        <Route path="/UrunDetay" element={<UrunDetay />} />
       </Routes>
       <Footer />
     </>
