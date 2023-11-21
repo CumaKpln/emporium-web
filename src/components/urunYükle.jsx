@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import "../Styles/urunYükle.css";
+import axios from "axios";
 
 const UrunYükle = () => {
   const [title, setTitle] = useState("");
@@ -9,7 +10,6 @@ const UrunYükle = () => {
 
   // Ürün bilgileri için state'leri tanımlandı
   const [productName, setProductName] = useState("");
-  const [productAddress] = useState("");
   const [price, setPrice] = useState("");
   const [brand, setBrand] = useState("");
   const [selectedFiles, setSelectedFiles] = useState([]);
@@ -60,16 +60,16 @@ const UrunYükle = () => {
   };
 
   // Form submit işlemi
-  const handleSubmit = (event) => {
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (selectedFiles.length > 0) {
-      console.log("Seçilen dosyalar:", selectedFiles);
       setIsUploaded(true);
       // apiden geri çağırma işlemleri burada yapılacak//
     }
-    //ürün bilgilerini consola yazdırma
-    console.log("Ürün bilgileri:", {
+    const response = await axios.post("http://localhost:3002/ilan-ver", {
+      selectedFiles,
       title,
       description,
       category,
@@ -77,8 +77,9 @@ const UrunYükle = () => {
       productName,
       price,
       brand,
-     
     });
+
+    console.log("Ürün bilgileri:", response.data);
     // Burada bu bilgileri bir API'ye göndermek veya işlemek için gerekli adımları yapabilirsiniz.
   };
 
@@ -160,7 +161,6 @@ const UrunYükle = () => {
                 required
               />
             </div>
-           
 
             {/* alert div i */}
             <div>
@@ -173,7 +173,7 @@ const UrunYükle = () => {
             <div className="product-price">
               <label htmlFor="price">Fiyat:</label>
               <input
-                type="text"
+                type="number"
                 id="price"
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
@@ -181,20 +181,22 @@ const UrunYükle = () => {
               />
             </div>
 
-            <div className="product-brand">
-              <label htmlFor="brand">Ürün Markası:</label>
-              <br />
-              <select
-                id="brand"
-                value={brand}
-                required
-                onChange={(e) => setBrand(e.target.value)}
-              >
-                <option value="">Marka Seçiniz</option>
-                <option value="BMW">BMW</option>
-                <option value="Mercedes">Mercedes</option>
-              </select>
-            </div>
+            {category !== "emlak" && (
+              <div className="product-brand">
+                <label htmlFor="brand">Ürün Markası:</label>
+                <br />
+                <select
+                  id="brand"
+                  value={brand}
+                  required
+                  onChange={(e) => setBrand(e.target.value)}
+                >
+                  <option value="">Marka Seçiniz</option>
+                  <option value="BMW">BMW</option>
+                  <option value="Mercedes">Mercedes</option>
+                </select>
+              </div>
+            )}
 
             {/* Formun gönderme butonu */}
             <button type="submit">Ürünü Yükle</button>

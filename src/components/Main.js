@@ -2,8 +2,6 @@ import React from "react";
 import Article from "./Article";
 import Sidebar from "./sidebar";
 
-import Footer from "./Footer";
-
 const Main = () => {
   return (
     <>
@@ -20,7 +18,6 @@ const Main = () => {
             </div>
           </div>
       </div>
-      <Footer/>
     </>
   );
 };
