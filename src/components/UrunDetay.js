@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./App.css";
+import "./UrunDetay.css";
 import Slider from "./slider";
 import Card from "./Card";
 import Detay from "./detay";
@@ -8,6 +8,7 @@ import Icerik from "./icerik";
 
 function App() {
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
+  const [isButtonClicked, setIsButtonClicked] = useState(false);
 
   const handleCardClick = (index) => {
     setSelectedImageIndex(index);
@@ -17,6 +18,10 @@ function App() {
     setSelectedImageIndex(index);
   };
 
+  const handleButtonClick = () => {
+    setIsButtonClicked(!isButtonClicked);
+  };
+
   return (
     <div className="App">
       <div className="container">
@@ -24,10 +29,13 @@ function App() {
           <div className="col-md-12 m-2">
             <div className="Baslik m-2">
               <h2>İlan Başlığı</h2>
+              <button onClick={handleButtonClick}>
+                <i className={`bi bi-star${isButtonClicked ? '-fill' : ''}`}></i>
+              </button>
             </div>
           </div>
         </div>
-        <div className="row ">
+        <div className="row slider-row">
           <div className="col-md-6">
             <Slider
               selectedImageIndex={selectedImageIndex}

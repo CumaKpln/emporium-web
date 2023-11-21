@@ -1,5 +1,4 @@
 import "./detay.css";
-
 function Detay() {
   return (
     <>

@@ -1,5 +1,5 @@
 import React from "react";
-import './Card.css'
+import './UrunDetay-Cards.css'
 import foto1 from "./resimler/3.jpg";
 import foto2 from "./resimler/indir.jpeg";
 import foto3 from "./resimler/vice.jpeg";
