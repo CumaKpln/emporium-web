@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useState } from "react";
 import "../Styles/urunYükle.css";
 import axios from "axios";
 
@@ -68,7 +68,7 @@ const UrunYükle = () => {
       setIsUploaded(true);
       // apiden geri çağırma işlemleri burada yapılacak//
     }
-    const response = await axios.post("http://localhost:3002/ilan-ver", {
+    const response = await axios.post("http://localhost:3000/ilan-ver", {
       selectedFiles,
       title,
       description,

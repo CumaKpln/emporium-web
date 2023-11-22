@@ -1,10 +1,5 @@
 import React, { useState } from "react";
 import "./UrunDetay.css";
-import Slider from "./slider";
-import Card from "./Card";
-import Detay from "./detay";
-import Sahip from "./urunSahibi";
-import Icerik from "./icerik";
 import Slider from "./UrunDetay-Slider";
 import Card from "./UrunDetay-Cards";
 import Detay from "./UrunDetay-Detay";
