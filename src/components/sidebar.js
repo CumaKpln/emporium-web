@@ -8,7 +8,7 @@ const Sidebar = () => {
       <div className="categories">
         <button type="button">Vasıta</button>
         <button type="button">Emlak</button>
-        <button type="button">Eşya</button>
+        <button type="button">Elektronik Eşya</button>
       </div>
     </div>
   );

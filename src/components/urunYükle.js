@@ -56,17 +56,16 @@ const UrunYükle = () => {
   const handleFileChange = (event) => {
     const files = event.target.files;
     const filesArray = Array.from(files);
-    setSelectedFiles(filesArray);
+    setSelectedFiles(filesArray)
+    
   };
 
   // Form submit işlemi
-
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (selectedFiles.length > 0) {
-      setIsUploaded(true);
-      // apiden geri çağırma işlemleri burada yapılacak//
+      setIsUploaded(false);
     }
     const response = await axios.post("http://localhost:3000/ilan-ver", {
       selectedFiles,
@@ -77,12 +76,12 @@ const UrunYükle = () => {
       productName,
       price,
       brand,
+      
     });
-
     console.log("Ürün bilgileri:", response.data);
     // Burada bu bilgileri bir API'ye göndermek veya işlemek için gerekli adımları yapabilirsiniz.
   };
-
+ 
   return (
     <div className="container product-update">
       <div className="row">

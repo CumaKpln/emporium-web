@@ -13,7 +13,7 @@ const Main = () => {
               <Sidebar />
             </div>
             <div className="col-md-9 col-sm-9">
-              <Article urun/>
+              <Article />
             </div>
             </div>
           </div>

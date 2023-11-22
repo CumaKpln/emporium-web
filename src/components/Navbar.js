@@ -21,7 +21,7 @@ const Navbar = () => {
               <div className="search-icon">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="20"
+                  width="50"
                   height="20"
                   fill="currentColor"
                   className="bi bi-search"

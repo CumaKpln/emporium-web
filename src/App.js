@@ -16,7 +16,6 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/hesabim" element={<Hesap />} />
         <Route path="/ilan-ver" element={<UrunYükle />} />
         <Route path="/hesabım" element={<Hesap />} />
         <Route path="/UrunDetay" element={<UrunDetay />} />
