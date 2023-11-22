@@ -1,5 +1,6 @@
 import React from "react";
-import './UrunDetay-Cards.css'
+import "../Styles/UrunDetay-Cards.css";
+
 
 
 
