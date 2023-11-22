@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./UrunDetay.css";
+import "../Styles/";
 import Slider from "./UrunDetay-Slider";
 import Card from "./UrunDetay-Cards";
 import Detay from "./UrunDetay-Detay";

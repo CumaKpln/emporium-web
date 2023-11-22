@@ -11,16 +11,13 @@ import UrunDetay from "./components/UrunDetay";
 
 function App() {
 
-  const handleResponse = (response) => {
-
-  }
   return (
     <>
       <Navbar />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/hesabim" element={<Hesap />} />
-        <Route path="/ilan-ver" element={<UrunYükle handleResponse={handleResponse} />} />
+        <Route path="/ilan-ver" element={<UrunYükle />} />
         <Route path="/hesabım" element={<Hesap />} />
         <Route path="/UrunDetay" element={<UrunDetay />} />
       </Routes>
