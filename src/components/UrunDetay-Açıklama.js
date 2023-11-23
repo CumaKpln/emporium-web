@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import data from "../data/db.json"
 
 function Icerik() {
   const [aktifTab, setAktifTab] = useState("ilanDetaylari");
@@ -29,20 +30,23 @@ function Icerik() {
             </li>
           </ul>
         </div>
-        <div className="card-body">
-          {aktifTab === "ilanDetaylari" && (
-            <>
-              <h5 className="card-title">1</h5>
-              <p className="card-text">İlan detaylarına ait içerik burada.</p>
-            </>
-          )}
-          {aktifTab === "konumu" && (
-            <>
-              <h5 className="card-title">2</h5>
-              <p className="card-text">Konum bilgileri burada.</p>
-            </>
-          )}
-        </div>
+
+        {data["ilan-ver"].map((product, id) => (
+          <div key={id} className="card-body">
+            {aktifTab === "ilanDetaylari" && (
+              <>
+                <p className="card-text">
+                  {product.description}
+                </p>
+              </>
+            )}
+            {aktifTab === "konumu" && (
+              <>
+                <p className="card-text"> {product.location}</p>
+              </>
+            )}
+          </div>
+        ))};
       </div>
     </div>
   );

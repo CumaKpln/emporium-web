@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "../Styles/urunYükle.css";
 import axios from "axios";
+import data from "../data/db.json";
+
 
 const UrunYükle = () => {
   const [title, setTitle] = useState("");
@@ -14,6 +16,9 @@ const UrunYükle = () => {
   const [brand, setBrand] = useState("");
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [isUploaded, setIsUploaded] = useState(false);
+  const [location, setLocation] = useState("");
+
+
 
   // Kategori değiştiğinde alt kategoriyi sıfırla
   const handleCategoryChange = (e) => {
@@ -57,7 +62,7 @@ const UrunYükle = () => {
     const files = event.target.files;
     const filesArray = Array.from(files);
     setSelectedFiles(filesArray)
-    
+
   };
 
   // Form submit işlemi
@@ -65,23 +70,24 @@ const UrunYükle = () => {
     event.preventDefault();
 
     if (selectedFiles.length > 0) {
-      setIsUploaded(false);
+      setIsUploaded(true);
     }
-    const response = await axios.post("http://localhost:3000/ilan-ver", {
-      selectedFiles,
-      title,
-      description,
-      category,
-      subCategory,
-      productName,
-      price,
-      brand,
-      
-    });
-    console.log("Ürün bilgileri:", response.data);
-    // Burada bu bilgileri bir API'ye göndermek veya işlemek için gerekli adımları yapabilirsiniz.
-  };
- 
+    // const response = await axios.post("http://localhost:3000/ilan-ver", {
+    //   id: (data["ilan-ver"].id),
+    //   selectedFiles,
+    //   title,
+    //   description,
+    //   category,
+    //   subCategory,
+    //   productName,
+    //   price,
+    //   brand,
+    //   location,
+    // });
+    // console.log("Ürün bilgileri:", response.data);
+  }
+
+
   return (
     <div className="container product-update">
       <div className="row">
@@ -160,6 +166,19 @@ const UrunYükle = () => {
                 required
               />
             </div>
+            {/*-----------------------------------------------------------------------------*/}
+            <div className="product-location">
+              <label htmlFor="location">Ürün Konumu:</label>
+              <input
+                type="text"
+                id="location"
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+                required
+              />
+            </div>
+
+            {/*-----------------------------------------------------------------------------*/}
 
             {/* alert div i */}
             <div>

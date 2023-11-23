@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './style.css'
+import './category.css'
 
 function CategoryButton({ categories, links }) {
     let [_categories, setCategories] = useState([]);

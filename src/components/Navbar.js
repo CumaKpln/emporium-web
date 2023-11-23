@@ -99,9 +99,12 @@ const Navbar = () => {
             id="offcanvasNavbar"
             aria-labelledby="offcanvasNavbarLabel"
           >
-            <div className="nav-logo">
-              <img src={logo} alt="logo-png" />
-            </div>
+              <Link to="/">
+              {" "}
+              <div className="nav-logo">
+                <img src={logo} alt="logo-png" />
+              </div>
+            </Link>
             <div className="offcanvas-body">
               <div className="nav-search">
                 <input type="search" placeholder="Arama yapınız" />
@@ -120,37 +123,26 @@ const Navbar = () => {
               </div>
             </div>
             <div className="right-navbar">
-              <div className="account">
-                <a
-                  href="/#"
-                  style={{
-                    color: "black",
-                    textDecoration: "none",
-                    display: "flex",
-                    gap: "25px",
-                  }}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="25"
-                    height="25"
-                    fill="currentColor"
-                    className="bi bi-person-circle"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                    <path
-                      fillRule="evenodd"
-                      d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
-                    />
-                  </svg>
-                  <div>
-                    {" "}
-                    <span>Hesabım</span>{" "}
-                  </div>
-                </a>
-                {/* buraya kullanıcı username gelecek */}
-              </div>
+            <Link to="/hesabım" >
+                <div className="account">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="25"
+                height="25"
+                fill="currentColor"
+                className="bi bi-person-circle"
+                viewBox="0 0 16 16"
+              >
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                <path
+                  fillRule="evenodd"
+                  d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+                />
+              </svg>
+              <div className="hesap"> Hesap </div>
+              {/* buraya kullanıcı username gelecek */}
+            </div>
+            </Link>
               <div className="fav-icon">
                 <a
                   href="/#"
@@ -183,11 +175,12 @@ const Navbar = () => {
                   <span>Kategoriler</span>
                 </a>{" "}
               </div>
-              <Link to="/urun-yukle">
-                <button className="advert-btn" type="button">
-                  <span>İlan ver</span>
-                </button>
-              </Link>
+              <Link to="/ilan-ver">
+              {" "}
+              <button type="button">
+                <span>İlan ver</span>
+              </button>
+            </Link>
             </div>
           </div>
         </div>
