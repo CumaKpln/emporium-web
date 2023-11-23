@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import data from "../data/db.json";
 
 function Icerik() {
   const [aktifTab, setAktifTab] = useState("ilanDetaylari");

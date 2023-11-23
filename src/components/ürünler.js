@@ -16,7 +16,7 @@ function Ürünler() {
           <p className="fs-6">{product.description}</p>
         </div>
 
-      ))};
+      ))}
     </div >
   );
 }
