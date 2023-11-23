@@ -3,7 +3,7 @@ import logo from "../images/logo.png";
 import "../Styles/navbar.css";
 import { Link } from "react-router-dom";
 
-const nameFilter = "";
+let nameFilter = "";
 
 function FilterByName({ name }) {
   if (nameFilter === null || nameFilter === "") return true;
@@ -24,7 +24,7 @@ const Navbar = () => {
             </Link>
 
             <div className="nav-search">
-              <input type="search" placeholder="Arama yapınız" onChange={(value) => { nameFilter = value; console.log(nameFilter); }} />
+              <input type="search" placeholder="Arama yapınız" onInput={(event) => { nameFilter = event.target.value; console.log(nameFilter); }} />
               <div className="search-icon">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
