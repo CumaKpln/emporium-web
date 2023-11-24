@@ -64,7 +64,7 @@ nav.navbar {
 
 }
 
-.account {
+#account {
     margin-top: 25px;
     cursor: pointer;
     display: flex;
@@ -72,7 +72,8 @@ nav.navbar {
     align-items: center;
     color: black;
 }
-.account .hesap{
+
+#account h6 {
     text-decoration: none;
 
 }
@@ -151,7 +152,7 @@ nav.navbar {
         justify-content: center;
     }
 
-    .cat{
+    .cat {
         display: flex;
         flex-direction: row;
         gap: 15px;
@@ -162,12 +163,13 @@ nav.navbar {
         cursor: pointer;
     }
 
-    .cat a{
+    .cat a {
         color: black;
         text-decoration: none;
         display: flex;
         gap: 25px;
     }
+
     .fav {
         display: block;
     }
@@ -188,10 +190,12 @@ nav.navbar {
         background: lightsteelblue;
 
     }
+
     .cat:hover {
         background: lightsteelblue;
 
     }
+
     .advert-btn:hover {
         background: lightsteelblue;
 

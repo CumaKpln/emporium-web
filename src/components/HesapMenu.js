@@ -6,7 +6,7 @@ function MyMenu({ onSelectPage }) {
     <div className="menu">
       <div className="butons d-flex flex-column align-items-center">
         <div className="col-md-4 mb-3">
-          <button type="button" className="btn hesap" onClick={() => onSelectPage('Bilgiler')}>
+          <button type="button" className="btn MenuHesap" onClick={() => onSelectPage('Bilgiler')}>
             Hesap Bilgilerim
           </button>
         </div>

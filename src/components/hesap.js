@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Bilgiler from './HesapBilgiler';
 import UrunBilgileri from './HesapUrunBilgileri';
-import MyMenu from './HesapMenu';
+import HesapSidebar from './HesapMenu';
 
 function Hesap() {
   const [selectedPage, setSelectedPage] = useState('Bilgiler');
@@ -15,7 +15,7 @@ function Hesap() {
       <div className='container'>
         <div className='row'>
           <div className='col-md-4'>
-            <MyMenu onSelectPage={handleSelectPage} />
+            <HesapSidebar onSelectPage={handleSelectPage} />
           </div>
           <div className='col-md-8'>
             {selectedPage === 'Bilgiler' && <Bilgiler />}
