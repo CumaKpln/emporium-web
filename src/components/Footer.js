@@ -1,18 +1,21 @@
 import React from "react";
 import logo from "../images/logo.png";
 import "../Styles/footer.css";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <footer style={{ background: "LightBlue", minHeight: "30vh" }}>
       <div className="container pt-5">
         <div className="row pb-5">
-
-          <div id="logo" className="col-sm-3">
+          <Link to="/" >
+            <div id="logo" className="col-sm-3">
             <div className="footer-logo">
               <img src={logo} alt="logo-png" />
             </div>
           </div>
+          </Link>
+
 
           <div className="col-sm-9 ">
             {/*linklerin olduğu yer*/}
@@ -43,7 +46,7 @@ const Footer = () => {
                 </ul>
               </div>
               <div className="col-sm-3 ">
-                <div style={{ display: "flex", flexDirection: "column", marginLeft:"32px"}}>
+                <div style={{ display: "flex", flexDirection: "column", marginLeft: "32px" }}>
                   <h5>İletişim</h5>
                   <div className="d-flex gap-3 ">
                     <svg

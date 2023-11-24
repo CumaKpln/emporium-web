@@ -7,14 +7,17 @@
 }
 
 .products div.img {
-    padding: 0 10px;
-    background: gray;
+    padding:  10px;
     margin: 5px;
-    border-radius: 10px;
 }
 
 .products img {
     width: 100px;
-}
+    border-radius: 10px;
 
+}
+.products a{
+    text-decoration: none;
+    color: black;
+}
 

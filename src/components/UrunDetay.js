@@ -5,6 +5,8 @@ import Card from "./UrunDetay-Cards";
 import Detay from "./UrunDetay-Detay";
 import Sahip from "./UrunDetay-Sahip";
 import Icerik from "./UrunDetay-Açıklama";
+import data from "../data/db.json";
+
 
 function UrunDetay() {
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
@@ -24,13 +26,15 @@ function UrunDetay() {
 
   return (
     <div className="App">
+      {data["ilan-ver"].map((product,id)=>(
+
       <div className="container">
         <div className="row">
           <div className="col-md-12 m-2">
             <div className="Baslik m-2">
               <h2>İlan Başlığı</h2>
               <button onClick={handleButtonClick}>
-                <i className={`bi bi-star${isButtonClicked ? '-fill' : ''}`}></i>
+                <i className={`bi bi-star ${isButtonClicked ? '-fill' : ''}`}></i>
               </button>
             </div>
           </div>
@@ -59,6 +63,8 @@ function UrunDetay() {
           <Icerik />
         </div>
       </div>
+      ))}
+      
     </div>
   );
 }

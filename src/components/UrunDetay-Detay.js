@@ -4,8 +4,8 @@ import data from "../data/db.json";
 function Detay() {
   return (
     <>
-      {data["ilan-ver"].map((product, index) => (
-        <div key={index}>
+      {data["ilan-ver"].map((product, id) => (
+        <div key={id}>
           <h4 className="fiyat"><strong>Fiyat:</strong> {product.price}</h4>
           <ul className="detay">
             <div>il/ilçe/mahalle</div>
