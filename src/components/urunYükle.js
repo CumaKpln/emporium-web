@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../Styles/urunYükle.css";
-import axios from "axios";
-import data from "../data/db.json";
+// import axios from "axios";
+// import data from "../data/db.json";
 
 
 const UrunYükle = () => {
