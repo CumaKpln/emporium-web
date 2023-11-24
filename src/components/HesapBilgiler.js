@@ -209,17 +209,17 @@ function Bilgiler() {
         </div>
 
         {duzenlemeModu ? (
-          <div className="row buton">
+          <div className="row HesapButon">
             <div className="col-md-4">
-              <button type="button" className="btn kaydet" onClick={handleKaydetClick}>
+              <button type="button" className="btn HesapKaydet" onClick={handleKaydetClick}>
                 Kaydet
               </button>
             </div>
           </div>
         ) : (
-          <div className="row buton">
+          <div className="row HesapButon">
             <div className="col-md-4">
-              <button type="button" className="btn duzenle" onClick={handleDuzenleClick}>
+              <button type="button" className="btn HesapDuzenle" onClick={handleDuzenleClick}>
                 Düzenle
               </button>
             </div>

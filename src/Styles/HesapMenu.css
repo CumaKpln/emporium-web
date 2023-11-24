@@ -1,29 +1,36 @@
 .menu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    z-index: 5;
-    background: linear-gradient(145.44deg, #F2F4FA 0%, #FAFBFC 100%);
-    padding: 30px;
-    border-radius: 20px;
-    margin-top: 120px;
-    height: 450px;
-  }
-  
-  .butons {
-    display: flex;
-    flex-direction: row;
-    align-items: center; 
-    margin-right: 100px;
-  }
-  
-  .MenuHesap {
-    margin-bottom: 25px; 
-    width: 160px;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 29%;
+  z-index: 5;
+  background: linear-gradient(145.44deg, #F2F4FA 0%, #FAFBFC 100%);
+  padding: 30px;
+  border-radius: 20px;
+  height: 450px;
+  width: 350px;
+  margin-bottom: 30px;
+}
 
-  .urun { 
-    width: 160px;
-  }
-  
+.butons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 100px;
+}
+
+.MenuHesap,
+.MenuUrun {
+  border: none;
+  background: transparent;
+  padding-bottom: 10px;
+  width: 160px;
+  border-bottom: 2px solid transparent;
+  transition: border-bottom 0.3s ease;
+}
+
+.MenuHesap.selected,
+.MenuUrun.selected {
+  border-bottom: 2px solid black;
+}
