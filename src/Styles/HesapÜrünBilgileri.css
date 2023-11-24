@@ -1,0 +1,29 @@
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 5;
+    background: linear-gradient(145.44deg, #F2F4FA 0%, #FAFBFC 100%);
+    padding: 30px;
+    border-radius: 20px;
+    margin-top: 120px;
+    height: 450px;
+  }
+  
+  .butons {
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    margin-right: 100px;
+  }
+  
+  .hesap {
+    margin-bottom: 25px; 
+    width: 160px;
+  }
+
+  .urun { 
+    width: 160px;
+  }
+  
