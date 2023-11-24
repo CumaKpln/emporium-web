@@ -34,31 +34,31 @@
 }
 
 
-.buton{
-    justify-content: center ;
+.row .HesapButon{
+    justify-content: center;
     padding: 15px;
 }
 
-.duzenle{
+.HesapDuzenle{
     background-color: #49eb34;
     color: white;
     width: 100%;
 }
 
-.duzenle:hover{
+.HesapDuzenle:hover{
     background-color: transparent;
     border-color: #49eb34;
     color: #49eb34;
     transition: all .5s ease-in-out;
 }
 
-.kaydet{
+.HesapKaydet{
     background-color: #49eb34;
     color: white;
     width: 100%;
 }
 
-.kaydet:hover{
+.HesapKaydet:hover{
     background-color: transparent;
     border-color: #49eb34;
     color: #49eb34;
