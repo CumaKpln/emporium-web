@@ -22,7 +22,7 @@ function UrunBilgileri() {
                 <small className="text-body-secondary">
                   Last updated 3 mins ago
                 </small>{" "}
-                <button type="button" class="btn HesapUrunButon">
+                <button type="button" className="btn HesapUrunButon">
                   Düzenle
                 </button>
                 <button className="icon HesapUrunButon">
