@@ -4,7 +4,7 @@ import data from "../data/db.json";
 function UrunBilgileri() {
   return (
     <div className="card">
-      {data["ilan-ver"].map((product, id) => (
+      {data["ilan-ver"].map((product) => (
         <div className="row mb-3 cards">
           <div className="col-md-4">
             <img
