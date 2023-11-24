@@ -1,13 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react';
+import Bilgiler from './HesapBilgiler';
+import UrunBilgileri from './HesapUrunBilgileri';
+import MyMenu from './HesapMenu';
 
-const Hesap = () => {
+function Hesap() {
+  const [selectedPage, setSelectedPage] = useState('Bilgiler');
+
+  const handleSelectPage = (page) => {
+    setSelectedPage(page);
+  };
+
   return (
-    <div>
-      <h1 className='text-center'>
-        Emporium
-      </h1>
+    <div className="Hesap">
+      <div className='container'>
+        <div className='row'>
+          <div className='col-md-4'>
+            <MyMenu onSelectPage={handleSelectPage} />
+          </div>
+          <div className='col-md-8'>
+            {selectedPage === 'Bilgiler' && <Bilgiler />}
+            {selectedPage === 'Urun' && <UrunBilgileri />}
+          </div>
+        </div>
+      </div>
     </div>
-  )
+  );
 }
 
-export default Hesap
+export default Hesap;
