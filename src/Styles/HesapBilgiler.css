@@ -4,7 +4,7 @@
     margin-top: 10%;
 }
 .ad-soyad{
-    box-shadow: 0px 20px 40px rgba(96, 109, 117, 0.03);
+   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     background: linear-gradient(145.44deg, #F2F4FA 0%, #FAFBFC 100%);
     padding: 30px;
     border-radius: 20px;
@@ -14,7 +14,7 @@
 
 
 .il-ilce-mahalle{
-    box-shadow: 0px 20px 40px rgba(96, 109, 117, 0.03);
+   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     justify-content: center;
     margin-bottom: 15px;
     background: linear-gradient(145.44deg, #F2F4FA 0%, #FAFBFC 100%);
@@ -24,7 +24,7 @@
 }
 
 .mail-telefon{
-    box-shadow: 0px 20px 40px rgba(96, 109, 117, 0.03);
+   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     justify-content: center;
     margin-bottom: 15px;
     background: linear-gradient(145.44deg, #F2F4FA 0%, #FAFBFC 100%);

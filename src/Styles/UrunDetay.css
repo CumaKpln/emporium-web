@@ -1,45 +1,53 @@
 .Baslik {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.Baslik h2 {
+  margin: 0;
+}
+
+.Baslik button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.Baslik button {
+  cursor: pointer;
+  padding: 5px;
+  justify-content: center;
+  align-items: center;
+}
+
+.Baslik button span{
+  margin-left: 10px;
+
+}
+
+@media screen and (max-width: 991px) {
+  .slider-row {
+    width: 100%;
+  }
+
+  .main-row {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 1.5rem;
-  }
-  
-  .Baslik h2 {
-    margin: 0;
-  }
-  
-  .Baslik button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
+    flex-direction: column;
   }
 
-  
- 
- @media screen and (max-width: 991px) {
-    .slider-row {
-      width: 100%;
-    }
-  
-    .main-row {
-      display: flex;
-      flex-direction: column;
-    }
-  
-    .col-md-6 {
-      width: 100%;
-      margin-bottom: 15px;
-    }
+  .col-md-6 {
+    width: 100%;
+    margin-bottom: 15px;
   }
+}
 
-  @media screen and (max-width: 769px) {
-    .slid-card {
-      margin-top: 30px;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-    }
+@media screen and (max-width: 769px) {
+  .slid-card {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
   }
-  
-  
+}

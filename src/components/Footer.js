@@ -7,16 +7,14 @@ const Footer = () => {
   return (
     <footer style={{ background: "LightBlue", minHeight: "30vh" }}>
       <div className="container pt-5">
-        <div className="row pb-5">
-          <Link to="/" >
-            <div id="logo" className="col-sm-3">
-            <div className="footer-logo">
-              <img src={logo} alt="logo-png" />
-            </div>
+        <div className="row pb-5 ">
+          <div id="logo" className="col-sm-3">
+            <Link to="/" >
+              <div className="footer-logo">
+                <img src={logo} alt="logo-png" />
+              </div>
+            </Link>
           </div>
-          </Link>
-
-
           <div className="col-sm-9 ">
             {/*linklerin olduğu yer*/}
             <div
