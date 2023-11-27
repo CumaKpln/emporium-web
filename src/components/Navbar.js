@@ -24,7 +24,14 @@ const Navbar = () => {
             </Link>
 
             <div className="nav-search">
-              <input type="search" placeholder="Arama yapınız" onInput={(event) => { nameFilter = event.target.value; console.log(nameFilter); }} />
+              <input
+                type="search"
+                placeholder="Arama yapınız"
+                onInput={(event) => {
+                  nameFilter = event.target.value;
+                  console.log(nameFilter);
+                }}
+              />
               <div className="search-icon">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -41,7 +48,7 @@ const Navbar = () => {
           </div>
           <div className="right-navbar">
             {" "}
-            <Link to="/hesabım" >
+            <Link to="/hesabım">
               <div id="account">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -57,16 +64,22 @@ const Navbar = () => {
                     d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
                   />
                 </svg>
-                <h6 > Hesap </h6>
+                <h6> Hesap </h6>
                 {/* buraya kullanıcı username gelecek */}
               </div>
             </Link>
             <Link to="/UrunDetay">
               <div className="fav-icon">
+               silinecek
+              </div>
+            </Link>
+            {/*------------------------------------------------------------------------ */}
+            <Link to="/Favorits">
+              <div className="fav-icon">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="25"
-                  height="25"
+                  width="35"
+                  height="35"
                   fill="currentColor"
                   className="bi bi-star-fill"
                   viewBox="0 0 16 16"
@@ -75,6 +88,7 @@ const Navbar = () => {
                 </svg>
               </div>
             </Link>
+            {/*------------------------------------------------------------------------ */}
             <Link to="/ilan-ver">
               {" "}
               <button type="button">
@@ -106,7 +120,7 @@ const Navbar = () => {
             id="offcanvasNavbar"
             aria-labelledby="offcanvasNavbarLabel"
           >
-              <Link to="/">
+            <Link to="/">
               {" "}
               <div className="nav-logo">
                 <img src={logo} alt="logo-png" />
@@ -130,26 +144,26 @@ const Navbar = () => {
               </div>
             </div>
             <div className="right-navbar">
-            <Link to="/hesabım" >
+              <Link to="/hesabım">
                 <div className="account">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="25"
-                height="25"
-                fill="currentColor"
-                className="bi bi-person-circle"
-                viewBox="0 0 16 16"
-              >
-                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                <path
-                  fillRule="evenodd"
-                  d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
-                />
-              </svg>
-              <div className="hesap"> Hesap </div>
-              {/* buraya kullanıcı username gelecek */}
-            </div>
-            </Link>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="25"
+                    height="25"
+                    fill="currentColor"
+                    className="bi bi-person-circle"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                    <path
+                      fillRule="evenodd"
+                      d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+                    />
+                  </svg>
+                  <div className="hesap"> Hesap </div>
+                  {/* buraya kullanıcı username gelecek */}
+                </div>
+              </Link>
               <div className="fav-icon">
                 <a
                   href="/#"
@@ -183,11 +197,11 @@ const Navbar = () => {
                 </a>{" "}
               </div>
               <Link to="/ilan-ver">
-              {" "}
-              <button type="button">
-                <span>İlan ver</span>
-              </button>
-            </Link>
+                {" "}
+                <button type="button">
+                  <span>İlan ver</span>
+                </button>
+              </Link>
             </div>
           </div>
         </div>
