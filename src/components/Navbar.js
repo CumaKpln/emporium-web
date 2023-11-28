@@ -74,7 +74,7 @@ const Navbar = () => {
               </div>
             </Link>
             {/*------------------------------------------------------------------------ */}
-            <Link to="/Favorits">
+            <Link to="/">
               <div className="fav-icon">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

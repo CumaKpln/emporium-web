@@ -6,7 +6,6 @@ import UrunYükle from "./components/urunYükle";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import UrunDetay from "./components/UrunDetay";
-import Favorits from "./components/Favorits";
 
 
 
@@ -20,7 +19,6 @@ function App() {
         <Route path="/ilan-ver" element={<UrunYükle />} />
         <Route path="/hesabım" element={<Hesap />} />
         <Route path="/UrunDetay" element={<UrunDetay />} />
-        <Route path="/Favorits" element={<Favorits />} />
       </Routes>
       <Footer />
     </>
