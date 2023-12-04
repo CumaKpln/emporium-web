@@ -5,6 +5,8 @@ import Card from "./UrunDetay-Cards";
 import Detay from "./UrunDetay-Detay";
 import Sahip from "./UrunDetay-Sahip";
 import Icerik from "./UrunDetay-Açıklama";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 function UrunDetay() {
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
@@ -18,7 +20,9 @@ function UrunDetay() {
   };
 
   return (
-    <div className="App">
+    <>
+     <Navbar />
+     <div className="App">
       <div className="container">
         <div className="row">
           <div className="Baslik m-2">
@@ -63,6 +67,9 @@ function UrunDetay() {
         </div>
       </div>
     </div>
+      <Footer />
+    </>
+    
   );
 }
 
