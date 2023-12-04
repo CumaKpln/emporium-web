@@ -4,12 +4,17 @@ import "../Styles/navbar.css";
 import { Link } from "react-router-dom";
 
 let nameFilter = "";
+let minPrice = "";
+let maxPrice = "";
 
 function FilterByName({ name }) {
   if (nameFilter === null || nameFilter === "") return true;
   else return name.contains(nameFilter);
 }
-
+function FilterByNamePrice({ price }) {
+  if (isNaN(minPrice) || isNaN(maxPrice)) return true;
+  else return parseInt(minPrice) < price && parseInt(maxPrice) > price;
+}
 const Navbar = () => {
   return (
     <>
@@ -29,7 +34,6 @@ const Navbar = () => {
                 placeholder="Arama yapınız"
                 onInput={(event) => {
                   nameFilter = event.target.value;
-                  console.log(nameFilter);
                 }}
               />
               <div className="search-icon">
@@ -70,7 +74,7 @@ const Navbar = () => {
             </Link>
             <Link to="/UrunDetay">
               <div className="fav-icon">
-               silinecek
+                silinecek
               </div>
             </Link>
             {/*------------------------------------------------------------------------ */}
