@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Bilgiler from './HesapBilgiler';
 import UrunBilgileri from './HesapUrunBilgileri';
 import HesapSidebar from './HesapMenu';
+import Navbar from './Navbar';
+import Footer from './Footer';
 
 function Hesap() {
   const [selectedPage, setSelectedPage] = useState('Bilgiler');
@@ -11,7 +13,9 @@ function Hesap() {
   };
 
   return (
-    <div className="Hesap">
+    <>
+     <Navbar />
+      <div className="Hesap">
       <div className='container'>
         <div className='row'>
           <div className='col-md-4'>
@@ -24,7 +28,10 @@ function Hesap() {
         </div>
       </div>
     </div>
-  );
+  
+      <Footer />
+    </>
+   );
 }
 
 export default Hesap;

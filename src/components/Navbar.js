@@ -61,7 +61,6 @@ const Navbar = () => {
                 {/* buraya kullanıcı username gelecek */}
               </div>
             </Link>
-           
             {/*------------------------------------------------------------------------ */}
             <Link to="/favoriler">
               <div className="fav-icon">
@@ -84,16 +83,16 @@ const Navbar = () => {
                 <span>İlan ver</span>
               </button>
             </Link>
-            <div className="Login">
-              <Link to="/Giris-yap">
+            <Link to="/Giris-yap">
+              <div className="Login">
                 <span className="m-0 ">Üye Giriş</span>
-              </Link>
-            </div>
-            <div className="Register ">
-              <Link to="/kayit-ol ">
+              </div>
+            </Link>
+            <Link to="/kayit-ol ">
+              <div className="Register ">
                 <span className="m-0">Kayıt ol</span>
-              </Link>
-            </div>
+              </div>
+            </Link>
           </div>
         </div>
       </nav>

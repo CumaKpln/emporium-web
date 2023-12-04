@@ -88,8 +88,9 @@ nav.navbar {
     color: black;
 
 }
+
 .fav-icon {
-font-weight: 600;
+    font-weight: 600;
 }
 
 .right-navbar button {
@@ -114,28 +115,32 @@ font-weight: 600;
     color: black;
     cursor: pointer;
 }
-.Register  a {
+
+a {
+    text-decoration: none;
     color: black;
-    text-decoration: none !important;
 }
-.Login{
+
+
+
+.Login {
     cursor: pointer;
     padding: 16px;
-}
-.Login a{
+    transition: 0.5s;
     color: black;
-    text-decoration: none !important;
 }
 
 
-.Login:hover{
-   
-        border: 1px solid black;
-        padding: 10px 15px;
-        border-radius: 10px;
-        color: black;
-    
+
+.Login:hover {
+
+    border: 1px solid black;
+    padding: 10px 15px;
+    border-radius: 10px;
+    color: black;
+
 }
+
 @media screen and (max-width:991px) {
     #nav {
         display: none;
