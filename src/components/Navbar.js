@@ -2,19 +2,7 @@ import React from "react";
 import logo from "../images/logo.png";
 import "../Styles/navbar.css";
 import { Link } from "react-router-dom";
-
-let nameFilter = "";
-let minPrice = "";
-let maxPrice = "";
-
-function FilterByName({ name }) {
-  if (nameFilter === null || nameFilter === "") return true;
-  else return name.contains(nameFilter);
-}
-function FilterByPrice({ price }) {
-  if (isNaN(minPrice) || isNaN(maxPrice)) return true;
-  else return parseInt(minPrice) < price && parseInt(maxPrice) > price;
-}
+import { filters } from "./Filtering";
 const Navbar = () => {
   return (
     <>
@@ -33,7 +21,8 @@ const Navbar = () => {
                 type="search"
                 placeholder="Arama yapınız"
                 onInput={(event) => {
-                  nameFilter = event.target.value;
+                  filters.nameFilter = event.target.value;
+                  console.log(filters.nameFilter);
                 }}
               />
               <div className="search-icon">
