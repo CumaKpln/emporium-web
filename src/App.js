@@ -24,6 +24,7 @@ function App() {
         <Route path="/giris" exact element={<Main/>} />
         <Route path="/hesabimyok" exact element={<SignIn/>} />
         {/* <Route path="/sifremiunuttum" element={<ForgotPassword />} /> */}
+        <Route path="/urun-detay" exact element={<UrunDetay/>} />
 
         <Route path="/ilan-ver" element={<UrunYükle />} />
         <Route path="/hesabım" element={<Hesap />} />
