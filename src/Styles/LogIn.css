@@ -53,17 +53,22 @@
     float: right;
 }
 
+.Link-account {
+    float: left;
+}
+
 .forget-password a {
     padding: 50px 0px;
 }
 
-.giris {
-    padding: 10px 20px;
+#giris {
+    padding: 10px 80px;
     background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    margin:0px 45%;
 }
 
 .giris:hover {

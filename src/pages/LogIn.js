@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../Styles/LogIn.css";
 import { useDispatch } from "react-redux";
 import { logIn } from "../redux/userSlice";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Logo from "../images/logo.png";
 
 function LogIn() {
@@ -70,11 +70,23 @@ function LogIn() {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
-              <div className="forget-password ">
-                <a href="sifremiunuttum" onClick={handleMessage}>
+              <div className="links">
+                <a
+                  className="Link-account"
+                  href="hesabimyok"
+                  onClick={handleNavigate}
+                >
+                  Hesabın yok mu?
+                </a>
+                <a
+                  className="forget-password "
+                  href="sifremiunuttum"
+                  onClick={handleMessage}
+                >
                   şifremi unuttum
                 </a>
               </div>
+              <br /><br />
               <div className="btn">
                 <button
                   type="submit"
@@ -82,15 +94,9 @@ function LogIn() {
                   id="giris"
                   onClick={handleSubmit}
                 >
-                  {" "}
-                  Giriş{" "}
+                  Giriş
                 </button>
               </div>
-              <br></br>
-              <br></br> <br></br>
-              <a href="hesabimyok" onClick={handleNavigate}>
-                Hesabım yok
-              </a>
             </div>
           </div>
         </form>
