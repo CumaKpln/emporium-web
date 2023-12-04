@@ -1,11 +1,10 @@
-import { createSlice, current } from "@reduxjs/toolkit"
+import { createSlice, } from "@reduxjs/toolkit"
 import alertify from "alertifyjs";
 import woman from "../images/woman.jpeg"
-
 import man from "../images/man.jpg"
 
 
-export const userSlice = createSlice({
+ const userSlice = createSlice({
     name: "user",       // key gibi
     initialState: {
         users: [{
@@ -18,7 +17,7 @@ export const userSlice = createSlice({
             id: 11,
             profile: man,
         },
-        
+
         {
             name: "Zeynep Kizil",
             userName: "zeynep",
@@ -38,9 +37,9 @@ export const userSlice = createSlice({
             address: "mahalle, cadde, sokak, mevki, apartman numarası / daire numarası, İlçe/İl ",
             id: 44,
             profile: man,
-        },
+        }, 
         ],
-        currentUserIndex: -1,
+       currentUserIndex: -1,
     },
     reducers: {              // update etmek için. Actions, fonksiyon
         addUser: (state, action) => {
@@ -48,8 +47,8 @@ export const userSlice = createSlice({
             return {
                 ...state,
                 users: [...state.users, action.payload],
-                //currentUser: { ...action.payload },
-                //currentUserIndex : state.users.findIndex(user => user.id === action.payload.id),
+                currentUser: { ...action.payload },
+                currentUserIndex : state.users.findIndex(user => user.id === action.payload.id),
                 currentUserIndex: state.users.length // Güncel kullanıcı index'i
             };
         },
@@ -79,11 +78,11 @@ export const userSlice = createSlice({
         },
 
         logIn: (state, action) => {
-            { console.log(action.payload) }
+            // { console.log(action.payload) }
             const userIndex = state.users.findIndex(user => user.email === action.payload.email);
 
             if (userIndex !== -1) {
-                { console.log(action.payload)}
+                // { console.log(action.payload) }
                 if (state.users[userIndex].password === action.payload.password) {
                     return {
                         ...state,

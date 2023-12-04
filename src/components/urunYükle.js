@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "../Styles/urunYükle.css";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 // import axios from "axios";
 // import data from "../data/db.json";
 
@@ -89,140 +91,146 @@ const UrunYükle = () => {
 
 
   return (
-    <div className="container product-update">
-      <div className="row">
-        <div className="col-md-4 col-sm-2 col-1"></div>
-        <div className="col-md-4 col-sm-8 col-10">
-          <form onSubmit={handleSubmit}>
-            <div className="product-foto">
-              <label htmlFor="fileInput">Fotoğrafları Seçin:</label>
-              <input
-                type="file"
-                id="fileInput"
-                onChange={handleFileChange}
-                accept="image/*"
-                multiple
-                required
-              />
-            </div>
-            {/* Ürün başlığı giriş alanı */}
-            <div className="product-title">
-              <label htmlFor="title">Ürün Başlığı:</label>
-              <input
-                type="text"
-                id="title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                required
-              />
-            </div>
-            {/* Ürün açıklama alanı */}
-            <div className="product-desc">
-              <label htmlFor="description">Ürün Açıklaması:</label>
-              <textarea
-                id="description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                required
-              ></textarea>
-            </div>
-            {/* Ana kategori seçim alanı */}
-            <div className="product-category">
-              <label htmlFor="category">Kategori:</label>
-              <select
-                id="category"
-                value={category}
-                onChange={handleCategoryChange}
-                required
-              >
-                <option value="">Kategori Seçiniz</option>
-                <option value="emlak">Emlak</option>
-                <option value="vasıta">Vasıta</option>
-                <option value="elektronik-esya">Elektronik Eşya</option>
-              </select>
-            </div>
-            {/* Alt kategori seçim alanı */}
-            {category && (
-              <div className="product-subCategory">
-                <label htmlFor="subCategory">Alt Kategori:</label>
+    <>
+      <Navbar />
+      <div className="container product-update">
+        <div className="row">
+          <div className="col-md-4 col-sm-2 col-1"></div>
+          <div className="col-md-4 col-sm-8 col-10">
+            <form onSubmit={handleSubmit}>
+              <div className="product-foto">
+                <label htmlFor="fileInput">Fotoğrafları Seçin:</label>
+                <input
+                  type="file"
+                  id="fileInput"
+                  onChange={handleFileChange}
+                  accept="image/*"
+                  multiple
+                  required
+                />
+              </div>
+              {/* Ürün başlığı giriş alanı */}
+              <div className="product-title">
+                <label htmlFor="title">Ürün Başlığı:</label>
+                <input
+                  type="text"
+                  id="title"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  required
+                />
+              </div>
+              {/* Ürün açıklama alanı */}
+              <div className="product-desc">
+                <label htmlFor="description">Ürün Açıklaması:</label>
+                <textarea
+                  id="description"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  required
+                ></textarea>
+              </div>
+              {/* Ana kategori seçim alanı */}
+              <div className="product-category">
+                <label htmlFor="category">Kategori:</label>
                 <select
-                  id="subCategory"
-                  value={subCategory}
-                  onChange={(e) => setSubCategory(e.target.value)}
+                  id="category"
+                  value={category}
+                  onChange={handleCategoryChange}
                   required
                 >
-                  {getSubCategories()}
+                  <option value="">Kategori Seçiniz</option>
+                  <option value="emlak">Emlak</option>
+                  <option value="vasıta">Vasıta</option>
+                  <option value="elektronik-esya">Elektronik Eşya</option>
                 </select>
               </div>
-            )}
-            {/* Diğer ürün bilgileri giriş alanları */}
-            <div className="product-name">
-              <label htmlFor="productName">Ürün Adı:</label>
-              <input
-                type="text"
-                id="productName"
-                value={productName}
-                onChange={(e) => setProductName(e.target.value)}
-                required
-              />
-            </div>
-            {/*-----------------------------------------------------------------------------*/}
-            <div className="product-location">
-              <label htmlFor="location">Ürün Konumu:</label>
-              <input
-                type="text"
-                id="location"
-                value={location}
-                onChange={(e) => setLocation(e.target.value)}
-                required
-              />
-            </div>
-
-            {/*-----------------------------------------------------------------------------*/}
-
-            {/* alert div i */}
-            <div>
-              {isUploaded && (
-                <div className="alert alert-info" role="alert">
-                  Ürün Yüklendi
+              {/* Alt kategori seçim alanı */}
+              {category && (
+                <div className="product-subCategory">
+                  <label htmlFor="subCategory">Alt Kategori:</label>
+                  <select
+                    id="subCategory"
+                    value={subCategory}
+                    onChange={(e) => setSubCategory(e.target.value)}
+                    required
+                  >
+                    {getSubCategories()}
+                  </select>
                 </div>
               )}
-            </div>
-            <div className="product-price">
-              <label htmlFor="price">Fiyat:</label>
-              <input
-                type="number"
-                id="price"
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}
-                required
-              />
-            </div>
-
-            {category !== "emlak" && (
-              <div className="product-brand">
-                <label htmlFor="brand">Ürün Markası:</label>
-                <br />
-                <select
-                  id="brand"
-                  value={brand}
+              {/* Diğer ürün bilgileri giriş alanları */}
+              <div className="product-name">
+                <label htmlFor="productName">Ürün Adı:</label>
+                <input
+                  type="text"
+                  id="productName"
+                  value={productName}
+                  onChange={(e) => setProductName(e.target.value)}
                   required
-                  onChange={(e) => setBrand(e.target.value)}
-                >
-                  <option value="">Marka Seçiniz</option>
-                  <option value="BMW">BMW</option>
-                  <option value="Mercedes">Mercedes</option>
-                </select>
+                />
               </div>
-            )}
+              {/*-----------------------------------------------------------------------------*/}
+              <div className="product-location">
+                <label htmlFor="location">Ürün Konumu:</label>
+                <input
+                  type="text"
+                  id="location"
+                  value={location}
+                  onChange={(e) => setLocation(e.target.value)}
+                  required
+                />
+              </div>
 
-            {/* Formun gönderme butonu */}
-            <button type="submit">Ürünü Yükle</button>
-          </form>
+              {/*-----------------------------------------------------------------------------*/}
+
+              {/* alert div i */}
+              <div>
+                {isUploaded && (
+                  <div className="alert alert-info" role="alert">
+                    Ürün Yüklendi
+                  </div>
+                )}
+              </div>
+              <div className="product-price">
+                <label htmlFor="price">Fiyat:</label>
+                <input
+                  type="number"
+                  id="price"
+                  value={price}
+                  onChange={(e) => setPrice(e.target.value)}
+                  required
+                />
+              </div>
+
+              {category !== "emlak" && (
+                <div className="product-brand">
+                  <label htmlFor="brand">Ürün Markası:</label>
+                  <br />
+                  <select
+                    id="brand"
+                    value={brand}
+                    required
+                    onChange={(e) => setBrand(e.target.value)}
+                  >
+                    <option value="">Marka Seçiniz</option>
+                    <option value="BMW">BMW</option>
+                    <option value="Mercedes">Mercedes</option>
+                  </select>
+                </div>
+              )}
+
+              {/* Formun gönderme butonu */}
+              <button type="submit">Ürünü Yükle</button>
+            </form>
+          </div>
+          <div className="col-md-4 col-sm-2 col-1"></div>
         </div>
-        <div className="col-md-4 col-sm-2 col-1"></div>
       </div>
-    </div>
+      <Footer />
+
+    </>
+
   );
 };
 

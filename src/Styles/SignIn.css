@@ -1,5 +1,5 @@
-/* .SingIn > form {
-    color: E9DAD9;
+.SingIn > form {
+    color: #E9DAD9;
     
 }
 .SingIn {
@@ -75,4 +75,4 @@
 
 .SingIn .eye:hover {
     color: white;
-}  */
+} 

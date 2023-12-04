@@ -1,9 +1,12 @@
 import React from "react";
 import Article from "./Article";
 import Sidebar from "./sidebar";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 const Main = () => {
   return (
     <>
+      <Navbar />
     
       <div className="main ">
         <div className="container d-flex">
@@ -17,6 +20,7 @@ const Main = () => {
             </div>
          
       </div>
+      <Footer />
     </>
   );
 };
