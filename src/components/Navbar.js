@@ -11,7 +11,7 @@ function FilterByName({ name }) {
   if (nameFilter === null || nameFilter === "") return true;
   else return name.contains(nameFilter);
 }
-function FilterByNamePrice({ price }) {
+function FilterByPrice({ price }) {
   if (isNaN(minPrice) || isNaN(maxPrice)) return true;
   else return parseInt(minPrice) < price && parseInt(maxPrice) > price;
 }
