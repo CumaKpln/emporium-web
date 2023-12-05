@@ -7,7 +7,7 @@ import alertify from "alertifyjs"
 import validations from '../validation/index';
 
 import { useDispatch } from "react-redux"
-import { addUser , currentUserIndex} from '../redux/userSlice'
+import { addUser, currentUserIndex } from '../redux/userSlice'
 import { useSelector } from "react-redux"
 
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -15,7 +15,7 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 import { nanoid } from "nanoid";
 
-import {useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function SignIn() {
 
@@ -46,7 +46,7 @@ function SignIn() {
         e.preventDefault()
         // Calculate the number of valid fields based on the absence of errors
         const validFieldsCount = Object.keys(errors).filter(fieldName => !errors[fieldName]).length;
-       
+
 
         // Tüm alanlar geçerliyse
         if (validFieldsCount === 6) {
@@ -65,7 +65,7 @@ function SignIn() {
 
             // Başarılı mesajını göster
             alertify.success("Kullanıcı başarıyla kaydedildi.");
-            
+
             navigate("/");
 
         } else {
@@ -74,9 +74,9 @@ function SignIn() {
     }
 
     const handleCancel = (e) => {
-        alertify.success("Ana sayfa") 
+        alertify.success("Ana sayfa")
         navigate("/");
-    } 
+    }
 
     const handleChange = (e) => {
         const { name, value } = e.target;

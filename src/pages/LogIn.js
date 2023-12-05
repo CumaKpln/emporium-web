@@ -90,10 +90,10 @@ function LogIn() {
                   </button>
                 </div>
                
-                <div className="Link-account">
+                <div className="Link-account ">
                   <a href="hesabimyok" onClick={handleNavigate}>
                     Hesabın yok mu?
-                    <b style={{textDecoration:"underline"}}>Hesap Oluştur?</b>
+                   <span> <b style={{textDecoration:"underline"}}> Hesap Oluştur?</b></span>
                   </a>
                 </div>
               </div>
