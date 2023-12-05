@@ -11,7 +11,7 @@ cursor: pointer;
   background: linear-gradient(145.44deg, #F2F4FA 0%, #FAFBFC 100%);
   border-radius: 20px;
   padding: 30px;
-  height: 200px;
+  height:   auto;
 }
 
 #HesapMenuResim{
