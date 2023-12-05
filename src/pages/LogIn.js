@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux";
 import { logIn } from "../redux/userSlice";
 import { useNavigate } from "react-router-dom";
 import Logo from "../images/logo.png";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 function LogIn() {
   const [email, setEmail] = useState("");
@@ -33,75 +35,74 @@ function LogIn() {
   };
 
   return (
-    <div className="container-login">
-      <div className="LogIn">
-        <h1 className="mt-5">Üye Girişi</h1>
+    <>
+      <Navbar />
+      <div className="container-login mt-5">
+        <div className="LogIn">
+          <h1 className="mt-5">Üye Girişi</h1>
 
-        <form onSubmit={(e) => handleSubmit(e)}>
-          <div className="row">
-            <div className="logo col-md-6">
-              <div className="image">
-                <img src={Logo} alt="Logo" />
+          <form onSubmit={(e) => handleSubmit(e)}>
+            <div className="row">
+              <div className="logo col-md-6">
+                <div className="image">
+                  <img src={Logo} alt="Logo" />
+                </div>
+              </div>
+              <div className="form col-md-6">
+                {" "}
+                <div className="e-posta g-3">
+                  <label className="Item">E-Posta</label>
+                  <input
+                    className="input"
+                    type="email"
+                    name="email"
+                    placeholder="E-posta"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+                <div className="password">
+                  <label className="Item">Şifre</label>
+                  <br />
+                  <input
+                    type="password"
+                    className="password input"
+                    name="password"
+                    id="password"
+                    placeholder="Şifre"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </div>
+                <div className="Link-password mb-3">
+                  <a
+                    className="forget-password "
+                    href="sifremiunuttum"
+                    onClick={handleMessage}
+                  >
+                    şifreni mi unuttun?
+                  </a>
+                </div>
+                <br />
+                <div className="btn mb-2" id="giris">
+                  <button onClick={handleSubmit}>
+                    <p className="mb-0">Giriş</p>
+                  </button>
+                </div>
+               
+                <div className="Link-account">
+                  <a href="hesabimyok" onClick={handleNavigate}>
+                    Hesabın yok mu?
+                    <b style={{textDecoration:"underline"}}>Hesap Oluştur?</b>
+                  </a>
+                </div>
               </div>
             </div>
-            <div className="form col-md-6">
-              {" "}
-              <div className="e-posta g-3">
-                <label className="Item">E-Posta</label>
-                <input
-                  className="input"
-                  type="email"
-                  name="email"
-                  placeholder="E-posta"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-              <div className="password">
-                <label className="Item">Şifre</label>
-                <br></br>
-                <input
-                  type="password"
-                  className="password input"
-                  name="password"
-                  id="password"
-                  placeholder="Şifre"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-              <div className="links">
-                <a
-                  className="Link-account"
-                  href="hesabimyok"
-                  onClick={handleNavigate}
-                >
-                  Hesabın yok mu?
-                </a>
-                <a
-                  className="forget-password "
-                  href="sifremiunuttum"
-                  onClick={handleMessage}
-                >
-                  şifremi unuttum
-                </a>
-              </div>
-              <br /><br />
-              <div className="btn">
-                <button
-                  type="submit"
-                  className="giris "
-                  id="giris"
-                  onClick={handleSubmit}
-                >
-                  Giriş
-                </button>
-              </div>
-            </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 }
 

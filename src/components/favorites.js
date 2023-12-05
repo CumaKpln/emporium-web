@@ -6,7 +6,7 @@ const Favorites = () => {
     return (
         <>
             <Navbar /> 
-            Favorites
+            <h1>Favoriler</h1>
             <Footer />
 
 

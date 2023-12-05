@@ -65,16 +65,20 @@ nav.navbar {
 }
 
 #account {
-    margin: 25px 15px 0 0;
     cursor: pointer;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
     color: black;
+    gap: 5px;
+    align-items: center;
+    padding: 8px 0 0 0 ;
+    margin-right: 15px;
+
 }
 
-#account h6 {
+.account-title {
     text-decoration: none;
+
 }
 
 .fav-icon {
@@ -82,11 +86,10 @@ nav.navbar {
     color: black;
     cursor: pointer;
     display: flex;
-    flex-direction: column;
-    margin-top: 20px;
+    flex-direction: row;
     align-items: center;
     color: black;
-
+    gap: 5px
 }
 
 .fav-icon {
@@ -141,7 +144,7 @@ a {
 
 }
 
-@media screen and (max-width:991px) {
+@media screen and (max-width:1400px) {
     #nav {
         display: none;
     }
@@ -180,7 +183,10 @@ a {
         padding: 15px 25px;
         align-items: center;
         justify-content: center;
+    transition: 0.5s;
+
     }
+    
 
     .fav-icon {
         display: flex;
