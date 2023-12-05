@@ -54,6 +54,7 @@
   .MenuHesap,
   .MenuUrun {
     width: 120px; 
+    padding: 0;
   }
 }
 
@@ -64,6 +65,12 @@
   .Hesap2{
     display: inline-block;
   }
+  div .col-md-12{
+    text-align: -webkit-center;
+  }
+  div#root{
+    text-align: center;
+  }
   .menu {
     position: sticky;
     top: 0;
@@ -73,6 +80,7 @@
     height: 100px;
     margin-top: 20px; /* Navbar'ın yüksekliği kadar bir boşluk bırak */
     /* margin-left: 50%; */
+    margin-bottom: 0;
   }
 
   .Hesap {
@@ -92,9 +100,11 @@
     .menu {
       width: 100%;
       margin-left: 0;
-      /* padding-left: 120px; */
       position: sticky;
       top: 0;
+    }
+    .butons{
+      margin-right: 1px;
     }
   }
 
