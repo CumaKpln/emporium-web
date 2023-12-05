@@ -27,9 +27,21 @@ function Hesap() {
           </div>
         </div>
       </div>
-    </div>
+    </div> 
 
-  
+          <div className="Hesap2">
+      <div className='container'>
+        <div className='row'>
+          <div className='col-md-12'>
+            <HesapSidebar onSelectPage={handleSelectPage} />
+          </div>
+          <div className='col-md-12'>
+            {selectedPage === 'Bilgiler' && <Bilgiler />}
+            {selectedPage === 'Urun' && <UrunBilgileri />}
+          </div>
+        </div>
+      </div>
+    </div> 
       <Footer />
     </>
    );

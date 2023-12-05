@@ -1,3 +1,6 @@
+.Hesap2{
+  display: none;
+}
 .menu {
   display: flex;
   justify-content: center;
@@ -55,6 +58,12 @@
 }
 
 @media (max-width: 992px) {
+  .Hesap{
+    display: none;
+  }
+  .Hesap2{
+    display: inline-block;
+  }
   .menu {
     position: sticky;
     top: 0;
@@ -63,7 +72,7 @@
     max-width: 500px;
     height: 100px;
     margin-top: 20px; /* Navbar'ın yüksekliği kadar bir boşluk bırak */
-    margin-left: 50%;
+    /* margin-left: 50%; */
   }
 
   .Hesap {
@@ -83,7 +92,7 @@
     .menu {
       width: 100%;
       margin-left: 0;
-      padding-left: 120px;
+      /* padding-left: 120px; */
       position: sticky;
       top: 0;
     }
