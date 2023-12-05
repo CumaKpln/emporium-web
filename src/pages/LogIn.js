@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import "../Styles/LogIn.css";
 import { useDispatch } from "react-redux";
 import { logIn } from "../redux/userSlice";
-import { Link, useNavigate } from "react-router-dom";
-import Logo from '../images/logo.png'
+import { useNavigate } from "react-router-dom";
+import Logo from "../images/logo.png";
 
 function LogIn() {
   const [email, setEmail] = useState("");
@@ -33,22 +33,21 @@ function LogIn() {
   };
 
   return (
-    <div className="LogIn">
-      <h1 className="mt-5">Üye Girişi</h1>
+    <div className="container-login">
+      <div className="LogIn">
+        <h1 className="mt-5">Üye Girişi</h1>
 
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <div className="container">
+        <form onSubmit={(e) => handleSubmit(e)}>
           <div className="row">
             <div className="logo col-md-6">
-              <div className="image" style={{ width: "50%" }}>
-                <img src={Logo} alt="Logo" style={{ width: "50%" }} />
+              <div className="image">
+                <img src={Logo} alt="Logo" />
               </div>
             </div>
             <div className="form col-md-6">
               {" "}
               <div className="e-posta g-3">
                 <label className="Item">E-Posta</label>
-                <br></br>
                 <input
                   className="input"
                   type="email"
@@ -71,34 +70,37 @@ function LogIn() {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
+              <div className="links">
+                <a
+                  className="Link-account"
+                  href="hesabimyok"
+                  onClick={handleNavigate}
+                >
+                  Hesabın yok mu?
+                </a>
+                <a
+                  className="forget-password "
+                  href="sifremiunuttum"
+                  onClick={handleMessage}
+                >
+                  şifremi unuttum
+                </a>
+              </div>
+              <br /><br />
+              <div className="btn">
+                <button
+                  type="submit"
+                  className="giris "
+                  id="giris"
+                  onClick={handleSubmit}
+                >
+                  Giriş
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-
-        <div className="col-md-3 mx-auto">
-          <div className="btn">
-            <Link to="giris">
-              <button
-                type="submit"
-                className="giris "
-                id="giris"
-                onClick={handleSubmit}
-              >
-                {" "}
-                Giriş{" "}
-              </button>
-            </Link>
-          </div>
-          <br></br>
-          <a href="sifremiunuttum" onClick={handleMessage}>
-            şifremi unuttum
-          </a>
-          <br></br> <br></br>
-          <a href="hesabimyok" onClick={handleNavigate}>
-            Hesabım yok
-          </a>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   );
 }

@@ -13,8 +13,9 @@ function Hesap() {
   };
 
   return (
-    <>    <Navbar/>
-    <div className="Hesap">
+    <>
+     <Navbar />
+      <div className="Hesap">
       <div className='container'>
         <div className='row'>
           <div className='col-md-4'>
@@ -27,10 +28,11 @@ function Hesap() {
         </div>
       </div>
     </div>
-    <Footer/>
-    </>
 
-  );
+  
+      <Footer />
+    </>
+   );
 }
 
 export default Hesap;
