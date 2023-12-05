@@ -11,7 +11,7 @@ export const filters =
         else return name.contains(this.nameFilter);
     },
     FilterByPrice({ price }) {
-        if (isNaN(this.minPrice) || isNaN(this.maxPrice)) return true;
+        if (isNaN(this.minPrice) || isNaN(this.maxPrice)) return true; // Control null condition.
         else return parseInt(this.minPrice) < price && parseInt(this.maxPrice) > price;
     },
     FilterByProvince({ province }) {
