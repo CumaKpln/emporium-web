@@ -5,7 +5,7 @@ import Footer from './Footer'
 const Favorites = () => {
     return (
         <>
-            <Navbar /> 
+            <Navbar />
             <h1>Favoriler</h1>
             <Footer />
 

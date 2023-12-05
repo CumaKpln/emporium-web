@@ -14,20 +14,20 @@ function Hesap() {
 
   return (
     <>
-     <Navbar />
+      <Navbar />
       <div className="Hesap">
-      <div className='container'>
-        <div className='row'>
-          <div className='col-md-4'>
-            <HesapSidebar onSelectPage={handleSelectPage} />
-          </div>
-          <div className='col-md-8'>
-            {selectedPage === 'Bilgiler' && <Bilgiler />}
-            {selectedPage === 'Urun' && <UrunBilgileri />}
+        <div className='container'>
+          <div className='row'>
+            <div className='col-md-4'>
+              <HesapSidebar onSelectPage={handleSelectPage} />
+            </div>
+            <div className='col-md-8'>
+              {selectedPage === 'Bilgiler' && <Bilgiler />}
+              {selectedPage === 'Urun' && <UrunBilgileri />}
+            </div>
           </div>
         </div>
       </div>
-    </div> 
 
           <div className="Hesap2">
       <div className='container'>
@@ -44,7 +44,7 @@ function Hesap() {
     </div> 
       <Footer />
     </>
-   );
+  );
 }
 
 export default Hesap;
