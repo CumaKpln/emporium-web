@@ -1,30 +1,31 @@
 import { filter } from "./Filtering";
 const brands = ["Volkswagen", "Opel", "Séat", "Renault"];
+
 function BrandSection({ brands }) {
     return <div key={"brands"}>
         {brands.map((b) => (<div key={b}><input type="checkbox" onInput={(e) => {
-            if (filter.brands.includes(b)) {
+            if (filter.state.brands.includes(b)) {
                 const temp = [];
-                filter.brands.forEach((brand) => {
+                filter.state.brands.forEach((brand) => {
                     if (brand !== b) {
                         temp.push(brand);
                     }
                 });
-                filter.brands = temp;
+                filter.state.brands = temp;
             }
             else {
-                filter.brands.push(b);
+                filter.state.brands.push(b);
             }
-            console.log(filter.brands);
+            console.log(filter.state.brands);
         }} />{b}</div>))}
     </div>
 }
 function PriceSection() {
     return <div key={"price"}>
-        Min Price  {filter.minPrice}
-        <input key={"minp"} type="number" value={filter.minPrice} min={0} onInput={(e) => { filter.filterByPrice(Math.min(e.target.value, filter.maxPrice).toString(), filter.maxPrice); }} />
-        Max Price  {filter.maxPrice}
-        <input key={"maxp"} type="number" value={filter.maxPrice} min={0} onInput={(e) => { filter.filterByPrice(filter.minPrice, Math.max(e.target.value, filter.minPrice).toString()); }} />
+        Min Price  {filter.state.minPrice}
+        <input key={"minp"} type="number" min={0} onInput={(e) => { filter.filterByPrice(e.target.value, filter.state.maxPrice); }} />
+        Max Price  {filter.state.maxPrice}
+        <input key={"maxp"} type="number" min={0} onInput={(e) => { filter.filterByPrice(filter.state.minPrice, e.target.value); }} />
     </div>
 }
 function FilterBar() {

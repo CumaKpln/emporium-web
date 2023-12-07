@@ -5,25 +5,27 @@ class Filtering extends React.Component {
         super(props);
         this.state = {
             nameFilter: "",
-            minPrice: 0,
-            maxPrice: 1,
+            minPrice: "0",
+            maxPrice: "1",
             provinceFilter: "",
             districtFilter: "",
             brands: [],
         };
     }
     filterByName(name) {
-        this.state.nameFilter = name;
+        this.setState({ nameFilter: name });
     }
     filterByPrice(minPrice, maxPrice) {
-        this.state.minPrice = minPrice;
-        this.state.maxPrice = maxPrice;
+        this.setState({ minPrice: minPrice, maxPrice: maxPrice });
+
+        console.log(this.state.minPrice);
+        console.log(this.state.maxPrice);
     }
     filterByProvince(province) {
-        this.state.provinceFilter = province;
+        this.setState({ provinceFilter: province });
     }
     filterByDistrict(district) {
-        this.state.districtFilter = district;
+        this.setState({ districtFilter: district });
     }
     filterByBrand(brand) {
         if (this.state.brands.includes(brand)) {
