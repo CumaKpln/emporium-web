@@ -23,9 +23,9 @@ function BrandSection({ brands }) {
 function PriceSection() {
     return <div key={"price"}>
         Min Price  {filter.state.minPrice}
-        <input key={"minp"} type="number" min={0} onInput={(e) => { filter.filterByPrice(e.target.value, filter.state.maxPrice); }} />
+        <input key={"minp"} type="number" onInput={(e) => { filter.filterByPrice(e.target.value, filter.state.maxPrice); e.target.value = filter.state.minPrice; }} />
         Max Price  {filter.state.maxPrice}
-        <input key={"maxp"} type="number" min={0} onInput={(e) => { filter.filterByPrice(filter.state.minPrice, e.target.value); }} />
+        <input key={"maxp"} type="number" onInput={(e) => { filter.filterByPrice(filter.state.minPrice, e.target.value); e.target.value = filter.state.maxPrice; }} />
     </div>
 }
 function FilterBar() {
