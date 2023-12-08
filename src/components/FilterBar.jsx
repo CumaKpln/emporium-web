@@ -1,4 +1,5 @@
 import { filter } from "./Filtering";
+import React from "react";
 const brands = ["Volkswagen", "Opel", "Séat", "Renault"];
 
 function BrandSection({ brands }) {
@@ -28,9 +29,9 @@ function PriceSection() {
         <input key={"maxp"} type="number" onInput={(e) => { filter.filterByPrice(filter.state.minPrice, e.target.value); e.target.value = filter.state.maxPrice; }} />
     </div>
 }
-function FilterBar() {
+function FilterBar({ category = "" }) {
     return <div>
-        <BrandSection key={"a"} brands={brands} />
+        {(category.toString().toLowerCase() === "car" && <BrandSection key={"a"} brands={brands} />)}
         <PriceSection key={"b"} />
     </div >
 }

@@ -17,7 +17,7 @@ const Main = () => {
           </div>
           <div className="col-md-9 col-sm-9">
             <Article />
-            <FilterBar />
+            <FilterBar category="asd" />
           </div>
         </div>
 
