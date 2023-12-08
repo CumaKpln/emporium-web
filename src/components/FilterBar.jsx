@@ -1,7 +1,12 @@
 import { filter } from "./Filtering";
 import React from "react";
 const brands = ["Volkswagen", "Opel", "Séat", "Renault"];
+function NameSection() {
+    return <div key={"name"}>
+        <input type="text" onInput={(e) => { filter.filterByName(e.target.value); }} />
+    </div>
 
+}
 function BrandSection({ brands }) {
     return <div key={"brands"}>
         {brands.map((b) => (<div key={b}><input type="checkbox" onInput={(e) => {
@@ -31,7 +36,8 @@ function PriceSection() {
 }
 function FilterBar({ category = "" }) {
     return <div>
-        {(category.toString().toLowerCase() === "car" && <BrandSection key={"a"} brands={brands} />)}
+        <NameSection key={"n"} />
+        {((category.toString().toLowerCase() === "car" || category.toString().toLowerCase() === "electronics") && <BrandSection key={"a"} brands={brands} />)}
         <PriceSection key={"b"} />
     </div >
 }
