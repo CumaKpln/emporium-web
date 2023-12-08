@@ -3,7 +3,6 @@ import Article from "./Article";
 import Sidebar from "./sidebar";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import FilterBar from "./FilterBar";
 const Main = () => {
   return (
     <>

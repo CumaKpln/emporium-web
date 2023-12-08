@@ -28,9 +28,7 @@ function App() {
         {/* <Route path="/sifremiunuttum" element={<ForgotPassword />} /> */}
       </Routes>
     
-      <Routes>
-
-      </Routes>
+    
 
     </>
   );
