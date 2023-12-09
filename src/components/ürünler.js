@@ -8,7 +8,7 @@ import { selectProduct } from "../control/slices/productSlice"; // Redux reducer
 function Ürünler() {
   const dispatch = useDispatch();
 
-  const selectedProduct = (product) => {
+  const selectedProduct= (product) => {
     dispatch(selectProduct(product)); // Redux store'a seçilen ürünü gönderme
   };
 

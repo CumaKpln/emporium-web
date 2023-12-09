@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  selectedProduct:{} ,
+  selectedProduct: [], // selectedProduct'ı bir dizi olarak başlatın
 };
 
 const productSlice = createSlice({
@@ -9,7 +9,7 @@ const productSlice = createSlice({
   initialState,
   reducers: {
     selectProduct(state, action) {
-      state.selectedProduct =  { ...action.payload};
+      state.selectedProduct = [ ...action.payload ]; // Seçilen ürünleri bir dizi içinde saklayın
     },
   },
 });

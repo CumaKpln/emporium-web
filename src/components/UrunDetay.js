@@ -7,12 +7,15 @@ import Sahip from "./UrunDetay-Sahip";
 import Icerik from "./UrunDetay-Açıklama";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
+import  "../control/store.js"
 
 function UrunDetay() {
-  const [selectedImageIndex, setSelectedImageIndex] = useState(0); // Başlangıç değeri olarak 0 atanmıştır
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0); 
+  
   const dispatch = useDispatch();
-  const selectedProduct = useSelector((state) => state.selectedProduct) // Redux store'dan gelen veri, varsayılan olarak boş bir nesne
+
+
 
   const handleCardClick = (productId) => {
     // Örnek olarak, seçilen ürünü Redux store'a dispatch etmek gibi
@@ -25,8 +28,6 @@ function UrunDetay() {
 
   return (
     <>
-<div>{selectedProduct}</div>
-
       <Navbar />
       <div className="App">
         <div className="container">
@@ -34,22 +35,18 @@ function UrunDetay() {
           <div className="row slider-row">
             <div className="col-md-6">
               <Slider
-                selectedProduct={selectedProduct}
                 selectedImageIndex={selectedImageIndex}
                 onSliderChange={handleSliderChange}
               />
-              <Card
-                onCardClick={handleCardClick}
-                selectedProduct={selectedProduct}
-              />
+              <Card onCardClick={handleCardClick} />
             </div>
             <div className="col-md-6">
               <div className="row main-row">
                 <div className="col-md-6">
-                  <Detay selectedProduct={selectedProduct} />
+                  <Detay />
                 </div>
                 <div className="col-md-6">
-                  <Sahip selectedProduct={selectedProduct} />
+                  <Sahip />
                 </div>
               </div>
             </div>
