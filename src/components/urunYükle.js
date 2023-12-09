@@ -20,13 +20,22 @@ const UrunYükle = () => {
   const [isUploaded, setIsUploaded] = useState(false);
   const [location, setLocation] = useState("");
 
+  // Adımları kontrol etmek için
+  const [step, setStep] = useState(1); // Adım adım ilerlemek için state
+
 
 
   // Kategori değiştiğinde alt kategoriyi sıfırla
   const handleCategoryChange = (e) => {
     setCategory(e.target.value);
     setSubCategory("");
+    setStep(1)
+
   };
+  const seSetTitle = () => {
+    setStep(3)
+    setTitle("")
+  }
 
   // Kategoriye göre alt kategorileri belirleyen bir yardımcı fonksiyon
   const getSubCategories = () => {
@@ -57,6 +66,7 @@ const UrunYükle = () => {
         );
       default:
         return <option value="">Kategori Seçiniz</option>;
+        setStep(5)
     }
   };
   // fotoğraf işlemi
@@ -64,6 +74,7 @@ const UrunYükle = () => {
     const files = event.target.files;
     const filesArray = Array.from(files);
     setSelectedFiles(filesArray)
+    setStep(2)
 
   };
 
@@ -98,55 +109,72 @@ const UrunYükle = () => {
           <div className="col-md-4 col-sm-2 col-1"></div>
           <div className="col-md-4 col-sm-8 col-10">
             <form onSubmit={handleSubmit}>
-              <div className="product-foto">
-                <label htmlFor="fileInput">Fotoğrafları Seçin:</label>
-                <input
-                  type="file"
-                  id="fileInput"
-                  onChange={handleFileChange}
-                  accept="image/*"
-                  multiple
-                  required
-                />
-              </div>
+
+              {step === 1 && (
+                <div className="product-foto">
+                  <label htmlFor="fileInput">Fotoğrafları Seçin:</label>
+                  <input
+                    type="file"
+                    id="fileInput"
+                    onChange={handleFileChange}
+                    accept="image/*"
+                    multiple
+                    required
+                  />
+                </div>
+              )}
+
               {/* Ürün başlığı giriş alanı */}
-              <div className="product-title">
-                <label htmlFor="title">Ürün Başlığı:</label>
-                <input
-                  type="text"
-                  id="title"
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
-                  required
-                />
-              </div>
+              {step === 2 && (
+                <div className="product-title">
+                  <label htmlFor="title">Ürün Başlığı:</label>
+                  <input
+                    type="text"
+                    id="title"
+                    value={title}
+                    onChange={(e) => {
+                      setTitle(e.target.value);
+                      seSetTitle()
+                    }}
+                    required
+                  />
+                </div>
+              )}
+
               {/* Ürün açıklama alanı */}
-              <div className="product-desc">
-                <label htmlFor="description">Ürün Açıklaması:</label>
-                <textarea
-                  id="description"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                  required
-                ></textarea>
-              </div>
+              {step === 3 && (
+                <div className="product-desc">
+                  <label htmlFor="description">Ürün Açıklaması:</label>
+                  <textarea
+                    id="description"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    required
+                  ></textarea>
+                </div>
+              )}
+
               {/* Ana kategori seçim alanı */}
-              <div className="product-category">
-                <label htmlFor="category">Kategori:</label>
-                <select
-                  id="category"
-                  value={category}
-                  onChange={handleCategoryChange}
-                  required
-                >
-                  <option value="">Kategori Seçiniz</option>
-                  <option value="emlak">Emlak</option>
-                  <option value="vasıta">Vasıta</option>
-                  <option value="elektronik-esya">Elektronik Eşya</option>
-                </select>
-              </div>
+              {step === 4 && (
+                <div className="product-category">
+                  <label htmlFor="category">Kategori:</label>
+                  <select
+                    id="category"
+                    value={category}
+                    onChange={handleCategoryChange}
+                    required
+                  >
+                    <option value="">Kategori Seçiniz</option>
+                    <option value="emlak">Emlak</option>
+                    <option value="vasıta">Vasıta</option>
+                    <option value="elektronik-esya">Elektronik Eşya</option>
+                  </select>
+                </div>
+              )}
+
               {/* Alt kategori seçim alanı */}
-              {category && (
+              {step === 5 && category && (
+
                 <div className="product-subCategory">
                   <label htmlFor="subCategory">Alt Kategori:</label>
                   <select
@@ -159,51 +187,58 @@ const UrunYükle = () => {
                   </select>
                 </div>
               )}
-              {/* Diğer ürün bilgileri giriş alanları */}
-              <div className="product-name">
-                <label htmlFor="productName">Ürün Adı:</label>
-                <input
-                  type="text"
-                  id="productName"
-                  value={productName}
-                  onChange={(e) => setProductName(e.target.value)}
-                  required
-                />
-              </div>
-              {/*-----------------------------------------------------------------------------*/}
-              <div className="product-location">
-                <label htmlFor="location">Ürün Konumu:</label>
-                <input
-                  type="text"
-                  id="location"
-                  value={location}
-                  onChange={(e) => setLocation(e.target.value)}
-                  required
-                />
-              </div>
 
-              {/*-----------------------------------------------------------------------------*/}
+              {/* Diğer ürün bilgileri giriş alanları */}
+              {step === 6 && (
+                <div className="product-name">
+                  <label htmlFor="productName">Ürün Adı:</label>
+                  <input
+                    type="text"
+                    id="productName"
+                    value={productName}
+                    onChange={(e) => setProductName(e.target.value)}
+                    required
+                  />
+                </div>
+              )}
+
+              {step === 7 && (
+                <div className="product-location">
+                  <label htmlFor="location">Ürün Konumu:</label>
+                  <input
+                    type="text"
+                    id="location"
+                    value={location}
+                    onChange={(e) => setLocation(e.target.value)}
+                    required
+                  />
+                </div>
+              )}
+
 
               {/* alert div i */}
-              <div>
+              {/* <div>
                 {isUploaded && (
                   <div className="alert alert-info" role="alert">
                     Ürün Yüklendi
                   </div>
                 )}
-              </div>
-              <div className="product-price">
-                <label htmlFor="price">Fiyat:</label>
-                <input
-                  type="number"
-                  id="price"
-                  value={price}
-                  onChange={(e) => setPrice(e.target.value)}
-                  required
-                />
-              </div>
+              </div> */}
 
-              {category !== "emlak" && (
+              {step === 8 && (
+                <div className="product-price">
+                  <label htmlFor="price">Fiyat:</label>
+                  <input
+                    type="number"
+                    id="price"
+                    value={price}
+                    onChange={(e) => setPrice(e.target.value)}
+                    required
+                  />
+                </div>
+              )}
+
+              {step === 9 && category !== "emlak" && (
                 <div className="product-brand">
                   <label htmlFor="brand">Ürün Markası:</label>
                   <br />

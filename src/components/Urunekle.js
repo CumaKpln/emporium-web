@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import "../Styles/UrunEkle.css"; // Stil dosyasını dahil edin
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 function UrunYuklemeSayfasi() {
   const [kategori, setKategori] = useState("");
@@ -36,7 +38,11 @@ function UrunYuklemeSayfasi() {
   };
 
   return (
-    <div className="container">
+    <>
+    
+   
+    <Navbar/>
+    <div className="container" style={{height:"80vh"}}>
       <h2>Ürün Yükleme Sayfası</h2>
       <form onSubmit={handleSubmit}>
         {step === 1 && (
@@ -55,7 +61,7 @@ function UrunYuklemeSayfasi() {
           </div>
         )}
 
-        {step === 2 && (
+        {step === 1 && (
           <div className="form-group">
             <label>Alt Kategori Seçin:</label>
             <select
@@ -134,6 +140,8 @@ function UrunYuklemeSayfasi() {
         )}
       </form>
     </div>
+    <Footer/>
+    </>
   );
 }
 

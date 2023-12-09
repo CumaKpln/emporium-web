@@ -21,7 +21,7 @@ function App() {
 
         <Route path="/hesabım" exact element={<Hesap />} />
         <Route path="/favoriler" element={<Favorites />} />
-        <Route path="/ilan-ver" element={<UrunEkle />} />
+        <Route path="/ilan-ver" element={<UrunYükle />} />
         <Route path="/Giris-yap" element={<LogIn />} />
         <Route path="/kayit-ol" element={<SignIn />} />
 
