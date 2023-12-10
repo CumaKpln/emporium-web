@@ -1,57 +1,48 @@
-.product-update {
-    margin: 20px auto;
-    padding: 20px;
-    width: 80%;
+.step-form {
+    max-width: 400px;
+    margin: 15% auto 0;
+    padding: 20px 20px 100px 20px;
     border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
+    border-radius: 5px;
+    background: #cfcccc;
 }
 
-h1 {
-    text-align: center;
+
+.step1-btn {
+    margin-top: 45px;
+    gap: 20px;
+    float: right;
 }
 
-.row {
-    display: flex;
-    justify-content: space-between;
-}
 
-.col-md-6 {
-    width: 48%;
-}
 
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-label {
-    margin-bottom: 5px;
-}
-input[type="number"],
-input[type="text"],
+input[type='text'],
 textarea,
-select {
-    width: calc(100% - 12px);
+input[type='file'] {
+    width: 100%;
     padding: 8px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
 }
 
-textarea {
-    resize: vertical;
-}
-
-button[type="submit"] {
-    padding: 10px;
+button {
+    padding: 8px 12px;
+    margin-top: 10px;
+    cursor: pointer;
     border: none;
     border-radius: 4px;
-    background-color: #007bff;
-    color: #fff;
-    cursor: pointer;
 }
 
-button[type="submit"]:hover {
-    background-color: #0056b3;
+.next-button {
+    background-color: #4caf50;
+    color: white;
+}
+
+.prev-button {
+    background-color: #f44336;
+    color: white;
+}
+
+.submit-button {
+    background-color: #008cba;
+    color: white;
 }
