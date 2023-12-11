@@ -8,9 +8,11 @@ function Detay() {
 
 
 
+  console.log(selectedProduct)
   return (
     <>
       {selectedProduct &&
+
         Array.isArray(selectedProduct) &&
         selectedProduct.length > 0 &&
         selectedProduct.map((product, id) => (
