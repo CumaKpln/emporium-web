@@ -7,12 +7,19 @@ import Sahip from "./UrunDetay-Sahip";
 import Icerik from "./UrunDetay-Açıklama";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import { useDispatch} from "react-redux";
+import  "../control/store.js"
 
 function UrunDetay() {
-  const [selectedImageIndex, setSelectedImageIndex] = useState(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0); 
+  
+  const dispatch = useDispatch();
 
-  const handleCardClick = (index) => {
-    setSelectedImageIndex(index);
+
+
+  const handleCardClick = (productId) => {
+    // Örnek olarak, seçilen ürünü Redux store'a dispatch etmek gibi
+    dispatch({ type: "SELECT_PRODUCT", payload: productId }); // Örnek bir action dispatch etme
   };
 
   const handleSliderChange = (index) => {
@@ -24,24 +31,7 @@ function UrunDetay() {
       <Navbar />
       <div className="App">
         <div className="container">
-          <div className="row">
-            <div className="Baslik m-2">
-              <h2>İlan Başlığı</h2>
-              <button>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  fill="currentColor"
-                  className="bi bi-star-fill mr-2"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                </svg>
-                <span className="fs-6 ml-2">Favorilere ekle</span>
-              </button>
-            </div>
-          </div>
+          {/* Diğer bileşenler */}
           <div className="row slider-row">
             <div className="col-md-6">
               <Slider
@@ -69,9 +59,7 @@ function UrunDetay() {
       </div>
       <Footer />
     </>
-
   );
 }
 
 export default UrunDetay;
-

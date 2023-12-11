@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../Styles/LogIn.css";
 import { useDispatch } from "react-redux";
-import { logIn } from "../redux/userSlice";
+import { logIn } from "../control/slices/userSlice";
 import { useNavigate } from "react-router-dom";
 import Logo from "../images/logo.png";
 import Navbar from "../components/Navbar";

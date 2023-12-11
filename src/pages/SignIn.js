@@ -7,7 +7,7 @@ import alertify from "alertifyjs"
 import validations from '../validation/index';
 
 import { useDispatch } from "react-redux"
-import { addUser, currentUserIndex } from '../redux/userSlice'
+import { addUser, currentUserIndex } from '../control/slices/userSlice'
 import { useSelector } from "react-redux"
 
 import VisibilityIcon from '@mui/icons-material/Visibility';

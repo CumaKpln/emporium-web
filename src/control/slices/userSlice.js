@@ -1,7 +1,7 @@
 import { createSlice, } from "@reduxjs/toolkit"
 import alertify from "alertifyjs";
-import woman from "../images/woman.jpeg"
-import man from "../images/man.jpg"
+import woman from "../../images/woman.jpeg"
+import man from "../../images/man.jpg"
 
 
  const userSlice = createSlice({
@@ -11,7 +11,7 @@ import man from "../images/man.jpg"
             name: "Cuma Kaplan",
             userName: "Cuma",
             email: "cuma@gmail.com",
-            phoneNumber: "05554443322",
+            phoneNumber: "05554443322", 
             password: "12345",
             address: "mahalle, cadde, sokak, mevki, apartman numarası / daire numarası, İlçe/İl ",
             id: 11,
