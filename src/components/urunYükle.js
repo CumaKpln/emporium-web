@@ -1,206 +1,153 @@
 import React, { useState } from "react";
 import "../Styles/urunYükle.css";
 import Navbar from "./Navbar";
-
-const StepForm = () => {
-  const [step, setStep] = useState(1);
+import Footer from "./Footer";
+const UrunYükle = () => {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
-  const [subCategory, setSubCategory] = useState("");
+  const [subCategory, setSubCategory] = useState(""); // Alt kategori seçimi için state
 
-  const [formData, setFormData] = useState({
-    productName: "",
-    productDescription: "",
-    productImage: null,
-    productTitle: "",
-  });
+  // Ürün bilgileri için state'leri tanımlandı
+  const [productName, setProductName] = useState("");
+  const [price, setPrice] = useState("");
+  const [brand, setBrand] = useState("");
+  const [photos, sePhotos] = useState([]);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+
+  // Kategori değiştiğinde alt kategoriyi sıfırla
+  const handleCategoryChange = (e) => {
+    setCategory(e.target.value);
+    setSubCategory("");
   };
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    setFormData({
-      ...formData,
-      productImage: file,
-    });
-  };
-
+  // Kategoriye göre alt kategorileri belirleyen bir yardımcı fonksiyon
   const getSubCategories = () => {
     switch (category) {
       case "emlak":
         return (
           <>
             <option value="">Alt Kategori Seçiniz</option>
-            <option value="Ev">Ev</option>
-            <option value="Arsa">Arsa</option>
+            <option value="Daire">Daire</option>
+            <option value="ev">Ev</option>
           </>
         );
-      case "taşıt":
+      case "vasıta":
         return (
           <>
             <option value="">Alt Kategori Seçiniz</option>
             <option value="Araba">Araba</option>
-            <option value="Motorsiklet">Motorsiklet</option>
+            <option value="motorsiklet">Motorsiklet</option>
           </>
         );
       case "elektronik-esya":
         return (
           <>
             <option value="">Alt Kategori Seçiniz</option>
-            <option value="Televizyon">Televizyon</option>
-            <option value="Telefon">Telefon</option>
+            <option value="Araba">Televizyon</option>
+            <option value="motorsiklet">Telefon</option>
           </>
         );
       default:
         return <option value="">Kategori Seçiniz</option>;
     }
   };
-  const handleSubmit = () => {
-    // Ürünü yükleme işlemi burada gerçekleştirilebilir
-    console.log("Ürün yükleme işlemi tamamlandı:", formData);
-    // ... Ürün yükleme işlemi yapılabilir
+
+  const handleFileChange = (event) => {
+    const files = event.target.files;
+    const filesArray = Array.from(files);
+    sePhotos(filesArray);
   };
 
-  const nextStep = () => {
-    setStep(step + 1);
+  // Form submit işlemi
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (photos.length > 0) {
+      console.log("Seçilen dosyalar:", photos);
+      
+      // apiden geri çağırma işlemleri burada yapılacak//
+    } else {
+      alert("Lütfen fotoğraf yükleyiniz");
+    }
+    console.log("Ürün bilgileri:", {
+      title,
+      description,
+      category,
+      subCategory,
+      productName,
+      price,
+      brand,
+      photos,
+    });
+    // Burada bu bilgileri bir API'ye göndermek veya işlemek için gerekli adımları yapabilirsiniz.
   };
 
-  const prevStep = () => {
-    setStep(step - 1);
-  };
 
   return (
     <>
       <Navbar />
-      <div className="container">
-        <h2>Ürün Yükleme Sayfası- Adım {step}</h2>
-        <div className="row justify-content-center">
-          <div className="col-md-8">
-            <div className="step-form">
-              {/*step of product name's  */}
-              {step === 1 && (
-                <>
-                  <h2> Ürün Bilgileri</h2>
-                  <label className="mb-3">
-                    Ürün Adı:
-                    <input
-                    className="inputText"
-                      type="text"
-                      name="productName"
-                      value={formData.productName}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </label>
-                  <div className="button-group ">
-                    <button className="next-btn step1-btn" onClick={nextStep}>
-                      Sonraki
-                    </button>
-                  </div>
-                </>
-              )}
-              {/*step of product title's  */}
-              {step === 2 && (
-                <>
-                  <h2>Ürün Başlığı</h2>
-                  <label>
-                    Ürün Başlığı:
-                    <input
-                    className="inputText"
-                      type="text"
-                      name="productTitle"
-                      value={formData.productTitle}
-                      onChange={handleInputChange}
-                      required
-                    ></input>
-                  </label>
-                  <div className="button-group ">
-                   
-                    <button className="next-btn  step1-btn" onClick={nextStep}>
-                      Sonraki
-                    </button>
-                    <button className="prev-btn step1-btn" onClick={prevStep}>
-                      Geri
-                    </button>
-                  </div>
-                </>
-              )}
-              {/*step of product description's  */}
-              {step === 3 && (
-                <>
-                  <h2>Ürün Açıklaması</h2>
-                  <label>
-                    Ürün Açıklaması:
-                    <textarea
-                    className="inputText"
-                      name="productDescription"
-                      value={formData.productDescription}
-                      onChange={handleInputChange}
-                      required
-                    ></textarea>
-                  </label>
-                  <div className="button-group step1-btn">
-                    <button className="prev-btn" onClick={prevStep}>
-                      Geri
-                    </button>
-                    <button className="next-btn " onClick={nextStep}>
-                      Sonraki
-                    </button>
-                  </div>
-                </>
-              )}
-              {/*step of product photo's  */}
-              {step === 4 && (
-                <>
-                  <h2> Ürün Resmi</h2>
-                  <input type="file"className="inputText" onChange={handleImageChange} required />
-                  <div className="button-group step1-btn">
-                    <button className="prev-btn" onClick={prevStep}>
-                      Geri
-                    </button>
-                    <button className="next-btn" onClick={nextStep}>
-                      Sonraki
-                    </button>
-                  </div>
-                </>
-              )}
-              {/*step of product category's  */}
-              {step === 5 && (
-                <div className="product-category">
-                  <label htmlFor="category">Kategori:</label>
-                  <select
-                  className="inputText"
-                    id="category"
-                    value={category}
-                    onChange={(e) => setCategory(e.target.value)}
-                    required
-                  >
-                    <option value="">Kategori Seçiniz</option>
-                    <option value="emlak">Emlak</option>
-                    <option value="taşıt">Taşıt</option>
-                    <option value="elektronik-esya">Elektronik eşya</option>
-                  </select>
-                  <div className="button-group step1-btn">
-                    <button className="prev-btn" onClick={prevStep}>
-                      Geri
-                    </button>
-                    <button className="next-btn" onClick={nextStep}>
-                      Sonraki
-                    </button>
-                  </div>
-                </div>
-              )}
-              {/*step of product subCategory's  */}
-              {category && step === 6 && (
+      <div className="container product-update mt-5 mb-5">
+        <div className="row">
+          <div className="col-md-4 col-sm-2 col-1"></div>
+          <div className="col-md-4 col-sm-8 col-10">
+            <form onSubmit={handleSubmit}>
+
+              <div className="product-foto">
+                <input
+                  type="file"
+                  id="fileInput"
+                  onChange={handleFileChange}
+                  accept="image/*"
+                  multiple
+                  required
+                />
+              </div>
+
+              {/* Ürün başlığı giriş alanı */}
+              <div className="product-title">
+                <label htmlFor="title">Ürün Başlığı:</label>
+                <input
+                  type="text"
+                  id="title"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  required
+                />
+              </div>
+
+              {/* Ürün açıklama alanı */}
+              <div className="product-desc">
+                <label htmlFor="description">Ürün Açıklaması:</label>
+                <textarea
+                  id="description"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  required
+                ></textarea>
+              </div>
+              
+              {/* Ana kategori seçim alanı */}
+              <div className="product-category">
+                <label htmlFor="category">Kategori:</label>
+                <select
+                  id="category"
+                  value={category}
+                  onChange={handleCategoryChange}
+                  required
+                >
+                  <option value="">Kategori Seçiniz</option>
+                  <option value="emlak">Emlak</option>
+                  <option value="vasıta">Vasıta</option>
+                  <option value="elektronik-esya">Elektronik Eşya</option>
+                </select>
+              </div>
+
+              {/* Alt kategori seçim alanı */}
+              {category && (
                 <div className="product-subCategory">
                   <label htmlFor="subCategory">Alt Kategori:</label>
                   <select
-                  className="inputText"
                     id="subCategory"
                     value={subCategory}
                     onChange={(e) => setSubCategory(e.target.value)}
@@ -208,122 +155,60 @@ const StepForm = () => {
                   >
                     {getSubCategories()}
                   </select>
-                  <div className="button-group step1-btn">
-                    <button className="prev-btn" onClick={prevStep}>
-                      Geri
-                    </button>
-                    <button className="submit-btn" onClick={nextStep}>
-                      Sonraki
-                    </button>
-                  </div>
                 </div>
               )}
-              {/* product m2 step */}
-              {category === "emlak" && step === 7 && (
-                <>
-                  <label>
-                    {subCategory} m2'si :
-                    <input
-                    className="inputText"
-                      type="text"
-                      name="productm2"
-                      value={formData.productm2}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </label>
-                  <div className="button-group step1-btn">
-                    <button className="prev-btn" onClick={prevStep}>
-                      Geri
-                    </button>
-                    <button className="submit-btn" onClick={nextStep}>
-                      Sonraki
-                    </button>
-                  </div>
-                </>
-              )}
-              {/* number of rooms in the house*/}
-              {subCategory === "Ev" && step === 8 && (
-                <>
-                  <label>
-                    Ev'in Oda Sayısı:
-                    <input
-                    className="inputText"
-                      type="text"
-                      name="productRoom"
-                      value={formData.productRoom}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </label>
-                  <div className="button-group step1-btn">
-                    <button className="prev-btn" onClick={prevStep}>
-                      Geri
-                    </button>
-                    <button className="submit-btn" onClick={nextStep}>
-                      Sonraki
-                    </button>
-                  </div>
-                </>
-              )}
-              {subCategory === "Ev" && step === 9 && (
-                <>
-                  <label>
-                    Ürün Fiyatı:
-                    <input
-                    className="inputText"
-                      type="number"
-                      name="productPrice"
-                      value={formData.productPrice}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </label>
-                  <div className="button-group step1-btn">
-                    <button className="prev-btn" onClick={prevStep}>
-                      Geri
-                    </button>
-                    <button className="submit-btn" onClick={nextStep}>
-                      Sonraki
-                    </button>
-                  </div>
-                </>
-              )}
 
-              {step === 10 && (
-                <>
-                  <h2>Onay</h2>
-                  <p>Ürün Adı: {formData.productName}</p>
-                  <p>Ürün Açıklaması: {formData.productDescription}</p>
-                  <p>Ürün Başlığı: {formData.productTitle}</p>
-                  <p>Ürün Kategorisi: {formData.handleKategoriChange}</p>
-                  <p>Ürün Alt Kategorisi: {formData.handleSubcategoryChange}</p>
-                  <p>Evin m2'si: {formData.productm2}</p>
-                  {subCategory === "Ev"  ? (
-                    <p>Evin Oda Sayısı: {formData.productRoom}</p>
-                  ): null
-                }
+              {/* Diğer ürün bilgileri giriş alanları */}
+              <div className="product-name">
+                <label htmlFor="productName">Ürün Adı:</label>
+                <input
+                  type="text"
+                  id="productName"
+                  value={productName}
+                  onChange={(e) => setProductName(e.target.value)}
+                  required
+                />
+              </div>
 
-                  <p>
-                    Ürün Resmi:
-                    {formData.productImage ? formData.productImage.name : ""}
-                  </p>
-                  <div className="button-group">
-                    <button className="prev-btn" onClick={prevStep}>
-                      Geri
-                    </button>
-                    <button className="submit-btn" onClick={handleSubmit}>
-                      Yükle
-                    </button>
-                  </div>
-                </>
-              )}
-            </div>
+              <div className="product-price">
+                <label htmlFor="price">Fiyat:</label>
+                <input
+                  type="text"
+                  id="price"
+                  value={price}
+                  onChange={(e) => setPrice(e.target.value)}
+                  required
+                />
+              </div>
+
+              <div className="product-brand">
+                <label htmlFor="brand">Ürün Markası:</label>
+                <br />
+                <input
+                  type="text"
+                  id="brand"
+                  value={brand}
+                  onChange={(e) => setBrand(e.target.value)}
+                  required
+                />
+              </div>
+
+               
+               
+                {/* Formun gönderme butonu */}
+                <button type="submit">
+                  Ürünü Yükle
+                </button>
+              
+            </form>
           </div>
+          <div className="col-md-4 col-sm-2 col-1"></div>
         </div>
       </div>
+      <Footer/>
     </>
+
   );
 };
 
-export default StepForm;
+export default UrunYükle;

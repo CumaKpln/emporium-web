@@ -14,7 +14,7 @@
     float: right;
 }
 
-input[type='number']{
+input[type='number'] {
     width: 100%;
     padding: 8px;
     margin-bottom: 10px;
@@ -23,6 +23,13 @@ input[type='number']{
 input[type='text'],
 textarea,
 input[type='file'] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+}
+
+#category,
+#subCategory {
     width: 100%;
     padding: 8px;
     margin-bottom: 20px;
