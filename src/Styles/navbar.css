@@ -99,12 +99,12 @@ nav.navbar {
 }
 
 .right-navbar button {
-    padding: 10px 45px;
-    background: beige;
-    border-radius: 20px;
+    padding: 10px 15px;
     color: black;
-
-
+    border-radius: 15px;
+}
+.right-navbar button:hover {
+    border: 1px solid black;
 }
 
 .right-navbar button span {
