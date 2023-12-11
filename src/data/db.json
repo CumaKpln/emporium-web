@@ -8,13 +8,16 @@
         { "url": "https://picsum.photos/id/239/200/300" }
       ],
 
-      "title": "Ürün Başlığı 1",
+      "title": "araba",
       "description": "Ürün Açıklaması 1",
       "category": "vasıta",
       "subCategory": "Araba",
       "productName": "Araba Modeli 1",
       "price": "100000",
       "brand": "Marka 1",
+      "color": "Kırmızı",
+      "series": "vasita serisi",
+      "gear": "6",
       "id": 1
     },
     {
@@ -23,13 +26,16 @@
         { "url": "https://picsum.photos/id/238/200/300" },
         { "url": "https://picsum.photos/id/239/200/300" }
       ],
-      "title": "Ürün Başlığı 2",
+      "title": "motor",
       "description": "Ürün Açıklaması 2",
       "category": "vasıta",
       "subCategory": "Motorsiklet",
       "productName": "Motorsiklet Modeli 1",
       "price": "50000",
       "brand": "Marka 2",
+      "color": "Mavi",
+      "series": "vasita serisi",
+      "gear": "5",
       "id": 2
     },
     {
@@ -38,13 +44,15 @@
         { "url": "https://picsum.photos/id/238/200/300" },
         { "url": "https://picsum.photos/id/239/200/300" }
       ],
-      "title": "Ürün Başlığı 3",
+      "title": "ev",
       "description": "Ürün Açıklaması 3",
       "category": "emlak",
-      "subCategory": "daire",
+      "subCategory": "Ev",
       "productName": "Daire Modeli 1",
       "price": "250000",
       "brand": "Marka 3",
+      "m2": "100",
+      "rooms": "5",
       "id": 3
     },
 
@@ -54,13 +62,14 @@
         { "url": "https://picsum.photos/id/238/200/300" },
         { "url": "https://picsum.photos/id/239/200/300" }
       ],
-      "title": "Ürün Başlığı 1",
+      "title": "arsa",
       "description": "Ürün Açıklaması 1",
       "category": "vasıta",
-      "subCategory": "Araba",
+      "subCategory": "Arsa",
       "productName": "Araba Modeli 1",
       "price": "100000",
       "brand": "Marka 1",
+      "m2": "6000",
       "id": 4
     },
     {
@@ -69,13 +78,18 @@
         { "url": "https://picsum.photos/id/238/200/300" },
         { "url": "https://picsum.photos/id/239/200/300" }
       ],
-      "title": "Ürün Başlığı 2",
+      "title": "tel",
       "description": "Ürün Açıklaması 2",
       "category": "vasıta",
-      "subCategory": "Motorsiklet",
+      "subCategory": "Telefon",
       "productName": "Motorsiklet Modeli 1",
       "price": "50000",
       "brand": "Marka 2",
+      "model": "Modeli",
+      "color": "Gri",
+      "ram": "ram",
+      "processor": "işlemci",
+      "memory": "hafıza",
       "id": 5
     },
     {
@@ -84,13 +98,18 @@
         { "url": "https://picsum.photos/id/238/200/300" },
         { "url": "https://picsum.photos/id/239/200/300" }
       ],
-      "title": "Ürün Başlığı 3",
+      "title": "pc",
       "description": "Ürün Açıklaması 3",
       "category": "emlak",
-      "subCategory": "daire",
+      "subCategory": "Bilgisayar",
       "productName": "Daire Modeli 1",
       "price": "250000",
       "brand": "Marka 3",
+      "model": "Modeli",
+      "ram": "ram",
+      "GPU": "ekran kartı",
+      "processor": "işlemci",
+      "memory": "hafıza",
       "id": 6
     },
 
