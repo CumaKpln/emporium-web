@@ -1,218 +1,116 @@
-
-import "../Styles/SignIn.css"
-import Logo from '../images/logo.png'
-import React, { useState } from 'react'
-
-import alertify from "alertifyjs"
-import validations from '../validation/index';
-
-import { useDispatch } from "react-redux"
-import { addUser, currentUserIndex } from '../redux/userSlice'
-import { useSelector } from "react-redux"
-
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-
-import { nanoid } from "nanoid";
-
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addUser } from '../redux/userSlice';
+import { nanoid } from 'nanoid';
 import { useNavigate } from 'react-router-dom';
+import "../Styles/SignIn.css";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import Logo from "../images/logo.png";  
+const SignUp = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-function SignIn() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [address, setAddress] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
 
-    const navigate = useNavigate();
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-    const [name, setName] = useState("")
-    const [userName, setUserName] = useState("")
-    const [email, setEmail] = useState("")
-    const [phoneNumber, setPhoneNumber] = useState("")
-    const [address, setAddress] = useState("")
-    const [password, setPassword] = useState("")
-    const [passwordVerification, setPasswordVerification] = useState("")
-
-    const [errors, setErrors] = useState({});
-    const [touched, setTouched] = useState({});
-    const [isVisible, setIsVisible] = useState(false)
-    const [isVerificationVisible, setIsVerificationVisible] = useState(false)
-
-
-    const dispatch = useDispatch()
-    // const currentUser = dispatch(getCurrentUser())
-    const index = useSelector((state) => state.user.currentUserIndex);
-    const users = useSelector((state) => state.user.users);
-    const currentUser = users[index]
-
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        // Calculate the number of valid fields based on the absence of errors
-        const validFieldsCount = Object.keys(errors).filter(fieldName => !errors[fieldName]).length;
-
-
-        // Tüm alanlar geçerliyse
-        if (validFieldsCount === 6) {
-
-            dispatch(addUser({
-                name: name,
-                userName: userName,
-                email: email,
-                phoneNumber: phoneNumber,
-                password: password,
-                address: address,
-                id: nanoid(),
-            }))
-
-            console.log("Kullanıcı bilgileri:", currentUser, users);
-
-            // Başarılı mesajını göster
-            alertify.success("Kullanıcı başarıyla kaydedildi.");
-
-            navigate("/");
-
-        } else {
-            alertify.error("İlgili alanları uygun bir şekilde doldurunuz.");
-        }
+    if (password !== confirmPassword) {
+      alert('Şifreler eşleşmiyor!');
+      return;
     }
 
-    const handleCancel = (e) => {
-        alertify.success("Ana sayfa")
-        navigate("/");
-    }
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
+    dispatch(
+      addUser({
+        id: nanoid(),
+        name,
+        email,
+        password,
+        address,
+        phoneNumber,
+      })
+    );
 
-        // Gerekli alanlara uygun şekilde set işlemlerini yapın
-        if (name === "name") {
-            setName(value);
-        } else if (name === "userName") {
-            setUserName(value);
-        } else if (name === "email") {
-            setEmail(value);
-        } else if (name === "phoneNumber") {
-            setPhoneNumber(value);
-        } else if (name === "address") {
-            setAddress(value);
-        } else if (name === "password") {
-            setPassword(value);
-        } else if (name === "passwordVerification") {
-            setPasswordVerification(value);
-        }
+  
+    navigate('/');
 
+ 
+  };
 
-        setTouched({
-            ...touched,
-            [name]: true,
-        });
+  const handleCancel = () => {
+   
+    navigate('/');
+  };
 
-        // İlgili alanın doğrulama şemasını al
-        const fieldSchema = name === "passwordVerification" ? validations.fields["password"] : validations.fields[name]; ////// !!!! NOT SEND passwordVerification AS FİELD !!!! /////////
-
-
-        // Alanın değerini doğrula
-        fieldSchema.validate(value)
-            .then(() => {
-                // Doğrulama başarılıysa burada yapılacak işlemler
-                // Örneğin, hata durumunu temizle
-                setErrors({
-                    ...errors,
-                    [name]: '',
-                });
-            })
-            .catch(validationErrors => {
-
-                setErrors({
-                    ...errors,
-                    [name]: validationErrors.message,
-                });
-            });
-    };
-
-    const handleBlur = (e) => {
-        const { name } = e.target;
-        setTouched({
-            ...touched,
-            [name]: true,
-        });
-    };
-
-    return (
+  return (
+    <>
+    <Navbar />
+    <div>
+      
+      
+      <form onSubmit={handleSubmit} className='x'>
+      <h1>Kayıt Ol</h1>
+      <div className="row">
+              <div className="logo col-md-6">
+                <div className="image">
+                  <img src={Logo} alt="Logo" />
+                </div>
+                </div>
+      </div> 
         <div>
-
-            <div className='SingIn'>
-
-                <h1 >Kayıt Ol</h1>
-
-                <form onSubmit={handleSubmit}>
-
-                    <div className='image' style={{ width: "50%" }}>
-                        <img src={Logo} alt="Logo" style={{ width: '50%' }} />
-                    </div>
-
-                    <div className="row g-3" >
-
-                        <div className="col-md-6">
-                            <label className="Item" htmlFor="name">Ad Soyad</label> <br></br>
-                            <input name="name" placeholder="Ad Soyad" value={name} onChange={handleChange} />
-                            {errors.name && touched.name && <label className='error'>{errors.name}</label>}
-                        </div>
-
-                        <div className="col-md-6">
-                            <label className="Item" htmlFor="userName">Kullanıcı Adı</label> <br></br>
-                            <input name="userName" placeholder="Kullanıcı Adı" value={userName} onChange={(e) => setUserName(e.target.value)} />
-                            {errors.userName && touched.userName && <label className='error'>{errors.userName}</label>}
-                        </div>
-
-                        <div className="col-md-6">
-                            <label className="Item" htmlFor="email">E-posta</label>  <br></br>
-                            <input name="email" placeholder="E-posta" value={email} onChange={handleChange} onBlur={handleBlur} />
-                            {errors.email && touched.email && <label className='error'>{errors.email}</label>}
-                        </div>
-
-                        <div className="col-md-6">
-                            <label className="Item" htmlFor="phoneNumber">Telefon</label> <br></br>
-                            <input name="phoneNumber" placeholder="Telefon" value={phoneNumber} onChange={handleChange} />
-                            {errors.phoneNumber && touched.phoneNumber && <label className='error'>{errors.phoneNumber}</label>}
-                        </div>
-
-
-                        <div className="col-md-6">
-                            <label className="Item">Şifre</label>  <br></br>
-                            <input type={isVisible ? "" : "password"} name="password" value={password} onChange={handleChange} />
-                            <button className="eyeBtn" type="button" onClick={() => setIsVisible(!isVisible)}>
-                                {isVisible ? <VisibilityOffIcon className='eye' /> : <VisibilityIcon className='eye' />}
-                            </button>
-                            {errors.password && touched.password && <label className='error'>{errors.password}</label>}
-                        </div>
-
-                        <div className="col-md-6">
-                            <label className="Item" htmlFor="address">Adres</label> <br></br>
-                            <textarea name="address" placeholder="Adres" value={address} onChange={handleChange} />
-                            {errors.address && touched.address && <label className='error'>{errors.address}</label>}
-                        </div>
-
-                        <div className="col-md-6">
-                            <label className="Item">Şifre Doğrulama</label>  <br></br>
-                            <input type={isVerificationVisible ? "" : "password"} name="passwordVerification" value={passwordVerification} onChange={handleChange} />
-                            <button className="eyeBtn" type="button" onClick={() => setIsVerificationVisible(!isVerificationVisible)}>
-                                {isVerificationVisible ? <VisibilityOffIcon className='eye' /> : <VisibilityIcon className='eye' />}
-                            </button>
-                            {touched.passwordVerification && touched.passwordVerification && <label className='error'>{errors.passwordVerification}</label>}
-                        </div>
-
-
-                        <div className='btn'>
-                            <button type='submit' onClick={handleSubmit}>KAYIT OL</button>
-
-                            <button type="button" onClick={handleCancel}>İPTAL</button>
-                        </div>
-
-
-                    </div>
-                </form>
-            </div>
-
+          <label htmlFor="name">Ad Soyad:</label>
+          <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} required />
         </div>
-    )
-}
 
-export default SignIn
+        <div>
+          <label htmlFor="email">E-posta:</label>
+          <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        </div>
+
+        <div>
+          <label htmlFor="password">Şifre:</label>
+          <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        </div>
+
+        <div>
+          <label htmlFor="confirmPassword">Şifre Tekrarı:</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
+        </div>
+
+        <div>
+          <label htmlFor="address">Adres:</label>
+          <textarea id="address" value={address} onChange={(e) => setAddress(e.target.value)} required />
+        </div>
+
+        <div>
+          <label htmlFor="phoneNumber">Telefon Numarası:</label>
+          <input type="tel" id="phoneNumber" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required />
+        </div>
+
+        <div>
+          <button type="submit">Kayıt Ol</button>
+          <button type="button" onClick={handleCancel}>
+            İptal
+          </button>
+        </div>
+      </form>
+    </div>
+    <Footer />
+    </>
+  );
+};
+
+export default SignUp;

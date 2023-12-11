@@ -6,6 +6,7 @@ import UrunYükle from "./components/urunYükle";
 import UrunDetay from "./components/UrunDetay";
 import LogIn from "./pages/LogIn";
 import SignIn from "./pages/SignIn";
+import ForgotPassword from "./pages/ForgotPassword";
 import Favorites from "./components/favorites";
 
 
@@ -25,7 +26,7 @@ function App() {
         <Route path="/kayit-ol" element={<SignIn />} />
 
         <Route path="/urun-detay" exact element={<UrunDetay />} />
-        {/* <Route path="/sifremiunuttum" element={<ForgotPassword />} /> */}
+        {<Route path="/sifremiunuttum" element={<ForgotPassword />} /> }
       </Routes>
     
       <Routes>
