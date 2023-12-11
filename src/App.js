@@ -24,7 +24,8 @@ function App() {
         <Route path="/ilan-ver" element={<UrunYükle />} />
         <Route path="/Giris-yap" element={<LogIn />} />
         <Route path="/kayit-ol" element={<SignIn />} />
-
+        <Route path="/hesabimyok" element={<SignIn />} />
+        
         <Route path="/urun-detay" exact element={<UrunDetay />} />
         {<Route path="/sifremiunuttum" element={<ForgotPassword />} /> }
       </Routes>
