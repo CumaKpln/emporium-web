@@ -58,7 +58,7 @@ function UrunBilgileri() {
               <Form.Control
                 type="text"
                 placeholder="description"
-                value={editedProduct?.brand || ""}
+                value={editedProduct?.description || ""}
                 onChange={(e) =>
                   setEditedProduct({ ...editedProduct, description: e.target.value })
                 }
