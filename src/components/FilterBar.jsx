@@ -1,6 +1,7 @@
 import { filter } from "./Filtering";
 import React from "react";
 const brands = ["Volkswagen", "Opel", "Séat", "Renault"];
+const provinces = ["Ankara", "Antalya", "İstanbul", "İzmir", "Aydın", "Mardin", "Diyarbakır", "Yozgat", "Erzurum"];
 function NameSection() {
     return <div key={"name"}>
         <input type="text" onInput={(e) => { filter.filterByName(e.target.value); }} />
@@ -34,9 +35,20 @@ function PriceSection() {
         <input key={"maxp"} type="number" onInput={(e) => { filter.filterByPrice(filter.state.minPrice, e.target.value); e.target.value = filter.state.maxPrice; }} />
     </div>
 }
+function ProvinceSection() {
+    return <div key={"province"}>
+        Province
+        <input list="province" />
+        <datalist id="province">
+            {provinces.map((p) => (<option value={p} />))}
+        </datalist>
+
+    </div>
+}
 function FilterBar({ category = "" }) {
     return <div>
         <NameSection key={"n"} />
+        <ProvinceSection />
         {((category.toString().toLowerCase() === "car" || category.toString().toLowerCase() === "electronics") && <BrandSection key={"a"} brands={brands} />)}
         <PriceSection key={"b"} />
     </div >
