@@ -1,18 +1,14 @@
-import { createSlice } from '@reduxjs/toolkit';
-
-const initialState = {
-  selectedProduct: [], // selectedProduct'ı bir dizi olarak başlatın
-};
+import { createSlice } from "@reduxjs/toolkit";
 
 const productSlice = createSlice({
-  name: 'product',
-  initialState,
+  name: "product",
+  initialState: [], // Başlangıç durumu bir boş dizi olarak belirlendi
   reducers: {
     selectProduct(state, action) {
-      state.selectedProduct = [ ...action.payload ]; // Seçilen ürünleri bir dizi içinde saklayın
+      return [state, action.payload]; // Gelen ürünü mevcut durum dizisinin bir parçası olarak ekle
     },
   },
 });
 
 export const { selectProduct } = productSlice.actions;
-export const productReducer = productSlice.reducer;
+export default productSlice.reducer;

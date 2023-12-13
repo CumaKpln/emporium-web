@@ -13,7 +13,15 @@ const UrunYükle = () => {
   const [price, setPrice] = useState("");
   const [brand, setBrand] = useState("");
   const [photos, sePhotos] = useState([]);
-
+  const [m2, setM2] = useState("");
+  const [color, setColor] = useState("");
+  const [serie, setSerie] = useState("");
+  const [gear, setGear] = useState("");
+  const [ram, setRam] = useState("");
+  const [processor, setProcessor] = useState("");
+  const [memory, setMemory] = useState("");
+  const [productRoom, setProductRoom] = useState("");
+  const [graphicCard, setGraphicCard] = useState("");
 
   // Kategori değiştiğinde alt kategoriyi sıfırla
   const handleCategoryChange = (e) => {
@@ -28,7 +36,7 @@ const UrunYükle = () => {
         return (
           <>
             <option value="">Alt Kategori Seçiniz</option>
-            <option value="Daire">Daire</option>
+            <option value="arsa">Arsa</option>
             <option value="ev">Ev</option>
           </>
         );
@@ -44,7 +52,7 @@ const UrunYükle = () => {
         return (
           <>
             <option value="">Alt Kategori Seçiniz</option>
-            <option value="Araba">Televizyon</option>
+            <option value="bilgisayar">Bilgisayar</option>
             <option value="motorsiklet">Telefon</option>
           </>
         );
@@ -65,7 +73,7 @@ const UrunYükle = () => {
 
     if (photos.length > 0) {
       console.log("Seçilen dosyalar:", photos);
-      
+
       // apiden geri çağırma işlemleri burada yapılacak//
     } else {
       alert("Lütfen fotoğraf yükleyiniz");
@@ -83,7 +91,6 @@ const UrunYükle = () => {
     // Burada bu bilgileri bir API'ye göndermek veya işlemek için gerekli adımları yapabilirsiniz.
   };
 
-
   return (
     <>
       <Navbar />
@@ -92,7 +99,6 @@ const UrunYükle = () => {
           <div className="col-md-4 col-sm-2 col-1"></div>
           <div className="col-md-4 col-sm-8 col-10">
             <form onSubmit={handleSubmit}>
-
               <div className="product-foto">
                 <input
                   type="file"
@@ -126,7 +132,7 @@ const UrunYükle = () => {
                   required
                 ></textarea>
               </div>
-              
+
               {/* Ana kategori seçim alanı */}
               <div className="product-category">
                 <label htmlFor="category">Kategori:</label>
@@ -170,6 +176,135 @@ const UrunYükle = () => {
                 />
               </div>
 
+              {/*---------------------------------------------------------------------- */}
+
+              {category === "emlak" && (
+                <div className="product-m2">
+                  <label htmlFor="productM2">{subCategory} m2'si:</label>
+                  <input
+                    type="text"
+                    id="productm2"
+                    value={m2}
+                    onChange={(e) => setM2(e.target.value)}
+                    required
+                  />
+                </div>
+              )}
+
+              {subCategory === "ev" && (
+                <div className="product-room">
+                  <label htmlFor="productRoom">Oda Sayısı:</label>
+                  <input
+                    type="text"
+                    id="productRoom"
+                    value={productRoom}
+                    onChange={(e) => setProductRoom(e.target.value)}
+                    required
+                  />
+                </div>
+              )}
+
+              {/*---------------------------------------------------------------------- */}
+              {/*  Ürün marka giriş  */}
+              {(category === "vasıta" || category === "elektronik-esya") && (
+                <div className="product-brand">
+                  <label htmlFor="brand">Ürün Markası:</label>
+                  <br />
+                  <input
+                    type="text"
+                    id="brand"
+                    value={brand}
+                    onChange={(e) => setBrand(e.target.value)}
+                    required
+                  />
+                </div>
+              )}
+
+              {/* Ürün marka model  */}
+              {(category === "vasıta" || category === "elektronik-esya") && (
+                <div className="product-serie">
+                  <label htmlFor="serie">Ürün modeli:</label>
+                  <br />
+                  <input
+                    type="text"
+                    id="serie"
+                    value={serie}
+                    onChange={(e) => setSerie(e.target.value)}
+                    required
+                  />
+                </div>
+              )}
+
+              {/* Ürün Rengi giriş  */}
+              {(category === "vasıta" || category === "elektronik-esya") && (
+                <div className="product-color">
+                  <label htmlFor="color">Ürün Rengi:</label>
+                  <br />
+                  <input
+                    type="text"
+                    id="color"
+                    value={color}
+                    onChange={(e) => setColor(e.target.value)}
+                    required
+                  />
+                </div>
+              )}
+
+              {/* Ürün vasıta vites giriş  */}
+              {category === "vasıta" && (
+                <div className="product-gear">
+                  <label htmlFor="gear">Vites:</label>
+                  <br />
+                  <input
+                    type="text"
+                    id="gear"
+                    value={gear}
+                    onChange={(e) => setGear(e.target.value)}
+                    required
+                  />
+                </div>
+              )}
+
+              {category === "elektronik-esya" && (
+                <div className="product-ram">
+                  <label htmlFor="ram">Ram Bellek :</label>
+                  <br />
+                  <input
+                    type="text"
+                    id="ram"
+                    value={ram}
+                    onChange={(e) => setRam(e.target.value)}
+                    required
+                  />
+                </div>
+              )}
+              {category === "elektronik-esya" && (
+                <div className="product-processor">
+                  <label htmlFor="processor">İşlemci:</label>
+                  <input
+                    type="text"
+                    id="processor"
+                    value={processor}
+                    onChange={(e) => setProcessor(e.target.value)}
+                    required
+                  />
+                </div>
+              )}
+           
+
+              {subCategory === "bilgisayar" && (
+                <div className="product-graphicCard">
+                  <label htmlFor="graphicCard">Dahili Hafıza:</label>
+                  <input
+                    type="text"
+                    id="graphicCard"
+                    value={graphicCard}
+                    onChange={(e) => setGraphicCard(e.target.value)}
+                    required
+                  />
+                </div>
+              )}
+
               <div className="product-price">
                 <label htmlFor="price">Fiyat:</label>
                 <input
@@ -180,34 +315,15 @@ const UrunYükle = () => {
                   required
                 />
               </div>
-
-              <div className="product-brand">
-                <label htmlFor="brand">Ürün Markası:</label>
-                <br />
-                <input
-                  type="text"
-                  id="brand"
-                  value={brand}
-                  onChange={(e) => setBrand(e.target.value)}
-                  required
-                />
-              </div>
-
-               
-               
-                {/* Formun gönderme butonu */}
-                <button type="submit">
-                  Ürünü Yükle
-                </button>
-              
+              {/* Formun gönderme butonu */}
+              <button id="submitBtn" type="submit">Ürünü Yükle</button>
             </form>
           </div>
           <div className="col-md-4 col-sm-2 col-1"></div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
-
   );
 };
 
