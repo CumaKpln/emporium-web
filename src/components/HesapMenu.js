@@ -6,11 +6,11 @@ function MyMenu({ onSelectPage }) {
 
   return (
     <div className="menu">
-      <div className="butons d-flex flex-column align-items-center">
+      <div className="HesapButtons d-flex flex-column align-items-center">
         <div className="col-md-4 mb-3">
           <button
             type="button"
-            className={` MenuHesap ${selectedPage === 'Bilgiler' ? 'selected' : ''}`}
+            className={` DetayMenuHesap ${selectedPage === 'Bilgiler' ? 'selected' : ''}`}
             onClick={() => {
               onSelectPage('Bilgiler');
               setSelectedPage('Bilgiler');
@@ -22,7 +22,7 @@ function MyMenu({ onSelectPage }) {
         <div className="col-md-4">
           <button
             type="button"
-            className={` MenuUrun ${selectedPage === 'Urun' ? 'selected' : ''}`}
+            className={` DetayMenuUrun ${selectedPage === 'Urun' ? 'selected' : ''}`}
             onClick={() => {
               onSelectPage('Urun');
               setSelectedPage('Urun');

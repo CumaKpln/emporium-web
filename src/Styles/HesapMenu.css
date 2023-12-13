@@ -18,15 +18,15 @@
   margin-top: 30px;
 }
 
-.butons {
+.HesapButtons {
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-right: 100px;
 }
 
-.MenuHesap,
-.MenuUrun {
+.DetayMenuHesap,
+.DetayMenuUrun {
   
   border: none;
   background: transparent;
@@ -36,8 +36,8 @@
   transition: border-bottom 0.3s ease;
 }
 
-.MenuHesap.selected,
-.MenuUrun.selected {
+.DetayMenuHesap.selected,
+.DetayMenuUrun.selected {
   border-bottom: 2px solid black;
 }
 
@@ -48,7 +48,7 @@
     margin-bottom: 87px;
   }
 
-  .butons {
+  .HesapButtons {
     margin-right: 75px; 
   }
 
@@ -88,7 +88,7 @@
     margin-top: 20px;
   }
 
-  .butons {
+  .HesapButtons {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -104,7 +104,7 @@
       position: sticky;
       top: 0;
     }
-    .butons{
+    .HesapButtons{
       margin-right: 1px;
     }
   }
