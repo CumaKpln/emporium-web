@@ -17,11 +17,8 @@ const Main = () => {
           </div>
           <div className="col-md-9 col-sm-9">
             <Article />
-<<<<<<< Updated upstream
-            {/* <FilterBar category="asd" /> */}
-=======
-            <FilterBar category="car" />
->>>>>>> Stashed changes
+
+            {/* <FilterBar category="car" /> */}
           </div>
         </div>
 

@@ -10,6 +10,7 @@ function Ürünler() {
 
   const selectedProduct = (product) => {
     dispatch(selectProduct(product)); // Redux store'a seçilen ürünü gönderme
+    console.log(product)
   };
 
   return (

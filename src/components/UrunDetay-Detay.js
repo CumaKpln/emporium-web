@@ -4,12 +4,10 @@ import data from "../data/db.json";
 
 function Detay() {
   const selectedProduct = useSelector((state) => state.product); // productReducer'ı içindeki veriyi alır
-console.log(selectedProduct)
+  console.log(selectedProduct)
   return (
-    <>
-      {selectedProduct &&
-        Array.isArray(selectedProduct) &&
-        selectedProduct.map((product,id) => {
+    <>  
+        {selectedProduct.map((product, id) => {
           // Burada her ürünün id'sini eşitleyerek id'si eşit olanı gösterir
           if (selectedProduct.id === data["ilan-ver"].id) {
             return (
