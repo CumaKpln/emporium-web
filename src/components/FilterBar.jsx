@@ -1,10 +1,11 @@
-import { filter } from "./Filtering";
+import filter from "./Filtering";
 import React from "react";
 const brands = ["Volkswagen", "Opel", "Séat", "Renault"];
 const provinces = ["Ankara", "Antalya", "İstanbul", "İzmir", "Aydın", "Mardin", "Diyarbakır", "Yozgat", "Erzurum"];
 function NameSection() {
     return <div key={"name"}>
-        <input type="text" onInput={(e) => { filter.filterByName(e.target.value); }} />
+        {filter.getState().nameFilter}
+        <input type="text" onInput={(e) => filter.filterByName(e.target.value)} />
     </div>
 
 }
@@ -30,15 +31,14 @@ function BrandSection({ brands }) {
 function PriceSection() {
     return <div key={"price"}>
         Min Price  {filter.state.minPrice}
-        <input key={"minp"} type="number" onInput={(e) => { filter.filterByPrice(e.target.value, filter.state.maxPrice); e.target.value = filter.state.minPrice; }} />
+        <input key={"minp"} type="number" onInput={(e) => { filter.filterByPrice(e.target.value, filter.getState().maxPrice); e.target.value = filter.getState().minPrice; }} />
         Max Price  {filter.state.maxPrice}
-        <input key={"maxp"} type="number" onInput={(e) => { filter.filterByPrice(filter.state.minPrice, e.target.value); e.target.value = filter.state.maxPrice; }} />
+        <input key={"maxp"} type="number" onInput={(e) => { filter.filterByPrice(filter.getState().minPrice, e.target.value); e.target.value = filter.getState().maxPrice; }} />
     </div>
 }
 function ProvinceSection() {
-    return <div key={"province"}>
-        Province
-        <input list="province" />
+    return <div>
+        <input key={"province"} list="province" />
         <datalist id="province">
             {provinces.map((p) => (<option value={p} />))}
         </datalist>
