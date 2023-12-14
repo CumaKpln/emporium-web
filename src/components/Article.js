@@ -1,6 +1,6 @@
 import React from "react";
 import "../Styles/article.css";
-import Products from './Products.js';
+import Products from "./components/Products";
 
 const Article = () => {
   return (
