@@ -1,43 +1,43 @@
 import React, { useState } from "react";
-import "../Styles/HesapBilgiler.css";
-import Edit from "./HesapEditButton";
+import "../Styles/AccountInfo.css";
+import Edit from "./AccountEditButton";
 
-function Bilgiler() {
-  const [ad, setAd] = useState("Ömer Enes");
-  const [soyad, setSoyad] = useState("Genç");
-  const [il, setIl] = useState("Trabzon");
-  const [ilce, setIlce] = useState("Akçaabat");
-  const [mahalle, setMahalle] = useState("Yaylacık");
+function İnfo() {
+  const [name, setName] = useState("Ömer Enes");
+  const [surname, setSurname] = useState("Genç");
+  const [province, setProvince] = useState("Trabzon");
+  const [district, setDistrict] = useState("Akçaabat");
+  const [neighbourhood, setNeighbourhood] = useState("Yaylacık");
   const [email, setEmail] = useState("omerenesgenc@gmail.com");
-  const [telefon, setTelefon] = useState("05541510843");
-  const [duzenlemeModu, setDuzenlemeModu] = useState(false);
+  const [phone, setPhone] = useState("05541510843");
+  const [editMod, setEditMod] = useState(false);
 
-  const handleInputChange = (event) => {
+  const handleInputChange = (event) => { 
     const { id, value } = event.target;
 
     switch (id) {
-      case "adInput":
-      case "soyadInput":
-      case "ilInput":
-      case "ilceInput":
-      case "mahalleInput":
+      case "nameInput":
+      case "surnameInput":
+      case "provinceInput":
+      case "districtInput":
+      case "neighbourhoodInput":
         // Sadece harf ve boşluk içerebilir
         if (/^[A-Za-z\s]*$/.test(value)) {
           switch (id) {
-            case "adInput":
-              setAd(value);
+            case "nameInput":
+              setName(value);
               break;
-            case "soyadInput":
-              setSoyad(value);
+            case "surnameInput":
+              setSurname(value);
               break;
-            case "ilInput":
-              setIl(value);
+            case "provinceInput":
+              setProvince(value);
               break;
-            case "ilceInput":
-              setIlce(value);
+            case "districtInput":
+              setDistrict(value);
               break;
-            case "mahalleInput":
-              setMahalle(value);
+            case "neighbourhoodInput":
+              setNeighbourhood(value);
               break;
             default:
               break;
@@ -47,10 +47,10 @@ function Bilgiler() {
       case "emailInput":
         setEmail(value);
         break;
-      case "telefonInput":
+      case "phoneInput":
         // Sadece rakam içerebilir ve maksimum 11 hane
         if (/^\d*$/.test(value) && value.length <= 11) {
-          setTelefon(value);
+          setPhone(value);
         }
         break;
       default:
@@ -60,14 +60,14 @@ function Bilgiler() {
 
   const isEmailValid = () => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-  const handleDuzenleClick = () => {
-    setDuzenlemeModu(true);
+  const handleEditClick = () => {
+    setEditMod(true);
   };
 
-  const handleKaydetClick = () => {
+  const handleSaveClick = () => {
     if (isEmailValid()) {
       // Eğer e-posta doğrulama başarılıysa, veriyi kaydet veya gerekli işlemleri gerçekleştir
-      setDuzenlemeModu(false);
+      setEditMod(false);
     } else {
       // E-posta doğrulama başarısızsa kullanıcıya uyarı verilebilir
       alert("Geçerli bir e-posta adresi giriniz.");
@@ -79,103 +79,103 @@ function Bilgiler() {
       <form>
         <h5 className="text-center mb-3">Hesap Bilgilerim</h5>
 
-        <div className="row ad-soyad">
+        <div className="row name-surname">
           <div className="col-md-6">
-            <label htmlFor="adInput" className="form-label">
+            <label htmlFor="nameInput" className="form-label">
               Ad
             </label>
-            {duzenlemeModu ? (
-              <Edit field="ad" value={ad} onChange={(e) => handleInputChange(e)} />
+            {editMod ? (
+              <Edit field="name" value={name} onChange={(e) => handleInputChange(e)} />
             ) : (
               <input
                 disabled
                 type="text"
                 className="form-control"
-                id="adInput"
+                id="nameInput"
                 placeholder="Adınızı Giriniz."
-                value={ad}
+                value={name}
               />
             )}
           </div>
           <div className="col-md-6">
-            <label htmlFor="soyadInput" className="form-label">
+            <label htmlFor="surnameInput" className="form-label">
               Soyad
             </label>
-            {duzenlemeModu ? (
-              <Edit field="soyad" value={soyad} onChange={(e) => handleInputChange(e)} />
+            {editMod ? (
+              <Edit field="surname" value={surname} onChange={(e) => handleInputChange(e)} />
             ) : (
               <input
                 disabled
                 type="text"
                 className="form-control"
-                id="soyadInput"
+                id="surnameInput"
                 placeholder="Soyadınızı Giriniz."
-                value={soyad}
+                value={surname}
               />
             )}
           </div>
         </div>
 
-        <div className="row il-ilce-mahalle">
+        <div className="row province-district-neighborhood">
           <div className="col-md-4">
-            <label htmlFor="ilInput" className="form-label">
+            <label htmlFor="provinceInput" className="form-label">
               İl
             </label>
-            {duzenlemeModu ? (
-              <Edit field="il" value={il} onChange={(e) => handleInputChange(e)} />
+            {editMod ? (
+              <Edit field="province" value={province} onChange={(e) => handleInputChange(e)} />
             ) : (
               <input
                 disabled
                 type="text"
                 className="form-control"
-                id="ilInput"
+                id="provinceInput"
                 placeholder="İl Giriniz."
-                value={il}
+                value={province}
               />
             )}
           </div>
           <div className="col-md-4">
-            <label htmlFor="ilceInput" className="form-label">
+            <label htmlFor="districtInput" className="form-label">
               İlçe
             </label>
-            {duzenlemeModu ? (
-              <Edit field="ilce" value={ilce} onChange={(e) => handleInputChange(e)} />
+            {editMod ? (
+              <Edit field="district" value={district} onChange={(e) => handleInputChange(e)} />
             ) : (
               <input
                 disabled
                 type="text"
                 className="form-control"
-                id="ilceInput"
+                id="districtInput"
                 placeholder="İlçe Giriniz."
-                value={ilce}
+                value={district}
               />
             )}
           </div>
           <div className="col-md-4">
-            <label htmlFor="mahalleInput" className="form-label">
+            <label htmlFor="neighbourhoodInput" className="form-label">
               Mahalle
             </label>
-            {duzenlemeModu ? (
-              <Edit field="mahalle" value={mahalle} onChange={(e) => handleInputChange(e)} />
+            {editMod ? (
+              <Edit field="neighbourhood" value={neighbourhood} onChange={(e) => handleInputChange(e)} />
             ) : (
               <input
                 disabled
                 type="text"
                 className="form-control"
-                id="mahalleInput"
+                id="neighbourhoodInput"
                 placeholder="Mahalle Giriniz."
-                value={mahalle}
+                value={neighbourhood}
               />
             )}
           </div>
         </div>
 
-        <div className="row mail-telefon">
+        <div className="row mail-phone">
           <div className="col-md-6">
             <label htmlFor="emailInput" className="form-label">
               Email Adresi
             </label>
-            {duzenlemeModu ? (
+            {editMod ? (
               <Edit field="email" value={email} onChange={(e) => handleInputChange(e)} />
             ) : (
               <input
@@ -189,37 +189,37 @@ function Bilgiler() {
             )}
           </div>
           <div className="col-md-6">
-            <label htmlFor="telefonInput" className="form-label">
+            <label htmlFor="phoneInput" className="form-label">
               Telefon No
             </label>
-            {duzenlemeModu ? (
-              <Edit field="telefon" value={telefon} onChange={(e) => handleInputChange(e)} />
+            {editMod ? (
+              <Edit field="phone" value={phone} onChange={(e) => handleInputChange(e)} />
             ) : (
               <input
                 required
                 disabled
                 type="text"
                 className="form-control"
-                id="telefonInput"
+                id="phoneInput"
                 placeholder="Telefon Numaranızı Giriniz."
-                value={telefon}
+                value={phone}
               />
             )}
           </div>
         </div>
 
-        {duzenlemeModu ? (
-          <div className="row HesapButon">
+        {editMod ? (
+          <div className="row AccountButton">
             <div className="col-md-4">
-              <button type="button" className="btn HesapKaydet" onClick={handleKaydetClick}>
+              <button type="button" className="btn AccountSave" onClick={handleSaveClick}>
                 Kaydet
               </button>
             </div>
           </div>
         ) : (
-          <div className="row HesapButon">
+          <div className="row AccountButton">
             <div className="col-md-4">
-              <button type="button" className="btn HesapDuzenle" onClick={handleDuzenleClick}>
+              <button type="button" className="btn AccountEdit" onClick={handleEditClick}>
                 Düzenle
               </button>
             </div>
@@ -230,4 +230,4 @@ function Bilgiler() {
   );
 }
 
-export default Bilgiler;
+export default İnfo;

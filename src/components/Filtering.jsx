@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-class Filtering extends React.Component {
+
+class Filtering {
     constructor(props) {
-        super(props);
         this.state = {
             nameFilter: "",
             minPrice: 0,
@@ -10,23 +10,22 @@ class Filtering extends React.Component {
             provinceFilter: "",
             districtFilter: "",
             brands: [],
+            isMounted: false
         };
     }
     filterByName(name) {
-        this.setState({ nameFilter: name });
+        this.state.nameFilter = name;
     }
     filterByPrice(minPrice, maxPrice) {
         this.state.minPrice = minPrice;
         this.state.maxPrice = maxPrice;
 
-        console.log("min" + this.state.minPrice);
-        console.log("max" + this.state.maxPrice);
     }
     filterByProvince(province) {
-        this.setState({ provinceFilter: province });
+        this.state.provinceFilter = province;
     }
     filterByDistrict(district) {
-        this.setState({ districtFilter: district });
+        this.state.districtFilter = district;
     }
     filterByBrand(brand) {
         if (this.state.brands.includes(brand)) {
@@ -36,15 +35,18 @@ class Filtering extends React.Component {
                     temp.push(b);
                 }
             });
-            this.state.brands = temp;
+            this.setState({ brands: temp });
         }
         else {
             this.state.brands.push(brand);
         }
     }
-    render() {
+    getState() {
         return this.state;
     }
+    render() {
+        return null;
+    }
 }
-
-export const filter = new Filtering();
+const filter = new Filtering();
+export default filter;

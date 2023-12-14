@@ -1,89 +1,111 @@
 {
   "ilan-ver": [
-    
     {
       "selectedFiles": [
-        { "url": "https://picsum.photos/id/238/200/300" },
-        { "url": "https://picsum.photos/id/239/200/300" },
-        { "url": "https://picsum.photos/200/300?grayscale" }
+        {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Fiat_Tempra_SX_%2793.jpg/1920px-Fiat_Tempra_SX_%2793.jpg"
+        },
+        {
+          "url": "https://picsum.photos/id/238/200/300"
+        },
+        {
+          "url": "https://picsum.photos/id/239/200/300"
+        }
       ],
-
-      "title": "araba",
+      "title": "Fiat Tempra",
       "description": "Ürün Açıklaması 1",
       "category": "vasıta",
       "subCategory": "Araba",
-      "productName": "Araba Modeli 1",
+      "productName": "Tempra",
       "price": "100000",
-      "brand": "Marka 1",
-      "color": "Kırmızı",
+      "brand": "Fiat",
+      "color": "Siyah",
       "series": "vasita serisi",
       "gear": "6",
       "id": 1
     },
-
     {
       "selectedFiles": [
-        { "url": "https://picsum.photos/id/239/200/300" },
-        { "url": "https://picsum.photos/id/237/200/300" },
-        { "url": "https://picsum.photos/id/238/200/300" }
+        {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Kawasaki_Ninja_H2.jpg/1920px-Kawasaki_Ninja_H2.jpg"
+        },
+        {
+          "url": "https://picsum.photos/id/238/200/300"
+        },
+        {
+          "url": "https://picsum.photos/id/239/200/300"
+        }
       ],
-
-      "title": "motor",
+      "title": "Kawasaki Ninja H2",
       "description": "Ürün Açıklaması 2",
       "category": "vasıta",
       "subCategory": "Motorsiklet",
-      "productName": "Motorsiklet Modeli 1",
-      "price": "veri 1",
+      "productName": "Kawasaki Ninja H2",
+      "price": "50000",
       "brand": "Marka 2",
       "color": "Mavi",
       "series": "vasita serisi",
       "gear": "5",
       "id": 2
     },
-
     {
       "selectedFiles": [
-        { "url": "https://picsum.photos/id/237/200/300" },
-        { "url": "https://picsum.photos/id/238/200/300" },
-        { "url": "https://picsum.photos/id/239/200/300" }
+        {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Starlight_Home_01.jpg/640px-Starlight_Home_01.jpg"
+        },
+        {
+          "url": "https://picsum.photos/id/238/200/300"
+        },
+        {
+          "url": "https://picsum.photos/id/239/200/300"
+        }
       ],
-
-      "title": "ev",
-      "description": "Ürün Açıklaması 3",
+      "title": "Kelepir Ev",
+      "description": "Çok ucuz ihtiyaçtan dolayı satıyorum",
       "category": "emlak",
       "subCategory": "Ev",
       "productName": "Daire Modeli 1",
-      "price": "veri 2",
+      "price": "250000",
       "brand": "Marka 3",
       "m2": "100",
       "rooms": "5",
       "id": 3
     },
-
     {
       "selectedFiles": [
-        { "url": "https://picsum.photos/id/237/200/300" },
-        { "url": "https://picsum.photos/id/238/200/300" },
-        { "url": "https://picsum.photos/id/239/200/300" }
+        {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Arable_field_-_geograph.org.uk_-_793675.jpg/640px-Arable_field_-_geograph.org.uk_-_793675.jpg"
+        },
+        {
+          "url": "https://picsum.photos/id/238/200/300"
+        },
+        {
+          "url": "https://picsum.photos/id/239/200/300"
+        }
       ],
-      "title": "arsa",
+      "title": "Arsa",
       "description": "Ürün Açıklaması 1",
       "category": "vasıta",
       "subCategory": "Arsa",
       "productName": "Araba Modeli 1",
-      "price": "veri 3  ",
+      "price": "100000",
       "brand": "Marka 1",
       "m2": "6000",
       "id": 4
     },
-
     {
       "selectedFiles": [
-        { "url": "https://picsum.photos/id/237/200/300" },
-        { "url": "https://picsum.photos/id/238/200/300" },
-        { "url": "https://picsum.photos/seed/picsum/200/300" }
+        {
+          "url": "https://cdn.akakce.com/xiaomi/xiaomi-redmi-note-10-128-gb-4-gb-z.jpg"
+        },
+        {
+          "url": "https://picsum.photos/id/238/200/300"
+        },
+        {
+          "url": "https://picsum.photos/id/239/200/300"
+        }
       ],
-      "title": "tel",
+      "title": "Note 10",
       "description": "Ürün Açıklaması 2",
       "category": "vasıta",
       "subCategory": "Telefon",
@@ -97,12 +119,17 @@
       "memory": "hafıza",
       "id": 5
     },
-
     {
       "selectedFiles": [
-        { "url": "https://picsum.photos/id/237/200/300" },
-        { "url": "https://picsum.photos/id/238/200/300" },
-        { "url": "https://picsum.photos/id/239/200/300" }
+        {
+          "url": "https://picsum.photos/id/237/200/300"
+        },
+        {
+          "url": "https://picsum.photos/id/238/200/300"
+        },
+        {
+          "url": "https://picsum.photos/id/239/200/300"
+        }
       ],
       "title": "pc",
       "description": "Ürün Açıklaması 3",
@@ -118,12 +145,17 @@
       "memory": "hafıza",
       "id": 6
     },
-
     {
       "selectedFiles": [
-        { "url": "https://picsum.photos/id/237/200/300" },
-        { "url": "https://picsum.photos/id/238/200/300" },
-        { "url": "https://picsum.photos/id/239/200/300" }
+        {
+          "url": "https://picsum.photos/id/237/200/300"
+        },
+        {
+          "url": "https://picsum.photos/id/238/200/300"
+        },
+        {
+          "url": "https://picsum.photos/id/239/200/300"
+        }
       ],
       "title": "Ürün Başlığı 1",
       "description": "Ürün Açıklaması 1",
@@ -134,12 +166,17 @@
       "brand": "Marka 1",
       "id": 7
     },
-
     {
       "selectedFiles": [
-        { "url": "https://picsum.photos/id/237/200/300" },
-        { "url": "https://picsum.photos/id/238/200/300" },
-        { "url": "https://picsum.photos/id/239/200/300" }
+        {
+          "url": "https://picsum.photos/id/237/200/300"
+        },
+        {
+          "url": "https://picsum.photos/id/238/200/300"
+        },
+        {
+          "url": "https://picsum.photos/id/239/200/300"
+        }
       ],
       "title": "Ürün Başlığı 2",
       "description": "Ürün Açıklaması 2",
@@ -150,12 +187,17 @@
       "brand": "Marka 2",
       "id": 8
     },
-
     {
       "selectedFiles": [
-        { "url": "https://picsum.photos/id/237/200/300" },
-        { "url": "https://picsum.photos/id/238/200/300" },
-        { "url": "https://picsum.photos/id/239/200/300" }
+        {
+          "url": "https://picsum.photos/id/237/200/300"
+        },
+        {
+          "url": "https://picsum.photos/id/238/200/300"
+        },
+        {
+          "url": "https://picsum.photos/id/239/200/300"
+        }
       ],
       "title": "Ürün Başlığı 3",
       "description": "Ürün Açıklaması 3",
@@ -166,12 +208,17 @@
       "brand": "Marka 3",
       "id": 9
     },
-
     {
       "selectedFiles": [
-        { "url": "https://picsum.photos/id/237/200/300" },
-        { "url": "https://picsum.photos/id/238/200/300" },
-        { "url": "https://picsum.photos/id/239/200/300" }
+        {
+          "url": "https://picsum.photos/id/237/200/300"
+        },
+        {
+          "url": "https://picsum.photos/id/238/200/300"
+        },
+        {
+          "url": "https://picsum.photos/id/239/200/300"
+        }
       ],
       "title": "Ürün Başlığı 1",
       "description": "Ürün Açıklaması 1",
@@ -182,12 +229,17 @@
       "brand": "Marka 1",
       "id": 10
     },
-
     {
       "selectedFiles": [
-        { "url": "https://picsum.photos/id/237/200/300" },
-        { "url": "https://picsum.photos/id/238/200/300" },
-        { "url": "https://picsum.photos/id/239/200/300" }
+        {
+          "url": "https://picsum.photos/id/237/200/300"
+        },
+        {
+          "url": "https://picsum.photos/id/238/200/300"
+        },
+        {
+          "url": "https://picsum.photos/id/239/200/300"
+        }
       ],
       "title": "Ürün Başlığı 2",
       "description": "Ürün Açıklaması 2",
@@ -198,12 +250,17 @@
       "brand": "Marka 2",
       "id": 11
     },
-
     {
       "selectedFiles": [
-        { "url": "https://picsum.photos/id/237/200/300" },
-        { "url": "https://picsum.photos/id/238/200/300" },
-        { "url": "https://picsum.photos/id/239/200/300" }
+        {
+          "url": "https://picsum.photos/id/237/200/300"
+        },
+        {
+          "url": "https://picsum.photos/id/238/200/300"
+        },
+        {
+          "url": "https://picsum.photos/id/239/200/300"
+        }
       ],
       "title": "Ürün Başlığı 3",
       "description": "Ürün Açıklaması 3",
@@ -214,12 +271,17 @@
       "brand": "Marka 3",
       "id": 12
     },
-
     {
       "selectedFiles": [
-        { "url": "https://picsum.photos/id/237/200/300" },
-        { "url": "https://picsum.photos/id/238/200/300" },
-        { "url": "https://picsum.photos/id/239/200/300" }
+        {
+          "url": "https://picsum.photos/id/237/200/300"
+        },
+        {
+          "url": "https://picsum.photos/id/238/200/300"
+        },
+        {
+          "url": "https://picsum.photos/id/239/200/300"
+        }
       ],
       "title": "Ürün Başlığı 1",
       "description": "Ürün Açıklaması 1",
@@ -230,12 +292,17 @@
       "brand": "Marka 1",
       "id": 13
     },
-
     {
       "selectedFiles": [
-        { "url": "https://picsum.photos/id/237/200/300" },
-        { "url": "https://picsum.photos/id/238/200/300" },
-        { "url": "https://picsum.photos/id/239/200/300" }
+        {
+          "url": "https://picsum.photos/id/237/200/300"
+        },
+        {
+          "url": "https://picsum.photos/id/238/200/300"
+        },
+        {
+          "url": "https://picsum.photos/id/239/200/300"
+        }
       ],
       "title": "Ürün Başlığı 2",
       "description": "Ürün Açıklaması 2",
@@ -246,12 +313,17 @@
       "brand": "Marka 2",
       "id": 14
     },
-
     {
       "selectedFiles": [
-        { "url": "https://picsum.photos/id/237/200/300" },
-        { "url": "https://picsum.photos/id/238/200/300" },
-        { "url": "https://picsum.photos/id/239/200/300" }
+        {
+          "url": "https://picsum.photos/id/237/200/300"
+        },
+        {
+          "url": "https://picsum.photos/id/238/200/300"
+        },
+        {
+          "url": "https://picsum.photos/id/239/200/300"
+        }
       ],
       "title": "Ürün Başlığı 3",
       "description": "Ürün Açıklaması 3",
@@ -262,12 +334,17 @@
       "brand": "Marka 3",
       "id": 15
     },
-
     {
       "selectedFiles": [
-        { "url": "https://picsum.photos/id/237/200/300" },
-        { "url": "https://picsum.photos/id/238/200/300" },
-        { "url": "https://picsum.photos/id/239/200/300" }
+        {
+          "url": "https://picsum.photos/id/237/200/300"
+        },
+        {
+          "url": "https://picsum.photos/id/238/200/300"
+        },
+        {
+          "url": "https://picsum.photos/id/239/200/300"
+        }
       ],
       "title": "Ürün Başlığı 1",
       "description": "Ürün Açıklaması 1",
@@ -278,12 +355,17 @@
       "brand": "Marka 1",
       "id": 16
     },
-
     {
       "selectedFiles": [
-        { "url": "https://picsum.photos/id/237/200/300" },
-        { "url": "https://picsum.photos/id/238/200/300" },
-        { "url": "https://picsum.photos/id/239/200/300" }
+        {
+          "url": "https://picsum.photos/id/237/200/300"
+        },
+        {
+          "url": "https://picsum.photos/id/238/200/300"
+        },
+        {
+          "url": "https://picsum.photos/id/239/200/300"
+        }
       ],
       "title": "Ürün Başlığı 2",
       "description": "Ürün Açıklaması 2",
@@ -294,12 +376,17 @@
       "brand": "Marka 2",
       "id": 17
     },
-    
     {
       "selectedFiles": [
-        { "url": "https://picsum.photos/id/237/200/300" },
-        { "url": "https://picsum.photos/id/238/200/300" },
-        { "url": "https://picsum.photos/id/239/200/300" }
+        {
+          "url": "https://picsum.photos/id/237/200/300"
+        },
+        {
+          "url": "https://picsum.photos/id/238/200/300"
+        },
+        {
+          "url": "https://picsum.photos/id/239/200/300"
+        }
       ],
       "title": "Ürün Başlığı 3",
       "description": "Ürün Açıklaması 3",

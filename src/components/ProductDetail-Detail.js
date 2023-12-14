@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
-import "../Styles/urundetay-detay.css";
+import "../Styles/ProductDetail-Detail.css";
 import data from "../data/db.json";
 
 
-function Detay() {
+function Detail() {
   const selectedProduct = useSelector((state) => state.product); // productReducer'ı içindeki veriyi alır
   // console.log(selectedProduct.selectedProduct)
 
@@ -11,10 +11,11 @@ const cardInfo = selectedProduct.selectedProduct;
 
   return selectedProduct.id === data["ilan-ver"].id ? (
     <div>
-      <h4 className="fiyat">
-        <strong>Fiyat:</strong> {cardInfo.price}
+
+      <h4 className="price">
+        <strong>Fiyat:</strong> {selectedProduct.price}
       </h4>
-      <ul className="detay">
+      <ul className="detail">
         <div>il/ilçe/mahalle</div>
         <hr />
         <li className="li d-flex gap-2">
@@ -43,4 +44,6 @@ const cardInfo = selectedProduct.selectedProduct;
   );
 }
 
-export default Detay;
+export default Detail;
+
+

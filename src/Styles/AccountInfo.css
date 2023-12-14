@@ -3,7 +3,7 @@
     padding: 0;
     margin-top: 10%;
 }
-.ad-soyad{
+.name-surname{
    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     background: linear-gradient(145.44deg, #F2F4FA 0%, #FAFBFC 100%);
     padding: 30px;
@@ -13,17 +13,7 @@
 }
 
 
-.il-ilce-mahalle{
-   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    justify-content: center;
-    margin-bottom: 15px;
-    background: linear-gradient(145.44deg, #F2F4FA 0%, #FAFBFC 100%);
-    padding: 30px;
-    margin-bottom: 25px;
-    border-radius: 20px;
-}
-
-.mail-telefon{
+.province-district-neighborhood{
    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     justify-content: center;
     margin-bottom: 15px;
@@ -33,13 +23,23 @@
     border-radius: 20px;
 }
 
+.mail-phone{
+   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    justify-content: center;
+    margin-bottom: 15px;
+    background: linear-gradient(145.44deg, #F2F4FA 0%, #FAFBFC 100%);
+    padding: 30px;
+    margin-bottom: 25px;
+    border-radius: 20px;
+}
 
-.row .HesapButon{
+
+.row .AccountButton{
     justify-content: center;
     padding: 15px;
 }
 
-.HesapDuzenle{
+.AccountEdit{
       width: 100%;
     --b: 0.1em;   /* the thickness of the line */
     --c: #49eb34; /* the color */
@@ -53,13 +53,13 @@
             background-clip: text,padding-box;
     transition: .3s var(--_s,0s) linear,background-size .3s calc(.3s - var(--_s,0s));
   }
-  .HesapDuzenle:hover {
+  .AccountEdit:hover {
     --_p: 100%;
     --_s: .3s;
     color: #49eb34;
   }
 
-.HesapKaydet{
+.AccountSave{
     width: 100%;
     --b: 0.1em;   /* the thickness of the line */
     --c: #49eb34; /* the color */
@@ -73,7 +73,7 @@
             background-clip: text,padding-box;
     transition: .3s var(--_s,0s) linear,background-size .3s calc(.3s - var(--_s,0s));
   }
-  .HesapKaydet:hover {
+  .AccountSave:hover {
     --_p: 100%;
     --_s: .3s;
     color: #49eb34;

@@ -35,7 +35,7 @@ input[type='file'] {
     margin-bottom: 20px;
 }
 
-#submitBtn {
+button {
     padding: 8px 12px;
     margin-top: 10px;
     cursor: pointer;
@@ -56,7 +56,4 @@ input[type='file'] {
 .submit-button {
     background-color: #008cba;
     color: white;
-}
-label{
-    float: left;
 }

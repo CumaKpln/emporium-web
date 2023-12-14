@@ -1,39 +1,105 @@
 import React, { useState } from "react";
-import { Modal, Button, Form } from "react-bootstrap";
-import "../Styles/HesapÜrünBilgileri.css";
+import { Modal, Button, Form, Alert } from "react-bootstrap";
+import "../Styles/AccountProductİnformation.css";
 import data from "../data/db.json";
 
-function UrunBilgileri() {
+function ProductInfo() {
   const [products, setProducts] = useState(data["ilan-ver"]);
   const [showModal, setShowModal] = useState(false);
   const [editedProduct, setEditedProduct] = useState(null);
+  const [editedImages, setEditedImages] = useState([]);
+  const [showAlert, setShowAlert] = useState(false);
 
   const handleEdit = (product) => {
     setEditedProduct(product);
+    setEditedImages(product.selectedFiles.map(file => ({ ...file })));
     setShowModal(true);
   };
 
   const handleUpdate = () => {
+    // Tüm resimlerin silindiği durumu kontrol et
+    if (editedImages.length === 0) {
+      setShowAlert(true);
+      return;
+    }
+
     // Güncelleme işlemleri burada yapılacak
-    // editedProduct içindeki verileri kullanarak güncelleme işlemlerini gerçekleştirin
+    // editedProduct içindeki verileri ve editedImages içindeki resimleri kullanarak güncelleme işlemlerini gerçekleştirin
     // ...
 
     // Güncelleme işlemi tamamlandıktan sonra products state'ini güncelle
     setProducts((prevProducts) =>
       prevProducts.map((product) =>
-        product.id === editedProduct.id ? editedProduct : product
+        product.id === editedProduct.id
+          ? { ...editedProduct, selectedFiles: editedImages }
+          : product
       )
     );
 
-    // Modal'ı kapat ve editedProduct'i sıfırla
+    // Modal'ı kapat, editedProduct'i sıfırla, editedImages'i sıfırla ve uyarıyı kapat
     setShowModal(false);
     setEditedProduct(null);
+    setEditedImages([]);
+    setShowAlert(false);
   };
 
   const handleDelete = (id) => {
     const updatedData = products.filter((product) => product.id !== id);
     setProducts(updatedData);
   };
+
+  const handleImageAdd = (e) => {
+    const newImages = [];
+    Array.from(e.target.files).forEach((file) => {
+      newImages.push({ url: URL.createObjectURL(file) });
+    });
+    setEditedImages([...editedImages, ...newImages]);
+  };
+
+  const handleImageRemove = (index) => {
+    const newImages = [...editedImages];
+    newImages.splice(index, 1);
+    setEditedImages(newImages);
+  };
+
+  const renderImages = () => {
+    return (
+      <div className="mb-3">
+        {editedImages.map((image, index) => (
+          <span key={index} className="mr-2 position-relative">
+            <img
+              src={image.url}
+              alt={`Resim-${index + 1}`}
+              className="img-thumbnail"
+              style={{ width: "100px", height: "100px" }}
+            />
+            <button
+              type="button"
+              className="modalDelete btn btn-sm btn-trash"
+              onClick={() => handleImageRemove(index)}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="36"
+                height="36"
+                fill="currentColor"
+                className="bi bi-trash3"
+                viewBox="0 0 16 16"
+              >
+                <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5" />
+              </svg>
+            </button>
+          </span>
+        ))}
+        {showAlert && (
+          <Alert variant="danger" onClose={() => setShowAlert(false)} dismissible>
+            Tüm resimleri silmek istediğinizden emin misiniz?
+          </Alert>
+        )}
+      </div>
+    );
+  };
+  
 
   const renderFormFields = () => {
     // subCategory'ye göre form alanlarını döndür
@@ -111,7 +177,7 @@ function UrunBilgileri() {
             <Form.Group controlId="formGear">
               <Form.Label>gear</Form.Label>
               <Form.Control
-                type="text"
+                type="number"
                 placeholder="gear"
                 value={editedProduct?.gear || ""}
                 onChange={(e) =>
@@ -122,7 +188,7 @@ function UrunBilgileri() {
             <Form.Group controlId="formpPrice">
               <Form.Label>price</Form.Label>
               <Form.Control
-                type="text"
+                type="number"
                 placeholder="price"
                 value={editedProduct?.price || ""}
                 onChange={(e) =>
@@ -181,7 +247,7 @@ function UrunBilgileri() {
             <Form.Group controlId="formM2">
               <Form.Label>m2</Form.Label>
               <Form.Control
-                type="text"
+                type="number"
                 placeholder="m2"
                 value={editedProduct?.m2 || ""}
                 onChange={(e) =>
@@ -195,7 +261,7 @@ function UrunBilgileri() {
             <Form.Group controlId="formRooms">
               <Form.Label>rooms</Form.Label>
               <Form.Control
-                type="text"
+                type="number"
                 placeholder="rooms"
                 value={editedProduct?.rooms || ""}
                 onChange={(e) =>
@@ -209,7 +275,7 @@ function UrunBilgileri() {
             <Form.Group controlId="formPrice">
               <Form.Label>price</Form.Label>
               <Form.Control
-                type="text"
+                type="number"
                 placeholder="price"
                 value={editedProduct?.price || ""}
                 onChange={(e) =>
@@ -265,7 +331,7 @@ function UrunBilgileri() {
             <Form.Group controlId="formM2">
               <Form.Label>m2</Form.Label>
               <Form.Control
-                type="text"
+                type="number"
                 placeholder="m2"
                 value={editedProduct?.m2 || ""}
                 onChange={(e) =>
@@ -276,7 +342,7 @@ function UrunBilgileri() {
             <Form.Group controlId="formPrice">
               <Form.Label>Fiyat</Form.Label>
               <Form.Control
-                type="text"
+                type="number"
                 placeholder="Fiyat"
                 value={editedProduct?.price || ""}
                 onChange={(e) =>
@@ -561,7 +627,7 @@ function UrunBilgileri() {
           <div className="col-md-4">
             <img
               src={urun.selectedFiles[0].url}
-              id="HesapMenuResim"
+              id="AccountMenuİmg"
               className="img-fluid rounded"
               alt="..."
             />
@@ -577,13 +643,13 @@ function UrunBilgileri() {
               </p>
               <button
                 type="button"
-                className="btn HesapUrunButon"
+                className="btn AccountProductButton"
                 onClick={() => handleEdit(urun)}
               >
                 Düzenle
               </button>
               <button
-                className="icon HesapUrunButon"
+                className="icon AccountProductButton"
                 onClick={() => handleDelete(urun.id)}
               >
                 <svg
@@ -609,6 +675,15 @@ function UrunBilgileri() {
         </Modal.Header>
         <Modal.Body>
           <Form>
+            {renderImages()}
+            <Form.Group controlId="formImages">
+              <Form.Label>Resimler</Form.Label>
+              <Form.Control
+                type="file"
+                multiple
+                onChange={handleImageAdd}
+              />
+            </Form.Group>
             {renderFormFields()}
           </Form>
         </Modal.Body>
@@ -625,4 +700,4 @@ function UrunBilgileri() {
   );
 }
 
-export default UrunBilgileri;
+export default ProductInfo;

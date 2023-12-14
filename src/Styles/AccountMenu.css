@@ -1,4 +1,4 @@
-.Hesap2{
+.Account2{
   display: none;
 }
 .menu {
@@ -18,15 +18,15 @@
   margin-top: 30px;
 }
 
-.HesapButtons {
+.AccountButtons {
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-right: 100px;
 }
 
-.DetayMenuHesap,
-.DetayMenuUrun {
+.DetailMenuAccount,
+.DetailMenuProduct {
   
   border: none;
   background: transparent;
@@ -36,8 +36,8 @@
   transition: border-bottom 0.3s ease;
 }
 
-.DetayMenuHesap.selected,
-.DetayMenuUrun.selected {
+.DetailMenuAccount.selected,
+.DetailMenuProduct.selected {
   border-bottom: 2px solid black;
 }
 
@@ -48,22 +48,17 @@
     margin-bottom: 87px;
   }
 
-  .HesapButtons {
+  .AccountButtons {
     margin-right: 75px; 
   }
 
-  .MenuHesap,
-  .MenuUrun {
-    width: 120px; 
-    padding: 0;
-  }
 }
 
 @media (max-width: 992px) {
-  .Hesap{
+  .Account{
     display: none;
   }
-  .Hesap2{
+  .Account2{
     display: inline-block;
   }
   div .col-md-12{
@@ -84,11 +79,11 @@
     margin-bottom: 0;
   }
 
-  .Hesap {
+  .Account {
     margin-top: 20px;
   }
 
-  .HesapButtons {
+  .AccountButtons {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -104,7 +99,7 @@
       position: sticky;
       top: 0;
     }
-    .HesapButtons{
+    .AccountButtons{
       margin-right: 1px;
     }
   }

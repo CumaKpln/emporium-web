@@ -63,7 +63,7 @@
     text-decoration: underline;
 }
 
-#giris {
+#Login {
     width: 100%;
     background-color: #007bff;
     color: #fff;
@@ -74,7 +74,7 @@
 
 }
 
-#giris button {
+#Login button {
     width: 100%;
     background-color: #007bff;
     color: #fff;
@@ -84,7 +84,7 @@
 
 }
 
-#giris button>p {
+#Login button>p {
     background-color: #007bff;
 
 }

@@ -1,44 +1,50 @@
-import { filter } from "./Filtering";
-import React from "react";
+import React, { useState } from "react";
 const brands = ["Volkswagen", "Opel", "Séat", "Renault"];
 const provinces = ["Ankara", "Antalya", "İstanbul", "İzmir", "Aydın", "Mardin", "Diyarbakır", "Yozgat", "Erzurum"];
+
+
+
+let minP = 0, maxP = 1000000000, nameF = "", brandF = [], provinceF = "", districtF = "";
+
 function NameSection() {
+    const [name, setName] = useState("");
     return <div key={"name"}>
-        <input type="text" onInput={(e) => { filter.filterByName(e.target.value); }} />
+        {name}
+        <input type="text" onInput={(e) => { setName(e.target.value); nameF = name }} />
     </div>
 
 }
 function BrandSection({ brands }) {
+    const [brand, setBrand] = useState([]);
     return <div key={"brands"}>
         {brands.map((b) => (<div key={b}><input type="checkbox" onInput={(e) => {
-            if (filter.state.brands.includes(b)) {
+            if (brand.includes(b)) {
                 const temp = [];
-                filter.state.brands.forEach((brand) => {
+                brand.forEach((brand) => {
                     if (brand !== b) {
                         temp.push(brand);
                     }
                 });
-                filter.state.brands = temp;
+                setBrand(temp);
             }
             else {
-                filter.state.brands.push(b);
+                setBrand([...brand, b]);
             }
-            console.log(filter.state.brands);
         }} />{b}</div>))}
     </div>
 }
 function PriceSection() {
+    const [minPrice, setMinPrice] = useState(0);
+    const [maxPrice, setMaxPrice] = useState(1);
     return <div key={"price"}>
-        Min Price  {filter.state.minPrice}
-        <input key={"minp"} type="number" onInput={(e) => { filter.filterByPrice(e.target.value, filter.state.maxPrice); e.target.value = filter.state.minPrice; }} />
-        Max Price  {filter.state.maxPrice}
-        <input key={"maxp"} type="number" onInput={(e) => { filter.filterByPrice(filter.state.minPrice, e.target.value); e.target.value = filter.state.maxPrice; }} />
+        <input key="minp" type="number" onChange={(e) => (setMinPrice(parseInt(e.target.value)), minP = minPrice)} />
+        <input key="maxp" type="number" onChange={(e) => (setMaxPrice(parseInt(e.target.value)), maxP = maxPrice)} />
     </div>
 }
 function ProvinceSection() {
-    return <div key={"province"}>
-        Province
-        <input list="province" />
+    const [province, setProvince] = useState("");
+    return <div>
+        <input key={"province"} list="province" onChange={(e) => { setProvince(e.target.value); provinceF = province }} />
         <datalist id="province">
             {provinces.map((p) => (<option value={p} />))}
         </datalist>
@@ -54,3 +60,8 @@ function FilterBar({ category = "" }) {
     </div >
 }
 export default FilterBar;
+
+export const filters =
+{
+    minP, maxP, nameF, brandF, provinceF, districtF
+};
