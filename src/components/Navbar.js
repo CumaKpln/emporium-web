@@ -2,7 +2,7 @@ import React from "react";
 import logo from "../images/logo.png";
 import "../Styles/navbar.css";
 import { Link } from "react-router-dom";
-import { filters } from "./Filtering";
+import filter from "./Filtering";
 const Navbar = () => {
   return (
     <>
@@ -21,8 +21,8 @@ const Navbar = () => {
                 type="search"
                 placeholder="Arama yapınız"
                 onInput={(event) => {
-                  filters.nameFilter = event.target.value;
-                  console.log(filters.nameFilter);
+                  filter.nameFilter = event.target.value;
+                  console.log(filter.nameFilter);
                 }}
               />
               <div className="search-icon">
@@ -61,7 +61,6 @@ const Navbar = () => {
                 {/* buraya kullanıcı username gelecek */}
               </div>
             </Link>
-            {/*------------------------------------------------------------------------ */}
             <Link to="/favoriler">
               <div className="fav-icon">
                 <svg
@@ -77,7 +76,6 @@ const Navbar = () => {
                 <span>Favoriler</span>
               </div>
             </Link>
-            {/*------------------------------------------------------------------------ */}
             <Link to="/ilan-ver">
               <button type="button">
                 <span>İlan ver</span>
@@ -93,6 +91,7 @@ const Navbar = () => {
                 <span className="m-0">Kayıt ol</span>
               </div>
             </Link>
+
           </div>
         </div>
       </nav>
@@ -158,7 +157,7 @@ const Navbar = () => {
                       d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
                     />
                   </svg>
-                  <div className="hesap"> Hesap </div>
+                  <div className="account"> Hesap </div>
                   {/* buraya kullanıcı username gelecek */}
                 </div>
               </Link>

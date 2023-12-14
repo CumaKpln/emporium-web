@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../Styles/LogIn.css";
 import { useDispatch } from "react-redux";
-import { logIn } from "../redux/userSlice";
+import { logIn } from "../control/slices/userSlice";
 import { useNavigate } from "react-router-dom";
 import Logo from "../images/logo.png";
 import Navbar from "../components/Navbar";
@@ -50,7 +50,7 @@ function LogIn() {
               </div>
               <div className="form col-md-6">
                 {" "}
-                <div className="e-posta g-3">
+                <div className="e-mail g-3">
                   <label className="Item">E-Posta</label>
                   <input
                     className="input"
@@ -84,7 +84,7 @@ function LogIn() {
                   </a>
                 </div>
                 <br />
-                <div className="btn mb-2" id="giris">
+                <div className="btn mb-2" id="Login">
                   <button onClick={handleSubmit}>
                     <p className="mb-0">Giriş</p>
                   </button>

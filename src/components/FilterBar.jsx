@@ -1,26 +1,67 @@
-import { filters } from "./Filtering";
-const brands = ["Volkwagen", "Opel", "Séat", "Renault"];
+import React, { useState } from "react";
+const brands = ["Volkswagen", "Opel", "Séat", "Renault"];
+const provinces = ["Ankara", "Antalya", "İstanbul", "İzmir", "Aydın", "Mardin", "Diyarbakır", "Yozgat", "Erzurum"];
+
+
+
+let minP = 0, maxP = 1000000000, nameF = "", brandF = [], provinceF = "", districtF = "";
+
+function NameSection() {
+    const [name, setName] = useState("");
+    return <div key={"name"}>
+        {name}
+        <input type="text" onInput={(e) => { setName(e.target.value); nameF = name }} />
+    </div>
+
+}
 function BrandSection({ brands }) {
-    return <div>
-        {brands.map((b) => (<div><input type="checkbox" onInput={(e) => {
-            if (filters.brands.includes(b)) {
+    const [brand, setBrand] = useState([]);
+    return <div key={"brands"}>
+        {brands.map((b) => (<div key={b}><input type="checkbox" onInput={(e) => {
+            if (brand.includes(b)) {
                 const temp = [];
-                filters.brands.forEach((brand) => {
+                brand.forEach((brand) => {
                     if (brand !== b) {
                         temp.push(brand);
                     }
                 });
-                filters.brands = temp;
+                setBrand(temp);
             }
             else {
-                filters.brands.push(b);
+                setBrand([...brand, b]);
             }
         }} />{b}</div>))}
     </div>
 }
-function FilterBar() {
+function PriceSection() {
+    const [minPrice, setMinPrice] = useState(0);
+    const [maxPrice, setMaxPrice] = useState(1);
+    return <div key={"price"}>
+        <input key="minp" type="number" onChange={(e) => (setMinPrice(parseInt(e.target.value)), minP = minPrice)} />
+        <input key="maxp" type="number" onChange={(e) => (setMaxPrice(parseInt(e.target.value)), maxP = maxPrice)} />
+    </div>
+}
+function ProvinceSection() {
+    const [province, setProvince] = useState("");
     return <div>
-        <BrandSection brands={brands} />
+        <input key={"province"} list="province" onChange={(e) => { setProvince(e.target.value); provinceF = province }} />
+        <datalist id="province">
+            {provinces.map((p) => (<option value={p} />))}
+        </datalist>
+
+    </div>
+}
+function FilterBar({ category = "" }) {
+    return <div>
+        <NameSection key={"n"} />
+        <ProvinceSection />
+        {((category.toString().toLowerCase() === "car" || category.toString().toLowerCase() === "electronics") && <BrandSection key={"a"} brands={brands} />)}
+        <PriceSection key={"b"} />
     </div >
 }
 export default FilterBar;
+
+export const filters =
+{
+    minP, maxP, nameF, brandF, provinceF, districtF
+};

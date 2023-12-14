@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import data from "../data/db.json";
+import data from "../../data/db.json";
 
 // db.json'dan gelen verileri cartItems içine yerleştirme
 const initialState = {

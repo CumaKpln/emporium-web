@@ -1,6 +1,6 @@
-function Sahip() {
+function ProductOwner() {
   return (
-    <div className="urunSahibi">
+    <div className="productOwner">
 
       <h5>İlan Sahibi</h5>
       <hr />
@@ -16,4 +16,4 @@ function Sahip() {
   );
 }
 
-export default Sahip;
+export default ProductOwner;

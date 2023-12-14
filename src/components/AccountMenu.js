@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
-import "../Styles/HesapMenu.css";
+import "../Styles/AccountMenu.css";
 
 function MyMenu({ onSelectPage }) {
-  const [selectedPage, setSelectedPage] = useState('Bilgiler');
+  const [selectedPage, setSelectedPage] = useState('information');
 
   return (
     <div className="menu">
-      <div className="butons d-flex flex-column align-items-center">
+      <div className="AccountButtons d-flex flex-column align-items-center">
         <div className="col-md-4 mb-3">
           <button
             type="button"
-            className={` MenuHesap ${selectedPage === 'Bilgiler' ? 'selected' : ''}`}
+            className={` DetailMenuAccount ${selectedPage === 'information' ? 'selected' : ''}`}
             onClick={() => {
-              onSelectPage('Bilgiler');
-              setSelectedPage('Bilgiler');
+              onSelectPage('information');
+              setSelectedPage('information');
             }}
           >
             Hesap Bilgilerim
@@ -22,10 +22,10 @@ function MyMenu({ onSelectPage }) {
         <div className="col-md-4">
           <button
             type="button"
-            className={` MenuUrun ${selectedPage === 'Urun' ? 'selected' : ''}`}
+            className={` DetailMenuProduct ${selectedPage === 'product' ? 'selected' : ''}`}
             onClick={() => {
-              onSelectPage('Urun');
-              setSelectedPage('Urun');
+              onSelectPage('product');
+              setSelectedPage('product');
             }}
           >
             Ürün Bilgilerim
