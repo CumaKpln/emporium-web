@@ -3,28 +3,40 @@ import "../Styles/UrunDetay-Cards.css";
 import { useSelector } from "react-redux";
 
 function Card({ onCardClick }) {
-  const selectedProduct = useSelector((state) => state.selectedProduct);
+  const selectedProduct = useSelector((state) => state.product); // 'product' reducer'ı içindeki veriyi alır
+
 
   return (
     <div className="slide-card row">
-      {Array.isArray(selectedProduct) && selectedProduct.length > 0 ? (
+      {selectedProduct && (
+        Array.isArray(selectedProduct) &&
         selectedProduct.map((product, id) => (
           <div key={id} className="col-md-3 mb-3">
-            <div className="card" onClick={() => onCardClick(id)}>
-              {product.selectedFiles && product.selectedFiles.length > id && (
-                <img
-                  src={product.selectedFiles[0].url}
-                  className="card-img"
-                  alt={`Card ${id + 1}`} />
-
-              )} {/* Burada `id` kullanılmalı */}
+            <div className="card" onClick={() => onCardClick()}>
+              {product.selectedFiles && product.selectedFiles.length > 0 && (
+               <div>
+               {product.selectedFiles && product.selectedFiles.length > 0 && (
+                 <div>
+                   {product.selectedFiles.map((file, index) => (
+                     <img
+                       key={index}
+                       src={file.url}
+                       className="card-img"
+                       alt={`Card ${index + 1}`}
+                     />
+                   ))}
+                 </div>
+               )}
+             </div>
+             
+              )}
             </div>
+
           </div>
         ))
-      ) : (
-        <p>No products available</p>
       )}
     </div>
+
   );
 }
 
