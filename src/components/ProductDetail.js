@@ -7,13 +7,20 @@ import ProductOwner from "./ProductDetail-ProductOwner";
 import Contents from "./ProductDetail-Description";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import { useDispatch} from "react-redux";
+import  "../control/store.js"
 
 function ProductDetail() {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0); 
   
+  const dispatch = useDispatch();
 
 
 
+  const handleCardClick = (productId) => {
+    // Örnek olarak, seçilen ürünü Redux store'a dispatch etmek gibi
+    dispatch({ type: "SELECT_PRODUCT", payload: productId }); // Örnek bir action dispatch etme
+  };
 
   const handleSliderChange = (index) => {
     setSelectedImageIndex(index);
@@ -31,7 +38,7 @@ function ProductDetail() {
                 selectedImageIndex={selectedImageIndex}
                 onSliderChange={handleSliderChange}
               />
-              <Card  />
+              <Card onCardClick={handleCardClick} />
             </div>
             <div className="col-md-6">
               <div className="row main-row">

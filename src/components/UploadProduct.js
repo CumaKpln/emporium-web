@@ -21,7 +21,8 @@ const UploadProduct = () => {
   const [processor, setProcessor] = useState("");
   const [memory, setMemory] = useState("");
   const [productRoom, setProductRoom] = useState("");
-  const [graphicCard, setGraphicCard] = useState("");
+  const [graphicCard, setGraphicCard] = useState("");
+
 
   // Kategori değiştiğinde alt kategoriyi sıfırla
   const handleCategoryChange = (e) => {
@@ -36,7 +37,7 @@ const UploadProduct = () => {
         return (
           <>
             <option value="">Alt Kategori Seçiniz</option>
-            <option value="arsa">Arsa</option>
+            <option value="Daire">Daire</option>
             <option value="ev">Ev</option>
           </>
         );
@@ -52,7 +53,7 @@ const UploadProduct = () => {
         return (
           <>
             <option value="">Alt Kategori Seçiniz</option>
-            <option value="bilgisayar">Bilgisayar</option>
+            <option value="Araba">Televizyon</option>
             <option value="motorsiklet">Telefon</option>
           </>
         );
@@ -73,7 +74,7 @@ const UploadProduct = () => {
 
     if (photos.length > 0) {
       console.log("Seçilen dosyalar:", photos);
-
+      
       // apiden geri çağırma işlemleri burada yapılacak//
     } else {
       alert("Lütfen fotoğraf yükleyiniz");
@@ -91,6 +92,7 @@ const UploadProduct = () => {
     // Burada bu bilgileri bir API'ye göndermek veya işlemek için gerekli adımları yapabilirsiniz.
   };
 
+
   return (
     <>
       <Navbar />
@@ -99,6 +101,7 @@ const UploadProduct = () => {
           <div className="col-md-4 col-sm-2 col-1"></div>
           <div className="col-md-4 col-sm-8 col-10">
             <form onSubmit={handleSubmit}>
+
               <div className="product-foto">
                 <input
                   type="file"
@@ -132,7 +135,7 @@ const UploadProduct = () => {
                   required
                 ></textarea>
               </div>
-
+              
               {/* Ana kategori seçim alanı */}
               <div className="product-category">
                 <label htmlFor="category">Kategori:</label>
@@ -328,16 +331,36 @@ const UploadProduct = () => {
                   required
                 />
               </div>
-              {/* Formun gönderme butonu */}
-              <button id="submitBtn" type="submit">Ürünü Yükle</button>
+
+              <div className="product-brand">
+                <label htmlFor="brand">Ürün Markası:</label>
+                <br />
+                <input
+                  type="text"
+                  id="brand"
+                  value={brand}
+                  onChange={(e) => setBrand(e.target.value)}
+                  required
+                />
+              </div>
+
+               
+               
+                {/* Formun gönderme butonu */}
+                <button type="submit">
+                  Ürünü Yükle
+                </button>
+              
             </form>
           </div>
           <div className="col-md-4 col-sm-2 col-1"></div>
         </div>
       </div>
-      <Footer />
+      <Footer/>
     </>
+
   );
 };
 
 export default UploadProduct;
+

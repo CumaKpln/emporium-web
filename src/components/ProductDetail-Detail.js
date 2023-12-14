@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import "../Styles/ProductDetail-Detail.css";
 import data from "../data/db.json";
 
+
 function Detail() {
   const selectedProduct = useSelector((state) => state.product); // productReducer'ı içindeki veriyi alır
 
@@ -39,3 +40,5 @@ function Detail() {
 }
 
 export default Detail;
+
+

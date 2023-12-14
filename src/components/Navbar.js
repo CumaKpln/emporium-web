@@ -2,7 +2,7 @@ import React from "react";
 import logo from "../images/logo.png";
 import "../Styles/navbar.css";
 import { Link } from "react-router-dom";
-import { filter } from "./Filtering";
+import filter from "./Filtering";
 const Navbar = () => {
   return (
     <>
@@ -91,7 +91,7 @@ const Navbar = () => {
                 <span className="m-0">Kayıt ol</span>
               </div>
             </Link>
-           
+
           </div>
         </div>
       </nav>
