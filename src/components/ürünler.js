@@ -4,16 +4,20 @@ import data from "../data/db.json";
 import "../Styles/urunler.css";
 import { Link } from "react-router-dom";
 import { selectProduct } from "../control/slices/productSlice"; // Redux reducer'ınızdan gelen action
-
+import { filters } from './FilterBar';
 
 function Ürünler() {
   const dispatch = useDispatch();
 
   const [search, setSearch] = useState("");
   const filterByAll = (p) => {
-    if (p.title.toLowerCase().includes(search.toLowerCase())) {
-      return true;
-    }
+    if (!p.title.toLowerCase().includes(search.toLowerCase()))
+      return false;
+    if (p.price < filters.minP)
+      return false;
+    if (p.price > filters.maxP)
+      return false;
+    return true;
   }
   const selectedProduct = (product) => {
     console.log(product)
