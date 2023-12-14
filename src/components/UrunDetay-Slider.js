@@ -1,58 +1,43 @@
 import React from "react";
 import "../Styles/UrunDetay-Slider.css"; // Stil dosyası içeri aktarılır
-import {store} from "../control/store.js"
 import { useSelector } from "react-redux";
 
-function Slider({ selectedImageIndex, onSliderChange }) {
+function Slider({ selectedImageIndex }) {
+  const selectedProduct = useSelector((state) => state.product.selectedProduct);
 
-  const selectedProduct = useSelector((state) => state.product); // 'product' reducer'ı içindeki veriyi alır
-
-
-  return (
-    <>
-      <div className="row">
-        <div className="col-md-12">
-          {/* Slider yapısı */}
-          <div
-            id="carouselExample"
-            className="carousel slide"
-            data-ride="carousel"
-          >
-            <div className="carousel-inner">
-              {selectedProduct &&
-                Array.isArray(selectedProduct) &&
-                selectedProduct.length > 0 &&
-                selectedProduct.map((product, index) => (
-                  <div
-                    key={index}
-                    className={
-                      0 === (selectedImageIndex || 0)
-                        ? "carousel-item active"
-                        : "carousel-item"
-                    }
-                  >
-                    <div className="w-100 slider-fotos">
-                      {/* Seçili ürüne ait resim */}
-                      {product.selectedFiles &&
-                        Array.isArray(product.selectedFiles) &&
-                        product.selectedFiles.length > 0 && (
-                          <img
-                            id={`slide-img-${index}`}
-                            src={product.selectedFiles[0].url} // Seçili ürüne ait resim URL'si
-                            alt={`Slide`}
-                          />
-                        )}
-                    </div>
-                  </div>
-                ))}
+  return selectedProduct ? (
+    <div className="row">
+      <div className="col-md-12">
+        {/* Slider yapısı */}
+        <div id="carouselExample" className="carousel slide" data-ride="carousel">
+          <div className="carousel-inner">
+            <div
+              className={
+                0 === (selectedImageIndex || 0) ? "carousel-item active" : "carousel-item"
+              }
+            >
+              <div className="w-100 slider-fotos">
+                {/* Seçili ürüne ait resim */}
+                {selectedProduct.selectedFiles &&
+                  Array.isArray(selectedProduct.selectedFiles) &&
+                  selectedProduct.selectedFiles.length > 0 && (
+                    <img
+                      id={`slide-img-}`}
+                      src={selectedProduct.selectedFiles[0].url} // Seçili ürüne ait resim URL'si
+                      alt={`Slide`}
+                    />
+                  )}
+              </div>
             </div>
-            {/* Daha önceki/sonraki butonlar buraya eklenebilir */}
           </div>
+          {/* Daha önceki/sonraki butonlar buraya eklenebilir */}
         </div>
-        <div className="col-md-6"></div>{" "}
-        {/* Diğer bileşenler için bir boşluk */}
       </div>
-    </>
+      <div className="col-md-6"></div>{" "}
+      {/* Diğer bileşenler için bir boşluk */}
+    </div>
+  ) : (
+    <p>Ürün Bulunamadı</p>
   );
 }
 

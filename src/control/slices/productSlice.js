@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const productSlice = createSlice({
   name: "product",
   initialState: {
-    selectedProduct: {}
+    selectedProduct:{}
   }, // Başlangıç durumu bir boş dizi olarak belirlendi
   reducers: {
     selectProduct(state, action) {
@@ -12,5 +12,5 @@ const productSlice = createSlice({
   },
 });
 
-export const { selectProduct } = productSlice.actions;
+export const  {selectProduct}  = productSlice.actions;
 export default productSlice.reducer;

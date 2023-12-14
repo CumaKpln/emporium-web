@@ -1,63 +1,33 @@
-import React, { useState } from "react";
-import data from "../data/db.json"
+import React from "react";
+import "../Styles/UrunDetay-Cards.css";
 import { useSelector } from "react-redux";
 
-function Icerik() {
-  const [aktifTab, setAktifTab] = useState("ilanDetaylari");
-  const selectedProduct = useSelector((state) => state.selectedProduct);
-
+function Card() {
+  const selectedProduct = useSelector((state) => state.product.selectedProduct);
 
   return (
-    <div className="icerik mb-5">
-      {selectedProduct &&
-        Array.isArray(selectedProduct) &&
-        selectedProduct.length > 0 &&
-        selectedProduct.map((product, id) => (
-          <div className="card text-center">
-            <div className="card-header">
-              <ul className="nav nav-tabs card-header-tabs">
-                <li className="nav-item">
-                  <a
-                    className={`nav-link ${aktifTab === "ilanDetaylari" ? "active" : ""
-                      }`}
-                    onClick={() => setAktifTab("ilanDetaylari")}
-                    href="#!"
-                  >
-                    İlan Detayları
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a
-                    className={`nav-link ${aktifTab === "konumu" ? "active" : ""}`}
-                    onClick={() => setAktifTab("konumu")}
-                    href="#!"
-                  >
-                    Konumu
-                  </a>
-                </li>
-              </ul>
-            </div>
+    <div className="card text-center">
+      <div className="card-header">
+        <ul className="nav nav-tabs card-header-tabs">
+          <li className="nav-item">
+            <a className="nav-link active" aria-current="true" href="#/">Ürün Açıklaması</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#/">Konumu</a>
+          </li>
 
-            {data["ilan-ver"].map((product, id) => (
-              <div key={id} className="card-body">
-                {aktifTab === "ilanDetaylari" && (
-                  <>
-                    <p className="card-text">
-                      {product.description}
-                    </p>
-                  </>
-                )}
-                {aktifTab === "konumu" && (
-                  <>
-                    <p className="card-text"> {product.location}</p>
-                  </>
-                )}
-              </div>
-            ))};
-          </div>
-        ))}
+        </ul>
+      </div>
+      <div className="card-body">
+        <h5 className="card-desc" alt={`Product desc`}>
+          {selectedProduct.description}
+        </h5>
+
+
+      </div>
     </div>
   );
 }
 
-export default Icerik;
+export default Card;
+

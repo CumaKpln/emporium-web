@@ -4,14 +4,14 @@ import woman from "../../images/woman.jpeg"
 import man from "../../images/man.jpg"
 
 
- const userSlice = createSlice({
+const userSlice = createSlice({
     name: "user",       // key gibi
     initialState: {
         users: [{
             name: "Cuma Kaplan",
             userName: "Cuma",
             email: "cuma@gmail.com",
-            phoneNumber: "05554443322", 
+            phoneNumber: "05554443322",
             password: "12345",
             address: "mahalle, cadde, sokak, mevki, apartman numarası / daire numarası, İlçe/İl ",
             id: 11,
@@ -37,9 +37,9 @@ import man from "../../images/man.jpg"
             address: "mahalle, cadde, sokak, mevki, apartman numarası / daire numarası, İlçe/İl ",
             id: 44,
             profile: man,
-        }, 
+        },
         ],
-       currentUserIndex: -1,
+        currentUserIndex: -1,
     },
     reducers: {              // update etmek için. Actions, fonksiyon
         addUser: (state, action) => {
@@ -48,11 +48,10 @@ import man from "../../images/man.jpg"
                 ...state,
                 users: [...state.users, action.payload],
                 currentUser: { ...action.payload },
-                currentUserIndex : state.users.findIndex(user => user.id === action.payload.id),
+                currentUserIndex: state.users.findIndex(user => user.id === action.payload.id),
                 currentUserIndex: state.users.length // Güncel kullanıcı index'i
             };
         },
-
         logOut: (state) => {
             return {
                 ...state,

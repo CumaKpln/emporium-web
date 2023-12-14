@@ -23,7 +23,7 @@ function UrunDetay() {
     <>
       <Navbar />
       <div className="App">
-        <div className="container">
+        <div className="container" >
           {/* Diğer bileşenler */}
           <div className="row slider-row">
             <div className="col-md-6">
