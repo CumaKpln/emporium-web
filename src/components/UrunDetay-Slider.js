@@ -1,12 +1,10 @@
 import React from "react";
 import "../Styles/UrunDetay-Slider.css"; // Stil dosyası içeri aktarılır
-import {store} from "../control/store.js"
 import { useSelector } from "react-redux";
 
 function Slider({ selectedImageIndex, onSliderChange }) {
-
-  const selectedProduct = useSelector((state) => state.product); // 'product' reducer'ı içindeki veriyi alır
-
+  // Redux'tan seçili ürünün bilgisini almak için useSelector hook'u kullanılır
+  const selectedProduct = useSelector((state) => state.selectedProduct);
 
   return (
     <>

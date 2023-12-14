@@ -65,7 +65,7 @@
       "category": "emlak",
       "subCategory": "Ev",
       "productName": "Daire Modeli 1",
-      "price": "veri 2",
+      "price": "250000",
       "brand": "Marka 3",
       "m2": "100",
       "rooms": "5",
@@ -88,7 +88,7 @@
       "category": "vasıta",
       "subCategory": "Arsa",
       "productName": "Araba Modeli 1",
-      "price": "veri 3  ",
+      "price": "100000",
       "brand": "Marka 1",
       "m2": "6000",
       "id": 4

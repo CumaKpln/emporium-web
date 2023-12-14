@@ -1,13 +1,9 @@
-import { configureStore } from "@reduxjs/toolkit";
-import productReducer from "../control/slices/productSlice";
-
-const store = configureStore({
-  reducer: {
-    product: productReducer,
-    // Diğer reducer'lar buraya eklenebilir
-  },
-  
-  
+// store.js
+import { configureStore } from '@reduxjs/toolkit';
+import { productReducer } from './slices/productSlice'; 
+export const store = configureStore({
+    reducer: {
+        products: productReducer, // products reducer'ını burada eklemelisiniz
+        // Diğer reducer'larınızı buraya ekleyebilirsiniz
+    },
 });
-
-export default store;
