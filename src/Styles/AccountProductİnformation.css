@@ -14,12 +14,12 @@ cursor: pointer;
   height:   auto;
 }
 
-#HesapMenuResim{
+#AccountMenuİmg{
   width: auto;
   max-height: 150px;
   image-orientation: from-image;
 }
-.HesapUrunButon{
+.AccountProductButton{
   margin-left: 30px;
  float: right;
  background-color: transparent;
@@ -38,7 +38,7 @@ cursor: pointer;
           background-clip: text,padding-box;
   transition: .3s var(--_s,0s) linear,background-size .3s calc(.3s - var(--_s,0s));
 }
-.HesapUrunButon:hover {
+.AccountProductButton:hover {
   --_p: 100%;
   --_s: .3s;
   color: #fff;
@@ -64,4 +64,24 @@ cursor: pointer;
   --_p: 100%;
   --_s: .3s;
   background-color: red;
+}
+
+/* HesapÜrünBilgileri.css veya benzeri bir dosya */
+
+.modalDelete {
+  position: absolute;
+  right: 5px;
+  background-color: transparent;
+  color: transparent;
+  border: none;
+  height: 100px;
+  width: 100px;
+  top: -36px;
+  left: 1px;
+}
+
+.modalDelete:hover{
+  background-color: #000;
+  color: #b5b1b1;
+  opacity: 0.5;
 }

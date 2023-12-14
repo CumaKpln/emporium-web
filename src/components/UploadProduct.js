@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "../Styles/urunYükle.css";
+import "../Styles/UploadProduct.css";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-const UrunYükle = () => {
+const UploadProduct = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
@@ -279,7 +279,8 @@ const UrunYükle = () => {
                 </div>
               )}
               {category === "elektronik-esya" && (
-                <div className="product-processor">
+                <div>
+                  <div className="product-processor">
                   <label htmlFor="processor">İşlemci:</label>
                   <input
                     type="text"
@@ -289,12 +290,24 @@ const UrunYükle = () => {
                     required
                   />
                 </div>
+                <div className="product-memory">
+                  <label htmlFor="memory">Hafıza:</label>
+                  <input
+                    type="text"
+                    id="memory"
+                    value={memory}
+                    onChange={(e) => setMemory(e.target.value)}
+                    required
+                  />
+                </div>
+                </div>
+                
               )}
            
 
               {subCategory === "bilgisayar" && (
                 <div className="product-graphicCard">
-                  <label htmlFor="graphicCard">Dahili Hafıza:</label>
+                  <label htmlFor="graphicCard">Ekran kartı:</label>
                   <input
                     type="text"
                     id="graphicCard"
@@ -327,4 +340,4 @@ const UrunYükle = () => {
   );
 };
 
-export default UrunYükle;
+export default UploadProduct;

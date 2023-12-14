@@ -1,5 +1,5 @@
 import React from "react";
-import "../Styles/UrunDetay-Cards.css";
+import "../Styles/ProductDetail-Cards.css";
 import { useSelector } from "react-redux";
 
 function Card({ onCardClick }) {

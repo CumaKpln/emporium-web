@@ -1,5 +1,5 @@
 import React from "react";
-import "../Styles/UrunDetay-Slider.css"; // Stil dosyası içeri aktarılır
+import "../Styles/ProductDetail-Slider.css"; // Stil dosyası içeri aktarılır
 import {store} from "../control/store.js"
 import { useSelector } from "react-redux";
 

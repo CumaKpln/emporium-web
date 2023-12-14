@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import "../Styles/UrunDetay.css";
-import Slider from "./UrunDetay-Slider";
-import Card from "./UrunDetay-Cards";
-import Detay from "./UrunDetay-Detay";
-import Sahip from "./UrunDetay-Sahip";
-import Icerik from "./UrunDetay-Açıklama";
+import "../Styles/ProductDetail.css";
+import Slider from "./ProductDetail-Slider";
+import Card from "./ProductDetail-Cards";
+import Detail from "./ProductDetail-Detail";
+import ProductOwner from "./ProductDetail-ProductOwner";
+import Contents from "./ProductDetail-Description";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
-function UrunDetay() {
+function ProductDetail() {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0); 
   
 
@@ -36,17 +36,17 @@ function UrunDetay() {
             <div className="col-md-6">
               <div className="row main-row">
                 <div className="col-md-6">
-                  <Detay />
+                  <Detail />
                 </div>
                 <div className="col-md-6">
-                  <Sahip />
+                  <ProductOwner />
                 </div>
               </div>
             </div>
           </div>
 
           <div className="info">
-            <Icerik />
+            <Contents />
           </div>
         </div>
       </div>
@@ -55,4 +55,4 @@ function UrunDetay() {
   );
 }
 
-export default UrunDetay;
+export default ProductDetail;
