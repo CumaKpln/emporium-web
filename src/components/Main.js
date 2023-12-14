@@ -3,7 +3,7 @@ import Article from "./Article";
 import Sidebar from "./sidebar";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import FilterBar from "./FilterBar";
+// import FilterBar from "./FilterBar";
 const Main = () => {
   return (
     <>
@@ -17,7 +17,7 @@ const Main = () => {
           </div>
           <div className="col-md-9 col-sm-9">
             <Article />
-            <FilterBar category="asd" />
+            {/* <FilterBar category="asd" /> */}
           </div>
         </div>
 

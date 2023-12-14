@@ -4,10 +4,9 @@ import data from "../data/db.json";
 
 
 function Detail() {
-  const selectedProduct = useSelector((state) => state.product); // productReducer'ı içindeki veriyi alır
+  const selectedProduct = useSelector((state) => state.selectedProduct); // productReducer'ı içindeki veriyi alır
   // console.log(selectedProduct.selectedProduct)
 
-const cardInfo = selectedProduct.selectedProduct;
 
   return selectedProduct.id === data["ilan-ver"].id ? (
     <div>
@@ -25,17 +24,17 @@ const cardInfo = selectedProduct.selectedProduct;
           <strong>İlan Tarihi:</strong>
         </li>
         <li className="li d-flex gap-2">
-          <strong>Ürün Adı:</strong>{" "}
-          {cardInfo.productName}
+          <strong>Ürün Adı:</strong>
+          {selectedProduct.productName}
         </li>
         <li className="li d-flex gap-2">
-          <strong>Kategori:</strong> {cardInfo.category}
+          <strong>Kategori:</strong> {selectedProduct.category}
         </li>
         <li className="li d-flex gap-2">
-          <strong>Marka:</strong> {cardInfo.brand}
+          <strong>Marka:</strong> {selectedProduct.brand}
         </li>
         <li className="li d-flex gap-2">
-          <strong>Ürün Adresi:</strong> {cardInfo.title}
+          <strong>Ürün Adresi:</strong> {selectedProduct.title}
         </li>
       </ul>
     </div>

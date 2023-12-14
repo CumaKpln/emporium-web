@@ -108,6 +108,8 @@ const UploadProduct = () => {
                   id="fileInput"
                   onChange={handleFileChange}
                   accept="image/*"
+                  // width="100"
+                  // height="auto"
                   multiple
                   required
                 />
@@ -347,7 +349,7 @@ const UploadProduct = () => {
                
                
                 {/* Formun gönderme butonu */}
-                <button type="submit">
+                <button className="submitBtn" type="submit">
                   Ürünü Yükle
                 </button>
               

@@ -41,7 +41,7 @@ const Navbar = () => {
           </div>
           <div className="right-navbar">
             {" "}
-            <Link to="/hesabım">
+            <Link to="/account">
               <div id="account">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -61,7 +61,7 @@ const Navbar = () => {
                 {/* buraya kullanıcı username gelecek */}
               </div>
             </Link>
-            <Link to="/favoriler">
+            <Link to="/favorites">
               <div className="fav-icon">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -76,17 +76,17 @@ const Navbar = () => {
                 <span>Favoriler</span>
               </div>
             </Link>
-            <Link to="/ilan-ver">
+            <Link to="/upload-product">
               <button type="button">
                 <span>İlan ver</span>
               </button>
             </Link>
-            <Link to="/Giris-yap">
+            <Link to="/login">
               <div className="Login">
                 <span className="m-0 ">Üye Giriş</span>
               </div>
             </Link>
-            <Link to="/kayit-ol ">
+            <Link to="/register ">
               <div className="Register ">
                 <span className="m-0">Kayıt ol</span>
               </div>

@@ -15,9 +15,11 @@ cursor: pointer;
 }
 
 #AccountMenuİmg{
-  width: auto;
-  max-height: 150px;
-  image-orientation: from-image;
+  /* width: auto;
+  max-height: 150px; */
+  width:"100";
+  height:"auto";
+  image-orientation: "from-image";
 }
 .AccountProductButton{
   margin-left: 30px;

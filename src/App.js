@@ -18,13 +18,13 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
 
-        <Route path="/hesabım" exact element={<Account />} />
-        <Route path="/favoriler" element={<Favorites />} />
-        <Route path="/ilan-ver" element={<UploadProduct />} />
-        <Route path="/Giris-yap" element={<LogIn />} />
-        <Route path="/kayit-ol" element={<SignIn />} />
+        <Route path="/account" exact element={<Account />} />
+        <Route path="/favorites" element={<Favorites />} />
+        <Route path="/upload-product" element={<UploadProduct />} />
+        <Route path="/login" element={<LogIn />} />
+        <Route path="/register" element={<SignIn />} />
 
-        <Route path="/urun-detay" exact element={<ProductDetail />} />
+        <Route path="/product-detail/" exact element={<ProductDetail />} />
         {/* <Route path="/sifremiunuttum" element={<ForgotPassword />} /> */}
       </Routes>
 

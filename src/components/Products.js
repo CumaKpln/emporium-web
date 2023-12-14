@@ -19,23 +19,24 @@ function Products() {
       return false;
     return true;
   }
-  const selectedProduct = (product) => {
-    console.log(product)
-    dispatch(selectProduct(product)); // Redux store'a seçilen ürünü gönderme
+  const selectedProduct = (product) => { // Redux store'a seçilen ürünü gönderme
+    dispatch(selectProduct(product));
+    console.log(selectProduct)
   };
+
   return (
     <div className="products">
       <input type="text" onChange={(e) => { setSearch(e.target.value) }} />
-      {data["ilan-ver"].filter((p) => filterByAll(p)).map((product, id) =>
-      (
-        <div className="img" key={id} style={{ cursor: "pointer" }}>
-          <Link to="/product-detail" onClick={() => selectedProduct(product)}>
-            <img src={product.selectedFiles[0].url} alt="foto" />
-            <p className="title">{product.title}</p>
-          </Link>
-        </div>
-      )
-      )}
+      {data["ilan-ver"].filter((p) => filterByAll(p)).
+        map((product, id) => (
+          <div className="img p-3" key={id} style={{ cursor: "pointer" }}>
+            <Link to={`/product-detail/`} onClick={() => selectedProduct(product)}>
+              <img src={product.selectedFiles[0].url} alt="foto" />
+              <p className="title">{product.title}</p>
+            </Link>
+          </div>
+        )
+        )}
     </div>
   );
 
