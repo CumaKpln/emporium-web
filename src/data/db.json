@@ -20,6 +20,7 @@
       "gear": "6",
       "id": 1
     },
+
     {
       "selectedFiles": [
         { "url": "https://picsum.photos/id/239/200/300" },
@@ -39,6 +40,7 @@
       "gear": "5",
       "id": 2
     },
+
     {
       "selectedFiles": [
         { "url": "https://picsum.photos/id/237/200/300" },
@@ -74,6 +76,7 @@
       "m2": "6000",
       "id": 4
     },
+
     {
       "selectedFiles": [
         { "url": "https://picsum.photos/id/237/200/300" },
@@ -94,6 +97,7 @@
       "memory": "hafıza",
       "id": 5
     },
+
     {
       "selectedFiles": [
         { "url": "https://picsum.photos/id/237/200/300" },
@@ -130,6 +134,7 @@
       "brand": "Marka 1",
       "id": 7
     },
+
     {
       "selectedFiles": [
         { "url": "https://picsum.photos/id/237/200/300" },
@@ -145,6 +150,7 @@
       "brand": "Marka 2",
       "id": 8
     },
+
     {
       "selectedFiles": [
         { "url": "https://picsum.photos/id/237/200/300" },
@@ -176,6 +182,7 @@
       "brand": "Marka 1",
       "id": 10
     },
+
     {
       "selectedFiles": [
         { "url": "https://picsum.photos/id/237/200/300" },
@@ -191,6 +198,7 @@
       "brand": "Marka 2",
       "id": 11
     },
+
     {
       "selectedFiles": [
         { "url": "https://picsum.photos/id/237/200/300" },
@@ -206,6 +214,7 @@
       "brand": "Marka 3",
       "id": 12
     },
+
     {
       "selectedFiles": [
         { "url": "https://picsum.photos/id/237/200/300" },
@@ -221,6 +230,7 @@
       "brand": "Marka 1",
       "id": 13
     },
+
     {
       "selectedFiles": [
         { "url": "https://picsum.photos/id/237/200/300" },
@@ -236,6 +246,7 @@
       "brand": "Marka 2",
       "id": 14
     },
+
     {
       "selectedFiles": [
         { "url": "https://picsum.photos/id/237/200/300" },
@@ -251,6 +262,7 @@
       "brand": "Marka 3",
       "id": 15
     },
+
     {
       "selectedFiles": [
         { "url": "https://picsum.photos/id/237/200/300" },
@@ -266,6 +278,7 @@
       "brand": "Marka 1",
       "id": 16
     },
+
     {
       "selectedFiles": [
         { "url": "https://picsum.photos/id/237/200/300" },
@@ -281,6 +294,7 @@
       "brand": "Marka 2",
       "id": 17
     },
+    
     {
       "selectedFiles": [
         { "url": "https://picsum.photos/id/237/200/300" },

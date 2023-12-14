@@ -2,10 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const productSlice = createSlice({
   name: "product",
-  initialState: [], // Başlangıç durumu bir boş dizi olarak belirlendi
+  initialState: {
+    selectedProduct: {}
+  }, // Başlangıç durumu bir boş dizi olarak belirlendi
   reducers: {
     selectProduct(state, action) {
-      return [state, action.payload]; // Gelen ürünü mevcut durum dizisinin bir parçası olarak ekle
+      state.selectedProduct = action.payload // Gelen ürünü mevcut durum dizisinin bir parçası olarak ekle
     },
   },
 });

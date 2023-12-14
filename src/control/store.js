@@ -7,6 +7,7 @@ const store = configureStore({
     // Diğer reducer'lar buraya eklenebilir
   },
   
+  
 });
 
 export default store;
