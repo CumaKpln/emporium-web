@@ -73,146 +73,117 @@ function SignIn() {
         }
     }
 
-    const handleCancel = (e) => {
-        alertify.success("Ana sayfa")
-        navigate("/");
+    // E-posta format kontrolü
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      validationErrors.email = 'Geçerli bir e-posta adresi girin';
     }
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
+    setErrors(validationErrors);
 
-        // Gerekli alanlara uygun şekilde set işlemlerini yapın
-        if (name === "name") {
-            setName(value);
-        } else if (name === "userName") {
-            setUserName(value);
-        } else if (name === "email") {
-            setEmail(value);
-        } else if (name === "phoneNumber") {
-            setPhoneNumber(value);
-        } else if (name === "address") {
-            setAddress(value);
-        } else if (name === "password") {
-            setPassword(value);
-        } else if (name === "passwordVerification") {
-            setPasswordVerification(value);
-        }
+    // Hata yoksa formu işle
+    if (Object.keys(validationErrors).length === 0) {
+      // Burada form verilerini işleyebilirsiniz, örneğin bir API'ye göndermek gibi.
+      console.log('Form submitted:', formData);
+    }
+  };
 
-
-        setTouched({
-            ...touched,
-            [name]: true,
-        });
-
-        // İlgili alanın doğrulama şemasını al
-        const fieldSchema = name === "passwordVerification" ? validations.fields["password"] : validations.fields[name]; ////// !!!! NOT SEND passwordVerification AS FİELD !!!! /////////
-
-
-        // Alanın değerini doğrula
-        fieldSchema.validate(value)
-            .then(() => {
-                // Doğrulama başarılıysa burada yapılacak işlemler
-                // Örneğin, hata durumunu temizle
-                setErrors({
-                    ...errors,
-                    [name]: '',
-                });
-            })
-            .catch(validationErrors => {
-
-                setErrors({
-                    ...errors,
-                    [name]: validationErrors.message,
-                });
-            });
-    };
-
-    const handleBlur = (e) => {
-        const { name } = e.target;
-        setTouched({
-            ...touched,
-            [name]: true,
-        });
-    };
-
-    return (
-        <div>
-
-            <div className='SingIn'>
-
-                <h1 >Kayıt Ol</h1>
-
-                <form onSubmit={handleSubmit}>
-
-                    <div className='image' style={{ width: "50%" }}>
-                        <img src={Logo} alt="Logo" style={{ width: '50%' }} />
-                    </div>
-
-                    <div className="row g-3" >
-
-                        <div className="col-md-6">
-                            <label className="Item" htmlFor="name">Ad Soyad</label> <br></br>
-                            <input name="name" placeholder="Ad Soyad" value={name} onChange={handleChange} />
-                            {errors.name && touched.name && <label className='error'>{errors.name}</label>}
-                        </div>
-
-                        <div className="col-md-6">
-                            <label className="Item" htmlFor="userName">Kullanıcı Adı</label> <br></br>
-                            <input name="userName" placeholder="Kullanıcı Adı" value={userName} onChange={(e) => setUserName(e.target.value)} />
-                            {errors.userName && touched.userName && <label className='error'>{errors.userName}</label>}
-                        </div>
-
-                        <div className="col-md-6">
-                            <label className="Item" htmlFor="email">E-posta</label>  <br></br>
-                            <input name="email" placeholder="E-posta" value={email} onChange={handleChange} onBlur={handleBlur} />
-                            {errors.email && touched.email && <label className='error'>{errors.email}</label>}
-                        </div>
-
-                        <div className="col-md-6">
-                            <label className="Item" htmlFor="phoneNumber">Telefon</label> <br></br>
-                            <input name="phoneNumber" placeholder="Telefon" value={phoneNumber} onChange={handleChange} />
-                            {errors.phoneNumber && touched.phoneNumber && <label className='error'>{errors.phoneNumber}</label>}
-                        </div>
-
-
-                        <div className="col-md-6">
-                            <label className="Item">Şifre</label>  <br></br>
-                            <input type={isVisible ? "" : "password"} name="password" value={password} onChange={handleChange} />
-                            <button className="eyeBtn" type="button" onClick={() => setIsVisible(!isVisible)}>
-                                {isVisible ? <VisibilityOffIcon className='eye' /> : <VisibilityIcon className='eye' />}
-                            </button>
-                            {errors.password && touched.password && <label className='error'>{errors.password}</label>}
-                        </div>
-
-                        <div className="col-md-6">
-                            <label className="Item" htmlFor="address">Adres</label> <br></br>
-                            <textarea name="address" placeholder="Adres" value={address} onChange={handleChange} />
-                            {errors.address && touched.address && <label className='error'>{errors.address}</label>}
-                        </div>
-
-                        <div className="col-md-6">
-                            <label className="Item">Şifre Doğrulama</label>  <br></br>
-                            <input type={isVerificationVisible ? "" : "password"} name="passwordVerification" value={passwordVerification} onChange={handleChange} />
-                            <button className="eyeBtn" type="button" onClick={() => setIsVerificationVisible(!isVerificationVisible)}>
-                                {isVerificationVisible ? <VisibilityOffIcon className='eye' /> : <VisibilityIcon className='eye' />}
-                            </button>
-                            {touched.passwordVerification && touched.passwordVerification && <label className='error'>{errors.passwordVerification}</label>}
-                        </div>
-
-
-                        <div className='btn'>
-                            <button type='submit' onClick={handleSubmit}>KAYIT OL</button>
-
-                            <button type="button" onClick={handleCancel}>İPTAL</button>
-                        </div>
-
-
-                    </div>
-                </form>
+  return (
+    <>
+      <Navbar />
+      <div>
+        <form onSubmit={handleSubmit} className='formx'>
+          <h1>Kayıt Ol</h1>
+          <div className="row">
+            <div className="logo col-md-6">
+              <div className="imagex">
+                <img src={Logo} alt="Logo" />
+              </div>
             </div>
+          </div>
+          <label>
+            Ad:
+            <input
+              type="text"
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleChange}
+            />
+            {errors.firstName && <span className="error">{errors.firstName}</span>}
+          </label>
 
-        </div>
-    )
-}
+          <label>
+            Soyad:
+            <input
+              type="text"
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleChange}
+            />
+            {errors.lastName && <span className="error">{errors.lastName}</span>}
+          </label>
 
-export default SignIn
+          <label>
+            Adres:
+            <input
+              type="text"
+              name="address"
+              value={formData.address}
+              onChange={handleChange}
+            />
+            {errors.address && <span className="error">{errors.address}</span>}
+          </label>
+
+          <label>
+            E-posta:
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+            />
+            {errors.email && <span className="error">{errors.email}</span>}
+          </label>
+
+          <label>
+            Telefon Numarası:
+            <input
+              type="tel"
+              name="phoneNumber"
+              value={formData.phoneNumber}
+              onChange={handleChange}
+            />
+            {errors.phoneNumber && <span className="error">{errors.phoneNumber}</span>}
+          </label>
+
+          <label>
+            Şifre:
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+            />
+            {errors.password && <span className="error">{errors.password}</span>}
+          </label>
+
+          <label>
+            Şifre Tekrar:
+            <input
+              type="password"
+              name="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+            />
+            {errors.confirmPassword && <span className="error">{errors.confirmPassword}</span>}
+          </label>
+
+          <button type="submit">Kayıt Ol</button>
+        </form>
+      </div>
+      <Footer />
+    </>
+  );
+};
+
+export default SignIn;
