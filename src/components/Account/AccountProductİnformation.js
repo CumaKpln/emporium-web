@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Modal, Button, Form, Alert } from "react-bootstrap";
-import "../Styles/AccountProductİnformation.css";
-import data from "../data/db.json";
+import "../../Styles/Account/AccountProductİnformation.css";
+
+import data from "../../data/db.json";
 
 function ProductInfo() {
   const [products, setProducts] = useState(data["ilan-ver"]);

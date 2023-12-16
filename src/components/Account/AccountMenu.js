@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "../Styles/AccountMenu.css";
+import "../../Styles/Account/AccountMenu.css";
 
 function MyMenu({ onSelectPage }) {
   const [selectedPage, setSelectedPage] = useState('information');

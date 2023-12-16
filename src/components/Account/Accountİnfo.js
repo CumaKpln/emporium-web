@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import "../Styles/AccountInfo.css";
+import "../../Styles/Account/AccountMenu.css";
+
 import Edit from "./AccountEditButton";
 
 function İnfo() {

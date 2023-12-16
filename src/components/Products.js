@@ -1,36 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import data from "../data/db.json";
 import "../Styles/Product.css";
 import { Link } from "react-router-dom";
-import { selectProduct } from "../control/slices/productSlice"; // Redux reducer'ınızdan gelen action
 import { filters } from './FilterBar';
+import { selectProduct } from "../control/slices/productSlice"; // Redux reducer'ınızdan gelen action
 
 function Products() {
   const dispatch = useDispatch();
 
-  const [search, setSearch] = useState("");
-  const filterByAll = (p) => {
-    if (!p.title.toLowerCase().includes(search.toLowerCase()))
-      return false;
-    if (p.price < filters.minP)
-      return false;
-    if (p.price > filters.maxP)
-      return false;
-    return true;
-  }
   const selectedProduct = (product) => { // Redux store'a seçilen ürünü gönderme
     dispatch(selectProduct(product));
-    console.log(selectProduct)
   };
 
   return (
     <div className="products">
-      <input type="text" onChange={(e) => { setSearch(e.target.value) }} />
-      {data["ilan-ver"].filter((p) => filterByAll(p)).
-        map((product, id) => (
+      {data["ilan-ver"].map((product, id) => (
           <div className="img p-3" key={id} style={{ cursor: "pointer" }}>
-            <Link to={`/product-detail/`} onClick={() => selectedProduct(product)}>
+            <Link to={`/urun-detayi/${id}`} onClick={() => selectedProduct(product)}>
               <img src={product.selectedFiles[0].url} alt="foto" />
               <p className="title">{product.title}</p>
             </Link>
