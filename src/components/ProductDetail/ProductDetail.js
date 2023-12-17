@@ -5,6 +5,7 @@ import Detail from "../ProductDetail/ProductsDetail-pages/Detail";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import "../../Styles/Product-Detail/ProductDetail.css";
+import Description from "./ProductsDetail-pages/Description";
 
 function ProductDetail() {
   return (
@@ -14,7 +15,7 @@ function ProductDetail() {
         className="container detail.cont"
         style={{
           minHeight: "100vh",
-          marginBottom:"20px"
+          marginBottom: "20px",
         }}
       >
         <div className="row detail-row">
@@ -28,8 +29,11 @@ function ProductDetail() {
             <Owner />
           </div>
         </div>
+        <div className="desc">
+         <Description/>
+        </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 }

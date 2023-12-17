@@ -41,9 +41,9 @@ const ForgotPassword = () => {
             </div>
           <label>
             E-posta adresiniz:
-            <input type="email" value={email} onChange={handleEmailChange} />
+            <input className='ForgotPasswordİnput' type="email" value={email} onChange={handleEmailChange} />
           </label>
-          <button type="submit">Şifre Sıfırlama Bağlantısı Gönder</button>
+          <button className='ForgotPasswordBtn' type="submit">Şifre Sıfırlama Bağlantısı Gönder</button>
         </form>
         <p className="message">{message}</p>
       </div>

@@ -22,15 +22,15 @@ function Detail() {
         <p>
           <span> İl </span>/<span> İlçe </span>/<span> Mahalle</span>
         </p>
-        <li className="mt-3">Ürün Adı :{selectedProduct.productName}</li>
+        <li className="mt-3"><b>Ürün Adı :</b> {selectedProduct.productName}</li>
         <hr style={{ margin: "1px 0px" }} />
-        <li>Kategori : {selectedProduct.category}</li>
+        <li><b>Kategori :</b>  {selectedProduct.category}</li>
         <hr style={{ margin: "1px 0px" }} />
-        <li>Alt Kategori : {selectedProduct.subCategory} </li>
+        <li><b>Alt Kategori :</b>  {selectedProduct.subCategory} </li>
         <hr style={{ margin: "1px 0px" }} />
-        <li>Marka : {selectedProduct.brand} </li>
+        <li><b>Marka :</b> {selectedProduct.brand} </li>
         <hr style={{ margin: "1px 0px" }} />
-        <li>Model : {selectedProduct.series} </li>
+        <li><b>Seri :</b>{selectedProduct.series } </li>
       </ul>
     </div>
   );

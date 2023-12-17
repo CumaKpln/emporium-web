@@ -23,37 +23,31 @@ function App() {
 
     return (
         <div className="App">
-
-                <div style={{
-                    padding: "0 20px",
-                    
-                }}>
-                    <Carousel
-                        data={images}
-                        time={5000}
-                        width="100%"
-                        height="500px"
-                        captionStyle={captionStyle}
-                        radius="10px"
-                        slideNumber={true}
-                        slideNumberStyle={slideNumberStyle}
-                        captionPosition="bottom"
-                        automatic={true}
-                        dots={true}
-                        pauseIconColor="white"
-                        pauseIconSize="40px"
-                        slideBackgroundColor="darkgrey"
-                        slideImageFit="cover"
-                        thumbnails={true}
-                        thumbnailWidth="100px"
-                        style={{
-                            textAlign: "center",
-                            maxWidth: "850px",
-                            maxHeight: "500px",
-                            margin: "40px auto",
-                        }}
-                    />
-                </div>
+            <Carousel
+                data={images}
+                time={10000}
+                width="100%"
+                height="500px"
+                captionStyle={captionStyle}
+                radius="10px"
+                slideNumber={true}
+                slideNumberStyle={slideNumberStyle}
+                captionPosition="bottom"
+                automatic={true}
+                dots={true}
+                pauseIconColor="white"
+                pauseIconSize="40px"
+                slideBackgroundColor="gray"
+                slideImageFit="contain"
+                thumbnails={true}
+                thumbnailWidth="100px"
+                style={{
+                    textAlign: "center",
+                    maxWidth: "850px",
+                    maxHeight: "500px",
+                    margin: "40px auto",
+                }}
+            />
         </div>
     );
 }

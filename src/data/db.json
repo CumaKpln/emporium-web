@@ -3,121 +3,117 @@
     {
       "selectedFiles": [
         {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Fiat_Tempra_SX_%2793.jpg/1920px-Fiat_Tempra_SX_%2793.jpg"
-          
+          "url": "https://i0.shbdn.com/photos/93/17/79/x5_1140931779xtj.jpg"
         },
         {
-          "url": "https://picsum.photos/id/238/200/300"
+          "url": "https://i0.shbdn.com/photos/93/17/79/x5_1140931779yko.jpg"
         },
         {
-          "url": "https://picsum.photos/id/239/200/300"
+          "url": "https://i0.shbdn.com/photos/93/17/79/x5_1140931779alj.jpg"
+        },
+        {
+          "url": "https://i0.shbdn.com/photos/93/17/79/x5_11409317792ro.jpg"
         }
       ],
-      "title": "Fiat Tempra",
-      "description": "Ürün Açıklaması 1",
+      "title": "Araba.",
+      "description": "Araç sıfır alındığı gibidir",
       "category": "vasıta",
       "subCategory": "Araba",
-      "productName": "Tempra",
-      "price": "100000",
-      "brand": "Fiat",
-      "color": "Siyah",
-      "series": "vasita serisi",
-      "gear": "6",
+      "productName": "Bmw  320i M Sport ",
+      "price": "2.690.000",
+      "brand": "BMW",
+      "color": "Mavi",
+      "series": " 3 Serisi ",
+      "gear": "Otomatik",
       "id": 1
     },
     {
       "selectedFiles": [
         {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Kawasaki_Ninja_H2.jpg/1920px-Kawasaki_Ninja_H2.jpg"
+          "url": "https://i0.shbdn.com/photos/42/77/35/x5_1140427735h6a.jpg"
         },
         {
-          "url": "https://picsum.photos/id/238/200/300"
+          "url": "https://i0.shbdn.com/photos/42/77/35/x5_11404277350sr.jpg"
         },
         {
-          "url": "https://picsum.photos/id/239/200/300"
+          "url": "https://i0.shbdn.com/photos/42/77/35/x5_1140427735mga.jpg"
         }
       ],
-      "title": "Kawasaki Ninja H2",
-      "description": "Ürün Açıklaması 2",
-      "category": "vasıta",
+      "title": "MOTOR",
+      "description": "REGAL MOTOR YETKİLİ BAYİ DEN SIFIR KM OLUP ÖZEL TASARIM",
+      "category": "Vasıta",
       "subCategory": "Motorsiklet",
-      "productName": "Kawasaki Ninja H2",
-      "price": "50000",
-      "brand": "Marka 2",
-      "color": "Mavi",
+      "productName": "FIRAT MOTOR ŞİLE 2023 MODEL PİLDER 250 SENETLE 12 TAKSİT EXTRALI",
+      "price": "185.500",
+      "brand": " Regal Raptor ",
+      "color": "Kırmızı",
       "series": "vasita serisi",
-      "gear": "5",
+      "gear": "Manuel",
       "id": 2
     },
     {
       "selectedFiles": [
         {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Starlight_Home_01.jpg/640px-Starlight_Home_01.jpg"
+          "url": "https://i0.shbdn.com/photos/57/27/65/x5_1113572765xs6.jpg"
         },
         {
-          "url": "https://picsum.photos/id/238/200/300"
+          "url": "https://i0.shbdn.com/photos/57/27/65/x5_1113572765l57.jpg"
         },
         {
-          "url": "https://picsum.photos/id/239/200/300"
+          "url": "https://i0.shbdn.com/photos/57/27/65/x5_1113572765pom.jpg"
         }
       ],
-      "title": "Kelepir Ev",
-      "description": "Çok ucuz ihtiyaçtan dolayı satıyorum",
+      "title": "Ev",
+      "description": "DENİZE, ANA YOLA, TOPLU TAŞIMAYA, ŞEHİR MERKEZİNE, PARKA, SAHİLE, MARİNAYA, OKULA, HASTANEYE, MARKETE YAKIN KISACASI BÖLGENİN EN GÜZEL KONUMUNA SAHİP ULTRA LÜKS DENİZ MANZARALI VİLLA. ",
       "category": "emlak",
       "subCategory": "Ev",
-      "productName": "Daire Modeli 1",
-      "price": "250000",
-      "brand": "Marka 3",
-      "m2": "100",
-      "rooms": "5",
+      "productName": "ULTRA LÜKS VİLLA ",
+      "price": "15.500.000",
+      "m2": "350",
+      "rooms": "5+1",
       "id": 3
     },
     {
       "selectedFiles": [
         {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Arable_field_-_geograph.org.uk_-_793675.jpg/640px-Arable_field_-_geograph.org.uk_-_793675.jpg"
+          "url": "https://i0.shbdn.com/photos/85/03/39/x5_1133850339y21.jpg"
         },
         {
-          "url": "https://picsum.photos/id/238/200/300"
+          "url": "https://i0.shbdn.com/photos/85/03/39/x5_1133850339vsp.jpg"
         },
         {
-          "url": "https://picsum.photos/id/239/200/300"
+          "url": "https://i0.shbdn.com/photos/85/03/39/x5_1133850339zb2.jpg"
         }
       ],
       "title": "Arsa",
       "description": "Ürün Açıklaması 1",
-      "category": "vasıta",
+      "category": "emlak" ,
       "subCategory": "Arsa",
-      "productName": "Araba Modeli 1",
-      "price": "100000",
-      "brand": "Marka 1",
-      "m2": "6000",
+      "price": "1.699.000 ",
+      "m2": "566",
       "id": 4
     },
     {
       "selectedFiles": [
         {
-          "url": "https://cdn.akakce.com/xiaomi/xiaomi-redmi-note-10-128-gb-4-gb-z.jpg"
+          "url": "https://i0.shbdn.com/photos/62/22/43/thmb_114262224319k.jpg"
         },
         {
-          "url": "https://picsum.photos/id/238/200/300"
-        },
-        {
-          "url": "https://picsum.photos/id/239/200/300"
+          "url": "https://i0.shbdn.com/photos/62/22/43/1142622243717.jpg"
         }
+       
       ],
-      "title": "Note 10",
-      "description": "Ürün Açıklaması 2",
-      "category": "vasıta",
+      "title": "Telefon",
+      "description": "ÜRÜN ÇOK TEMİZ HATASIZ SAMSUNG GALAXY S23 256GB SİYAH RENK",
+      "category": "elektronik eşya",
       "subCategory": "Telefon",
-      "productName": "Motorsiklet Modeli 1",
-      "price": "50000",
-      "brand": "Marka 2",
-      "model": "Modeli",
-      "color": "Gri",
-      "ram": "ram",
+      "price": "25.799 ",
+      "brand": "Samsung",
+      "model": "S 23 Ultra",
+      "color": "Siyah",
+      "ram": "8",
       "processor": "işlemci",
-      "memory": "hafıza",
+      "memory": "256",
       "id": 5
     },
     {

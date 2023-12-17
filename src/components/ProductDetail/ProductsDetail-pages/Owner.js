@@ -6,7 +6,7 @@ function Owner() {
       className="mt-5"
       style={{
         maxHeight:"200px",
-        maxWidth:"250px",
+        minWidth:"250px",
         border: "1px solid gray",
         borderRadius: "15px",
         padding: "15px",
