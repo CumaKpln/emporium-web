@@ -2,7 +2,7 @@ import React from "react";
 import logo from "../images/logo.png";
 import "../Styles/navbar.css";
 import { Link } from "react-router-dom";
-import filter from "./Filtering";
+import filter from "./FilterPage/Filtering";
 const Navbar = () => {
   return (
     <>
@@ -18,6 +18,7 @@ const Navbar = () => {
 
             <div className="nav-search">
               <input
+              className="searchİnput"
                 type="search"
                 placeholder="Arama yapınız"
                 onInput={(event) => {

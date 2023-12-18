@@ -83,7 +83,7 @@ textarea {
   box-sizing: border-box;
 }
 
-button {
+.signInBtn {
   background-color: #4caf50;
   color: white;
   padding: 10px 15px;
@@ -92,7 +92,7 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.signInBtn:hover {
   background-color: #45a049;
 }
 

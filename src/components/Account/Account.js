@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import İnformation from './Accountİnfo';
 import Productİnformation from './AccountProductİnformation';
 import AccountSidebar from './AccountMenu';
-import Navbar from './Navbar';
-import Footer from './Footer';
+import Navbar from '../Navbar';
+import Footer from '../Footer';
 
 function Account() {
   const [selectedPage, setSelectedPage] = useState('information');
