@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../../Styles/Account/AccountMenu.css";
-
 import Edit from "./AccountEditButton";
+import "../../Styles/Account/AccountInfo.css"
 
 function İnfo() {
   const [name, setName] = useState("Ömer Enes");
@@ -76,7 +76,7 @@ function İnfo() {
   };
 
   return (
-    <div className="form">
+    <div className="accountForm">
       <form>
         <h5 className="text-center mb-3">Hesap Bilgilerim</h5>
 
@@ -212,7 +212,7 @@ function İnfo() {
         {editMod ? (
           <div className="row AccountButton">
             <div className="col-md-4">
-              <button type="button" className="btn AccountSave" onClick={handleSaveClick}>
+              <button type="button" className="AccountSave btn" onClick={handleSaveClick}>
                 Kaydet
               </button>
             </div>
@@ -220,7 +220,7 @@ function İnfo() {
         ) : (
           <div className="row AccountButton">
             <div className="col-md-4">
-              <button type="button" className="btn AccountEdit" onClick={handleEditClick}>
+              <button type="button" className="AccountEdit btn" onClick={handleEditClick}>
                 Düzenle
               </button>
             </div>
