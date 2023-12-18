@@ -1,22 +1,20 @@
-import { createSlice } from "@reduxjs/toolkit";
-import data from "../../data/db.json";
+import { createSlice } from '@reduxjs/toolkit';
 
-// db.json'dan gelen verileri cartItems içine yerleştirme
 const initialState = {
-    cartItems: data["ilan-ver"], 
-    quantity: 0,
-    total: 0,
+    selectFav: {}, // selectFav'ı bir dizi olarak başlatın
 };
 
 const favSlice = createSlice({
-    name: "cart",
-    initialState,
-    reducers: {
-        // Eğer slice'a ekstra reducer'lar veya actions eklemek isterseniz, burada tanımlayabilirsiniz
-    }
+  name: 'favorites',
+  initialState,
+  reducers: {
+    favItem(state, action) {
+      state.selectFav = action.payload; // Seçilen ürünleri bir dizi içinde saklayın
+    },
+  },
 });
 
-export const { /* Ekstra action'larınız varsa burada export edebilirsiniz */ } = favSlice.actions;
-export default favSlice.reducer;
+export const { favItem } = favSlice.actions;
+export const favReducer = favSlice.reducer;
 
 

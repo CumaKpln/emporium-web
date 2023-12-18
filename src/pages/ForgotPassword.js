@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Logo from "../images/logo.png";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import "../Styles/ForgotPassword.css";
+import "../Styles/Pages/ForgotPassword.css";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');

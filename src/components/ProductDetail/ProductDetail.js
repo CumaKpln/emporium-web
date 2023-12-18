@@ -8,6 +8,7 @@ import "../../Styles/Product-Detail/ProductDetail.css";
 import Description from "./ProductsDetail-pages/Description";
 
 function ProductDetail() {
+
   return (
     <>
       <Navbar />
@@ -30,7 +31,7 @@ function ProductDetail() {
           </div>
         </div>
         <div className="desc">
-         <Description/>
+          <Description />
         </div>
       </div>
       <Footer />

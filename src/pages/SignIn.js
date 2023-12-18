@@ -1,5 +1,5 @@
 
-import "../Styles/SignIn.css"
+import "../Styles/Pages/SignIn.css"
 import Logo from '../images/logo.png'
 import React, { useState } from 'react'
 
