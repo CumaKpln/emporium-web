@@ -1,41 +1,56 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 
 function Owner() {
+  const dispatch = useDispatch();
+
+
+  const selectedItem = (Item) => {
+    // Redux store'a seçilen ürünü gönderme
+    dispatch(selectedItem(Item));
+  };
   return (
-    <div
-      className="mt-5"
-      style={{
-        maxHeight:"200px",
-        minWidth:"250px",
-        border: "1px solid gray",
-        borderRadius: "15px",
-        padding: "15px",
-      }}
-    >
-      <h5>Cuma KAPLAN</h5>
-      <a href="/#">Tüm ilanları</a>
-      <div className="mt-2"
+    <>
+      <div>
+     
+      </div>
+      <div
+        className="mt-5"
         style={{
-          backgroundColor: "lightGray",
+          maxHeight: "200px",
+          minWidth: "250px",
+          border: "1px solid gray",
           borderRadius: "15px",
-          padding: "10px",
+          padding: "15px",
         }}
       >
-        <div>
-          İş :{" "}
-          <span className="float-end" style={{ marginRight: "50px" }}>
-            0545 545 54 54
-          </span>
-        </div>
-        <hr />
-        <div>
-          Cep :
-          <span className="float-end" style={{ marginRight: "50px" }}>
-                0545 545 54 54
-          </span>
+        <h5>Cuma KAPLAN</h5>
+        <a href="/#">Tüm ilanları</a>
+        <div
+          className="mt-2"
+          style={{
+            backgroundColor: "lightGray",
+            borderRadius: "15px",
+            padding: "10px",
+          }}
+        >
+          <div>
+            İş :{" "}
+            <span className="float-end" style={{ marginRight: "50px" }}>
+              0545 545 54 54
+            </span>
+          </div>
+          <hr />
+          <div>
+            Cep :
+            <span className="float-end" style={{ marginRight: "50px" }}>
+              0545 545 54 54
+            </span>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

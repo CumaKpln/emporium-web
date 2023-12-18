@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { useDispatch } from "react-redux";
 import data from "../data/db.json";
 import "../Styles/Product.css";
 import { Link } from "react-router-dom";
 import { selectProduct } from "../control/slices/productSlice"; // Redux reducer'ınızdan gelen action
 
-const brands = ["Volkswagen", "Opel", "Séat", "Renault"];
+const brands = ["Volkswagen", "Opel", "Séat", "Renault", "BMW", "Regal Raptor"];
 const provinces = ["Ankara", "Antalya", "İstanbul", "İzmir", "Aydın", "Mardin", "Diyarbakır", "Yozgat", "Erzurum"];
 
 function Products() {
@@ -16,20 +16,16 @@ function Products() {
   const [ProvinceF, setProvinceF] = useState("");
   const [DistrictF, setDistrictF] = useState("");
 
-  const NameSection = () => {
-    const handleNameChange = (e) => {
-      setNameF(e.target.value);
-    };
+  function NameSection() {
+    return <input id="nameInput" type="text" value={NameF} onChange={(e) => { setNameF(e.target.value); }} onFocus={() => {
+      console.log("focus");
+    }} />
 
-    return <div key={"name"} id="name">
-      {NameF}
-      <input type="text" onInput={handleNameChange} />
-    </div>
   }
 
-  const BrandSection = () => {
+  function BrandSection() {
     return <div key={"brands"}>
-      {brands.map((b) => (<div key={b}><input type="checkbox" onInput={(e) => {
+      {brands.map((b) => (<div key={b}><input type="checkbox" onChange={(e) => {
         if (BrandF.includes(b)) {
           const temp = [];
           BrandF.forEach((brand) => {
@@ -46,22 +42,22 @@ function Products() {
     </div>
   }
 
-  const PriceSection = () => {
+  function PriceSection() {
     return <div key={"price"}>
-      <input key="minp" type="number" onInput={(e) => (setMinP(parseInt(e.target.value)))} />
-      <input key="maxp" type="number" onInput={(e) => (setMaxP(parseInt(e.target.value)))} />
+      <input key="minp" type="number" onChange={(e) => (setMinP(parseInt(e.target.value)))} />
+      <input key="maxp" type="number" onChange={(e) => (setMaxP(parseInt(e.target.value)))} />
     </div>
   }
 
-  const ProvinceSection = () => {
+  function ProvinceSection() {
     return <div key={"province"}>
-      <select key="province" onInput={(e) => (setProvinceF(e.target.value))}>
+      <select key="province" onChange={(e) => (setProvinceF(e.target.value))}>
         {provinces.map((p) => (<option key={p} value={p}>{p}</option>))}
       </select>
     </div>
   }
 
-  const FilterBar = ({ category = "" }) => {
+  function FilterBar({ category = "" }) {
     return <div className="filter-bar">
       <NameSection />
       <BrandSection />
@@ -70,11 +66,12 @@ function Products() {
     </div>
   }
 
-  const FilterProduct = (product) => {
+  function FilterProduct(product) {
+    if (NameF !== "" && !product.title.toLowerCase().includes(NameF.toLowerCase())) return false;
     if (product.price < MinP || product.price > MaxP) return false;
-    if (ProvinceF != "" && product.province != ProvinceF) return false;
-    if (DistrictF != "" && product.district != DistrictF) return false;
-    if (BrandF.length != 0 && !BrandF.includes(product.brand)) return false;
+    if (ProvinceF !== "" && product.province !== ProvinceF) return false;
+    if (DistrictF !== "" && product.district !== DistrictF) return false;
+    if (BrandF.length !== 0 && !BrandF.includes(product.brand)) return false;
     return true;
   }
 
