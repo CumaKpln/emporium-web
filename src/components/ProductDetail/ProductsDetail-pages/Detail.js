@@ -7,7 +7,7 @@ function Detail() {
     (state) => state.products.selectedProduct
   );
 
-  console.log(selectedProduct, "Detail");
+  // console.log(selectedProduct, "Detail");
 
   return (
     <div className="detail">

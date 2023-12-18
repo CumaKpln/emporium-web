@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Logo from "../images/logo.png";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import "../Styles/SignIn.css";
+import "../Styles/Pages/SignIn.css"
 
 function SignIn(){
   const [formData, setFormData] = useState({
