@@ -23,7 +23,7 @@ function App() {
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/upload-product" element={<UploadProduct />} />
         <Route path="/login" element={<LogIn />} />
-        <Route path="/register" element={<SignIn />} />
+        <Route path="/register" element={<SignIn />} /> 
 
         <Route path="/product-detail/" exact element={<ProductDetail />} />
 

@@ -1,76 +1,41 @@
+import React, { useState } from 'react';
+import Logo from "../images/logo.png";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import "../Styles/SignIn.css";
 
-import "../Styles/SignIn.css"
-import Logo from '../images/logo.png'
-import React, { useState } from 'react'
+function SignIn(){
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    address: '',
+    email: '',
+    phoneNumber: '',
+    password: '',
+    confirmPassword: '',
+  });
 
-import alertify from "alertifyjs"
-import validations from '../validation/index';
+  const [errors, setErrors] = useState({});
 
-import { useDispatch } from "react-redux"
-import { addUser, currentUserIndex } from '../control/slices/userSlice'
-import { useSelector } from "react-redux"
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-import { nanoid } from "nanoid";
+    // Doğrulama işlemleri
+    const validationErrors = {};
 
-import { useNavigate } from 'react-router-dom';
-
-function SignIn() {
-
-    const navigate = useNavigate();
-
-    const [name, setName] = useState("")
-    const [userName, setUserName] = useState("")
-    const [email, setEmail] = useState("")
-    const [phoneNumber, setPhoneNumber] = useState("")
-    const [address, setAddress] = useState("")
-    const [password, setPassword] = useState("")
-    const [passwordVerification, setPasswordVerification] = useState("")
-
-    const [errors, setErrors] = useState({});
-    const [touched, setTouched] = useState({});
-    const [isVisible, setIsVisible] = useState(false)
-    const [isVerificationVisible, setIsVerificationVisible] = useState(false)
-
-
-    const dispatch = useDispatch()
-    // const currentUser = dispatch(getCurrentUser())
-    const index = useSelector((state) => state.user.currentUserIndex);
-    const users = useSelector((state) => state.user.users);
-    const currentUser = users[index]
-
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        // Calculate the number of valid fields based on the absence of errors
-        const validFieldsCount = Object.keys(errors).filter(fieldName => !errors[fieldName]).length;
-
-
-        // Tüm alanlar geçerliyse
-        if (validFieldsCount === 6) {
-
-            dispatch(addUser({
-                name: name,
-                userName: userName,
-                email: email,
-                phoneNumber: phoneNumber,
-                password: password,
-                address: address,
-                id: nanoid(),
-            }))
-
-            console.log("Kullanıcı bilgileri:", currentUser, users);
-
-            // Başarılı mesajını göster
-            alertify.success("Kullanıcı başarıyla kaydedildi.");
-
-            navigate("/");
-
-        } else {
-            alertify.error("İlgili alanları uygun bir şekilde doldurunuz.");
-        }
+    // Ad, Soyad, Adres, E-posta, Telefon Numarası, Şifre kontrolü
+    for (const key in formData) {
+      if (formData.hasOwnProperty(key) && formData[key].trim() === '') {
+        validationErrors[key] = 'Bu alan boş bırakılamaz';
+      }
     }
 
     // E-posta format kontrolü
@@ -91,9 +56,11 @@ function SignIn() {
   return (
     <>
       <Navbar />
-      <div>
-        <form onSubmit={handleSubmit} className='formx'>
-          <h1>Kayıt Ol</h1>
+      <div className="container-login mt-5">
+        <div className='SignIn'>
+         
+        <form onSubmit={handleSubmit} className='formx' id='form-signin'>
+        <h1  className="mt-5">Kayıt Ol</h1>
           <div className="row">
             <div className="logo col-md-6">
               <div className="imagex">
@@ -178,8 +145,9 @@ function SignIn() {
             {errors.confirmPassword && <span className="error">{errors.confirmPassword}</span>}
           </label>
 
-          <button type="submit">Kayıt Ol</button>
+          <button type="submit" className="btn mb-2" id="Signin">Kayıt Ol</button>
         </form>
+        </div>
       </div>
       <Footer />
     </>
