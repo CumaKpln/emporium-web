@@ -57,7 +57,7 @@ function İnfo() {
       default:
         break;
     }
-  };
+  }; 
 
   const isEmailValid = () => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
