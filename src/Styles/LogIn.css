@@ -20,6 +20,7 @@
 .LogIn h1 {
     font-size: 28px;
     margin-top: 10px;
+    text-align: center; /* Add this line to center the text */
 }
 
 .logo {
@@ -29,7 +30,7 @@
 
 .image img {
     margin: 40% 0px;
-    max-width: 450px;
+    max-width: 500px;
     height: auto;
 }
 
@@ -98,7 +99,7 @@
 
     .image img {
         margin: 0px 15%;
-        max-width: 80%;
+        max-width: 100%;
         height: auto;
     }
 

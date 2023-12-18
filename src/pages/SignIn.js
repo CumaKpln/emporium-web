@@ -1,218 +1,157 @@
+import React, { useState } from 'react';
+import Logo from "../images/logo.png";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import "../Styles/SignIn.css";
 
-import "../Styles/SignIn.css"
-import Logo from '../images/logo.png'
-import React, { useState } from 'react'
+function SignIn(){
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    address: '',
+    email: '',
+    phoneNumber: '',
+    password: '',
+    confirmPassword: '',
+  });
 
-import alertify from "alertifyjs"
-import validations from '../validation/index';
+  const [errors, setErrors] = useState({});
 
-import { useDispatch } from "react-redux"
-import { addUser, currentUserIndex } from '../control/slices/userSlice'
-import { useSelector } from "react-redux"
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-import { nanoid } from "nanoid";
+    // Doğrulama işlemleri
+    const validationErrors = {};
 
-import { useNavigate } from 'react-router-dom';
-
-function SignIn() {
-
-    const navigate = useNavigate();
-
-    const [name, setName] = useState("")
-    const [userName, setUserName] = useState("")
-    const [email, setEmail] = useState("")
-    const [phoneNumber, setPhoneNumber] = useState("")
-    const [address, setAddress] = useState("")
-    const [password, setPassword] = useState("")
-    const [passwordVerification, setPasswordVerification] = useState("")
-
-    const [errors, setErrors] = useState({});
-    const [touched, setTouched] = useState({});
-    const [isVisible, setIsVisible] = useState(false)
-    const [isVerificationVisible, setIsVerificationVisible] = useState(false)
-
-
-    const dispatch = useDispatch()
-    // const currentUser = dispatch(getCurrentUser())
-    const index = useSelector((state) => state.user.currentUserIndex);
-    const users = useSelector((state) => state.user.users);
-    const currentUser = users[index]
-
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        // Calculate the number of valid fields based on the absence of errors
-        const validFieldsCount = Object.keys(errors).filter(fieldName => !errors[fieldName]).length;
-
-
-        // Tüm alanlar geçerliyse
-        if (validFieldsCount === 6) {
-
-            dispatch(addUser({
-                name: name,
-                userName: userName,
-                email: email,
-                phoneNumber: phoneNumber,
-                password: password,
-                address: address,
-                id: nanoid(),
-            }))
-
-            console.log("Kullanıcı bilgileri:", currentUser, users);
-
-            // Başarılı mesajını göster
-            alertify.success("Kullanıcı başarıyla kaydedildi.");
-
-            navigate("/");
-
-        } else {
-            alertify.error("İlgili alanları uygun bir şekilde doldurunuz.");
-        }
+    // Ad, Soyad, Adres, E-posta, Telefon Numarası, Şifre kontrolü
+    for (const key in formData) {
+      if (formData.hasOwnProperty(key) && formData[key].trim() === '') {
+        validationErrors[key] = 'Bu alan boş bırakılamaz';
+      }
     }
 
-    const handleCancel = (e) => {
-        alertify.success("Ana sayfa")
-        navigate("/");
+    // E-posta format kontrolü
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      validationErrors.email = 'Geçerli bir e-posta adresi girin';
     }
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
+    setErrors(validationErrors);
 
-        // Gerekli alanlara uygun şekilde set işlemlerini yapın
-        if (name === "name") {
-            setName(value);
-        } else if (name === "userName") {
-            setUserName(value);
-        } else if (name === "email") {
-            setEmail(value);
-        } else if (name === "phoneNumber") {
-            setPhoneNumber(value);
-        } else if (name === "address") {
-            setAddress(value);
-        } else if (name === "password") {
-            setPassword(value);
-        } else if (name === "passwordVerification") {
-            setPasswordVerification(value);
-        }
+    // Hata yoksa formu işle
+    if (Object.keys(validationErrors).length === 0) {
+      // Burada form verilerini işleyebilirsiniz, örneğin bir API'ye göndermek gibi.
+      console.log('Form submitted:', formData);
+    }
+  };
 
-
-        setTouched({
-            ...touched,
-            [name]: true,
-        });
-
-        // İlgili alanın doğrulama şemasını al
-        const fieldSchema = name === "passwordVerification" ? validations.fields["password"] : validations.fields[name]; ////// !!!! NOT SEND passwordVerification AS FİELD !!!! /////////
-
-
-        // Alanın değerini doğrula
-        fieldSchema.validate(value)
-            .then(() => {
-                // Doğrulama başarılıysa burada yapılacak işlemler
-                // Örneğin, hata durumunu temizle
-                setErrors({
-                    ...errors,
-                    [name]: '',
-                });
-            })
-            .catch(validationErrors => {
-
-                setErrors({
-                    ...errors,
-                    [name]: validationErrors.message,
-                });
-            });
-    };
-
-    const handleBlur = (e) => {
-        const { name } = e.target;
-        setTouched({
-            ...touched,
-            [name]: true,
-        });
-    };
-
-    return (
-        <div>
-
-            <div className='SignIn'>
-
-                <h1 >Kayıt Ol</h1>
-
-                <form onSubmit={handleSubmit}>
-
-                    <div className='image' style={{ width: "50%" }}>
-                        <img src={Logo} alt="Logo" style={{ width: '50%' }} />
-                    </div>
-
-                    <div className="row g-3" >
-
-                        <div className="col-md-6">
-                            <label className="Item" htmlFor="name">Ad Soyad</label> <br></br>
-                            <input name="name" placeholder="Ad Soyad" value={name} onChange={handleChange} />
-                            {errors.name && touched.name && <label className='error'>{errors.name}</label>}
-                        </div>
-
-                        <div className="col-md-6">
-                            <label className="Item" htmlFor="userName">Kullanıcı Adı</label> <br></br>
-                            <input name="userName" placeholder="Kullanıcı Adı" value={userName} onChange={(e) => setUserName(e.target.value)} />
-                            {errors.userName && touched.userName && <label className='error'>{errors.userName}</label>}
-                        </div>
-
-                        <div className="col-md-6">
-                            <label className="Item" htmlFor="email">E-posta</label>  <br></br>
-                            <input name="email" placeholder="E-posta" value={email} onChange={handleChange} onBlur={handleBlur} />
-                            {errors.email && touched.email && <label className='error'>{errors.email}</label>}
-                        </div>
-
-                        <div className="col-md-6">
-                            <label className="Item" htmlFor="phoneNumber">Telefon</label> <br></br>
-                            <input name="phoneNumber" placeholder="Telefon" value={phoneNumber} onChange={handleChange} />
-                            {errors.phoneNumber && touched.phoneNumber && <label className='error'>{errors.phoneNumber}</label>}
-                        </div>
-
-
-                        <div className="col-md-6">
-                            <label className="Item">Şifre</label>  <br></br>
-                            <input type={isVisible ? "" : "password"} name="password" value={password} onChange={handleChange} />
-                            <button className="eyeBtn" type="button" onClick={() => setIsVisible(!isVisible)}>
-                                {isVisible ? <VisibilityOffIcon className='eye' /> : <VisibilityIcon className='eye' />}
-                            </button>
-                            {errors.password && touched.password && <label className='error'>{errors.password}</label>}
-                        </div>
-
-                        <div className="col-md-6">
-                            <label className="Item" htmlFor="address">Adres</label> <br></br>
-                            <textarea name="address" placeholder="Adres" value={address} onChange={handleChange} />
-                            {errors.address && touched.address && <label className='error'>{errors.address}</label>}
-                        </div>
-
-                        <div className="col-md-6">
-                            <label className="Item">Şifre Doğrulama</label>  <br></br>
-                            <input type={isVerificationVisible ? "" : "password"} name="passwordVerification" value={passwordVerification} onChange={handleChange} />
-                            <button className="eyeBtn" type="button" onClick={() => setIsVerificationVisible(!isVerificationVisible)}>
-                                {isVerificationVisible ? <VisibilityOffIcon className='eye' /> : <VisibilityIcon className='eye' />}
-                            </button>
-                            {touched.passwordVerification && touched.passwordVerification && <label className='error'>{errors.passwordVerification}</label>}
-                        </div>
-
-
-                        <div className='btn'>
-                            <button type='submit' className="signInBtn" onClick={handleSubmit}>KAYIT OL</button>
-
-                            <button type="button" className="signInBtn" onClick={handleCancel}>İPTAL</button>
-                        </div>
-
-
-                    </div>
-                </form>
+  return (
+    <>
+      <Navbar />
+      <div className="container-login mt-5">
+        <div className='SignIn'>
+         
+        <form onSubmit={handleSubmit} className='formx' id='form-signin'>
+        <h1  className="mt-5">Kayıt Ol</h1>
+          <div className="row">
+            <div className="logo col-md-6">
+              <div className="imagex">
+                <img src={Logo} alt="Logo" />
+              </div>
             </div>
+          </div>
+          <label>
+            Ad:
+            <input
+              type="text"
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleChange}
+            />
+            {errors.firstName && <span className="error">{errors.firstName}</span>}
+          </label>
 
+          <label>
+            Soyad:
+            <input
+              type="text"
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleChange}
+            />
+            {errors.lastName && <span className="error">{errors.lastName}</span>}
+          </label>
+
+          <label>
+            Adres:
+            <input
+              type="text"
+              name="address"
+              value={formData.address}
+              onChange={handleChange}
+            />
+            {errors.address && <span className="error">{errors.address}</span>}
+          </label>
+
+          <label>
+            E-posta:
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+            />
+            {errors.email && <span className="error">{errors.email}</span>}
+          </label>
+
+          <label>
+            Telefon Numarası:
+            <input
+              type="tel"
+              name="phoneNumber"
+              value={formData.phoneNumber}
+              onChange={handleChange}
+            />
+            {errors.phoneNumber && <span className="error">{errors.phoneNumber}</span>}
+          </label>
+
+          <label>
+            Şifre:
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+            />
+            {errors.password && <span className="error">{errors.password}</span>}
+          </label>
+
+          <label>
+            Şifre Tekrar:
+            <input
+              type="password"
+              name="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+            />
+            {errors.confirmPassword && <span className="error">{errors.confirmPassword}</span>}
+          </label>
+
+          <button type="submit" className="btn mb-2" id="Signin">Kayıt Ol</button>
+        </form>
         </div>
-    )
-}
+      </div>
+      <Footer />
+    </>
+  );
+};
 
-export default SignIn
+export default SignIn;
