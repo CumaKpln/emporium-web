@@ -39,9 +39,9 @@ function LogIn() {
       <Navbar />
       <div className="container-login mt-5">
         <div className="LogIn">
-          <h1 className="mt-5 text-center">Üye Girişi</h1>
+          <h1 className="mt-5" id="üyegirişbutonu">Üye Girişi</h1>
 
-          <form className="mt-5" onSubmit={(e) => handleSubmit(e)}>
+          <form onSubmit={(e) => handleSubmit(e)} id="form-login">
             <div className="row">
               <div className="logo col-md-6">
                 <div className="image">
@@ -63,6 +63,7 @@ function LogIn() {
                 </div>
                 <div className="password">
                   <label className="Item">Şifre</label>
+                  <br />
                   <input
                     type="password"
                     className="password input"

@@ -1,5 +1,5 @@
 .card{
-  margin-top: 15%;
+  margin-top: 9%;
   border: none;
   margin-bottom: 30px;
   border-radius: 20px;
@@ -11,15 +11,15 @@ cursor: pointer;
   background: linear-gradient(145.44deg, #F2F4FA 0%, #FAFBFC 100%);
   border-radius: 20px;
   padding: 30px;
-  height:   auto;
+  height: auto;
 }
 
 #AccountMenuİmg{
   /* width: auto;
   max-height: 150px; */
-  width:"100";
-  height:"auto";
-  image-orientation: "from-image";
+  width: auto;
+  height: 150px;
+  image-orientation: from-image;
 }
 .AccountProductButton{
   margin-left: 30px;
@@ -86,4 +86,25 @@ cursor: pointer;
   background-color: #000;
   color: #b5b1b1;
   opacity: 0.5;
+}
+
+@media (max-width: 1290px){
+  .card{
+      margin: 0;
+      margin-top: 17%;
+  }
+}
+
+@media (max-width: 1200px){
+  .card{
+      margin: 0;
+      margin-top: 20%;
+  }
+}
+
+@media (max-width: 992px){
+  .card{
+      margin: 0;
+      margin-top: 5%;
+  }
 }

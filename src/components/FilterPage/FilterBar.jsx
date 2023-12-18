@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { render } from "@testing-library/react";
+import React, { useEffect, useState } from "react";
 const brands = ["Volkswagen", "Opel", "Séat", "Renault"];
 const provinces = ["Ankara", "Antalya", "İstanbul", "İzmir", "Aydın", "Mardin", "Diyarbakır", "Yozgat", "Erzurum"];
 
@@ -8,16 +9,21 @@ let minP = 0, maxP = 1000000000, nameF = "", brandF = [], provinceF = "", distri
 
 function NameSection() {
     const [name, setName] = useState("");
-    return <div key={"name"}>
+    const handleNameChange = (e) => {
+        setName(e.target.value);
+        nameF = name;
+    };
+
+    return <div key={"name"} id="name">
         {name}
-        <input type="text" onInput={(e) => { setName(e.target.value); nameF = name }} />
+        <input type="text" onChange={handleNameChange} />
     </div>
 
 }
 function BrandSection({ brands }) {
     const [brand, setBrand] = useState([]);
     return <div key={"brands"}>
-        {brands.map((b) => (<div key={b}><input type="checkbox" onInput={(e) => {
+        {brands.map((b) => (<div key={b}><input type="checkbox" onChange={(e) => {
             if (brand.includes(b)) {
                 const temp = [];
                 brand.forEach((brand) => {
@@ -61,7 +67,7 @@ function FilterBar({ category = "" }) {
 }
 export default FilterBar;
 
-export const filters =
+export let filters =
 {
     minP, maxP, nameF, brandF, provinceF, districtF
 };

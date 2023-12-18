@@ -35,7 +35,7 @@ const ForgotPassword = () => {
       <div className="form-container">
         <h2>Şifrenizi mi unuttunuz?</h2>
 
-        <form onSubmit={handleFormSubmit}>
+        <form className='form' onSubmit={handleFormSubmit}>
            <div className="image">
                   <img src={Logo} alt="Logo" />
             </div>

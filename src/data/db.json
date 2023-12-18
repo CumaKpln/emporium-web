@@ -45,7 +45,7 @@
       "subCategory": "Motorsiklet",
       "productName": "FIRAT MOTOR ŞİLE 2023 MODEL PİLDER 250 SENETLE 12 TAKSİT EXTRALI",
       "price": "185.500",
-      "brand": " Regal Raptor ",
+      "brand": "Regal Raptor",
       "color": "Kırmızı",
       "series": "vasita serisi",
       "gear": "Manuel",
@@ -87,7 +87,7 @@
       ],
       "title": "Arsa",
       "description": "Ürün Açıklaması 1",
-      "category": "emlak" ,
+      "category": "emlak",
       "subCategory": "Arsa",
       "price": "1.699.000 ",
       "m2": "566",
@@ -101,7 +101,6 @@
         {
           "url": "https://i0.shbdn.com/photos/62/22/43/1142622243717.jpg"
         }
-       
       ],
       "title": "Telefon",
       "description": "ÜRÜN ÇOK TEMİZ HATASIZ SAMSUNG GALAXY S23 256GB SİYAH RENK",
@@ -375,8 +374,9 @@
     },
     {
       "selectedFiles": [
-        { "url": "https://picsum.photos/id/237/200/300" },
-
+        {
+          "url": "https://picsum.photos/id/237/200/300"
+        },
         {
           "url": "https://picsum.photos/id/238/200/300"
         },
