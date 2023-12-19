@@ -14,6 +14,10 @@ cursor: pointer;
   height: auto;
 }
 
+.input-group-text{
+  height: 42px;
+}
+
 #AccountMenuİmg{
   /* width: auto;
   max-height: 150px; */
