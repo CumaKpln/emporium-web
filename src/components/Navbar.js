@@ -62,7 +62,8 @@ const Navbar = () => {
                 {/* buraya kullanıcı username gelecek */}
               </div>
             </Link>
-            <Link to="/favorites">
+
+            {/* <Link to="/favorites"> Bunu açınca herşey açılacak */} 
               <div className="fav-icon">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -76,7 +77,7 @@ const Navbar = () => {
                 </svg>
                 <span>Favoriler</span>
               </div>
-            </Link>
+            {/* </Link> */}
             <Link to="/upload-product">
               <button type="button">
                 <span>İlan ver</span>

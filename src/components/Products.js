@@ -86,7 +86,9 @@ function Products() {
   return (
     <div className="products" >
       <FilterBar /> <br />
-      {data["ilan-ver"].filter((p) => FilterProduct(p)).map((product, id) => (
+      {data["ilan-ver"]
+      .filter((p) => FilterProduct(p))
+      .map((product, id) => (
         <div className="img p-3" key={id} style={{ cursor: "pointer" }}>
           <Link to={`/urun-detayi/${id}`} onClick={() => selectedProduct(product)}>
             <img src={product.selectedFiles[0].url} alt="foto" />
