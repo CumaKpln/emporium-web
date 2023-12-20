@@ -3,55 +3,66 @@ import Logo from "../images/logo.png";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../Styles/Pages/SignIn.css"
+import axios from 'axios';
 
-function SignIn() {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    address: '',
-    email: '',
-    phoneNumber: '',
-    password: '',
-    confirmPassword: '',
-  });
 
-  const [errors, setErrors] = useState({});
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // Doğrulama işlemleri
-    const validationErrors = {};
-
-    // Ad, Soyad, Adres, E-posta, Telefon Numarası, Şifre kontrolü
-    for (const key in formData) {
-      if (formData.hasOwnProperty(key) && formData[key].trim() === '') {
-        validationErrors[key] = 'Bu alan boş bırakılamaz';
+  function SignIn() {
+    const [formData, setFormData] = useState({
+      firstName: '',
+      lastName: '',
+      address: '',
+      email: '',
+      phoneNumber: '',
+      password: '',
+      confirmPassword: '',
+    });
+  
+    const [errors, setErrors] = useState({});
+  
+    const handleChange = (e) => {
+      const { name, value } = e.target;
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    };
+  
+    const handleSubmit = (e) => {
+      e.preventDefault();
+  
+      const validationErrors = {};
+  
+      // Form alanları için gerekli doğrulamaları yapın ve hataları validationErrors nesnesine ekleyin
+      // Örnek: required alan kontrolü
+      for (const key in formData) {
+        if (formData.hasOwnProperty(key) && formData[key].trim() === '') {
+          validationErrors[key] = 'Bu alan boş bırakılamaz';
+        }
       }
-    }
-
-    // E-posta format kontrolü
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
-      validationErrors.email = 'Geçerli bir e-posta adresi girin';
-    }
-
-    setErrors(validationErrors);
-
-    // Hata yoksa formu işle
-    if (Object.keys(validationErrors).length === 0) {
-      // Burada form verilerini işleyebilirsiniz, örneğin bir API'ye göndermek gibi.
-      console.log('Form submitted:', formData);
-    }
-  };
+  
+      // E-posta format kontrolü
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(formData.email)) {
+        validationErrors.email = 'Geçerli bir e-posta adresi girin';
+      }
+  
+      setErrors(validationErrors);
+  
+      // Hata yoksa Axios isteğini yapın
+      if (Object.keys(validationErrors).length === 0) {
+        axios.post('YOUR_URL', formData)
+          .then(response => {
+            console.log('İstek başarılı. Yanıt:', response.data);
+            // İstek başarılı olduğunda geri dönen veriyi burada işleyebilirsiniz
+          })
+          .catch(error => {
+            console.error('İstek hatası:', error);
+            // Hata durumunda hata mesajını burada işleyebilirsiniz
+          });
+      }
+    };
 
   return (
     <>
@@ -155,5 +166,7 @@ function SignIn() {
     </>
   );
 };
+
+
 
 export default SignIn;
