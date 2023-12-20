@@ -25,6 +25,9 @@
       "color": "Mavi",
       "series": " 3 Serisi ",
       "gear": "Otomatik",
+      "province":"Ankara",
+      "district":"Çankaya",
+      "neighbourhood":"Kızılay",
       "id": 1
     },
     {
@@ -49,6 +52,9 @@
       "color": "Kırmızı",
       "series": "vasita serisi",
       "gear": "Manuel",
+      "province":"Antalya",
+      "district":"Muratpaşa",
+      "neighbourhood":"Lara",
       "id": 2
     },
     {

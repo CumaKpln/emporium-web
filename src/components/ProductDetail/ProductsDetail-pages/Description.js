@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import Location from "./ProductLocation"
 
 function Description() {
   const [activeTab, setActiveTab] = useState('description'); // Varsayılan aktif sekme
@@ -41,9 +42,7 @@ function Description() {
           <h5 className="card-title">{selectedProduct.description}</h5>
         )}
         {activeTab === 'location' && (
-          <h5 className="card-title">{selectedProduct.location}
-            Eklenecek
-          </h5>
+         <Location/>
 
         )}
       </div>

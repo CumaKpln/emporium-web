@@ -8,20 +8,22 @@ body .SignIn {
   font-weight: bold;
 }
 
-.SignIn h1{
+.SignIn h1 {
   font-size: 28px;
   margin-top: 10px;
-  text-align: center; /* Add this line to center the text */
+  text-align: center;
+  /* Add this line to center the text */
 }
-#Signin{
 
-    width: 100%;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    padding: 10px;
+#Signin {
+
+  width: 100%;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 10px;
 
 
 }
@@ -35,8 +37,9 @@ body .SignIn {
   cursor: pointer;
 
 }
+
 .formx {
-  margin: auto; 
+  margin: auto;
   width: 80%;
 
   padding: 20px;
@@ -70,7 +73,8 @@ body .SignIn {
 }
 
 .input-container {
-  width: 48%; /* 4 label sağda, 4 label solda */
+  width: 48%;
+  /* 4 label sağda, 4 label solda */
   margin-bottom: 10px;
 }
 
@@ -105,6 +109,7 @@ textarea {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }

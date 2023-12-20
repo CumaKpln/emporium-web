@@ -21,7 +21,11 @@ const UploadProduct = () => {
   const [processor, setProcessor] = useState("");
   const [memory, setMemory] = useState("");
   const [productRoom, setProductRoom] = useState("");
-  const [graphicCard, setGraphicCard] = useState("");
+  const [graphicCard, setGraphicCard] = useState("");
+  const [province, setProvince] = useState("");
+  const [district, setDistrict] = useState("");
+  const [neigborhood, setNeigborhood] = useState("");
+  
 
 
   // Kategori değiştiğinde alt kategoriyi sıfırla
@@ -74,7 +78,7 @@ const UploadProduct = () => {
 
     if (photos.length > 0) {
       console.log("Seçilen dosyalar:", photos);
-      
+
       // apiden geri çağırma işlemleri burada yapılacak//
     } else {
       alert("Lütfen fotoğraf yükleyiniz");
@@ -128,6 +132,33 @@ const UploadProduct = () => {
               </div>
 
               {/* Ürün açıklama alanı */}
+              <div className="product-pro">
+                <label htmlFor="province">Ürün Açıklaması:</label>
+                <textarea
+                  id="province"
+                  value={province}
+                  onChange={(e) => setProvince(e.target.value)}
+                  required
+                ></textarea>
+              </div>
+              <div className="product-dist">
+                <label htmlFor="district">Ürün Açıklaması:</label>
+                <textarea
+                  id="district"
+                  value={district}
+                  onChange={(e) => setDistrict(e.target.value)}
+                  required
+                ></textarea>
+              </div>
+              <div className="product-neigbor">
+                <label htmlFor="neigborhood">Ürün Açıklaması:</label>
+                <textarea
+                  id="neigborhood"
+                  value={neigborhood}
+                  onChange={(e) => setNeigborhood(e.target.value)}
+                  required
+                ></textarea>
+              </div>
               <div className="product-desc">
                 <label htmlFor="description">Ürün Açıklaması:</label>
                 <textarea
@@ -137,7 +168,7 @@ const UploadProduct = () => {
                   required
                 ></textarea>
               </div>
-              
+
               {/* Ana kategori seçim alanı */}
               <div className="product-category">
                 <label htmlFor="category">Kategori:</label>
@@ -286,29 +317,29 @@ const UploadProduct = () => {
               {category === "elektronik-esya" && (
                 <div>
                   <div className="product-processor">
-                  <label htmlFor="processor">İşlemci:</label>
-                  <input
-                    type="text"
-                    id="processor"
-                    value={processor}
-                    onChange={(e) => setProcessor(e.target.value)}
-                    required
-                  />
+                    <label htmlFor="processor">İşlemci:</label>
+                    <input
+                      type="text"
+                      id="processor"
+                      value={processor}
+                      onChange={(e) => setProcessor(e.target.value)}
+                      required
+                    />
+                  </div>
+                  <div className="product-memory">
+                    <label htmlFor="memory">Hafıza:</label>
+                    <input
+                      type="text"
+                      id="memory"
+                      value={memory}
+                      onChange={(e) => setMemory(e.target.value)}
+                      required
+                    />
+                  </div>
                 </div>
-                <div className="product-memory">
-                  <label htmlFor="memory">Hafıza:</label>
-                  <input
-                    type="text"
-                    id="memory"
-                    value={memory}
-                    onChange={(e) => setMemory(e.target.value)}
-                    required
-                  />
-                </div>
-                </div>
-                
+
               )}
-           
+
 
               {subCategory === "bilgisayar" && (
                 <div className="product-graphicCard">
@@ -346,19 +377,19 @@ const UploadProduct = () => {
                 />
               </div>
 
-               
-               
-                {/* Formun gönderme butonu */}
-                <button className="submitBtn" type="submit">
-                  Ürünü Yükle
-                </button>
-              
+
+
+              {/* Formun gönderme butonu */}
+              <button className="submitBtn" type="submit">
+                Ürünü Yükle
+              </button>
+
             </form>
           </div>
           <div className="col-md-4 col-sm-2 col-1"></div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
 
   );
