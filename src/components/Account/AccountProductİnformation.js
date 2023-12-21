@@ -68,14 +68,14 @@ function ProductInfo() {
 
   const renderImages = () => {
     return (
-      <div className="mb-3">
+      <div className="İmgEdit mb-3">
         {editedImages.map((image, index) => (
           <span key={index} className="mr-2 position-relative">
             <img
               src={image.url}
               alt={`Resim-${index + 1}`}
               className="img-thumbnail"
-              style={{ width: "100px", height: "100px" }}
+              style={{ width: "100px", height: "100px", margin:"5px" }}
             />
             <button
               type="button"
