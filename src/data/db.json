@@ -20,11 +20,14 @@
       "category": "vasıta",
       "subCategory": "Araba",
       "productName": "Bmw  320i M Sport ",
-      "price": "2.690.000",
+      "price": "2690000",
       "brand": "BMW",
       "color": "Mavi",
       "series": " 3 Serisi ",
       "gear": "Otomatik",
+      "province":"Ankara",
+      "district":"Çankaya",
+      "neighbourhood":"Kızılay",
       "id": 1
     },
     {
@@ -49,6 +52,9 @@
       "color": "Kırmızı",
       "series": "vasita serisi",
       "gear": "Manuel",
+      "province":"Antalya",
+      "district":"Muratpaşa",
+      "neighbourhood":"Lara",
       "id": 2
     },
     {
@@ -71,7 +77,10 @@
       "price": "15.500.000",
       "m2": "350",
       "rooms": "5+1",
-      "id": 3
+      "id": 3,
+      "province":"İstanbul",
+      "district":"Fatih",
+      "neighbourhood":"Eminönü"
     },
     {
       "selectedFiles": [
@@ -89,9 +98,13 @@
       "description": "Ürün Açıklaması 1",
       "category": "emlak",
       "subCategory": "Arsa",
+      "productName": "büyük arsa",
       "price": "1.699.000 ",
       "m2": "566",
-      "id": 4
+      "id": 4,
+      "province":"Kahramanmaraş",
+      "district":"Dulkadiroğlu",
+      "neighbourhood":"namık kemal"
     },
     {
       "selectedFiles": [
@@ -106,6 +119,7 @@
       "description": "ÜRÜN ÇOK TEMİZ HATASIZ SAMSUNG GALAXY S23 256GB SİYAH RENK",
       "category": "elektronik eşya",
       "subCategory": "Telefon",
+      "productName": "ULTRA LÜKS telefon ",
       "price": "25.799 ",
       "brand": "Samsung",
       "model": "S 23 Ultra",

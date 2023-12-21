@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    selectFav: {}, // selectFav'ı bir dizi olarak başlatın
+    selectFav: [], // selectFav'ı bir dizi olarak başlatın
 };
 
 const favSlice = createSlice({
@@ -9,12 +9,16 @@ const favSlice = createSlice({
   initialState,
   reducers: {
     favItem(state, action) {
-      state.selectFav = action.payload; // Seçilen ürünleri bir dizi içinde saklayın
+      state.selectFav = [...state.selectFav, action.payload]; // Yeni ürünü favori ürünler listesine ekle
+    },
+    removeFav(state, action) {
+      state.selectFav = state.selectFav.filter(item => item.id !== action.payload.id); // Favori ürünü listeden kaldırma
+    },
+    clearFav(state) {
+      state.selectFav = []; // Tüm favori ürünleri temizleme
     },
   },
 });
 
-export const { favItem } = favSlice.actions;
+export const { favItem, removeFav, clearFav } = favSlice.actions;
 export const favReducer = favSlice.reducer;
-
-
