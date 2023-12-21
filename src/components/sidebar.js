@@ -462,7 +462,7 @@ const Sidebar = () => {
   };
 
   const togglePcMemoryDropdown = () => {
-    setPcMemoryOpen(!isPhoneMemoryOpen);
+    setPcMemoryOpen(!isPcMemoryOpen);
     setPcDistrictOpen(false);
     setPcBrandOpen(false);
     setPcModelOpen(false);
@@ -1128,7 +1128,7 @@ const Sidebar = () => {
             type="button"
             onClick={togglePcDropdown}
           >
-            Pc
+            Bilgisayar
           </button>
           {isPcOpen && (
             <div className="custom-dropdown-menu">
