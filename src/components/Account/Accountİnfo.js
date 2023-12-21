@@ -6,9 +6,6 @@ import "../../Styles/Account/AccountInfo.css"
 function İnfo() {
   const [name, setName] = useState("Ömer Enes");
   const [surname, setSurname] = useState("Genç");
-  const [province, setProvince] = useState("Trabzon");
-  const [district, setDistrict] = useState("Akçaabat");
-  const [neighbourhood, setNeighbourhood] = useState("Yaylacık");
   const [email, setEmail] = useState("omerenesgenc@gmail.com");
   const [phone, setPhone] = useState("05541510843");
   const [editMod, setEditMod] = useState(false);
@@ -19,9 +16,6 @@ function İnfo() {
     switch (id) {
       case "nameInput":
       case "surnameInput":
-      case "provinceInput":
-      case "districtInput":
-      case "neighbourhoodInput":
         // Sadece harf ve boşluk içerebilir
         if (/^[A-Za-z\s]*$/.test(value)) {
           switch (id) {
@@ -30,15 +24,6 @@ function İnfo() {
               break;
             case "surnameInput":
               setSurname(value);
-              break;
-            case "provinceInput":
-              setProvince(value);
-              break;
-            case "districtInput":
-              setDistrict(value);
-              break;
-            case "neighbourhoodInput":
-              setNeighbourhood(value);
               break;
             default:
               break;
@@ -112,60 +97,6 @@ function İnfo() {
                 id="surnameInput"
                 placeholder="Soyadınızı Giriniz."
                 value={surname}
-              />
-            )}
-          </div>
-        </div>
-
-        <div className="row province-district-neighborhood">
-          <div className="col-md-4">
-            <label htmlFor="provinceInput" className="form-label">
-              İl
-            </label>
-            {editMod ? (
-              <Edit field="province" value={province} onChange={(e) => handleInputChange(e)} />
-            ) : (
-              <input
-                disabled
-                type="text"
-                className="form-control"
-                id="provinceInput"
-                placeholder="İl Giriniz."
-                value={province}
-              />
-            )}
-          </div>
-          <div className="col-md-4">
-            <label htmlFor="districtInput" className="form-label">
-              İlçe
-            </label>
-            {editMod ? (
-              <Edit field="district" value={district} onChange={(e) => handleInputChange(e)} />
-            ) : (
-              <input
-                disabled
-                type="text"
-                className="form-control"
-                id="districtInput"
-                placeholder="İlçe Giriniz."
-                value={district}
-              />
-            )}
-          </div>
-          <div className="col-md-4">
-            <label htmlFor="neighbourhoodInput" className="form-label">
-              Mahalle
-            </label>
-            {editMod ? (
-              <Edit field="neighbourhood" value={neighbourhood} onChange={(e) => handleInputChange(e)} />
-            ) : (
-              <input
-                disabled
-                type="text"
-                className="form-control"
-                id="neighbourhoodInput"
-                placeholder="Mahalle Giriniz."
-                value={neighbourhood}
               />
             )}
           </div>
