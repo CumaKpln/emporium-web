@@ -15,9 +15,8 @@ function SignIn() {
     confirmPassword: "",
   });
 
-  
   const [errors, setErrors] = useState({});
-  
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -25,30 +24,36 @@ function SignIn() {
       [name]: value,
     }));
   };
-    
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
+    // Eksik veri kontrolü için validasyon hatalarını saklayacağımız obje
     const validationErrors = {};
-    
+
+    // Form verilerini kontrol et
     for (const key in formData) {
-      if (formData.hasOwnProperty(key) && formData[key].trim() === "") {
+      if (formData[key].trim() === "") {
         validationErrors[key] = "Bu alan boş bırakılamaz";
       }
     }
-    
+
+    // E-posta ve telefon için regex kontrolleri
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
       validationErrors.email = "Geçerli bir e-posta adresi girin";
     }
-    
+
     const phoneRegex = /^[0-9]{10}$/;
     if (!phoneRegex.test(formData.phoneNumber)) {
-      validationErrors.phoneNumber = "Geçerli bir telefon numarası girin (10 haneli, sadece rakam)";
+      validationErrors.phoneNumber =
+        "Geçerli bir telefon numarası girin (10 haneli, sadece rakam)";
     }
 
+    // Hataları set et
     setErrors(validationErrors);
 
+    // Eğer hata yoksa, form verilerini gönder
     if (Object.keys(validationErrors).length === 0) {
       const username = `${formData.firstName} ${formData.lastName}`;
       const dataToSend = { ...formData, username };
@@ -57,7 +62,15 @@ function SignIn() {
         .post("YOUR_URL", dataToSend)
         .then((response) => {
           console.log("İstek başarılı. Yanıt:", response.data);
-          // İstek başarılı olduğunda geri dönen veriyi burada işleyebilirsiniz
+          // Form verilerini temizle
+          setFormData({
+            firstName: "",
+            lastName: "",
+            email: "",
+            phoneNumber: "",
+            password: "",
+            confirmPassword: "",
+          });
         })
         .catch((error) => {
           console.error("İstek hatası:", error);
