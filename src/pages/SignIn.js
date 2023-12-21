@@ -1,76 +1,77 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import Logo from "../images/logo.png";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import "../Styles/Pages/SignIn.css"
-import axios from 'axios';
+import "../Styles/Pages/SignIn.css";
+import axios from "axios";
+
+function SignIn() {
+
+  
+  const [formData, setFormData] = useState({
+    username:"",
+   
+    email: "",
+    phoneNumber: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const username = formData.firstName + " " + formData.lastName;
 
 
+  const [errors, setErrors] = useState({});
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
 
-  function SignIn() {
-    const [formData, setFormData] = useState({
-      firstName: '',
-      lastName: '',
-      address: '',
-      email: '',
-      phoneNumber: '',
-      password: '',
-      confirmPassword: '',
-    });
-  
-    const [errors, setErrors] = useState({});
-  
-    const handleChange = (e) => {
-      const { name, value } = e.target;
-      setFormData((prevData) => ({
-        ...prevData,
-        [name]: value,
-      }));
-    };
-  
-    const handleSubmit = (e) => {
-      e.preventDefault();
-  
-      const validationErrors = {};
-  
-      // Form alanları için gerekli doğrulamaları yapın ve hataları validationErrors nesnesine ekleyin
-      // Örnek: required alan kontrolü
-      for (const key in formData) {
-        if (formData.hasOwnProperty(key) && formData[key].trim() === '') {
-          validationErrors[key] = 'Bu alan boş bırakılamaz';
-        }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const validationErrors = {};
+
+    
+    for (const key in formData) {
+      if (formData.hasOwnProperty(key) && formData[key].trim() === "") {
+        validationErrors[key] = "Bu alan boş bırakılamaz";
       }
-  
-      // E-posta format kontrolü
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(formData.email)) {
-        validationErrors.email = 'Geçerli bir e-posta adresi girin';
-      }
-  
-      setErrors(validationErrors);
-  
-      // Hata yoksa Axios isteğini yapın
-      if (Object.keys(validationErrors).length === 0) {
-        axios.post('YOUR_URL', formData)
-          .then(response => {
-            console.log('İstek başarılı. Yanıt:', response.data);
-            // İstek başarılı olduğunda geri dönen veriyi burada işleyebilirsiniz
-          })
-          .catch(error => {
-            console.error('İstek hatası:', error);
-            // Hata durumunda hata mesajını burada işleyebilirsiniz
-          });
-      }
-    };
+    }
+
+    // E-posta format kontrolü
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      validationErrors.email = "Geçerli bir e-posta adresi girin";
+    }
+
+    setErrors(validationErrors);
+
+    // Hata yoksa Axios isteğini yapın
+    if (Object.keys(validationErrors).length === 0) {
+      axios
+        .post("YOUR_URL", formData)
+        .then((response) => {
+          console.log("İstek başarılı. Yanıt:", response.data);
+          // İstek başarılı olduğunda geri dönen veriyi burada işleyebilirsiniz
+        })
+        .catch((error) => {
+          console.error("İstek hatası:", error);
+          // Hata durumunda hata mesajını burada işleyebilirsiniz
+        });
+    }
+  };
 
   return (
     <>
       <Navbar />
       <div className="container-login mt-5">
-        <div className='SignIn'>
-
-          <form onSubmit={handleSubmit} className='formx' id='form-signin'>
+        <div className="SignIn">
+          <form onSubmit={handleSubmit} className="formx" id="form-signin">
             <h1 className="mt-5">Kayıt Ol</h1>
             <div className="row">
               <div className="logo col-md-6">
@@ -87,7 +88,9 @@ import axios from 'axios';
                     value={formData.firstName}
                     onChange={handleChange}
                   />
-                  {errors.firstName && <span className="error">{errors.firstName}</span>}
+                  {errors.firstName && (
+                    <span className="error">{errors.firstName}</span>
+                  )}
                 </label>
 
                 <label>
@@ -98,19 +101,12 @@ import axios from 'axios';
                     value={formData.lastName}
                     onChange={handleChange}
                   />
-                  {errors.lastName && <span className="error">{errors.lastName}</span>}
+                  {errors.lastName && (
+                    <span className="error">{errors.lastName}</span>
+                  )}
                 </label>
 
-                <label>
-                  Adres:
-                  <input
-                    type="text"
-                    name="address"
-                    value={formData.address}
-                    onChange={handleChange}
-                  />
-                  {errors.address && <span className="error">{errors.address}</span>}
-                </label>
+              
 
                 <label>
                   E-posta:
@@ -120,7 +116,9 @@ import axios from 'axios';
                     value={formData.email}
                     onChange={handleChange}
                   />
-                  {errors.email && <span className="error">{errors.email}</span>}
+                  {errors.email && (
+                    <span className="error">{errors.email}</span>
+                  )}
                 </label>
 
                 <label>
@@ -131,7 +129,9 @@ import axios from 'axios';
                     value={formData.phoneNumber}
                     onChange={handleChange}
                   />
-                  {errors.phoneNumber && <span className="error">{errors.phoneNumber}</span>}
+                  {errors.phoneNumber && (
+                    <span className="error">{errors.phoneNumber}</span>
+                  )}
                 </label>
 
                 <label>
@@ -142,7 +142,9 @@ import axios from 'axios';
                     value={formData.password}
                     onChange={handleChange}
                   />
-                  {errors.password && <span className="error">{errors.password}</span>}
+                  {errors.password && (
+                    <span className="error">{errors.password}</span>
+                  )}
                 </label>
 
                 <label>
@@ -153,20 +155,21 @@ import axios from 'axios';
                     value={formData.confirmPassword}
                     onChange={handleChange}
                   />
-                  {errors.confirmPassword && <span className="error">{errors.confirmPassword}</span>}
+                  {errors.confirmPassword && (
+                    <span className="error">{errors.confirmPassword}</span>
+                  )}
                 </label>
               </div>
-
             </div>
-            <button type="submit" className="btn mb-2" id="Signin">Kayıt Ol</button>
+            <button type="submit" className="btn mb-2" id="Signin">
+              Kayıt Ol
+            </button>
           </form>
         </div>
       </div>
       <Footer />
     </>
   );
-};
-
-
+}
 
 export default SignIn;

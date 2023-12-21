@@ -16,7 +16,6 @@ body .SignIn {
 }
 
 #Signin {
-
   width: 100%;
   background-color: #007bff;
   color: #fff;
@@ -77,6 +76,11 @@ body .SignIn {
   /* 4 label sağda, 4 label solda */
   margin-bottom: 10px;
 }
+
+.inputs {
+  max-width: 250px;
+}
+
 
 input,
 textarea {

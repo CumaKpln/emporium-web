@@ -77,7 +77,10 @@
       "price": "15.500.000",
       "m2": "350",
       "rooms": "5+1",
-      "id": 3
+      "id": 3,
+      "province":"İstanbul",
+      "district":"Fatih",
+      "neighbourhood":"Eminönü"
     },
     {
       "selectedFiles": [
@@ -98,7 +101,10 @@
       "productName": "büyük arsa",
       "price": "1.699.000 ",
       "m2": "566",
-      "id": 4
+      "id": 4,
+      "province":"Kahramanmaraş",
+      "district":"Dulkadiroğlu",
+      "neighbourhood":"namık kemal"
     },
     {
       "selectedFiles": [
