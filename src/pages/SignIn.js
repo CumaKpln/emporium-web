@@ -6,22 +6,18 @@ import "../Styles/Pages/SignIn.css";
 import axios from "axios";
 
 function SignIn() {
-
-  
   const [formData, setFormData] = useState({
-    username:"",
-   
+    firstName: "",
+    lastName: "",
     email: "",
     phoneNumber: "",
     password: "",
     confirmPassword: "",
   });
 
-  const username = formData.firstName + " " + formData.lastName;
-
-
+  
   const [errors, setErrors] = useState({});
-
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -29,32 +25,36 @@ function SignIn() {
       [name]: value,
     }));
   };
-
-
+    
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    
     const validationErrors = {};
-
     
     for (const key in formData) {
       if (formData.hasOwnProperty(key) && formData[key].trim() === "") {
         validationErrors[key] = "Bu alan boş bırakılamaz";
       }
     }
-
-    // E-posta format kontrolü
+    
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
       validationErrors.email = "Geçerli bir e-posta adresi girin";
     }
+    
+    const phoneRegex = /^[0-9]{10}$/;
+    if (!phoneRegex.test(formData.phoneNumber)) {
+      validationErrors.phoneNumber = "Geçerli bir telefon numarası girin (10 haneli, sadece rakam)";
+    }
 
     setErrors(validationErrors);
 
-    // Hata yoksa Axios isteğini yapın
     if (Object.keys(validationErrors).length === 0) {
+      const username = `${formData.firstName} ${formData.lastName}`;
+      const dataToSend = { ...formData, username };
+
       axios
-        .post("YOUR_URL", formData)
+        .post("YOUR_URL", dataToSend)
         .then((response) => {
           console.log("İstek başarılı. Yanıt:", response.data);
           // İstek başarılı olduğunda geri dönen veriyi burada işleyebilirsiniz
@@ -105,8 +105,6 @@ function SignIn() {
                     <span className="error">{errors.lastName}</span>
                   )}
                 </label>
-
-              
 
                 <label>
                   E-posta:
