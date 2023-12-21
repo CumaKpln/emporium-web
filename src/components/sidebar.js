@@ -25,41 +25,67 @@ const Sidebar = () => {
   // Emlak Bölümü
   const [isRealEstateOpen, setRealEstateOpen] = useState(false);
   // Ev
-  const [isHomeOpen, setHomeOpen]= useState(false)
+  const [isHomeOpen, setHomeOpen] = useState(false);
   const [isHomeProvinceOpen, setHomeProvinceOpen] = useState(false);
   const [isHomeDistrictOpen, setHomeDistrictOpen] = useState(false);
   const [isHomeM2Open, setHomeM2Open] = useState(false);
   const [isHomeNumberOfRoomsOpen, setHomeNumberOfRoomsOpen] = useState(false);
   // Arsa
-  const [isPlotOpen, setPlotOpen]= useState(false)
+  const [isPlotOpen, setPlotOpen] = useState(false);
   const [isPlotProvinceOpen, setPlotProvinceOpen] = useState(false);
   const [isPlotDistrictOpen, setPlotDistrictOpen] = useState(false);
   const [isPlotM2Open, setPlotM2Open] = useState(false);
   // Elektronik eşya bölümü
   const [isElectronicStuffOpen, setElectronicStuffOpen] = useState(false);
+  // Telefon bölümü
+  const [isPhoneOpen, setPhoneOpen] = useState(false);
+  const [isPhoneProvinceOpen, setPhoneProvinceOpen] = useState(false);
+  const [isPhoneDistrictOpen, setPhoneDistrictOpen] = useState(false);
+  const [isPhoneBrandOpen, setPhoneBrandOpen] = useState(false);
+  const [isPhoneModelOpen, setPhoneModelOpen] = useState(false);
+  const [isPhoneColorOpen, setPhoneColorOpen] = useState(false);
+  const [isPhoneRamOpen, setPhoneRamOpen] = useState(false);
+  const [isPhoneProcessorOpen, setPhoneProcessorOpen] = useState(false);
+  const [isPhoneMemoryOpen, setPhoneMemoryOpen] = useState(false);
+  // Bilgisayar
+  const [isPcOpen, setPcOpen] = useState(false);
+  const [isPcProvinceOpen, setPcProvinceOpen] = useState(false);
+  const [isPcDistrictOpen, setPcDistrictOpen] = useState(false);
+  const [isPcBrandOpen, setPcBrandOpen] = useState(false);
+  const [isPcModelOpen, setPcModelOpen] = useState(false);
+  const [isPcColorOpen, setPcColorOpen] = useState(false);
+  const [isPcRamOpen, setPcRamOpen] = useState(false);
+  const [isPcProcessorOpen, setPcProcessorOpen] = useState(false);
+  const [isPcMemoryOpen, setPcMemoryOpen] = useState(false);
 
   const toggleVehicleDropdown = () => {
     setVehicleOpen(!isVehicleOpen);
     setCarOpen(false);
     setMotorcycleOpen(false);
-    setRealEstateOpen(false)
-    setHomeOpen(false)
-    setPlotOpen(false)
-    setElectronicStuffOpen(false)
+    setRealEstateOpen(false);
+    setHomeOpen(false);
+    setPlotOpen(false);
+    setElectronicStuffOpen(false);
+    setPhoneOpen(false);
+    setPcOpen(false);
   };
 
   const toggleRealEstateDropdown = () => {
     setRealEstateOpen(!isRealEstateOpen);
-    setHomeOpen(false)
-    setPlotOpen(false)
-    setVehicleOpen(false)
+    setHomeOpen(false);
+    setPlotOpen(false);
+    setVehicleOpen(false);
     setCarOpen(false);
     setMotorcycleOpen(false);
     setElectronicStuffOpen(false);
+    setPhoneOpen(false);
+    setPcOpen(false);
   };
 
   const toggleElectronicStuffDropdown = () => {
     setElectronicStuffOpen(!isElectronicStuffOpen);
+    setPhoneOpen(false);
+    setPcOpen(false);
     setVehicleOpen(false);
     setCarOpen(false);
     setMotorcycleOpen(false);
@@ -202,11 +228,11 @@ const Sidebar = () => {
   //Ev Bölümü
   const toggleHomeDropdown = () => {
     setHomeOpen(!isHomeOpen);
-    setPlotOpen(false)
+    setPlotOpen(false);
     setHomeDistrictOpen(false);
     setHomeM2Open(false);
     setHomeNumberOfRoomsOpen(false);
-    setHomeProvinceOpen(false)
+    setHomeProvinceOpen(false);
   };
 
   const toggleHomeProvinceDropdown = () => {
@@ -240,10 +266,10 @@ const Sidebar = () => {
   // Arsa Bölümü
   const togglePlotDropdown = () => {
     setPlotOpen(!isPlotOpen);
-    setHomeOpen(false)
+    setHomeOpen(false);
     setPlotDistrictOpen(false);
     setPlotM2Open(false);
-    setPlotProvinceOpen(false)
+    setPlotProvinceOpen(false);
   };
 
   const togglePlotProvinceDropdown = () => {
@@ -263,6 +289,211 @@ const Sidebar = () => {
     setPlotProvinceOpen(false);
     setPlotDistrictOpen(false);
   };
+
+  //Telefon
+  const togglePhoneDropdown = () => {
+    setPhoneOpen(!isPhoneOpen);
+    setPcOpen(false);
+    setPhoneDistrictOpen(false);
+    setPhoneBrandOpen(false);
+    setPhoneProvinceOpen(false);
+    setPhoneModelOpen(false);
+    setPhoneColorOpen(false);
+    setPhoneMemoryOpen(false);
+    setPhoneProcessorOpen(false);
+    setPhoneRamOpen(false);
+  };
+
+  const togglePhoneProvinceDropdown = () => {
+    setPhoneProvinceOpen(!isPhoneProvinceOpen);
+    setPhoneDistrictOpen(false);
+    setPhoneBrandOpen(false);
+    setPhoneModelOpen(false);
+    setPhoneColorOpen(false);
+    setPhoneMemoryOpen(false);
+    setPhoneProcessorOpen(false);
+    setPhoneRamOpen(false);
+  };
+
+  const togglePhoneDistrictDropdown = () => {
+    setPhoneDistrictOpen(!isPhoneDistrictOpen);
+    setPhoneProvinceOpen(false);
+    setPhoneBrandOpen(false);
+    setPhoneModelOpen(false);
+    setPhoneColorOpen(false);
+    setPhoneMemoryOpen(false);
+    setPhoneProcessorOpen(false);
+    setPhoneRamOpen(false);
+  };
+
+  const togglePhoneBrandDropdown = () => {
+    setPhoneBrandOpen(!isPhoneBrandOpen);
+    setPhoneDistrictOpen(false);
+    setPhoneProvinceOpen(false);
+    setPhoneModelOpen(false);
+    setPhoneColorOpen(false);
+    setPhoneMemoryOpen(false);
+    setPhoneProcessorOpen(false);
+    setPhoneRamOpen(false);
+  };
+
+  const togglePhoneModelDropdown = () => {
+    setPhoneModelOpen(!isPhoneModelOpen);
+    setPhoneDistrictOpen(false);
+    setPhoneBrandOpen(false);
+    setPhoneProvinceOpen(false);
+    setPhoneColorOpen(false);
+    setPhoneMemoryOpen(false);
+    setPhoneProcessorOpen(false);
+    setPhoneRamOpen(false);
+  };
+
+  const togglePhoneColorDropdown = () => {
+    setPhoneColorOpen(!isPhoneColorOpen);
+    setPhoneDistrictOpen(false);
+    setPhoneBrandOpen(false);
+    setPhoneModelOpen(false);
+    setPhoneProvinceOpen(false);
+    setPhoneMemoryOpen(false);
+    setPhoneProcessorOpen(false);
+    setPhoneRamOpen(false);
+  };
+
+  const togglePhoneMemoryDropdown = () => {
+    setPhoneMemoryOpen(!isPhoneMemoryOpen);
+    setPhoneDistrictOpen(false);
+    setPhoneBrandOpen(false);
+    setPhoneModelOpen(false);
+    setPhoneColorOpen(false);
+    setPhoneProvinceOpen(false);
+    setPhoneProcessorOpen(false);
+    setPhoneRamOpen(false);
+  };
+
+  const togglePhoneProcessorDropdown = () => {
+    setPhoneProcessorOpen(!isPhoneProcessorOpen);
+    setPhoneDistrictOpen(false);
+    setPhoneBrandOpen(false);
+    setPhoneModelOpen(false);
+    setPhoneColorOpen(false);
+    setPhoneMemoryOpen(false);
+    setPhoneProvinceOpen(false);
+    setPhoneRamOpen(false);
+  };
+
+  const togglePhoneRamDropdown = () => {
+    setPhoneRamOpen(!isPhoneRamOpen);
+    setPhoneDistrictOpen(false);
+    setPhoneBrandOpen(false);
+    setPhoneModelOpen(false);
+    setPhoneColorOpen(false);
+    setPhoneMemoryOpen(false);
+    setPhoneProcessorOpen(false);
+    setPhoneProvinceOpen(false);
+  };
+
+  //Bilgisayar
+  const togglePcDropdown = () => {
+    setPcOpen(!isPcOpen);
+    setPhoneOpen(false);
+    setPcDistrictOpen(false);
+    setPcBrandOpen(false);
+    setPcProvinceOpen(false);
+    setPcModelOpen(false);
+    setPcColorOpen(false);
+    setPcMemoryOpen(false);
+    setPcProcessorOpen(false);
+    setPcRamOpen(false);
+  };
+
+  const togglePcProvinceDropdown = () => {
+    setPcProvinceOpen(!isPcProvinceOpen);
+    setPcDistrictOpen(false);
+    setPcBrandOpen(false);
+    setPcModelOpen(false);
+    setPcColorOpen(false);
+    setPcMemoryOpen(false);
+    setPcProcessorOpen(false);
+    setPcRamOpen(false);
+  };
+
+  const togglePcDistrictDropdown = () => {
+    setPcDistrictOpen(!isPcDistrictOpen);
+    setPcProvinceOpen(false);
+    setPcBrandOpen(false);
+    setPcModelOpen(false);
+    setPcColorOpen(false);
+    setPcMemoryOpen(false);
+    setPcProcessorOpen(false);
+    setPcRamOpen(false);
+  };
+
+  const togglePcBrandDropdown = () => {
+    setPcBrandOpen(!isPcBrandOpen);
+    setPcDistrictOpen(false);
+    setPcProvinceOpen(false);
+    setPcModelOpen(false);
+    setPcColorOpen(false);
+    setPcMemoryOpen(false);
+    setPcProcessorOpen(false);
+    setPcRamOpen(false);
+  };
+
+  const togglePcModelDropdown = () => {
+    setPcModelOpen(!isPcModelOpen);
+    setPcDistrictOpen(false);
+    setPcBrandOpen(false);
+    setPcProvinceOpen(false);
+    setPcColorOpen(false);
+    setPcMemoryOpen(false);
+    setPcProcessorOpen(false);
+    setPcRamOpen(false);
+  };
+
+  const togglePcColorDropdown = () => {
+    setPcColorOpen(!isPcColorOpen);
+    setPcDistrictOpen(false);
+    setPcBrandOpen(false);
+    setPcModelOpen(false);
+    setPcProvinceOpen(false);
+    setPcMemoryOpen(false);
+    setPcProcessorOpen(false);
+    setPcRamOpen(false);
+  };
+
+  const togglePcMemoryDropdown = () => {
+    setPcMemoryOpen(!isPhoneMemoryOpen);
+    setPcDistrictOpen(false);
+    setPcBrandOpen(false);
+    setPcModelOpen(false);
+    setPcColorOpen(false);
+    setPcProvinceOpen(false);
+    setPcProcessorOpen(false);
+    setPcRamOpen(false);
+  };
+
+  const togglePcProcessorDropdown = () => {
+    setPcProcessorOpen(!isPcProcessorOpen);
+    setPcDistrictOpen(false);
+    setPcBrandOpen(false);
+    setPcModelOpen(false);
+    setPcColorOpen(false);
+    setPcMemoryOpen(false);
+    setPcProvinceOpen(false);
+    setPcRamOpen(false);
+  };
+
+  const togglePcRamDropdown = () => {
+    setPcRamOpen(!isPcRamOpen);
+    setPcDistrictOpen(false);
+    setPcBrandOpen(false);
+    setPcModelOpen(false);
+    setPcColorOpen(false);
+    setPcMemoryOpen(false);
+    setPcProcessorOpen(false);
+    setPcProvinceOpen(false);
+  };
+
 
   return (
     <div className="dropdown">
@@ -539,182 +770,531 @@ const Sidebar = () => {
           )}
         </div>
       )}
-      <button className="btn sidebarMainTitle dropdown-toggle"
-      type="button"
-      onClick={toggleRealEstateDropdown}>
+      <button
+        className="btn sidebarMainTitle dropdown-toggle"
+        type="button"
+        onClick={toggleRealEstateDropdown}
+      >
         Emlak
       </button>
       {isRealEstateOpen && (
         <div className="custom-dropdown-menu">
-        <button
-          className="btn sidebarBtn dropdown-toggle"
-          type="button"
-          onClick={toggleHomeDropdown}
-        >
-          Ev
-        </button>
-        {isHomeOpen && (
-          <div className="custom-dropdown-menu">
-            <button
-              className="btn sidebarBtn dropdown-toggle"
-              type="button"
-              onClick={toggleHomeProvinceDropdown}
-            >
-              İl
-            </button>
-            {isHomeProvinceOpen && (
-              <div className="custom-dropdown-menu">
-                <button className="btn sidebarBtn" type="button">
-                  Model X
-                </button>
-                <button className="btn sidebarBtn" type="button">
-                  Model Y
-                </button>
-                <button className="btn sidebarBtn" type="button">
-                  Model Z
-                </button>
-              </div>
-            )}
-            <button
-              className="btn sidebarBtn dropdown-toggle"
-              type="button"
-              onClick={toggleHomeDistrictDropdown}
-            >
-              İlçe
-            </button>
-            {isHomeDistrictOpen && (
-              <div className="custom-dropdown-menu">
-                <button className="btn sidebarBtn" type="button">
-                  Model X
-                </button>
-                <button className="btn sidebarBtn" type="button">
-                  Model Y
-                </button>
-                <button className="btn sidebarBtn" type="button">
-                  Model Z
-                </button>
-              </div>
-            )}
-            <button
-              className="btn sidebarBtn dropdown-toggle"
-              type="button"
-              onClick={toggleHomeM2Dropdown}
-            >
-              M²
-            </button>
-            {isHomeM2Open && (
-              <div className="custom-dropdown-menu">
-                <button className="btn sidebarBtn" type="button">
-                  Model X
-                </button>
-                <button className="btn sidebarBtn" type="button">
-                  Model Y
-                </button>
-                <button className="btn sidebarBtn" type="button">
-                  Model Z
-                </button>
-              </div>
-            )}
-            <button
-              className="btn sidebarBtn dropdown-toggle"
-              type="button"
-              onClick={toggleHomeNumberOfRoomsDropdown}
-            >
-              Oda Sayısı
-            </button>
-            {isHomeNumberOfRoomsOpen && (
-              <div className="custom-dropdown-menu">
-                <button className="btn sidebarBtn" type="button">
-                  Model X
-                </button>
-                <button className="btn sidebarBtn" type="button">
-                  Model Y
-                </button>
-                <button className="btn sidebarBtn" type="button">
-                  Model Z
-                </button>
-              </div>
-            )}
-          </div>
-        )}
-        <button className="btn sidebarBtn dropdown-toggle"
-        type="button"
-        onClick={togglePlotDropdown}>
-          Arsa
-        </button>
-        {isPlotOpen && (
-          <div className="custom-dropdown-menu">
-            <button
-              className="btn sidebarBtn dropdown-toggle"
-              type="button"
-              onClick={togglePlotProvinceDropdown}
-            >
-              İl
-            </button>
-            {isPlotProvinceOpen && (
-              <div className="custom-dropdown-menu">
-                <button className="btn sidebarBtn" type="button">
-                  Model X
-                </button>
-                <button className="btn sidebarBtn" type="button">
-                  Model Y
-                </button>
-                <button className="btn sidebarBtn" type="button">
-                  Model Z
-                </button>
-              </div>
-            )}
-            <button
-              className="btn sidebarBtn dropdown-toggle"
-              type="button"
-              onClick={togglePlotDistrictDropdown}
-            >
-              İlçe
-            </button>
-            {isPlotDistrictOpen && (
-              <div className="custom-dropdown-menu">
-                <button className="btn sidebarBtn" type="button">
-                  Model X
-                </button>
-                <button className="btn sidebarBtn" type="button">
-                  Model Y
-                </button>
-                <button className="btn sidebarBtn" type="button">
-                  Model Z
-                </button>
-              </div>
-            )}
-            <button
-              className="btn sidebarBtn dropdown-toggle"
-              type="button"
-              onClick={togglePlotM2Dropdown}
-            >
-              M²
-            </button>
-            {isPlotM2Open && (
-              <div className="custom-dropdown-menu">
-                <button className="btn sidebarBtn" type="button">
-                  Model X
-                </button>
-                <button className="btn sidebarBtn" type="button">
-                  Model Y
-                </button>
-                <button className="btn sidebarBtn" type="button">
-                  Model Z
-                </button>
-              </div>
-            )}
-          </div>
-        )}
+          <button
+            className="btn sidebarBtn dropdown-toggle"
+            type="button"
+            onClick={toggleHomeDropdown}
+          >
+            Ev
+          </button>
+          {isHomeOpen && (
+            <div className="custom-dropdown-menu">
+              <button
+                className="btn sidebarBtn dropdown-toggle"
+                type="button"
+                onClick={toggleHomeProvinceDropdown}
+              >
+                İl
+              </button>
+              {isHomeProvinceOpen && (
+                <div className="custom-dropdown-menu">
+                  <button className="btn sidebarBtn" type="button">
+                    Model X
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Y
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Z
+                  </button>
+                </div>
+              )}
+              <button
+                className="btn sidebarBtn dropdown-toggle"
+                type="button"
+                onClick={toggleHomeDistrictDropdown}
+              >
+                İlçe
+              </button>
+              {isHomeDistrictOpen && (
+                <div className="custom-dropdown-menu">
+                  <button className="btn sidebarBtn" type="button">
+                    Model X
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Y
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Z
+                  </button>
+                </div>
+              )}
+              <button
+                className="btn sidebarBtn dropdown-toggle"
+                type="button"
+                onClick={toggleHomeM2Dropdown}
+              >
+                M²
+              </button>
+              {isHomeM2Open && (
+                <div className="custom-dropdown-menu">
+                  <button className="btn sidebarBtn" type="button">
+                    Model X
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Y
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Z
+                  </button>
+                </div>
+              )}
+              <button
+                className="btn sidebarBtn dropdown-toggle"
+                type="button"
+                onClick={toggleHomeNumberOfRoomsDropdown}
+              >
+                Oda Sayısı
+              </button>
+              {isHomeNumberOfRoomsOpen && (
+                <div className="custom-dropdown-menu">
+                  <button className="btn sidebarBtn" type="button">
+                    Model X
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Y
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Z
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+          <button
+            className="btn sidebarBtn dropdown-toggle"
+            type="button"
+            onClick={togglePlotDropdown}
+          >
+            Arsa
+          </button>
+          {isPlotOpen && (
+            <div className="custom-dropdown-menu">
+              <button
+                className="btn sidebarBtn dropdown-toggle"
+                type="button"
+                onClick={togglePlotProvinceDropdown}
+              >
+                İl
+              </button>
+              {isPlotProvinceOpen && (
+                <div className="custom-dropdown-menu">
+                  <button className="btn sidebarBtn" type="button">
+                    Model X
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Y
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Z
+                  </button>
+                </div>
+              )}
+              <button
+                className="btn sidebarBtn dropdown-toggle"
+                type="button"
+                onClick={togglePlotDistrictDropdown}
+              >
+                İlçe
+              </button>
+              {isPlotDistrictOpen && (
+                <div className="custom-dropdown-menu">
+                  <button className="btn sidebarBtn" type="button">
+                    Model X
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Y
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Z
+                  </button>
+                </div>
+              )}
+              <button
+                className="btn sidebarBtn dropdown-toggle"
+                type="button"
+                onClick={togglePlotM2Dropdown}
+              >
+                M²
+              </button>
+              {isPlotM2Open && (
+                <div className="custom-dropdown-menu">
+                  <button className="btn sidebarBtn" type="button">
+                    Model X
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Y
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Z
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       )}
-      <button className="btn sidebarMainTitle dropdown-toggle"
-      type="button"
-      onClick={toggleElectronicStuffDropdown}>
+     <button
+        className="btn sidebarMainTitle dropdown-toggle"
+        type="button"
+        onClick={toggleElectronicStuffDropdown}
+      >
         Elektronik Eşya
       </button>
-      {isElectronicStuffOpen &&(
-        <button>...</button>
+      {isElectronicStuffOpen && (
+        <div className="custom-dropdown-menu">
+          <button
+            className="btn sidebarBtn dropdown-toggle"
+            type="button"
+            onClick={togglePhoneDropdown}
+          >
+            Telefon
+          </button>
+          {isPhoneOpen && (
+            <div className="custom-dropdown-menu">
+              <button
+                className="btn sidebarBtn dropdown-toggle"
+                type="button"
+                onClick={togglePhoneProvinceDropdown}
+              >
+                İl
+              </button>
+              {isPhoneProvinceOpen && (
+                <div className="custom-dropdown-menu">
+                  <button className="btn sidebarBtn" type="button">
+                    Model X
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Y
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Z
+                  </button>
+                </div>
+              )}
+              <button
+                className="btn sidebarBtn dropdown-toggle"
+                type="button"
+                onClick={togglePhoneDistrictDropdown}
+              >
+                İlçe
+              </button>
+              {isPhoneDistrictOpen && (
+                <div className="custom-dropdown-menu">
+                  <button className="btn sidebarBtn" type="button">
+                    Model X
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Y
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Z
+                  </button>
+                </div>
+              )}
+              <button
+                className="btn sidebarBtn dropdown-toggle"
+                type="button"
+                onClick={togglePhoneBrandDropdown}
+              >
+                Marka
+              </button>
+              {isPhoneBrandOpen && (
+                <div className="custom-dropdown-menu">
+                  <button className="btn sidebarBtn" type="button">
+                    Model X
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Y
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Z
+                  </button>
+                </div>
+              )}
+              <button
+                className="btn sidebarBtn dropdown-toggle"
+                type="button"
+                onClick={togglePhoneModelDropdown}
+              >
+                Model
+              </button>
+              {isPhoneModelOpen && (
+                <div className="custom-dropdown-menu">
+                  <button className="btn sidebarBtn" type="button">
+                    Model X
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Y
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Z
+                  </button>
+                </div>
+              )}
+                            <button
+                className="btn sidebarBtn dropdown-toggle"
+                type="button"
+                onClick={togglePhoneColorDropdown}
+              >
+                Renk
+              </button>
+              {isPhoneColorOpen && (
+                <div className="custom-dropdown-menu">
+                  <button className="btn sidebarBtn" type="button">
+                    Model X
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Y
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Z
+                  </button>
+                </div>
+              )}
+                            <button
+                className="btn sidebarBtn dropdown-toggle"
+                type="button"
+                onClick={togglePhoneRamDropdown}
+              >
+                Ram
+              </button>
+              {isPhoneRamOpen && (
+                <div className="custom-dropdown-menu">
+                  <button className="btn sidebarBtn" type="button">
+                    Model X
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Y
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Z
+                  </button>
+                </div>
+              )}
+                            <button
+                className="btn sidebarBtn dropdown-toggle"
+                type="button"
+                onClick={togglePhoneProcessorDropdown}
+              >
+                İşlemci
+              </button>
+              {isPhoneProcessorOpen && (
+                <div className="custom-dropdown-menu">
+                  <button className="btn sidebarBtn" type="button">
+                    Model X
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Y
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Z
+                  </button>
+                </div>
+              )}
+                            <button
+                className="btn sidebarBtn dropdown-toggle"
+                type="button"
+                onClick={togglePhoneMemoryDropdown}
+              >
+                Hafıza
+              </button>
+              {isPhoneMemoryOpen && (
+                <div className="custom-dropdown-menu">
+                  <button className="btn sidebarBtn" type="button">
+                    Model X
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Y
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Z
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+          <button
+            className="btn sidebarBtn dropdown-toggle"
+            type="button"
+            onClick={togglePcDropdown}
+          >
+            Pc
+          </button>
+          {isPcOpen && (
+            <div className="custom-dropdown-menu">
+              <button
+                className="btn sidebarBtn dropdown-toggle"
+                type="button"
+                onClick={togglePcProvinceDropdown}
+              >
+                İl
+              </button>
+              {isPcProvinceOpen && (
+                <div className="custom-dropdown-menu">
+                  <button className="btn sidebarBtn" type="button">
+                    Model X
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Y
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Z
+                  </button>
+                </div>
+              )}
+              <button
+                className="btn sidebarBtn dropdown-toggle"
+                type="button"
+                onClick={togglePcDistrictDropdown}
+              >
+                İlçe
+              </button>
+              {isPcDistrictOpen && (
+                <div className="custom-dropdown-menu">
+                  <button className="btn sidebarBtn" type="button">
+                    Model X
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Y
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Z
+                  </button>
+                </div>
+              )}
+              <button
+                className="btn sidebarBtn dropdown-toggle"
+                type="button"
+                onClick={togglePcBrandDropdown}
+              >
+                Marka
+              </button>
+              {isPcBrandOpen && (
+                <div className="custom-dropdown-menu">
+                  <button className="btn sidebarBtn" type="button">
+                    Model X
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Y
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Z
+                  </button>
+                </div>
+              )}
+              <button
+                className="btn sidebarBtn dropdown-toggle"
+                type="button"
+                onClick={togglePcModelDropdown}
+              >
+                Model
+              </button>
+              {isPcModelOpen && (
+                <div className="custom-dropdown-menu">
+                  <button className="btn sidebarBtn" type="button">
+                    Model X
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Y
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Z
+                  </button>
+                </div>
+              )}
+                            <button
+                className="btn sidebarBtn dropdown-toggle"
+                type="button"
+                onClick={togglePcColorDropdown}
+              >
+                Renk
+              </button>
+              {isPcColorOpen && (
+                <div className="custom-dropdown-menu">
+                  <button className="btn sidebarBtn" type="button">
+                    Model X
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Y
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Z
+                  </button>
+                </div>
+              )}
+                            <button
+                className="btn sidebarBtn dropdown-toggle"
+                type="button"
+                onClick={togglePcRamDropdown}
+              >
+                Ram
+              </button>
+              {isPcRamOpen && (
+                <div className="custom-dropdown-menu">
+                  <button className="btn sidebarBtn" type="button">
+                    Model X
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Y
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Z
+                  </button>
+                </div>
+              )}
+                            <button
+                className="btn sidebarBtn dropdown-toggle"
+                type="button"
+                onClick={togglePcProcessorDropdown}
+              >
+                İşlemci
+              </button>
+              {isPcProcessorOpen && (
+                <div className="custom-dropdown-menu">
+                  <button className="btn sidebarBtn" type="button">
+                    Model X
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Y
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Z
+                  </button>
+                </div>
+              )}
+                            <button
+                className="btn sidebarBtn dropdown-toggle"
+                type="button"
+                onClick={togglePcMemoryDropdown}
+              >
+                Hafıza
+              </button>
+              {isPcMemoryOpen && (
+                <div className="custom-dropdown-menu">
+                  <button className="btn sidebarBtn" type="button">
+                    Model X
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Y
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Z
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
       )}
     </div>
   );
