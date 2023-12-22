@@ -28,7 +28,7 @@ function Description() {
             </a>
           </li>
           <li className="nav-item">
-            <a href="#/"
+            <a href="#/konumu"
               className={`nav-link ${activeTab === 'location' ? 'active' : ''}`}
               onClick={() => handleTabClick('location')}
             >

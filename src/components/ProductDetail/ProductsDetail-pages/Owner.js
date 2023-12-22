@@ -1,20 +1,11 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
 
 function Owner() {
-  const dispatch = useDispatch();
 
 
-  const selectedItem = (Item) => {
-    // Redux store'a seçilen ürünü gönderme
-    dispatch(selectedItem(Item));
-  };
   return (
     <>
-      <div>
-     
-      </div>
+ 
       <div
         className="mt-5"
         style={{

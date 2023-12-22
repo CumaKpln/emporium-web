@@ -50,7 +50,7 @@ function Slider() {
       </div>
       <Carousel
         data={images}
-        time={10000}
+        time={3000}
         width="100%"
         height="500px"
         captionStyle={captionStyle}
@@ -65,12 +65,13 @@ function Slider() {
         slideBackgroundColor="gray"
         slideImageFit="contain"
         thumbnails={true}
-        thumbnailWidth="100px"
+        thumbnailWidth="120px"
         style={{
           textAlign: "center",
           maxWidth: "850px",
           maxHeight: "500px",
           margin: "40px auto",
+          
         }}
       />
     </div>

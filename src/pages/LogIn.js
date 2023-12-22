@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Logo from "../images/logo.png";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import axios from "axios";
 
 function LogIn() {
   const [email, setEmail] = useState("");
@@ -17,14 +18,33 @@ function LogIn() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(
-      logIn({
-        email: email,
-        password: password,
-      })
-    );
-  };
+    // Kullanıcı verileri
+    const userData = {
+      email: email,
+      password: password,
+    };
 
+    // axios ile istek gönder
+    axios
+      .post("YOUR_API_ENDPOINT", userData)
+      .then((response) => {
+        // Başarılı istek durumunda Redux dispatch veya diğer işlemleri burada gerçekleştirebilirsiniz.
+        dispatch(
+          logIn({
+            email: email,
+            password: password,
+          })
+        );
+        console.log("İstek başarılı. Yanıt:", response.data);
+        // İstek başarılıysa, istediğiniz yönlendirmeyi yapabilirsiniz
+        navigate("/dashboard"); // Örnek olarak "/dashboard" sayfasına yönlendirme
+      })
+      .catch((error) => {
+        console.error("İstek hatası:", error);
+        // İstek hatası durumunda kullanıcıya hata mesajı gösterebilirsiniz
+        // Örneğin: alert("Bir hata oluştu. Lütfen tekrar deneyin.");
+      });
+  };
   const handleNavigate = () => {
     navigate("/kayıt");
   };
@@ -63,7 +83,6 @@ function LogIn() {
                 </div>
                 <div className="password">
                   <label className="Item">Şifre</label>
-                  <br />
                   <input
                     type="password"
                     className="password input"

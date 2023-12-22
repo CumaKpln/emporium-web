@@ -25,8 +25,6 @@ const UploadProduct = () => {
   const [province, setProvince] = useState("");
   const [district, setDistrict] = useState("");
   const [neigborhood, setNeigborhood] = useState("");
-  
-
 
   // Kategori değiştiğinde alt kategoriyi sıfırla
   const handleCategoryChange = (e) => {
@@ -96,7 +94,6 @@ const UploadProduct = () => {
     // Burada bu bilgileri bir API'ye göndermek veya işlemek için gerekli adımları yapabilirsiniz.
   };
 
-
   return (
     <>
       <Navbar />
@@ -105,7 +102,6 @@ const UploadProduct = () => {
           <div className="col-md-4 col-sm-2 col-1"></div>
           <div className="col-md-4 col-sm-8 col-10">
             <form onSubmit={handleSubmit}>
-
               <div className="product-foto">
                 <input
                   type="file"
@@ -120,6 +116,16 @@ const UploadProduct = () => {
               </div>
 
               {/* Ürün başlığı giriş alanı */}
+              <div className="product-name">
+                <label htmlFor="productName">Ürün Adı:</label>
+                <input
+                  type="text"
+                  id="productName"
+                  value={productName}
+                  onChange={(e) => setProductName(e.target.value)}
+                  required
+                />
+              </div>
               <div className="product-title">
                 <label htmlFor="title">Ürün Başlığı:</label>
                 <input
@@ -130,35 +136,6 @@ const UploadProduct = () => {
                   required
                 />
               </div>
-
-              {/* Ürün açıklama alanı */}
-              <div className="product-pro">
-                <label htmlFor="province">Ürün Açıklaması:</label>
-                <textarea
-                  id="province"
-                  value={province}
-                  onChange={(e) => setProvince(e.target.value)}
-                  required
-                ></textarea>
-              </div>
-              <div className="product-dist">
-                <label htmlFor="district">Ürün Açıklaması:</label>
-                <textarea
-                  id="district"
-                  value={district}
-                  onChange={(e) => setDistrict(e.target.value)}
-                  required
-                ></textarea>
-              </div>
-              <div className="product-neigbor">
-                <label htmlFor="neigborhood">Ürün Açıklaması:</label>
-                <textarea
-                  id="neigborhood"
-                  value={neigborhood}
-                  onChange={(e) => setNeigborhood(e.target.value)}
-                  required
-                ></textarea>
-              </div>
               <div className="product-desc">
                 <label htmlFor="description">Ürün Açıklaması:</label>
                 <textarea
@@ -167,6 +144,34 @@ const UploadProduct = () => {
                   onChange={(e) => setDescription(e.target.value)}
                   required
                 ></textarea>
+              </div>
+              {/* Ürün açıklama alanı */}
+              <div className="product-pro">
+                <label htmlFor="province">İl:</label>
+                <input
+                  id="province"
+                  value={province}
+                  onChange={(e) => setProvince(e.target.value)}
+                  required
+                ></input>
+              </div>
+              <div className="product-dist">
+                <label htmlFor="district">İlçe:</label>
+                <input
+                  id="district"
+                  value={district}
+                  onChange={(e) => setDistrict(e.target.value)}
+                  required
+                ></input>
+              </div>
+              <div className="product-neigbor">
+                <label htmlFor="neigborhood">Mahalle:</label>
+                <input
+                  id="neigborhood"
+                  value={neigborhood}
+                  onChange={(e) => setNeigborhood(e.target.value)}
+                  required
+                ></input>
               </div>
 
               {/* Ana kategori seçim alanı */}
@@ -200,20 +205,6 @@ const UploadProduct = () => {
                 </div>
               )}
 
-              {/* Diğer ürün bilgileri giriş alanları */}
-              <div className="product-name">
-                <label htmlFor="productName">Ürün Adı:</label>
-                <input
-                  type="text"
-                  id="productName"
-                  value={productName}
-                  onChange={(e) => setProductName(e.target.value)}
-                  required
-                />
-              </div>
-
-              {/*---------------------------------------------------------------------- */}
-
               {category === "emlak" && (
                 <div className="product-m2">
                   <label htmlFor="productM2">{subCategory} m2'si:</label>
@@ -240,36 +231,35 @@ const UploadProduct = () => {
                 </div>
               )}
 
-              {/*---------------------------------------------------------------------- */}
               {/*  Ürün marka giriş  */}
-              {(category === "vasıta" || category === "elektronik-esya") && (
-                <div className="product-brand">
-                  <label htmlFor="brand">Ürün Markası:</label>
-                  <br />
-                  <input
-                    type="text"
-                    id="brand"
-                    value={brand}
-                    onChange={(e) => setBrand(e.target.value)}
-                    required
-                  />
-                </div>
-              )}
-
-              {/* Ürün marka model  */}
-              {(category === "vasıta" || category === "elektronik-esya") && (
-                <div className="product-serie">
-                  <label htmlFor="serie">Ürün modeli:</label>
-                  <br />
-                  <input
-                    type="text"
-                    id="serie"
-                    value={serie}
-                    onChange={(e) => setSerie(e.target.value)}
-                    required
-                  />
-                </div>
-              )}
+              {category === "vasıta" ||
+                (category === "elektronik-esya" && (
+                  <div className="product-brand">
+                    <label htmlFor="brand">Ürün Markası:</label>
+                    <br />
+                    <input
+                      type="text"
+                      id="brand"
+                      value={brand}
+                      onChange={(e) => setBrand(e.target.value)}
+                      required
+                    />
+                  </div>
+                ))}
+              {category === "vasıta" ||
+                (category === "elektronik-esya" && (
+                  <div className="product-serie">
+                    <label htmlFor="serie">Ürün modeli:</label>
+                    <br />
+                    <input
+                      type="text"
+                      id="serie"
+                      value={serie}
+                      onChange={(e) => setSerie(e.target.value)}
+                      required
+                    />
+                  </div>
+                ))}
 
               {/* Ürün Rengi giriş  */}
               {(category === "vasıta" || category === "elektronik-esya") && (
@@ -337,9 +327,7 @@ const UploadProduct = () => {
                     />
                   </div>
                 </div>
-
               )}
-
 
               {subCategory === "bilgisayar" && (
                 <div className="product-graphicCard">
@@ -365,25 +353,10 @@ const UploadProduct = () => {
                 />
               </div>
 
-              <div className="product-brand">
-                <label htmlFor="brand">Ürün Markası:</label>
-                <br />
-                <input
-                  type="text"
-                  id="brand"
-                  value={brand}
-                  onChange={(e) => setBrand(e.target.value)}
-                  required
-                />
-              </div>
-
-
-
               {/* Formun gönderme butonu */}
               <button className="submitBtn" type="submit">
                 Ürünü Yükle
               </button>
-
             </form>
           </div>
           <div className="col-md-4 col-sm-2 col-1"></div>
@@ -391,9 +364,7 @@ const UploadProduct = () => {
       </div>
       <Footer />
     </>
-
   );
 };
 
 export default UploadProduct;
-

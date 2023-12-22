@@ -4,8 +4,6 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../Styles/Pages/SignIn.css";
 import axios from "axios";
-import PhoneInput from "react-phone-input-2";
-import "react-phone-input-2/lib/style.css";
 
 function SignIn() {
   const [formData, setFormData] = useState({
@@ -134,16 +132,19 @@ function SignIn() {
                   )}
                 </label>
                 <div className="d-dlex ">
-                  <label htmlFor="phoneNumber">Telefon Numarası</label>
-                  <PhoneInput
-                    country={"tr"}
-                    name="phoneNumber"
-                    value={formData.phoneNumber}
-                  />
-
-                  {errors.phoneNumber && (
-                    <span className="error">{errors.phoneNumber}</span>
-                  )}
+                  <label>
+                    Telefon Numarası:
+                    <input
+                    placeholder="(242) 242 24 24"
+                      type="tel"
+                      name="phoneNumber"
+                      value={formData.phoneNumber}
+                      onChange={handleChange}
+                    />
+                    {errors.phoneNumber && (
+                      <span className="error">{errors.phoneNumber}</span>
+                    )}
+                  </label>
                 </div>
 
                 <label>
