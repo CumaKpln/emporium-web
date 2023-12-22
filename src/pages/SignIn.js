@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../Styles/Pages/SignIn.css";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 function SignIn() {
   const [formData, setFormData] = useState({
@@ -61,6 +62,8 @@ function SignIn() {
       axios
         .post("YOUR_URL", dataToSend)
         .then((response) => {
+          toast.success('Kayıt başarıyla yapıldı!')
+
           console.log("İstek başarılı. Yanıt:", response.data);
           // Form verilerini temizle
           setFormData({
@@ -73,6 +76,8 @@ function SignIn() {
           });
         })
         .catch((error) => {
+          toast.error('Kayıt başarısız oldu!')
+
           console.error("İstek hatası:", error);
           // Hata durumunda hata mesajını burada işleyebilirsiniz
         });

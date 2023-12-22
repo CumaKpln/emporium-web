@@ -3,6 +3,7 @@ import Logo from "../images/logo.png";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../Styles/Pages/ForgotPassword.css";
+import { Link } from 'react-router-dom';
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
@@ -29,28 +30,31 @@ const ForgotPassword = () => {
 
   return (
     <>
-     <Navbar />
-    <div className="forgot-password-container">
-     
-      <div className="form-container">
-        <h2>Şifrenizi mi unuttunuz?</h2>
+      <Navbar />
+      <div className="forgot-password-container">
 
-        <form className='form' onSubmit={handleFormSubmit}>
-           <div className="image">
-                  <img src={Logo} alt="Logo" />
+        <div className="form-container">
+          <h2>Şifrenizi mi unuttunuz?</h2>
+
+          <form className='form' onSubmit={handleFormSubmit}>
+            <div className="image">
+              <img src={Logo} alt="Logo" />
             </div>
-          <label>
-            E-posta adresiniz:
-            <input className='ForgotPasswordİnput' type="email" value={email} onChange={handleEmailChange} />
-          </label>
-          <button className='ForgotPasswordBtn' type="submit">Şifre Sıfırlama Bağlantısı Gönder</button>
-        </form>
-        <p className="message">{message}</p>
+            <label>
+              E-posta adresiniz:
+              <input className='ForgotPasswordİnput' type="email" value={email} onChange={handleEmailChange} />
+            </label>
+              <Link  to="/sifremiunuttum/sifre-degistirme" >
+            <button className='ForgotPasswordBtn' type="submit">Şifre Sıfırlama Bağlantısı Gönder</button>
+              </Link>
+
+          </form>
+          <p className="message">{message}</p>
+        </div>
+
       </div>
-     
-    </div>
-    <Footer />
-      </>
+      <Footer />
+    </>
   );
 };
 

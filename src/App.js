@@ -6,6 +6,7 @@ import UploadProduct from "./components/UploadProduct";
 import ProductDetail from "./components/ProductDetail/ProductDetail";
 import LogIn from "./pages/LogIn";
 import SignIn from "./pages/SignIn";
+import ChangePassword from "./pages/ChangePassword";
 import ForgotPassword from "./pages/ForgotPassword";
 import Favorites from "./components/favorites";
 import { useSelector } from "react-redux";
@@ -31,6 +32,8 @@ function App() {
 
         <Route path={`/urun-detayi/${id}`} element={<ProductDetail />} />
         <Route path="/sifremiunuttum" element={<ForgotPassword />} />
+        <Route path="/sifremiunuttum/sifre-degistirme" element={<ChangePassword />} />
+
       </Routes>
 
 

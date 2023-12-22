@@ -23,6 +23,8 @@ input[type='file'] {
     padding: 8px;
 }
 
+#productRoom,
+#propertyType,
 #category,
 #subCategory {
     width: 100%;
