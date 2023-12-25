@@ -503,7 +503,7 @@ const Sidebar = () => {
         className="btn sidebarMainTitle dropdown-toggle"
         type="button"
         onClick={() => {
-          handleCategoryClick("Vasıta");
+          handleCategoryClick({ category: 'vasıta'});
           toggleVehicleDropdown();
         }}
       >
@@ -514,7 +514,9 @@ const Sidebar = () => {
           <button
             className="btn sidebarBtn dropdown-toggle"
             type="button"
-            onClick={toggleCarDropdown}
+            onClick={() =>{
+              toggleCarDropdown()
+              handleCategoryClick({ category: 'vasıta', subCategory: 'araba' })}}
           >
             Araba
           </button>
@@ -645,9 +647,11 @@ const Sidebar = () => {
           <button
             className="btn sidebarBtn dropdown-toggle"
             type="button"
-            onClick={toggleMotorcycleDropdown}
+            onClick={() => {
+              toggleMotorcycleDropdown()
+              handleCategoryClick({ category: 'vasıta', subCategory: 'motorsiklet'})}}
           >
-            Motor
+            Motorsiklet
           </button>
           {isMotorcycleOpen && (
             <div className="custom-dropdown-menu">
@@ -779,7 +783,7 @@ const Sidebar = () => {
         className="btn sidebarMainTitle dropdown-toggle"
         type="button"
         onClick={() => {
-          handleCategoryClick("Emlak");
+          handleCategoryClick({ category: 'emlak'});
           toggleRealEstateDropdown();
         }}
       >
@@ -790,7 +794,9 @@ const Sidebar = () => {
           <button
             className="btn sidebarBtn dropdown-toggle"
             type="button"
-            onClick={toggleHomeDropdown}
+            onClick={() => {
+              handleCategoryClick({ category: 'emlak', subCategory: 'ev'});
+              toggleHomeDropdown()}}
           >
             Ev
           </button>
@@ -881,7 +887,9 @@ const Sidebar = () => {
           <button
             className="btn sidebarBtn dropdown-toggle"
             type="button"
-            onClick={togglePlotDropdown}
+            onClick={()=>{
+              handleCategoryClick({ category: 'emlak', subCategory: 'arsa'})
+              togglePlotDropdown()}}
           >
             Arsa
           </button>
@@ -955,7 +963,7 @@ const Sidebar = () => {
         className="btn sidebarMainTitle dropdown-toggle"
         type="button"
         onClick={() => {
-          handleCategoryClick("Elektronik Eşya");
+          handleCategoryClick({ category: 'elektronik eşya'});
           toggleElectronicStuffDropdown();
         }}
       >
@@ -966,7 +974,9 @@ const Sidebar = () => {
           <button
             className="btn sidebarBtn dropdown-toggle"
             type="button"
-            onClick={togglePhoneDropdown}
+            onClick={()=>{
+              handleCategoryClick({ category: 'elektronik eşya', subCategory: 'telefon'})
+              togglePhoneDropdown()}}
           >
             Telefon
           </button>
@@ -1137,7 +1147,9 @@ const Sidebar = () => {
           <button
             className="btn sidebarBtn dropdown-toggle"
             type="button"
-            onClick={togglePcDropdown}
+            onClick={()=>{
+              handleCategoryClick({ category: 'elektronik eşya', subCategory: 'bilgisayar'})
+              togglePcDropdown()}}
           >
             Bilgisayar
           </button>
