@@ -1,14 +1,13 @@
 import React from "react";
-import Slider from "../ProductDetail/ProductsDetail-pages/Slider";
-import Owner from "../ProductDetail/ProductsDetail-pages/Owner";
-import Detail from "../ProductDetail/ProductsDetail-pages/Detail";
+import Slider from "./ProductsDetail-pages/Slider";
+import Owner from "./ProductsDetail-pages/Owner";
+import Detail from "./ProductsDetail-pages/Detail";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import "../../Styles/Product-Detail/ProductDetail.css";
 import Description from "./ProductsDetail-pages/Description";
 
 function ProductDetail() {
-
   return (
     <>
       <Navbar />
@@ -20,16 +19,13 @@ function ProductDetail() {
         }}
       >
         <div className="row detail-row">
-
           <div className=" col-md-6 ">
             <Slider />
           </div>
 
           <div className="col-md-6 section">
             <Detail />
-            <Owner 
-            
-            />
+            <Owner />
           </div>
         </div>
         <div className="desc">

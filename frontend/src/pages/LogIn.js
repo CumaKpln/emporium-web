@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../Styles//Pages/LogIn.css";
+import "../Styles/Pages/LogIn.css";
 import { useDispatch } from "react-redux";
 import { logIn } from "../control/slices/userSlice";
 import { useNavigate } from "react-router-dom";
@@ -36,13 +36,13 @@ function LogIn() {
             password: password,
           })
         );
-        toast.success('Giriş başarıyla yapıldı!')
+        toast.success("Giriş başarıyla yapıldı!");
         console.log("İstek başarılı. Yanıt:", response.data);
         // İstek başarılıysa, istediğiniz yönlendirmeyi yapabilirsiniz
         navigate("/dashboard"); // Örnek olarak "/dashboard" sayfasına yönlendirme
       })
       .catch((error) => {
-        toast.error("Giriş başarısız oldu.")
+        toast.error("Giriş başarısız oldu.");
         console.error("İstek hatası:", error);
         // İstek hatası durumunda kullanıcıya hata mesajı gösterebilirsiniz
         // Örneğin: alert("Bir hata oluştu. Lütfen tekrar deneyin.");
@@ -62,7 +62,9 @@ function LogIn() {
       <Navbar />
       <div className="container-login mt-5">
         <div className="LogIn">
-          <h1 className="mt-5" id="üyegirişbutonu">Üye Girişi</h1>
+          <h1 className="mt-5" id="üyegirişbutonu">
+            Üye Girişi
+          </h1>
 
           <form onSubmit={(e) => handleSubmit(e)} id="form-login">
             <div className="row">
@@ -111,11 +113,16 @@ function LogIn() {
                     <p className="mb-0">Giriş</p>
                   </button>
                 </div>
-
                 <div className="Link-account ">
                   <a href="hesabimyok" onClick={handleNavigate}>
                     Hesabın yok mu?
-                    <span> <b style={{ textDecoration: "underline" }}> Hesap Oluştur?</b></span>
+                    <span>
+                      {" "}
+                      <b style={{ textDecoration: "underline" }}>
+                        {" "}
+                        Hesap Oluştur?
+                      </b>
+                    </span>
                   </a>
                 </div>
               </div>

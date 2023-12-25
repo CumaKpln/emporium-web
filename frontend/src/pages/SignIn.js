@@ -55,19 +55,17 @@ function SignIn() {
 
     // Eğer hata yoksa, form verilerini gönder
     if (Object.keys(validationErrors).length === 0) {
-      const username = `${formData.firstName} + ${formData.lastName}`;
-      const dataToSend = { ...formData, username };
+      const dataToSend = { ...formData };
 
       axios
-        .post("YOUR_URL", dataToSend)
+        .post("http://localhost:3000/user/register", dataToSend)
         .then((response) => {
-          toast.success('Kayıt başarıyla yapıldı!')
+          toast.success("Kayıt başarıyla yapıldı!");
 
           console.log("İstek başarılı. Yanıt:", response.data);
           // Form verilerini temizle
           setFormData({
-            firstName: "",
-            lastName: "",
+            username: "",
             email: "",
             phoneNumber: "",
             password: "",
@@ -75,7 +73,7 @@ function SignIn() {
           });
         })
         .catch((error) => {
-          toast.error('Kayıt başarısız oldu!')
+          toast.error("Kayıt başarısız oldu!");
 
           console.error("İstek hatası:", error);
           // Hata durumunda hata mesajını burada işleyebilirsiniz
@@ -97,8 +95,6 @@ function SignIn() {
                 </div>
               </div>
               <div className="logo col-md-6">
-
-
                 <label>
                   Kullanıcı adı soyadı:
                   <input
