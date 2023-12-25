@@ -6,7 +6,7 @@ const User = require("../models/user");
 
 //! BURASI REGISTER BÖLÜMÜ
 async function registerUser(req, res) {
-  const { username, email, phoneNumber, confirmPassword } = req.body;
+  const { username, email, phoneNumber, password, confirmPassword } = req.body;
   // Şifre kontrolü
   if (password !== confirmPassword) {
     return res.status(400).json({ error: "Şifreler eşleşmiyor." });
