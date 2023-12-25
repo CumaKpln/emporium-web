@@ -7,6 +7,7 @@ import Logo from "../images/logo.png";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 function LogIn() {
   const [email, setEmail] = useState("");
@@ -35,11 +36,13 @@ function LogIn() {
             password: password,
           })
         );
+        toast.success('Giriş başarıyla yapıldı!')
         console.log("İstek başarılı. Yanıt:", response.data);
         // İstek başarılıysa, istediğiniz yönlendirmeyi yapabilirsiniz
         navigate("/dashboard"); // Örnek olarak "/dashboard" sayfasına yönlendirme
       })
       .catch((error) => {
+        toast.error("Giriş başarısız oldu.")
         console.error("İstek hatası:", error);
         // İstek hatası durumunda kullanıcıya hata mesajı gösterebilirsiniz
         // Örneğin: alert("Bir hata oluştu. Lütfen tekrar deneyin.");
@@ -108,11 +111,11 @@ function LogIn() {
                     <p className="mb-0">Giriş</p>
                   </button>
                 </div>
-               
+
                 <div className="Link-account ">
                   <a href="hesabimyok" onClick={handleNavigate}>
                     Hesabın yok mu?
-                   <span> <b style={{textDecoration:"underline"}}> Hesap Oluştur?</b></span>
+                    <span> <b style={{ textDecoration: "underline" }}> Hesap Oluştur?</b></span>
                   </a>
                 </div>
               </div>
