@@ -84,7 +84,7 @@ body .SignIn {
 
 input,
 textarea {
-  /* width: 100%; */  max-width: 250px;
+  width: 100%;  
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
