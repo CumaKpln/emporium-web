@@ -8,7 +8,6 @@ import LogIn from "./pages/LogIn";
 import SignIn from "./pages/SignIn";
 import ChangePassword from "./pages/ChangePassword";
 import ForgotPassword from "./pages/ForgotPassword";
-import Favorites from "./components/favorites";
 import { useSelector } from "react-redux";
 
 
@@ -25,7 +24,6 @@ function App() {
         <Route path="/" element={<Main />} />
 
         <Route path="/account" exact element={<Account />} />
-        <Route path="/favorites" element={<Favorites />} />
         <Route path="/upload-product" element={<UploadProduct />} />
         <Route path="/login" element={<LogIn />} />
         <Route path="/register" element={<SignIn />} /> 

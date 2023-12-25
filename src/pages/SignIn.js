@@ -8,8 +8,7 @@ import toast from "react-hot-toast";
 
 function SignIn() {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    username: "",
     email: "",
     phoneNumber: "",
     password: "",
@@ -56,7 +55,7 @@ function SignIn() {
 
     // Eğer hata yoksa, form verilerini gönder
     if (Object.keys(validationErrors).length === 0) {
-      const username = `${formData.firstName} ${formData.lastName}`;
+      const username = `${formData.firstName} + ${formData.lastName}`;
       const dataToSend = { ...formData, username };
 
       axios
@@ -98,29 +97,18 @@ function SignIn() {
                 </div>
               </div>
               <div className="logo col-md-6">
-                <label>
-                  Ad:
-                  <input
-                    type="text"
-                    name="firstName"
-                    value={formData.firstName}
-                    onChange={handleChange}
-                  />
-                  {errors.firstName && (
-                    <span className="error">{errors.firstName}</span>
-                  )}
-                </label>
+
 
                 <label>
-                  Soyad:
+                  Kullanıcı adı soyadı:
                   <input
                     type="text"
-                    name="lastName"
-                    value={formData.lastName}
+                    name="username"
+                    value={formData.username}
                     onChange={handleChange}
                   />
-                  {errors.lastName && (
-                    <span className="error">{errors.lastName}</span>
+                  {errors.username && (
+                    <span className="error">{errors.username}</span>
                   )}
                 </label>
 
@@ -140,7 +128,7 @@ function SignIn() {
                   <label>
                     Telefon Numarası:
                     <input
-                    placeholder="(242) 242 24 24"
+                      placeholder="(242) 242 24 24"
                       type="tel"
                       name="phoneNumber"
                       value={formData.phoneNumber}

@@ -1,6 +1,7 @@
 // Products.jsx
 import React from "react";
 import { useCategory } from "./CategoryContext";
+
 import { useDispatch } from "react-redux";
 import data from "../data/db.json";
 import "../Styles/Product.css";
@@ -19,6 +20,7 @@ function Products() {
     selectedCategory
       ? product.category.toLowerCase() === selectedCategory.toLowerCase()
       : true
+
   );
 
   return (
