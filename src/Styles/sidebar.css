@@ -17,9 +17,10 @@ h2 {
 }
 
 .sidebarMainTitle{
-    width: 100%;
+    width: 85%;
     text-align: left;
     background-color: #00008B;
+    text-align: center;
     color: white;
     border-radius: 10px 0px 0px 10px;
     margin: 1px;
@@ -30,14 +31,14 @@ h2 {
 }
 .custom-dropdown-menu {
     flex-direction: column;
-    background-color: white;
+    background-color: transparent;
     padding: 10px;
     border: none;
   }
   
   .custom-dropdown-menu .sidebarBtn {
-    width: 100%;
-    text-align: left;
+    width: 85%;
+    text-align: center;
     margin: 1px;
     background-color: #00008B;
     color: white;

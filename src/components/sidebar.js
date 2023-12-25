@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Styles/sidebar.css";
+import { useCategory } from "./CategoryContext";
 
 const Sidebar = () => {
+  const { handleCategoryClick } = useCategory();
+
   // vasıta bölümü
   const [isVehicleOpen, setVehicleOpen] = useState(false);
   // Araba için olan filtreleme bölümleri
@@ -494,13 +497,15 @@ const Sidebar = () => {
     setPcProvinceOpen(false);
   };
 
-
   return (
     <div className="dropdown">
       <button
         className="btn sidebarMainTitle dropdown-toggle"
         type="button"
-        onClick={toggleVehicleDropdown}
+        onClick={() => {
+          handleCategoryClick("Vasıta");
+          toggleVehicleDropdown();
+        }}
       >
         Vasıta
       </button>
@@ -773,7 +778,10 @@ const Sidebar = () => {
       <button
         className="btn sidebarMainTitle dropdown-toggle"
         type="button"
-        onClick={toggleRealEstateDropdown}
+        onClick={() => {
+          handleCategoryClick("Emlak");
+          toggleRealEstateDropdown();
+        }}
       >
         Emlak
       </button>
@@ -943,10 +951,13 @@ const Sidebar = () => {
           )}
         </div>
       )}
-     <button
+      <button
         className="btn sidebarMainTitle dropdown-toggle"
         type="button"
-        onClick={toggleElectronicStuffDropdown}
+        onClick={() => {
+          handleCategoryClick("Elektronik Eşya");
+          toggleElectronicStuffDropdown();
+        }}
       >
         Elektronik Eşya
       </button>
@@ -1041,7 +1052,7 @@ const Sidebar = () => {
                   </button>
                 </div>
               )}
-                            <button
+              <button
                 className="btn sidebarBtn dropdown-toggle"
                 type="button"
                 onClick={togglePhoneColorDropdown}
@@ -1061,7 +1072,7 @@ const Sidebar = () => {
                   </button>
                 </div>
               )}
-                            <button
+              <button
                 className="btn sidebarBtn dropdown-toggle"
                 type="button"
                 onClick={togglePhoneRamDropdown}
@@ -1081,7 +1092,7 @@ const Sidebar = () => {
                   </button>
                 </div>
               )}
-                            <button
+              <button
                 className="btn sidebarBtn dropdown-toggle"
                 type="button"
                 onClick={togglePhoneProcessorDropdown}
@@ -1101,7 +1112,7 @@ const Sidebar = () => {
                   </button>
                 </div>
               )}
-                            <button
+              <button
                 className="btn sidebarBtn dropdown-toggle"
                 type="button"
                 onClick={togglePhoneMemoryDropdown}
@@ -1212,7 +1223,7 @@ const Sidebar = () => {
                   </button>
                 </div>
               )}
-                            <button
+              <button
                 className="btn sidebarBtn dropdown-toggle"
                 type="button"
                 onClick={togglePcColorDropdown}
@@ -1232,7 +1243,7 @@ const Sidebar = () => {
                   </button>
                 </div>
               )}
-                            <button
+              <button
                 className="btn sidebarBtn dropdown-toggle"
                 type="button"
                 onClick={togglePcRamDropdown}
@@ -1252,7 +1263,7 @@ const Sidebar = () => {
                   </button>
                 </div>
               )}
-                            <button
+              <button
                 className="btn sidebarBtn dropdown-toggle"
                 type="button"
                 onClick={togglePcProcessorDropdown}
@@ -1272,7 +1283,7 @@ const Sidebar = () => {
                   </button>
                 </div>
               )}
-                            <button
+              <button
                 className="btn sidebarBtn dropdown-toggle"
                 type="button"
                 onClick={togglePcMemoryDropdown}

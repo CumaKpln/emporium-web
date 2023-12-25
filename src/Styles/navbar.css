@@ -46,7 +46,7 @@ nav.navbar {
 
 .nav-search input {
     padding: 0 5px  ;
-    background-color: white;
+    background-color: transparent;
     border: none;
     outline: none;
     color: black;

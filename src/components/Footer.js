@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer style={{ background: "LightBlue", minHeight: "30vh" }}>
+    <footer style={{ background: " #7c8288", color:"white", minHeight: "30vh" }}>
       <div className="container pt-5">
         <div className="row pb-5 ">
           <div id="logo" className="col-sm-3">
