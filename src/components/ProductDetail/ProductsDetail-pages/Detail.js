@@ -19,8 +19,8 @@ function Detail() {
         }}
       >
         <h5>Fiyat :{selectedProduct.price} TL</h5>
-        <p>
-          <span> İl </span>/<span> İlçe </span>/<span> Mahalle</span>
+        <p className="mt-2">
+          <span> <b>{selectedProduct.province}</b> </span>/<span> <b>{selectedProduct.district}</b> </span>/<span> <b>{selectedProduct.neighbourhood}</b></span>
         </p>
         <li className="mt-3"><b>Ürün Adı :</b> {selectedProduct.productName}</li>
         <hr style={{ margin: "1px 0px" }} />

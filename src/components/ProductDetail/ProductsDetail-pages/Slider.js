@@ -17,6 +17,7 @@ function Slider() {
   const selectedProduct = useSelector(
     (state) => state.products.selectedProduct
   );
+  
   const product = useSelector((state) => state.products);
 
   const captionStyle = {

@@ -65,9 +65,9 @@ function FilterBar({ category = "" }) {
         <PriceSection key={"b"} />
     </div >
 }
-export default FilterBar;
 
 export let filters =
 {
     minP, maxP, nameF, brandF, provinceF, districtF
 };
+export default FilterBar;

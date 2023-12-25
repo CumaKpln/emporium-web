@@ -27,7 +27,7 @@ const UploadProduct = () => {
   const [district, setDistrict] = useState("");
   const [neigborhood, setNeigborhood] = useState("");
   const [propertyType, setPropertyType] = useState("");
-  const [datasToProduct,setDatasToProduct]=useState("")
+  const [datasToProduct, setDatasToProduct] = useState("")
 
   // Kategori değiştiğinde alt kategoriyi sıfırla
   const handleCategoryChange = (e) => {
@@ -68,8 +68,8 @@ const UploadProduct = () => {
   };
 
   const handleFileChange = (event) => {
-    const files = event.target.files;
-    const filesArray = Array.from(files);
+    const photos = event.target.files;
+    const filesArray = Array.from(photos);
     setPhotos(filesArray);
   };
 
@@ -77,44 +77,44 @@ const UploadProduct = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-    .post("YOUR_URL", datasToProduct)
-    .then((response) => {
-      toast.success('Ürün başarıyla Yüklendi!')
-      console.log("İstek başarılı. Yanıt:", response.data);
-      // Form verilerini temizle
-      setDatasToProduct({
-        title:"",
-        description:"",
-        category:"",
-        subCategory:"",
-        productName:"",
-        price:"",
-        brand:"",
-        photos:"",
-        squareMeters:"",
-        color:"",
-        series:"",
-        gear:"",
-        ram:"",
-        processor:"",
-        memory:"",
-        productRoom:"",
-        graphicCard:"",
-        province:"",
-        district:"",
-        neigborhood:"",
-        propertyType:"",
-        
-      });
-    })
-    .catch((error) => {
-      toast.error("Ürün yükleme başarısız oldu.");
+      .post("YOUR_URL", datasToProduct)
+      .then((response) => {
+        toast.success('Ürün başarıyla Yüklendi!')
+        console.log("İstek başarılı. Yanıt:", response.data);
+        // Form verilerini temizle
+        setDatasToProduct({
+          title: "",
+          description: "",
+          category: "",
+          subCategory: "",
+          productName: "",
+          price: "",
+          brand: "",
+          photos: "",
+          squareMeters: "",
+          color: "",
+          series: "",
+          gear: "",
+          ram: "",
+          processor: "",
+          memory: "",
+          productRoom: "",
+          graphicCard: "",
+          province: "",
+          district: "",
+          neigborhood: "",
+          propertyType: "",
 
-      console.error("İstek hatası:", error);
-      // Hata durumunda hata mesajını burada işleyebilirsiniz
-    });
-    
-    
+        });
+      })
+      .catch((error) => {
+        toast.error("Ürün yükleme başarısız oldu.");
+
+        console.error("İstek hatası:", error);
+        // Hata durumunda hata mesajını burada işleyebilirsiniz
+      });
+
+
   };
 
   return (
@@ -140,12 +140,12 @@ const UploadProduct = () => {
               {/* Ürün başlığı giriş alanı */}
               <div className="product-name">
                 <label htmlFor="productName">Ürün Adı:</label>
-                <input
-                  type="text"
+                <input type="text"
                   id="productName"
                   value={productName}
                   onChange={(e) => setProductName(e.target.value)}
-                  required
+                  required 
+                
                 />
               </div>
               <div className="product-title">
@@ -175,7 +175,7 @@ const UploadProduct = () => {
                   value={province}
                   onChange={(e) => setProvince(e.target.value)}
                   required
-                ></input>
+                />
               </div>
               <div className="product-dist">
                 <label htmlFor="district">İlçe:</label>
@@ -184,7 +184,7 @@ const UploadProduct = () => {
                   value={district}
                   onChange={(e) => setDistrict(e.target.value)}
                   required
-                ></input>
+                />
               </div>
               <div className="product-neigbor">
                 <label htmlFor="neigborhood">Mahalle:</label>
@@ -193,9 +193,10 @@ const UploadProduct = () => {
                   value={neigborhood}
                   onChange={(e) => setNeigborhood(e.target.value)}
                   required
-                ></input>
+                />
               </div>
               <div className="product-price">
+
                 <label htmlFor="price">Fiyat:</label>
                 <input
                   type="text"
@@ -223,6 +224,7 @@ const UploadProduct = () => {
 
               {/* Alt kategori seçim alanı */}
               {category && (
+
                 <div className="product-subCategory">
                   <label htmlFor="subCategory">Alt Kategori:</label>
                   <select
@@ -251,7 +253,7 @@ const UploadProduct = () => {
 
               {subCategory === "home" && (
                 <div>
-                   <div className="product-productRoom">
+                  <div className="product-productRoom">
                     <label htmlFor="productRoom">Emlak Tipi:</label>
                     <select
                       id="productRoom"
@@ -264,8 +266,10 @@ const UploadProduct = () => {
                       <option value="vasıta">3+1</option>
                     </select>
                   </div>
-                
+
                   <div className="product-propertyType">
+
+
                     <label htmlFor="propertyType">Emlak Tipi:</label>
                     <select
                       id="propertyType"
