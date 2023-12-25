@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Styles/sidebar.css";
 import { useCategory } from "./CategoryContext";
+import provinces from "../data/Locations/State.json";
 
 const Sidebar = () => {
   const { handleCategoryClick } = useCategory();
@@ -529,15 +530,8 @@ const Sidebar = () => {
               </button>
               {isCarProvinceOpen && (
                 <div className="custom-dropdown-menu">
-                  <button className="btn sidebarBtn" type="button">
-                    Model X
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Y
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Z
-                  </button>
+
+                  {provinces["states"].map((province) => (<button className="btn sidebarBtn" type="button" > {province.state} </button>))}
                 </div>
               )}
               <button
@@ -659,17 +653,12 @@ const Sidebar = () => {
                 İl
               </button>
               {isMotorcycleProvinceOpen && (
-                <div className="custom-dropdown-menu">
-                  <button className="btn sidebarBtn" type="button">
-                    Model X
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Y
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Z
-                  </button>
-                </div>
+                (
+                  <div className="custom-dropdown-menu">
+
+                    {provinces["states"].map((province) => (<button className="btn sidebarBtn" type="button" > {province.state} </button>))}
+                  </div>
+                )
               )}
               <button
                 className="btn sidebarBtn dropdown-toggle"
@@ -803,18 +792,12 @@ const Sidebar = () => {
               >
                 İl
               </button>
-              {isHomeProvinceOpen && (
+              {isHomeProvinceOpen && ((
                 <div className="custom-dropdown-menu">
-                  <button className="btn sidebarBtn" type="button">
-                    Model X
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Y
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Z
-                  </button>
+
+                  {provinces["states"].map((province) => (<button className="btn sidebarBtn" type="button" > {province.state} </button>))}
                 </div>
+              )
               )}
               <button
                 className="btn sidebarBtn dropdown-toggle"
@@ -980,17 +963,12 @@ const Sidebar = () => {
                 İl
               </button>
               {isPhoneProvinceOpen && (
-                <div className="custom-dropdown-menu">
-                  <button className="btn sidebarBtn" type="button">
-                    Model X
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Y
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Z
-                  </button>
-                </div>
+                (
+                  <div className="custom-dropdown-menu">
+
+                    {provinces["states"].map((province) => (<button className="btn sidebarBtn" type="button" > {province.state} </button>))}
+                  </div>
+                )
               )}
               <button
                 className="btn sidebarBtn dropdown-toggle"
