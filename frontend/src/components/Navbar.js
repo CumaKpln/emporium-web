@@ -61,7 +61,6 @@ const Navbar = () => {
                 {/* buraya kullanıcı username gelecek */}
               </div>
             </Link>
-
             {/* <Link to="/favorites"> Bunu açınca herşey açılacak */}
             <div className="fav-icon">
               <svg
@@ -78,21 +77,20 @@ const Navbar = () => {
             </div>
             {/* </Link> */}
             <Link to="/upload-product">
-              <button type="button">
-                <span>İlan ver</span>
-              </button>
+              <div id="uploadProduct" className="navBtn " type="button">
+                <span className="m-0">İlan ver</span>
+              </div>
             </Link>
             <Link to="/login">
-              <div className="Login">
-                <span className="m-0 ">Üye Giriş</span>
+              <div className="Login navBtn ">
+                <span className="m-0">Üye Giriş</span>
               </div>
             </Link>
             <Link to="/register ">
-              <div className="Register ">
+              <div className=" navBtn">
                 <span className="m-0">Kayıt ol</span>
               </div>
             </Link>
-
           </div>
         </div>
       </nav>
@@ -140,75 +138,71 @@ const Navbar = () => {
                 </div>
               </div>
             </div>
-            <div className="nav2-right-navbar ">
-              <Link to="/account">
-                <div className="nav2-account  ">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="25"
-                    height="25"
-                    fill="currentColor"
-                    className="bi bi-person-circle"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                    <path
-                      fillRule="evenodd"
-                      d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
-                    />
-                  </svg>
-                  <div > Hesap </div>
-                  {/* buraya kullanıcı username gelecek */}
-                </div>
-              </Link>
-              <div className="nav2-fav-icon">
-                <a
-                  href="/#"
-                  style={{
-                    color: "black",
-                    textDecoration: "none",
-                    display: "flex",
-                    gap: "25px",
-                  }}
+
+            <Link to="/account">
+              <div className="nav2-account  ">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="25"
+                  height="25"
+                  fill="currentColor"
+                  className="bi bi-person-circle"
+                  viewBox="0 0 16 16"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="25"
-                    height="25"
-                    fill="currentColor"
-                    className="bi bi-star-fill"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                  </svg>
-                  <div className="fav">
-                    {" "}
-                    <span>Favoriler</span>{" "}
-                  </div>
-                </a>
+                  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                  <path
+                    fillRule="evenodd"
+                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+                  />
+                </svg>
+                <div> Hesap </div>
+                {/* buraya kullanıcı username gelecek */}
               </div>
-             <div className="nav2-upload-product">
-             <Link to="/upload-product">
-                <button type="button">
-                  <span>İlan ver</span>
-                </button>
-              </Link>
-             </div>
-              <Link to="/login">
-                <div className="nav2-Login">
-                  <span className="m-0 ">Üye Giriş</span>
+            </Link>
+            <div className="nav2-fav-icon">
+              <a
+                href="/#"
+                style={{
+                  color: "black",
+                  textDecoration: "none",
+                  display: "flex",
+                  gap: "25px",
+                }}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="25"
+                  height="25"
+                  fill="currentColor"
+                  className="bi bi-star-fill"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                </svg>
+                <div className="fav">
+                  {" "}
+                  <span>Favoriler</span>{" "}
                 </div>
-              </Link>
-              <Link to="/register ">
-                <div className="nav2-Register ">
-                  <span className="m-0">Kayıt ol</span>
-                </div>
-              </Link>
+              </a>
             </div>
+            <Link to="/upload-product">
+              <div className="nav2-upload-product">
+                <span>İlan ver</span>
+              </div>
+            </Link>
+            <Link to="/login">
+              <div className="nav2-Login">
+                <span className="m-0 ">Üye Giriş</span>
+              </div>
+            </Link>
+            <Link to="/register ">
+              <div className="nav2-Register ">
+                <span className="m-0">Kayıt ol</span>
+              </div>
+            </Link>
           </div>
         </div>
       </nav>
-
     </>
   );
 };

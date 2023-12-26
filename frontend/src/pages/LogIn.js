@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../Styles/Pages/LogIn.css";
 import { useDispatch } from "react-redux";
 import { logIn } from "../control/slices/userSlice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../images/logo.png";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -114,7 +114,7 @@ function LogIn() {
                   </button>
                 </div>
                 <div className="Link-account ">
-                  <a href="hesabimyok" onClick={handleNavigate}>
+                  <Link to={"/register"}  onClick={handleNavigate}>
                     Hesabın yok mu?
                     <span>
                       {" "}
@@ -123,7 +123,7 @@ function LogIn() {
                         Hesap Oluştur?
                       </b>
                     </span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

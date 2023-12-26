@@ -25,9 +25,9 @@
       "color": "Mavi",
       "series": " 3 Serisi ",
       "gear": "Otomatik",
-      "province":"Ankara",
-      "district":"Çankaya",
-      "neighbourhood":"Kızılay",
+      "province": "Ankara",
+      "district": "Çankaya",
+      "neighbourhood": "Kızılay",
       "id": 1
     },
     {
@@ -52,9 +52,9 @@
       "color": "Kırmızı",
       "series": "vasita serisi",
       "gear": "Manuel",
-      "province":"Antalya",
-      "district":"Muratpaşa",
-      "neighbourhood":"Lara",
+      "province": "Antalya",
+      "district": "Muratpaşa",
+      "neighbourhood": "Lara",
       "id": 2
     },
     {
@@ -78,9 +78,9 @@
       "m2": "350",
       "rooms": "5+1",
       "id": 3,
-      "province":"İstanbul",
-      "district":"Fatih",
-      "neighbourhood":"Eminönü"
+      "province": "İstanbul",
+      "district": "Fatih",
+      "neighbourhood": "Eminönü"
     },
     {
       "selectedFiles": [
@@ -102,17 +102,20 @@
       "price": "1.699.000 ",
       "m2": "566",
       "id": 4,
-      "province":"Kahramanmaraş",
-      "district":"Dulkadiroğlu",
-      "neighbourhood":"namık kemal"
+      "province": "Kahramanmaraş",
+      "district": "Dulkadiroğlu",
+      "neighbourhood": "namık kemal"
     },
     {
       "selectedFiles": [
         {
-          "url": "https://i0.shbdn.com/photos/62/22/43/thmb_114262224319k.jpg"
+          "url": "https://i0.shbdn.com/photos/75/38/24/x5_1143753824dcb.jpg"
         },
         {
-          "url": "https://i0.shbdn.com/photos/62/22/43/1142622243717.jpg"
+          "url": "https://i0.shbdn.com/photos/75/38/24/x5_1143753824ina.jpg"
+        },
+        {
+          "url": "https://i0.shbdn.com/photos/75/38/24/x5_1143753824g9a.jpg"
         }
       ],
       "title": "Telefon",
@@ -127,7 +130,10 @@
       "ram": "8",
       "processor": "işlemci",
       "memory": "256",
-      "id": 5
+      "id": 5,
+      "province": "Antalya",
+      "district": "Alanya",
+      "neighbourhood": "sugözü"
     },
     {
       "selectedFiles": [
