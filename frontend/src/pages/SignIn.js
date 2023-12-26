@@ -94,23 +94,28 @@ function SignIn() {
                   <img src={Logo} alt="Logo" />
                 </div>
               </div>
-              <div className="logo col-md-6">
-                <label>
-                  Kullanıcı adı soyadı:
-                  <input
-                    type="text"
-                    name="username"
-                    value={formData.username}
-                    onChange={handleChange}
-                  />
-                  {errors.username && (
-                    <span className="error">{errors.username}</span>
-                  )}
-                </label>
+              <div className="logo col-md-6 ">
+                <div>
+                  <label>
+                    Kullanıcı adı soyadı: </label>
+                    <input
+                      className="signIn-inputs"
+                      type="text"
+                      name="username"
+                      value={formData.username}
+                      onChange={handleChange}
+                    />
+                    {errors.username && (
+                      <span className="error">{errors.username}</span>
+                    )}
+                 
+                </div>
 
-                <label>
-                  E-posta:
+                <div>
+                  <label> E-posta: </label>
+
                   <input
+                    className="signIn-inputs"
                     type="email"
                     name="email"
                     value={formData.email}
@@ -119,26 +124,27 @@ function SignIn() {
                   {errors.email && (
                     <span className="error">{errors.email}</span>
                   )}
-                </label>
-                <div className="d-dlex ">
-                  <label>
-                    Telefon Numarası:
-                    <input
-                      placeholder="(242) 242 24 24"
-                      type="tel"
-                      name="phoneNumber"
-                      value={formData.phoneNumber}
-                      onChange={handleChange}
-                    />
-                    {errors.phoneNumber && (
-                      <span className="error">{errors.phoneNumber}</span>
-                    )}
-                  </label>
                 </div>
 
-                <label>
-                  Şifre:
+                <div className="d-dlex ">
+                  <label>Telefon Numarası: </label>
                   <input
+                    className="signIn-inputs"
+                    placeholder="(242) 242 24 24"
+                    type="tel"
+                    name="phoneNumber"
+                    value={formData.phoneNumber}
+                    onChange={handleChange}
+                  />
+                  {errors.phoneNumber && (
+                    <span className="error">{errors.phoneNumber}</span>
+                  )}
+                </div>
+
+                <div>
+                  <label>Şifre: </label>
+                  <input
+                    className="signIn-inputs"
                     type="password"
                     name="password"
                     value={formData.password}
@@ -147,11 +153,13 @@ function SignIn() {
                   {errors.password && (
                     <span className="error">{errors.password}</span>
                   )}
-                </label>
+                </div>
 
-                <label>
-                  Şifre Tekrar:
+                <div>
+                  {" "}
+                  <label>Şifre Tekrar:</label>
                   <input
+                    className="signIn-inputs"
                     type="password"
                     name="confirmPassword"
                     value={formData.confirmPassword}
@@ -160,7 +168,7 @@ function SignIn() {
                   {errors.confirmPassword && (
                     <span className="error">{errors.confirmPassword}</span>
                   )}
-                </label>
+                </div>
               </div>
             </div>
             <button type="submit" className="btn mb-2" id="Signin">

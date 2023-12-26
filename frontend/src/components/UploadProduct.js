@@ -144,8 +144,8 @@ const UploadProduct = () => {
                   id="productName"
                   value={productName}
                   onChange={(e) => setProductName(e.target.value)}
-                  required 
-                
+                  required
+
                 />
               </div>
               <div className="product-title">
@@ -171,6 +171,7 @@ const UploadProduct = () => {
               <div className="product-pro">
                 <label htmlFor="province">İl:</label>
                 <input
+                type="text"
                   id="province"
                   value={province}
                   onChange={(e) => setProvince(e.target.value)}
@@ -180,6 +181,7 @@ const UploadProduct = () => {
               <div className="product-dist">
                 <label htmlFor="district">İlçe:</label>
                 <input
+                type="text"
                   id="district"
                   value={district}
                   onChange={(e) => setDistrict(e.target.value)}
@@ -189,6 +191,7 @@ const UploadProduct = () => {
               <div className="product-neigbor">
                 <label htmlFor="neigborhood">Mahalle:</label>
                 <input
+                type="text"
                   id="neigborhood"
                   value={neigborhood}
                   onChange={(e) => setNeigborhood(e.target.value)}
