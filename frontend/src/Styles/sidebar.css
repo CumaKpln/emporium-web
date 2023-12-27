@@ -3,7 +3,10 @@
     margin: 0;
 }
 
-
+.dropdown-toggle::after {
+    margin-top: 10px;
+    float: right;
+}
 
 h2 {
     padding: 20px;

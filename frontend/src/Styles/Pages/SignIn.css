@@ -40,7 +40,6 @@ body .SignIn {
 .formx {
   margin: auto;
   width: 80%;
-
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -77,19 +76,16 @@ body .SignIn {
   margin-bottom: 10px;
 }
 
-.inputs {
 
-}
-
-
-input,
-textarea {
-  width: 100%;  
+.signIn-inputs {
   padding: 8px;
-  border: 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box;
+  border: 1px solid #ccc;
+  width: 100%; /* Genişlik ayarı */
+  margin-bottom: 5px;
 }
+
+
 
 .signInBtn {
   background-color: #4caf50;

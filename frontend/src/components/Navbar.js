@@ -61,7 +61,6 @@ const Navbar = () => {
                 {/* buraya kullanıcı username gelecek */}
               </div>
             </Link>
-
             {/* <Link to="/favorites"> Bunu açınca herşey açılacak */}
             <div className="fav-icon">
               <svg
@@ -78,71 +77,70 @@ const Navbar = () => {
             </div>
             {/* </Link> */}
             <Link to="/upload-product">
-              <button type="button">
-                <span>İlan ver</span>
-              </button>
+              <div id="uploadProduct" className="navBtn " type="button">
+                <span className="m-0">İlan ver</span>
+              </div>
             </Link>
             <Link to="/login">
-              <div className="Login">
-                <span className="m-0 ">Üye Giriş</span>
+              <div className="Login navBtn ">
+                <span className="m-0">Üye Giriş</span>
               </div>
             </Link>
             <Link to="/register ">
-              <div className="Register ">
+              <div className=" navBtn">
                 <span className="m-0">Kayıt ol</span>
               </div>
             </Link>
-
           </div>
         </div>
       </nav>
       <nav id="nav2" className="navbar bg-body-tertiary">
-      <div className="container">
-        <div className="nav-logo">
-          <img src={logo} alt="logo-png" />
-        </div>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasNavbar"
-          aria-controls="offcanvasNavbar"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div
-          className="offcanvas offcanvas-end"
-          tabIndex="-1"
-          id="offcanvasNavbar"
-          aria-labelledby="offcanvasNavbarLabel"
-        >
-          <Link to="/">
-            {" "}
-            <div className="nav-logo">
-              <img src={logo} alt="logo-png" />
-            </div>
-          </Link>
-          <div className="offcanvas-body">
-            <div className="nav-search">
-              <input type="search" placeholder="Arama yapınız" />
-              <div className="search-icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  fill="currentColor"
-                  className="bi bi-search"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                </svg>
+        <div className="container nav2-container">
+          <div className="nav-logo">
+            <img src={logo} alt="logo-png" />
+          </div>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div
+            className="offcanvas offcanvas-end"
+            tabIndex="-1"
+            id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel"
+          >
+            <Link to="/">
+              {" "}
+              <div className="nav-logo">
+                <img src={logo} alt="logo-png" />
+              </div>
+            </Link>
+            <div className="offcanvas-body">
+              <div className="nav-search">
+                <input type="search" placeholder="Arama yapınız" />
+                <div className="search-icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    className="bi bi-search"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                  </svg>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="right-navbar">
-          <Link to="/account">
-              <div className="account fav-icon ">
+
+            <Link to="/account">
+              <div className="nav2-account  ">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="25"
@@ -157,11 +155,11 @@ const Navbar = () => {
                     d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
                   />
                 </svg>
-                <div className="account"> Hesap </div>
+                <div> Hesap </div>
                 {/* buraya kullanıcı username gelecek */}
               </div>
             </Link>
-            <div className="fav-icon">
+            <div className="nav2-fav-icon">
               <a
                 href="/#"
                 style={{
@@ -188,25 +186,23 @@ const Navbar = () => {
               </a>
             </div>
             <Link to="/upload-product">
-              <button type="button">
+              <div className="nav2-upload-product">
                 <span>İlan ver</span>
-              </button>
+              </div>
             </Link>
             <Link to="/login">
-              <div className="Login">
+              <div className="nav2-Login">
                 <span className="m-0 ">Üye Giriş</span>
               </div>
             </Link>
             <Link to="/register ">
-              <div className="Register ">
+              <div className="nav2-Register ">
                 <span className="m-0">Kayıt ol</span>
               </div>
             </Link>
           </div>
         </div>
-      </div>
-    </nav>
-    
+      </nav>
     </>
   );
 };
