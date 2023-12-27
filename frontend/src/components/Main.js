@@ -10,16 +10,16 @@ const Main = () => {
       <Navbar />
 
       <div className="main ">
-      
+
         <div className="container d-flex">
-<CategoryProvider>
-          <div className="col-md-3 col-sm-3 sidebar">
-            <Sidebar />
-          </div>
-          <div className="col-md-9 col-sm-9">
-            <Article />
-            {/* <FilterBar category="asd" /> */}
-          </div>
+          <CategoryProvider>
+            <div className="col-md-3 col-sm-3 sidebar">
+              <Sidebar />
+            </div>
+            <div className="col-md-9 col-sm-9">
+              <Article />
+              {/* <FilterBar category="asd" /> */}
+            </div>
           </CategoryProvider>
         </div>
 

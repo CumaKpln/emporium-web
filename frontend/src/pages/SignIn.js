@@ -155,7 +155,7 @@ function SignIn() {
                   )}
                 </div>
 
-                <div>
+                <div className="mb-4">
                   {" "}
                   <label>Şifre Tekrar:</label>
                   <input

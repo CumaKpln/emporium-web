@@ -1,7 +1,6 @@
 // Products.jsx
 import React from "react";
 import { useCategory } from "./CategoryContext";
-
 import { useDispatch } from "react-redux";
 import data from "../data/db.json";
 import "../Styles/Product.css";
@@ -20,7 +19,7 @@ function Products() {
     const categoryMatch = selectedCategory ? product.category.toLowerCase() === selectedCategory.toLowerCase() : true;
     const subCategoryMatch = selectedSubCategory ? product.subCategory.toLowerCase() === selectedSubCategory.toLowerCase() : true;
     return categoryMatch && subCategoryMatch;
-  });  
+  });
 
   return (
     <div className="products">
