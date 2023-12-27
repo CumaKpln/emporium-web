@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Styles/sidebar.css";
 import { useCategory } from "./CategoryContext";
-import provinces from "../data/Locations/State.json";
-import { Link } from "react-router-dom";
+import { provinces } from "../data/Locations/Province.js";
+import { districts } from "../data/Locations/District.js";
 
 const Sidebar = () => {
+  const [selectedProvince, setSelectedProvince] = useState("");
+
   const { handleCategoryClick } = useCategory();
 
   // vasıta bölümü
@@ -535,7 +537,7 @@ const Sidebar = () => {
               {isCarProvinceOpen && (
                 <div className="custom-dropdown-menu">
 
-                  {provinces["states"].map((province) => (<button className="btn sidebarBtn" type="button" > {province.state} </button>))}
+                  {provinces.map((province) => (<button className="btn sidebarBtn" type="button" onClick={(e) => setSelectedProvince(province.state)}> {province.state} </button>))}
                 </div>
               )}
               <button
@@ -545,17 +547,11 @@ const Sidebar = () => {
               >
                 İlçe
               </button>
-              {isCarDistrictOpen && (
+              {isCarDistrictOpen && selectedProvince !== "" && (
                 <div className="custom-dropdown-menu">
-                  <button className="btn sidebarBtn" type="button">
-                    Model X
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Y
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Z
-                  </button>
+                  {districts.filter((district) => district.state == selectedProvince).map((district) => (<button className="btn sidebarBtn" type="button">
+                    {district.name}
+                  </button>))}
                 </div>
               )}
               <button
@@ -663,7 +659,7 @@ const Sidebar = () => {
                 (
                   <div className="custom-dropdown-menu">
 
-                    {provinces["states"].map((province) => (<button className="btn sidebarBtn" type="button" > {province.state} </button>))}
+                    {provinces.map((province) => (<button className="btn sidebarBtn" type="button" onClick={(e) => setSelectedProvince(province.state)}> {province.state} </button>))}
                   </div>
                 )
               )}
@@ -674,17 +670,11 @@ const Sidebar = () => {
               >
                 İlçe
               </button>
-              {isMotorcycleDistrictOpen && (
+              {isMotorcycleDistrictOpen && selectedProvince !== "" && (
                 <div className="custom-dropdown-menu">
-                  <button className="btn sidebarBtn" type="button">
-                    Model X
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Y
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Z
-                  </button>
+                  {districts.filter((district) => district.state == selectedProvince).map((district) => (<button className="btn sidebarBtn" type="button">
+                    {district.name}
+                  </button>))}
                 </div>
               )}
               <button
@@ -805,7 +795,7 @@ const Sidebar = () => {
               {isHomeProvinceOpen && ((
                 <div className="custom-dropdown-menu">
 
-                  {provinces["states"].map((province) => (<button className="btn sidebarBtn" type="button" > {province.state} </button>))}
+                  {provinces.map((province) => (<button className="btn sidebarBtn" type="button" onClick={(e) => setSelectedProvince(province.state)}> {province.state} </button>))}
                 </div>
               )
               )}
@@ -816,17 +806,11 @@ const Sidebar = () => {
               >
                 İlçe
               </button>
-              {isHomeDistrictOpen && (
+              {isHomeDistrictOpen && selectedProvince !== "" && (
                 <div className="custom-dropdown-menu">
-                  <button className="btn sidebarBtn" type="button">
-                    Model X
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Y
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Z
-                  </button>
+                  {districts.filter((district) => district.state == selectedProvince).map((district) => (<button className="btn sidebarBtn" type="button">
+                    {district.name}
+                  </button>))}
                 </div>
               )}
               <button
@@ -892,15 +876,7 @@ const Sidebar = () => {
               </button>
               {isPlotProvinceOpen && (
                 <div className="custom-dropdown-menu">
-                  <button className="btn sidebarBtn" type="button">
-                    Model X
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Y
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Z
-                  </button>
+                  {provinces.map((province) => (<button className="btn sidebarBtn" type="button" onClick={(e) => setSelectedProvince(province.state)}> {province.state} </button>))}
                 </div>
               )}
               <button
@@ -910,17 +886,11 @@ const Sidebar = () => {
               >
                 İlçe
               </button>
-              {isPlotDistrictOpen && (
+              {isPlotDistrictOpen && selectedProvince != "" && (
                 <div className="custom-dropdown-menu">
-                  <button className="btn sidebarBtn" type="button">
-                    Model X
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Y
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Z
-                  </button>
+                  {districts.filter((district) => district.state == selectedProvince).map((district) => (<button className="btn sidebarBtn" type="button">
+                    {district.name}
+                  </button>))}
                 </div>
               )}
               <button
@@ -982,7 +952,7 @@ const Sidebar = () => {
                 (
                   <div className="custom-dropdown-menu">
 
-                    {provinces["states"].map((province) => (<button className="btn sidebarBtn" type="button" > {province.state} </button>))}
+                    {provinces.map((province) => (<button className="btn sidebarBtn" type="button" onClick={(e) => setSelectedProvince(province.state)}> {province.state} </button>))}
                   </div>
                 )
               )}
@@ -993,17 +963,11 @@ const Sidebar = () => {
               >
                 İlçe
               </button>
-              {isPhoneDistrictOpen && (
+              {isPhoneDistrictOpen && selectedProvince !== "" && (
                 <div className="custom-dropdown-menu">
-                  <button className="btn sidebarBtn" type="button">
-                    Model X
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Y
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Z
-                  </button>
+                  {districts.filter((district) => district.state == selectedProvince).map((district) => (<button className="btn sidebarBtn" type="button">
+                    {district.name}
+                  </button>))}
                 </div>
               )}
               <button
@@ -1149,15 +1113,7 @@ const Sidebar = () => {
               </button>
               {isPcProvinceOpen && (
                 <div className="custom-dropdown-menu">
-                  <button className="btn sidebarBtn" type="button">
-                    Model X
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Y
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Z
-                  </button>
+                  {provinces.map((province) => (<button className="btn sidebarBtn" type="button" onClick={(e) => setSelectedProvince(province.state)}> {province.state} </button>))}
                 </div>
               )}
               <button
@@ -1167,17 +1123,11 @@ const Sidebar = () => {
               >
                 İlçe
               </button>
-              {isPcDistrictOpen && (
+              {isPcDistrictOpen && selectedProvince != "" && (
                 <div className="custom-dropdown-menu">
-                  <button className="btn sidebarBtn" type="button">
-                    Model X
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Y
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Z
-                  </button>
+                  {districts.filter((district) => district.state == selectedProvince).map((district) => (<button className="btn sidebarBtn" type="button">
+                    {district.name}
+                  </button>))}
                 </div>
               )}
               <button
