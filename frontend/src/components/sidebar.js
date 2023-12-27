@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Styles/sidebar.css";
 import { useCategory } from "./CategoryContext";
-import provinces from "../data/Locations/State.json";
+import { provinces } from "../data/Locations/Province.js";
 
 const Sidebar = () => {
   const { handleCategoryClick } = useCategory();
@@ -504,7 +504,7 @@ const Sidebar = () => {
         className="btn sidebarMainTitle dropdown-toggle"
         type="button"
         onClick={() => {
-          handleCategoryClick({ category: 'vasıta'});
+          handleCategoryClick({ category: 'vasıta' });
           toggleVehicleDropdown();
         }}
       >
@@ -515,9 +515,10 @@ const Sidebar = () => {
           <button
             className="btn sidebarBtn dropdown-toggle"
             type="button"
-            onClick={() =>{
+            onClick={() => {
               toggleCarDropdown()
-              handleCategoryClick({ category: 'vasıta', subCategory: 'araba' })}}
+              handleCategoryClick({ category: 'vasıta', subCategory: 'araba' })
+            }}
           >
             Araba
           </button>
@@ -533,7 +534,7 @@ const Sidebar = () => {
               {isCarProvinceOpen && (
                 <div className="custom-dropdown-menu">
 
-                  {provinces["states"].map((province) => (<button className="btn sidebarBtn" type="button" > {province.state} </button>))}
+                  {provinces.map((province) => (<button className="btn sidebarBtn" type="button" > {province.state} </button>))}
                 </div>
               )}
               <button
@@ -643,7 +644,8 @@ const Sidebar = () => {
             type="button"
             onClick={() => {
               toggleMotorcycleDropdown()
-              handleCategoryClick({ category: 'vasıta', subCategory: 'motorsiklet'})}}
+              handleCategoryClick({ category: 'vasıta', subCategory: 'motorsiklet' })
+            }}
           >
             Motorsiklet
           </button>
@@ -660,7 +662,7 @@ const Sidebar = () => {
                 (
                   <div className="custom-dropdown-menu">
 
-                    {provinces["states"].map((province) => (<button className="btn sidebarBtn" type="button" > {province.state} </button>))}
+                    {provinces.map((province) => (<button className="btn sidebarBtn" type="button" > {province.state} </button>))}
                   </div>
                 )
               )}
@@ -772,7 +774,7 @@ const Sidebar = () => {
         className="btn sidebarMainTitle dropdown-toggle"
         type="button"
         onClick={() => {
-          handleCategoryClick({ category: 'emlak'});
+          handleCategoryClick({ category: 'emlak' });
           toggleRealEstateDropdown();
         }}
       >
@@ -784,8 +786,9 @@ const Sidebar = () => {
             className="btn sidebarBtn dropdown-toggle"
             type="button"
             onClick={() => {
-              handleCategoryClick({ category: 'emlak', subCategory: 'ev'});
-              toggleHomeDropdown()}}
+              handleCategoryClick({ category: 'emlak', subCategory: 'ev' });
+              toggleHomeDropdown()
+            }}
           >
             Ev
           </button>
@@ -801,7 +804,7 @@ const Sidebar = () => {
               {isHomeProvinceOpen && ((
                 <div className="custom-dropdown-menu">
 
-                  {provinces["states"].map((province) => (<button className="btn sidebarBtn" type="button" > {province.state} </button>))}
+                  {provinces.map((province) => (<button className="btn sidebarBtn" type="button" > {province.state} </button>))}
                 </div>
               )
               )}
@@ -870,9 +873,10 @@ const Sidebar = () => {
           <button
             className="btn sidebarBtn dropdown-toggle"
             type="button"
-            onClick={()=>{
-              handleCategoryClick({ category: 'emlak', subCategory: 'arsa'})
-              togglePlotDropdown()}}
+            onClick={() => {
+              handleCategoryClick({ category: 'emlak', subCategory: 'arsa' })
+              togglePlotDropdown()
+            }}
           >
             Arsa
           </button>
@@ -946,7 +950,7 @@ const Sidebar = () => {
         className="btn sidebarMainTitle dropdown-toggle"
         type="button"
         onClick={() => {
-          handleCategoryClick({ category: 'elektronik eşya'});
+          handleCategoryClick({ category: 'elektronik eşya' });
           toggleElectronicStuffDropdown();
         }}
       >
@@ -957,9 +961,10 @@ const Sidebar = () => {
           <button
             className="btn sidebarBtn dropdown-toggle"
             type="button"
-            onClick={()=>{
-              handleCategoryClick({ category: 'elektronik eşya', subCategory: 'telefon'})
-              togglePhoneDropdown()}}
+            onClick={() => {
+              handleCategoryClick({ category: 'elektronik eşya', subCategory: 'telefon' })
+              togglePhoneDropdown()
+            }}
           >
             Telefon
           </button>
@@ -976,7 +981,7 @@ const Sidebar = () => {
                 (
                   <div className="custom-dropdown-menu">
 
-                    {provinces["states"].map((province) => (<button className="btn sidebarBtn" type="button" > {province.state} </button>))}
+                    {provinces.map((province) => (<button className="btn sidebarBtn" type="button" > {province.state} </button>))}
                   </div>
                 )
               )}
@@ -1125,9 +1130,10 @@ const Sidebar = () => {
           <button
             className="btn sidebarBtn dropdown-toggle"
             type="button"
-            onClick={()=>{
-              handleCategoryClick({ category: 'elektronik eşya', subCategory: 'bilgisayar'})
-              togglePcDropdown()}}
+            onClick={() => {
+              handleCategoryClick({ category: 'elektronik eşya', subCategory: 'bilgisayar' })
+              togglePcDropdown()
+            }}
           >
             Bilgisayar
           </button>
