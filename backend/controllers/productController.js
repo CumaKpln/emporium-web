@@ -1,4 +1,5 @@
 // productController.js
+const multer = require("multer");
 const jwt = require("jsonwebtoken");
 const fs = require("fs").promises;
 const path = require("path");
@@ -13,6 +14,16 @@ const Phone = require("../models/products/phone");
 const User = require("../models/user");
 
 //! CREATE PRODUCT İŞLEMLERİ
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "images/"); // Dosyaların yükleneceği klasörü belirtin
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname); // Yüklenecek dosyanın adını belirtin
+  },
+});
+
+const upload = multer({ storage: storage });
 
 const createProduct = async (req, res) => {
   const {
@@ -37,11 +48,7 @@ const createProduct = async (req, res) => {
     squareMeters,
     room,
     propertyType,
-    photoPath,
   } = req.body;
-  const photoData = await fs.readFile(photoPath);
-  const tableName = subcategory.toLowerCase();
-  let specificFields;
 
   try {
     // Token kontrolü
@@ -66,6 +73,7 @@ const createProduct = async (req, res) => {
 
     // Transaction başlatın
     await sequelize.transaction(async (t) => {
+      const images = req.files;
       // Product tablosuna yeni bir ürün ekleyin
       const createdProduct = await Product.create(
         {
@@ -78,13 +86,14 @@ const createProduct = async (req, res) => {
           district,
           neighbourhood,
           userId,
-          photo: photoData,
+          images: images.map((image) => image.filename),
         },
         { transaction: t }
       );
 
       // Diğer tablolara veri eklemek için tablo adını belirleyin
-      switch (tableName) {
+      let specificFields;
+      switch (subcategory.toLowerCase()) {
         case "car":
           specificFields = { brand, series, color, gear, price };
           break;
@@ -98,7 +107,15 @@ const createProduct = async (req, res) => {
           specificFields = { propertyType, squareMeters, price };
           break;
         case "computer":
-          specificFields = { brand, model, ram, gpu, processor, memory, price };
+          specificFields = {
+            brand,
+            model,
+            ram,
+            gpu,
+            processor,
+            memory,
+            price,
+          };
           break;
         case "phone":
           specificFields = {
@@ -117,7 +134,7 @@ const createProduct = async (req, res) => {
       }
 
       // İlgili tabloya yeni bir ürün ekleyin
-      await sequelize.models[tableName].create(
+      await sequelize.models[subcategory.toLowerCase()].create(
         { ...specificFields, productId: createdProduct.id },
         { transaction: t }
       );
@@ -179,4 +196,5 @@ switch (key) {
 module.exports = {
   createProduct,
   getOneProduct,
+  upload,
 };

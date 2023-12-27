@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../Styles/Pages/LogIn.css";
 import { useDispatch } from "react-redux";
 import { logIn } from "../control/slices/userSlice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../images/logo.png";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -13,23 +13,19 @@ function LogIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Kullanıcı verileri
     const userData = {
       email: email,
       password: password,
     };
 
-    // axios ile istek gönder
     axios
-      .post("YOUR_API_ENDPOINT", userData)
+      .post("http://localhost:3000/user/login", userData)
       .then((response) => {
-        // Başarılı istek durumunda Redux dispatch veya diğer işlemleri burada gerçekleştirebilirsiniz.
         dispatch(
           logIn({
             email: email,
@@ -37,23 +33,21 @@ function LogIn() {
           })
         );
         toast.success("Giriş başarıyla yapıldı!");
-        console.log("İstek başarılı. Yanıt:", response.data);
-        // İstek başarılıysa, istediğiniz yönlendirmeyi yapabilirsiniz
-        navigate("/dashboard"); // Örnek olarak "/dashboard" sayfasına yönlendirme
+        alert("Giriş başarıyla yapıldı!");
+        navigate("/");
       })
       .catch((error) => {
         toast.error("Giriş başarısız oldu.");
         console.error("İstek hatası:", error);
-        // İstek hatası durumunda kullanıcıya hata mesajı gösterebilirsiniz
-        // Örneğin: alert("Bir hata oluştu. Lütfen tekrar deneyin.");
+        alert("Bir hata oluştu. Lütfen tekrar deneyin.");
       });
   };
+
   const handleNavigate = () => {
-    navigate("/kayıt");
+    navigate("/register");
   };
 
   const handleMessage = () => {
-    //alertify.success("Şifre yenilemek için mail gönderildi, lütfen mail kutunuzu kontrol ediniz.")
     navigate("/sifremiunuttum");
   };
 
@@ -62,19 +56,15 @@ function LogIn() {
       <Navbar />
       <div className="container-login mt-5">
         <div className="LogIn">
-          <h1 className="mt-5" id="üyegirişbutonu">
-            Üye Girişi
-          </h1>
-
+          <h1 className="mt-5">Üye Girişi</h1>
           <form onSubmit={(e) => handleSubmit(e)} id="form-login">
             <div className="row">
               <div className="logo col-md-6">
-                <div className="image">
+                <div className="loginİmage">
                   <img src={Logo} alt="Logo" />
                 </div>
               </div>
               <div className="form col-md-6">
-                {" "}
                 <div className="e-mail g-3">
                   <label className="Item">E-Posta</label>
                   <input
@@ -109,12 +99,12 @@ function LogIn() {
                 </div>
                 <br />
                 <div className="btn mb-2" id="Login">
-                  <button onClick={handleSubmit}>
+                  <button type="submit">
                     <p className="mb-0">Giriş</p>
                   </button>
                 </div>
                 <div className="Link-account ">
-                  <a href="hesabimyok" onClick={handleNavigate}>
+                  <Link to={"/register"} onClick={handleNavigate}>
                     Hesabın yok mu?
                     <span>
                       {" "}
@@ -123,7 +113,7 @@ function LogIn() {
                         Hesap Oluştur?
                       </b>
                     </span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

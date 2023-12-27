@@ -45,7 +45,7 @@ function associate() {
 associate();
 
 // Listen to server
-sequelize.sync({ force: true }).then(() => {
+sequelize.sync().then(() => {
   app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
   });
