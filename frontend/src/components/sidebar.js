@@ -547,17 +547,11 @@ const Sidebar = () => {
               >
                 İlçe
               </button>
-              {isCarDistrictOpen && (
+              {isCarDistrictOpen && selectedProvince !== "" && (
                 <div className="custom-dropdown-menu">
-                  <button className="btn sidebarBtn" type="button">
-                    Model X
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Y
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Z
-                  </button>
+                  {districts.filter((district) => district.state == selectedProvince).map((district) => (<button className="btn sidebarBtn" type="button">
+                    {district.name}
+                  </button>))}
                 </div>
               )}
               <button
@@ -676,17 +670,11 @@ const Sidebar = () => {
               >
                 İlçe
               </button>
-              {isMotorcycleDistrictOpen && (
+              {isMotorcycleDistrictOpen && selectedProvince !== "" && (
                 <div className="custom-dropdown-menu">
-                  <button className="btn sidebarBtn" type="button">
-                    Model X
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Y
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Z
-                  </button>
+                  {districts.filter((district) => district.state == selectedProvince).map((district) => (<button className="btn sidebarBtn" type="button">
+                    {district.name}
+                  </button>))}
                 </div>
               )}
               <button
@@ -818,17 +806,11 @@ const Sidebar = () => {
               >
                 İlçe
               </button>
-              {isHomeDistrictOpen && (
+              {isHomeDistrictOpen && selectedProvince !== "" && (
                 <div className="custom-dropdown-menu">
-                  <button className="btn sidebarBtn" type="button">
-                    Model X
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Y
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Z
-                  </button>
+                  {districts.filter((district) => district.state == selectedProvince).map((district) => (<button className="btn sidebarBtn" type="button">
+                    {district.name}
+                  </button>))}
                 </div>
               )}
               <button
@@ -904,17 +886,11 @@ const Sidebar = () => {
               >
                 İlçe
               </button>
-              {isPlotDistrictOpen && (
+              {isPlotDistrictOpen && selectedProvince != "" && (
                 <div className="custom-dropdown-menu">
-                  <button className="btn sidebarBtn" type="button">
-                    Model X
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Y
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Z
-                  </button>
+                  {districts.filter((district) => district.state == selectedProvince).map((district) => (<button className="btn sidebarBtn" type="button">
+                    {district.name}
+                  </button>))}
                 </div>
               )}
               <button
@@ -987,17 +963,11 @@ const Sidebar = () => {
               >
                 İlçe
               </button>
-              {isPhoneDistrictOpen && (
+              {isPhoneDistrictOpen && selectedProvince !== "" && (
                 <div className="custom-dropdown-menu">
-                  <button className="btn sidebarBtn" type="button">
-                    Model X
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Y
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Z
-                  </button>
+                  {districts.filter((district) => district.state == selectedProvince).map((district) => (<button className="btn sidebarBtn" type="button">
+                    {district.name}
+                  </button>))}
                 </div>
               )}
               <button
@@ -1153,17 +1123,11 @@ const Sidebar = () => {
               >
                 İlçe
               </button>
-              {isPcDistrictOpen && (
+              {isPcDistrictOpen && selectedProvince != "" && (
                 <div className="custom-dropdown-menu">
-                  <button className="btn sidebarBtn" type="button">
-                    Model X
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Y
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Z
-                  </button>
+                  {districts.filter((district) => district.state == selectedProvince).map((district) => (<button className="btn sidebarBtn" type="button">
+                    {district.name}
+                  </button>))}
                 </div>
               )}
               <button
