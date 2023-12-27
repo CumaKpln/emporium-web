@@ -13,6 +13,7 @@ const Main = () => {
 
         <div className="container d-flex">
           <CategoryProvider>
+<<<<<<< Updated upstream
             <div className="col-md-3 col-sm-3 sidebar">
               <Sidebar />
             </div>
@@ -20,6 +21,15 @@ const Main = () => {
               <Article />
               {/* <FilterBar category="asd" /> */}
             </div>
+=======
+          <div className="col-md-3 col-sm-3 sidebar">
+            <Sidebar />
+          </div>
+          <div className="col-md-9 col-sm-9">
+            <Article />
+            {/* <FilterBar category="asd" /> */}
+          </div>
+>>>>>>> Stashed changes
           </CategoryProvider>
         </div>
 

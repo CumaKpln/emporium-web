@@ -47,4 +47,25 @@ h2 {
     color: white;
     border-radius: 10px 0px 0px 10px;
   }
+
+  .dropdownUlLi {
+    width: 243px;
+    max-height: 200px;
+    overflow-y: auto;
+  }
+  
+  .dropdownUlLi ul {
+    padding: 0;
+    list-style: none;
+  }
+  
+  .dropdownUlLi li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .dropdownUlLi li:last-child {
+    border-bottom: none;
+  }
+  
   

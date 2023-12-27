@@ -507,7 +507,11 @@ const Sidebar = () => {
         className="btn sidebarMainTitle dropdown-toggle"
         type="button"
         onClick={() => {
+<<<<<<< Updated upstream
           handleCategoryClick({ category: 'vasıta' });
+=======
+          handleCategoryClick({ category: "vasıta" });
+>>>>>>> Stashed changes
           toggleVehicleDropdown();
         }}
       >
@@ -519,8 +523,13 @@ const Sidebar = () => {
             className="btn sidebarBtn dropdown-toggle"
             type="button"
             onClick={() => {
+<<<<<<< Updated upstream
               toggleCarDropdown()
               handleCategoryClick({ category: 'vasıta', subCategory: 'araba' })
+=======
+              toggleCarDropdown();
+              handleCategoryClick({ category: "vasıta", subCategory: "araba" });
+>>>>>>> Stashed changes
             }}
           >
             Araba
@@ -535,10 +544,20 @@ const Sidebar = () => {
                 İl
               </button>
               {isCarProvinceOpen && (
+<<<<<<< Updated upstream
                 <div className="custom-dropdown-menu">
 
                   {provinces.map((province) => (<button className="btn sidebarBtn" type="button" onClick={(e) => setSelectedProvince(province.state)}> {province.state} </button>))}
                 </div>
+=======
+                <div className="dropdownUlLi custom-dropdown-menu">
+                <ul>
+                  {provinces["states"].map((province, index) => (
+                    <li key={index}>{province.state}</li>
+                  ))}
+                </ul>
+              </div>
+>>>>>>> Stashed changes
               )}
               <button
                 className="btn sidebarBtn dropdown-toggle"
@@ -547,11 +566,25 @@ const Sidebar = () => {
               >
                 İlçe
               </button>
+<<<<<<< Updated upstream
               {isCarDistrictOpen && selectedProvince !== "" && (
                 <div className="custom-dropdown-menu">
                   {districts.filter((district) => district.state == selectedProvince).map((district) => (<button className="btn sidebarBtn" type="button">
                     {district.name}
                   </button>))}
+=======
+              {isCarDistrictOpen && (
+                <div className="dropdownUlLi custom-dropdown-menu">
+                  <button className="btn sidebarBtn" type="button">
+                    Model X
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Y
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Z
+                  </button>
+>>>>>>> Stashed changes
                 </div>
               )}
               <button
@@ -562,7 +595,7 @@ const Sidebar = () => {
                 Marka
               </button>
               {isCarBrandOpen && (
-                <div className="custom-dropdown-menu">
+                <div className="dropdownUlLi custom-dropdown-menu">
                   <button className="btn sidebarBtn" type="button">
                     Model X
                   </button>
@@ -582,7 +615,7 @@ const Sidebar = () => {
                 Seri
               </button>
               {isCarSeriesOpen && (
-                <div className="custom-dropdown-menu">
+                <div className="dropdownUlLi custom-dropdown-menu">
                   <button className="btn sidebarBtn" type="button">
                     Model X
                   </button>
@@ -602,7 +635,7 @@ const Sidebar = () => {
                 Renk
               </button>
               {isCarColorOpen && (
-                <div className="custom-dropdown-menu">
+                <div className="dropdownUlLi custom-dropdown-menu">
                   <button className="btn sidebarBtn" type="button">
                     Model X
                   </button>
@@ -622,7 +655,7 @@ const Sidebar = () => {
                 Vites
               </button>
               {isCarGearOpen && (
-                <div className="custom-dropdown-menu">
+                <div className="dropdownUlLi custom-dropdown-menu">
                   <button className="btn sidebarBtn" type="button">
                     Model X
                   </button>
@@ -640,8 +673,16 @@ const Sidebar = () => {
             className="btn sidebarBtn dropdown-toggle"
             type="button"
             onClick={() => {
+<<<<<<< Updated upstream
               toggleMotorcycleDropdown()
               handleCategoryClick({ category: 'vasıta', subCategory: 'motorsiklet' })
+=======
+              toggleMotorcycleDropdown();
+              handleCategoryClick({
+                category: "vasıta",
+                subCategory: "motorsiklet",
+              });
+>>>>>>> Stashed changes
             }}
           >
             Motorsiklet
@@ -656,12 +697,22 @@ const Sidebar = () => {
                 İl
               </button>
               {isMotorcycleProvinceOpen && (
+<<<<<<< Updated upstream
                 (
                   <div className="custom-dropdown-menu">
 
                     {provinces.map((province) => (<button className="btn sidebarBtn" type="button" onClick={(e) => setSelectedProvince(province.state)}> {province.state} </button>))}
                   </div>
                 )
+=======
+                <div className="dropdownUlLi custom-dropdown-menu">
+                <ul>
+                  {provinces["states"].map((province, index) => (
+                    <li key={index}>{province.state}</li>
+                  ))}
+                </ul>
+              </div>
+>>>>>>> Stashed changes
               )}
               <button
                 className="btn sidebarBtn dropdown-toggle"
@@ -670,11 +721,25 @@ const Sidebar = () => {
               >
                 İlçe
               </button>
+<<<<<<< Updated upstream
               {isMotorcycleDistrictOpen && selectedProvince !== "" && (
                 <div className="custom-dropdown-menu">
                   {districts.filter((district) => district.state == selectedProvince).map((district) => (<button className="btn sidebarBtn" type="button">
                     {district.name}
                   </button>))}
+=======
+              {isMotorcycleDistrictOpen && (
+                <div className="dropdownUlLi custom-dropdown-menu">
+                  <button className="btn sidebarBtn" type="button">
+                    Model X
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Y
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Z
+                  </button>
+>>>>>>> Stashed changes
                 </div>
               )}
               <button
@@ -685,7 +750,7 @@ const Sidebar = () => {
                 Marka
               </button>
               {isMotorcycleBrandOpen && (
-                <div className="custom-dropdown-menu">
+                <div className="dropdownUlLi custom-dropdown-menu">
                   <button className="btn sidebarBtn" type="button">
                     Model X
                   </button>
@@ -705,7 +770,7 @@ const Sidebar = () => {
                 Seri
               </button>
               {isMotorcycleSeriesOpen && (
-                <div className="custom-dropdown-menu">
+                <div className="dropdownUlLi custom-dropdown-menu">
                   <button className="btn sidebarBtn" type="button">
                     Model X
                   </button>
@@ -725,7 +790,7 @@ const Sidebar = () => {
                 Renk
               </button>
               {isMotorcycleColorOpen && (
-                <div className="custom-dropdown-menu">
+                <div className="dropdownUlLi custom-dropdown-menu">
                   <button className="btn sidebarBtn" type="button">
                     Model X
                   </button>
@@ -745,7 +810,7 @@ const Sidebar = () => {
                 Vites
               </button>
               {isMotorcycleGearOpen && (
-                <div className="custom-dropdown-menu">
+                <div className="dropdownUlLi custom-dropdown-menu">
                   <button className="btn sidebarBtn" type="button">
                     Model X
                   </button>
@@ -765,7 +830,11 @@ const Sidebar = () => {
         className="btn sidebarMainTitle dropdown-toggle"
         type="button"
         onClick={() => {
+<<<<<<< Updated upstream
           handleCategoryClick({ category: 'emlak' });
+=======
+          handleCategoryClick({ category: "emlak" });
+>>>>>>> Stashed changes
           toggleRealEstateDropdown();
         }}
       >
@@ -777,8 +846,13 @@ const Sidebar = () => {
             className="btn sidebarBtn dropdown-toggle"
             type="button"
             onClick={() => {
+<<<<<<< Updated upstream
               handleCategoryClick({ category: 'emlak', subCategory: 'ev' });
               toggleHomeDropdown()
+=======
+              handleCategoryClick({ category: "emlak", subCategory: "ev" });
+              toggleHomeDropdown();
+>>>>>>> Stashed changes
             }}
           >
             Ev
@@ -792,12 +866,23 @@ const Sidebar = () => {
               >
                 İl
               </button>
+<<<<<<< Updated upstream
               {isHomeProvinceOpen && ((
                 <div className="custom-dropdown-menu">
 
                   {provinces.map((province) => (<button className="btn sidebarBtn" type="button" onClick={(e) => setSelectedProvince(province.state)}> {province.state} </button>))}
                 </div>
               )
+=======
+              {isHomeProvinceOpen && (
+                <div className="dropdownUlLi custom-dropdown-menu">
+                <ul>
+                  {provinces["states"].map((province, index) => (
+                    <li key={index}>{province.state}</li>
+                  ))}
+                </ul>
+              </div>
+>>>>>>> Stashed changes
               )}
               <button
                 className="btn sidebarBtn dropdown-toggle"
@@ -806,11 +891,25 @@ const Sidebar = () => {
               >
                 İlçe
               </button>
+<<<<<<< Updated upstream
               {isHomeDistrictOpen && selectedProvince !== "" && (
                 <div className="custom-dropdown-menu">
                   {districts.filter((district) => district.state == selectedProvince).map((district) => (<button className="btn sidebarBtn" type="button">
                     {district.name}
                   </button>))}
+=======
+              {isHomeDistrictOpen && (
+                <div className="dropdownUlLi custom-dropdown-menu">
+                  <button className="btn sidebarBtn" type="button">
+                    Model X
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Y
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Z
+                  </button>
+>>>>>>> Stashed changes
                 </div>
               )}
               <button
@@ -821,7 +920,7 @@ const Sidebar = () => {
                 M²
               </button>
               {isHomeM2Open && (
-                <div className="custom-dropdown-menu">
+                <div className="dropdownUlLi custom-dropdown-menu">
                   <button className="btn sidebarBtn" type="button">
                     Model X
                   </button>
@@ -841,7 +940,7 @@ const Sidebar = () => {
                 Oda Sayısı
               </button>
               {isHomeNumberOfRoomsOpen && (
-                <div className="custom-dropdown-menu">
+                <div className="dropdownUlLi custom-dropdown-menu">
                   <button className="btn sidebarBtn" type="button">
                     Model X
                   </button>
@@ -859,8 +958,13 @@ const Sidebar = () => {
             className="btn sidebarBtn dropdown-toggle"
             type="button"
             onClick={() => {
+<<<<<<< Updated upstream
               handleCategoryClick({ category: 'emlak', subCategory: 'arsa' })
               togglePlotDropdown()
+=======
+              handleCategoryClick({ category: "emlak", subCategory: "arsa" });
+              togglePlotDropdown();
+>>>>>>> Stashed changes
             }}
           >
             Arsa
@@ -875,9 +979,19 @@ const Sidebar = () => {
                 İl
               </button>
               {isPlotProvinceOpen && (
+<<<<<<< Updated upstream
                 <div className="custom-dropdown-menu">
                   {provinces.map((province) => (<button className="btn sidebarBtn" type="button" onClick={(e) => setSelectedProvince(province.state)}> {province.state} </button>))}
                 </div>
+=======
+                <div className="dropdownUlLi custom-dropdown-menu">
+                <ul>
+                  {provinces["states"].map((province, index) => (
+                    <li key={index}>{province.state}</li>
+                  ))}
+                </ul>
+              </div>
+>>>>>>> Stashed changes
               )}
               <button
                 className="btn sidebarBtn dropdown-toggle"
@@ -886,11 +1000,25 @@ const Sidebar = () => {
               >
                 İlçe
               </button>
+<<<<<<< Updated upstream
               {isPlotDistrictOpen && selectedProvince != "" && (
                 <div className="custom-dropdown-menu">
                   {districts.filter((district) => district.state == selectedProvince).map((district) => (<button className="btn sidebarBtn" type="button">
                     {district.name}
                   </button>))}
+=======
+              {isPlotDistrictOpen && (
+                <div className="dropdownUlLi custom-dropdown-menu">
+                  <button className="btn sidebarBtn" type="button">
+                    Model X
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Y
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Z
+                  </button>
+>>>>>>> Stashed changes
                 </div>
               )}
               <button
@@ -901,7 +1029,7 @@ const Sidebar = () => {
                 M²
               </button>
               {isPlotM2Open && (
-                <div className="custom-dropdown-menu">
+                <div className="dropdownUlLi custom-dropdown-menu">
                   <button className="btn sidebarBtn" type="button">
                     Model X
                   </button>
@@ -921,7 +1049,11 @@ const Sidebar = () => {
         className="btn sidebarMainTitle dropdown-toggle"
         type="button"
         onClick={() => {
+<<<<<<< Updated upstream
           handleCategoryClick({ category: 'elektronik eşya' });
+=======
+          handleCategoryClick({ category: "elektronik eşya" });
+>>>>>>> Stashed changes
           toggleElectronicStuffDropdown();
         }}
       >
@@ -933,8 +1065,16 @@ const Sidebar = () => {
             className="btn sidebarBtn dropdown-toggle"
             type="button"
             onClick={() => {
+<<<<<<< Updated upstream
               handleCategoryClick({ category: 'elektronik eşya', subCategory: 'telefon' })
               togglePhoneDropdown()
+=======
+              handleCategoryClick({
+                category: "elektronik eşya",
+                subCategory: "telefon",
+              });
+              togglePhoneDropdown();
+>>>>>>> Stashed changes
             }}
           >
             Telefon
@@ -949,12 +1089,22 @@ const Sidebar = () => {
                 İl
               </button>
               {isPhoneProvinceOpen && (
+<<<<<<< Updated upstream
                 (
                   <div className="custom-dropdown-menu">
 
                     {provinces.map((province) => (<button className="btn sidebarBtn" type="button" onClick={(e) => setSelectedProvince(province.state)}> {province.state} </button>))}
                   </div>
                 )
+=======
+                <div className="dropdownUlLi custom-dropdown-menu">
+                <ul>
+                  {provinces["states"].map((province, index) => (
+                    <li key={index}>{province.state}</li>
+                  ))}
+                </ul>
+              </div>
+>>>>>>> Stashed changes
               )}
               <button
                 className="btn sidebarBtn dropdown-toggle"
@@ -963,11 +1113,25 @@ const Sidebar = () => {
               >
                 İlçe
               </button>
+<<<<<<< Updated upstream
               {isPhoneDistrictOpen && selectedProvince !== "" && (
                 <div className="custom-dropdown-menu">
                   {districts.filter((district) => district.state == selectedProvince).map((district) => (<button className="btn sidebarBtn" type="button">
                     {district.name}
                   </button>))}
+=======
+              {isPhoneDistrictOpen && (
+                <div className="dropdownUlLi custom-dropdown-menu">
+                  <button className="btn sidebarBtn" type="button">
+                    Model X
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Y
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Z
+                  </button>
+>>>>>>> Stashed changes
                 </div>
               )}
               <button
@@ -978,7 +1142,7 @@ const Sidebar = () => {
                 Marka
               </button>
               {isPhoneBrandOpen && (
-                <div className="custom-dropdown-menu">
+                <div className="dropdownUlLi custom-dropdown-menu">
                   <button className="btn sidebarBtn" type="button">
                     Model X
                   </button>
@@ -998,7 +1162,7 @@ const Sidebar = () => {
                 Model
               </button>
               {isPhoneModelOpen && (
-                <div className="custom-dropdown-menu">
+                <div className="dropdownUlLi custom-dropdown-menu">
                   <button className="btn sidebarBtn" type="button">
                     Model X
                   </button>
@@ -1018,7 +1182,7 @@ const Sidebar = () => {
                 Renk
               </button>
               {isPhoneColorOpen && (
-                <div className="custom-dropdown-menu">
+                <div className="dropdownUlLi custom-dropdown-menu">
                   <button className="btn sidebarBtn" type="button">
                     Model X
                   </button>
@@ -1038,7 +1202,7 @@ const Sidebar = () => {
                 Ram
               </button>
               {isPhoneRamOpen && (
-                <div className="custom-dropdown-menu">
+                <div className="dropdownUlLi custom-dropdown-menu">
                   <button className="btn sidebarBtn" type="button">
                     Model X
                   </button>
@@ -1058,7 +1222,7 @@ const Sidebar = () => {
                 İşlemci
               </button>
               {isPhoneProcessorOpen && (
-                <div className="custom-dropdown-menu">
+                <div className="dropdownUlLi custom-dropdown-menu">
                   <button className="btn sidebarBtn" type="button">
                     Model X
                   </button>
@@ -1078,7 +1242,7 @@ const Sidebar = () => {
                 Hafıza
               </button>
               {isPhoneMemoryOpen && (
-                <div className="custom-dropdown-menu">
+                <div className="dropdownUlLi custom-dropdown-menu">
                   <button className="btn sidebarBtn" type="button">
                     Model X
                   </button>
@@ -1096,8 +1260,16 @@ const Sidebar = () => {
             className="btn sidebarBtn dropdown-toggle"
             type="button"
             onClick={() => {
+<<<<<<< Updated upstream
               handleCategoryClick({ category: 'elektronik eşya', subCategory: 'bilgisayar' })
               togglePcDropdown()
+=======
+              handleCategoryClick({
+                category: "elektronik eşya",
+                subCategory: "bilgisayar",
+              });
+              togglePcDropdown();
+>>>>>>> Stashed changes
             }}
           >
             Bilgisayar
@@ -1112,8 +1284,21 @@ const Sidebar = () => {
                 İl
               </button>
               {isPcProvinceOpen && (
+<<<<<<< Updated upstream
                 <div className="custom-dropdown-menu">
                   {provinces.map((province) => (<button className="btn sidebarBtn" type="button" onClick={(e) => setSelectedProvince(province.state)}> {province.state} </button>))}
+=======
+                <div className="dropdownUlLi custom-dropdown-menu">
+                  <button className="btn sidebarBtn" type="button">
+                    Model X
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Y
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Z
+                  </button>
+>>>>>>> Stashed changes
                 </div>
               )}
               <button
@@ -1123,11 +1308,25 @@ const Sidebar = () => {
               >
                 İlçe
               </button>
+<<<<<<< Updated upstream
               {isPcDistrictOpen && selectedProvince != "" && (
                 <div className="custom-dropdown-menu">
                   {districts.filter((district) => district.state == selectedProvince).map((district) => (<button className="btn sidebarBtn" type="button">
                     {district.name}
                   </button>))}
+=======
+              {isPcDistrictOpen && (
+                <div className="dropdownUlLi custom-dropdown-menu">
+                  <button className="btn sidebarBtn" type="button">
+                    Model X
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Y
+                  </button>
+                  <button className="btn sidebarBtn" type="button">
+                    Model Z
+                  </button>
+>>>>>>> Stashed changes
                 </div>
               )}
               <button
@@ -1138,7 +1337,7 @@ const Sidebar = () => {
                 Marka
               </button>
               {isPcBrandOpen && (
-                <div className="custom-dropdown-menu">
+                <div className="dropdownUlLi custom-dropdown-menu">
                   <button className="btn sidebarBtn" type="button">
                     Model X
                   </button>
@@ -1158,7 +1357,7 @@ const Sidebar = () => {
                 Model
               </button>
               {isPcModelOpen && (
-                <div className="custom-dropdown-menu">
+                <div className="dropdownUlLi custom-dropdown-menu">
                   <button className="btn sidebarBtn" type="button">
                     Model X
                   </button>
@@ -1178,7 +1377,7 @@ const Sidebar = () => {
                 Renk
               </button>
               {isPcColorOpen && (
-                <div className="custom-dropdown-menu">
+                <div className="dropdownUlLi custom-dropdown-menu">
                   <button className="btn sidebarBtn" type="button">
                     Model X
                   </button>
@@ -1198,7 +1397,7 @@ const Sidebar = () => {
                 Ram
               </button>
               {isPcRamOpen && (
-                <div className="custom-dropdown-menu">
+                <div className="dropdownUlLi custom-dropdown-menu">
                   <button className="btn sidebarBtn" type="button">
                     Model X
                   </button>
@@ -1218,7 +1417,7 @@ const Sidebar = () => {
                 İşlemci
               </button>
               {isPcProcessorOpen && (
-                <div className="custom-dropdown-menu">
+                <div className="dropdownUlLi custom-dropdown-menu">
                   <button className="btn sidebarBtn" type="button">
                     Model X
                   </button>
@@ -1238,7 +1437,7 @@ const Sidebar = () => {
                 Hafıza
               </button>
               {isPcMemoryOpen && (
-                <div className="custom-dropdown-menu">
+                <div className="dropdownUlLi custom-dropdown-menu">
                   <button className="btn sidebarBtn" type="button">
                     Model X
                   </button>
