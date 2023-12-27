@@ -3,8 +3,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../Styles/sidebar.css";
 import { useCategory } from "./CategoryContext";
 import { provinces } from "../data/Locations/Province.js";
+import { districts } from "../data/Locations/District.js";
 
 const Sidebar = () => {
+  const [selectedProvince, setSelectedProvince] = useState("");
+
   const { handleCategoryClick } = useCategory();
 
   // vasıta bölümü
@@ -534,7 +537,7 @@ const Sidebar = () => {
               {isCarProvinceOpen && (
                 <div className="custom-dropdown-menu">
 
-                  {provinces.map((province) => (<button className="btn sidebarBtn" type="button" > {province.state} </button>))}
+                  {provinces.map((province) => (<button className="btn sidebarBtn" type="button" onClick={(e) => setSelectedProvince(province.state)}> {province.state} </button>))}
                 </div>
               )}
               <button
@@ -662,7 +665,7 @@ const Sidebar = () => {
                 (
                   <div className="custom-dropdown-menu">
 
-                    {provinces.map((province) => (<button className="btn sidebarBtn" type="button" > {province.state} </button>))}
+                    {provinces.map((province) => (<button className="btn sidebarBtn" type="button" onClick={(e) => setSelectedProvince(province.state)}> {province.state} </button>))}
                   </div>
                 )
               )}
@@ -804,7 +807,7 @@ const Sidebar = () => {
               {isHomeProvinceOpen && ((
                 <div className="custom-dropdown-menu">
 
-                  {provinces.map((province) => (<button className="btn sidebarBtn" type="button" > {province.state} </button>))}
+                  {provinces.map((province) => (<button className="btn sidebarBtn" type="button" onClick={(e) => setSelectedProvince(province.state)}> {province.state} </button>))}
                 </div>
               )
               )}
@@ -891,15 +894,7 @@ const Sidebar = () => {
               </button>
               {isPlotProvinceOpen && (
                 <div className="custom-dropdown-menu">
-                  <button className="btn sidebarBtn" type="button">
-                    Model X
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Y
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Z
-                  </button>
+                  {provinces.map((province) => (<button className="btn sidebarBtn" type="button" onClick={(e) => setSelectedProvince(province.state)}> {province.state} </button>))}
                 </div>
               )}
               <button
@@ -981,7 +976,7 @@ const Sidebar = () => {
                 (
                   <div className="custom-dropdown-menu">
 
-                    {provinces.map((province) => (<button className="btn sidebarBtn" type="button" > {province.state} </button>))}
+                    {provinces.map((province) => (<button className="btn sidebarBtn" type="button" onClick={(e) => setSelectedProvince(province.state)}> {province.state} </button>))}
                   </div>
                 )
               )}
@@ -1148,15 +1143,7 @@ const Sidebar = () => {
               </button>
               {isPcProvinceOpen && (
                 <div className="custom-dropdown-menu">
-                  <button className="btn sidebarBtn" type="button">
-                    Model X
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Y
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Z
-                  </button>
+                  {provinces.map((province) => (<button className="btn sidebarBtn" type="button" onClick={(e) => setSelectedProvince(province.state)}> {province.state} </button>))}
                 </div>
               )}
               <button
