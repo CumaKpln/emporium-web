@@ -552,7 +552,7 @@ const Sidebar = () => {
               >
                 İlçe
               </button>
-              {isCarDistrictOpen &&(
+              {isCarDistrictOpen && selectedProvince !== "" && (
                 <div className="dropdownUlLi custom-dropdown-menu">
                   {districts.filter((district) => district.state == selectedProvince).map((district) => (<button className="btn sidebarBtn" type="button">
                     {district.name}
@@ -679,7 +679,7 @@ const Sidebar = () => {
               >
                 İlçe
               </button>
-              {isMotorcycleDistrictOpen && (
+              {isMotorcycleDistrictOpen && selectedProvince !== "" && (
                 <div className="dropdownUlLi custom-dropdown-menu">
                   {districts.filter((district) => district.state == selectedProvince).map((district) => (<button className="btn sidebarBtn" type="button">
                     {district.name}
@@ -819,7 +819,7 @@ const Sidebar = () => {
               >
                 İlçe
               </button>
-              {isHomeDistrictOpen &&(
+              {isHomeDistrictOpen && selectedProvince !== "" && (
                 <div className="dropdownUlLi custom-dropdown-menu">
                   {districts.filter((district) => district.state == selectedProvince).map((district) => (<button className="btn sidebarBtn" type="button">
                     {district.name}
@@ -903,7 +903,7 @@ const Sidebar = () => {
               >
                 İlçe
               </button>
-              {isPlotDistrictOpen &&(
+              {isPlotDistrictOpen && selectedProvince !== "" && (
                 <div className="dropdownUlLi custom-dropdown-menu">
                   {districts.filter((district) => district.state == selectedProvince).map((district) => (<button className="btn sidebarBtn" type="button">
                     {district.name}
