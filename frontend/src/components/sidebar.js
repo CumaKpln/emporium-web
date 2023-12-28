@@ -7,6 +7,10 @@ import { districts } from "../data/Locations/District.js";
 
 const Sidebar = () => {
   const [selectedProvince, setSelectedProvince] = useState("");
+  const [selectedDistrict, setSelectedDistrict] = useState("");
+
+  const [nameFilter, setNameFilter] = useState("");
+  const [priceFilter, setPriceFilter] = useState([]);
 
   const { handleCategoryClick } = useCategory();
 
@@ -550,7 +554,7 @@ const Sidebar = () => {
                 İlçe
               </button>
               {isCarDistrictOpen && selectedProvince !== "" && (
-                <div className="custom-dropdown-menu">
+                <div className="dropdownUlLi custom-dropdown-menu">
                   {districts.filter((district) => district.state == selectedProvince).map((district) => (<button className="btn sidebarBtn" type="button">
                     {district.name}
                   </button>))}
@@ -659,9 +663,13 @@ const Sidebar = () => {
               </button>
               {isMotorcycleProvinceOpen && (
                 (
-                  <div className="custom-dropdown-menu">
+                  <div className="dropdownUlLi custom-dropdown-menu">
 
-                    {provinces.map((province) => (<button className="btn sidebarBtn" type="button" onClick={(e) => setSelectedProvince(province.state)}> {province.state} </button>))}
+                    <ul>
+                      {provinces.map((province, index) => (
+                        <li key={index} onClick={(e) => setSelectedProvince(province.state)}>{province.state}</li>
+                      ))}
+                    </ul>
                   </div>
                 )
               )}
@@ -673,7 +681,7 @@ const Sidebar = () => {
                 İlçe
               </button>
               {isMotorcycleDistrictOpen && selectedProvince !== "" && (
-                <div className="custom-dropdown-menu">
+                <div className="dropdownUlLi custom-dropdown-menu">
                   {districts.filter((district) => district.state == selectedProvince).map((district) => (<button className="btn sidebarBtn" type="button">
                     {district.name}
                   </button>))}
@@ -795,9 +803,13 @@ const Sidebar = () => {
                 İl
               </button>
               {isHomeProvinceOpen && ((
-                <div className="custom-dropdown-menu">
+                <div className="dropdownUlLi custom-dropdown-menu">
 
-                  {provinces.map((province) => (<button className="btn sidebarBtn" type="button" onClick={(e) => setSelectedProvince(province.state)}> {province.state} </button>))}
+                  <ul>
+                    {provinces.map((province, index) => (
+                      <li key={index} onClick={(e) => setSelectedProvince(province.state)}>{province.state}</li>
+                    ))}
+                  </ul>
                 </div>
               )
               )}
@@ -809,7 +821,7 @@ const Sidebar = () => {
                 İlçe
               </button>
               {isHomeDistrictOpen && selectedProvince !== "" && (
-                <div className="custom-dropdown-menu">
+                <div className="dropdownUlLi custom-dropdown-menu">
                   {districts.filter((district) => district.state == selectedProvince).map((district) => (<button className="btn sidebarBtn" type="button">
                     {district.name}
                   </button>))}
@@ -1093,7 +1105,8 @@ const Sidebar = () => {
                 </div>
               )}
             </div>
-          )}
+          )
+          }
           <button
             className="btn sidebarBtn dropdown-toggle"
             type="button"
@@ -1223,9 +1236,9 @@ const Sidebar = () => {
                 <div className="dropdownUlLi custom-dropdown-menu">
                   <button className="btn sidebarBtn" type="button">
                     Model X
-                  </button>
                   <button className="btn sidebarBtn" type="button">
                     Model Y
+                  </button>
                   </button>
                   <button className="btn sidebarBtn" type="button">
                     Model Z
@@ -1258,7 +1271,8 @@ const Sidebar = () => {
       )}
 
 
-    </div>
+
+    </div >
   );
 };
 
