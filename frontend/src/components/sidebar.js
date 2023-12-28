@@ -9,6 +9,9 @@ const Sidebar = () => {
   const [selectedProvince, setSelectedProvince] = useState("");
   const [selectedDistrict, setSelectedDistrict] = useState("");
 
+  const [nameFilter, setNameFilter] = useState("");
+  const [priceFilter, setPriceFilter] = useState([]);
+
   const { handleCategoryClick } = useCategory();
 
   // vasıta bölümü
@@ -1145,15 +1148,11 @@ const Sidebar = () => {
                 </button>
                 {isPcProvinceOpen && (
                   <div className="dropdownUlLi custom-dropdown-menu">
-                    <button className="btn sidebarBtn" type="button">
-                      Model X
-                    </button>
-                    <button className="btn sidebarBtn" type="button">
-                      Model Y
-                    </button>
-                    <button className="btn sidebarBtn" type="button">
-                      Model Z
-                    </button>
+                    <ul>
+                      {provinces.map((province, index) => (
+                        <li key={index} onClick={(e) => setSelectedProvince(province.state)}>{province.state}</li>
+                      ))}
+                    </ul>
                   </div>
                 )}
                 <button
@@ -1163,17 +1162,11 @@ const Sidebar = () => {
                 >
                   İlçe
                 </button>
-                {isPcDistrictOpen && (
+                {isPcDistrictOpen && selectedProvince !== "" && (
                   <div className="dropdownUlLi custom-dropdown-menu">
-                    <button className="btn sidebarBtn" type="button">
-                      Model X
-                    </button>
-                    <button className="btn sidebarBtn" type="button">
-                      Model Y
-                    </button>
-                    <button className="btn sidebarBtn" type="button">
-                      Model Z
-                    </button>
+                    {districts.filter((district) => district.state == selectedProvince).map((district) => (<button className="btn sidebarBtn" type="button">
+                      {district.name}
+                    </button>))}
                   </div>
                 )}
                 <button
