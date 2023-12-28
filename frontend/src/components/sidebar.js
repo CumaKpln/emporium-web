@@ -535,7 +535,7 @@ const Sidebar = () => {
                 İl
               </button>
               {isCarProvinceOpen && (
-                <div className="custom-dropdown-menu">
+                <div className="dropdownUlLi custom-dropdown-menu">
 
                   <ul>
                     {provinces.map((province, index) => (
@@ -551,8 +551,8 @@ const Sidebar = () => {
               >
                 İlçe
               </button>
-              {isCarDistrictOpen && selectedProvince !== "" && (
-                <div className="custom-dropdown-menu">
+              {isCarDistrictOpen &&(
+                <div className="dropdownUlLi custom-dropdown-menu">
                   {districts.filter((district) => district.state == selectedProvince).map((district) => (<button className="btn sidebarBtn" type="button">
                     {district.name}
                   </button>))}
@@ -661,7 +661,7 @@ const Sidebar = () => {
               </button>
               {isMotorcycleProvinceOpen && (
                 (
-                  <div className="custom-dropdown-menu">
+                  <div className="dropdownUlLi custom-dropdown-menu">
 
                     <ul>
                       {provinces.map((province, index) => (
@@ -678,8 +678,8 @@ const Sidebar = () => {
               >
                 İlçe
               </button>
-              {isMotorcycleDistrictOpen && selectedProvince !== "" && (
-                <div className="custom-dropdown-menu">
+              {isMotorcycleDistrictOpen && (
+                <div className="dropdownUlLi custom-dropdown-menu">
                   {districts.filter((district) => district.state == selectedProvince).map((district) => (<button className="btn sidebarBtn" type="button">
                     {district.name}
                   </button>))}
@@ -801,7 +801,7 @@ const Sidebar = () => {
                 İl
               </button>
               {isHomeProvinceOpen && ((
-                <div className="custom-dropdown-menu">
+                <div className="dropdownUlLi custom-dropdown-menu">
 
                   <ul>
                     {provinces.map((province, index) => (
@@ -818,8 +818,8 @@ const Sidebar = () => {
               >
                 İlçe
               </button>
-              {isHomeDistrictOpen && selectedProvince !== "" && (
-                <div className="custom-dropdown-menu">
+              {isHomeDistrictOpen &&(
+                <div className="dropdownUlLi custom-dropdown-menu">
                   {districts.filter((district) => district.state == selectedProvince).map((district) => (<button className="btn sidebarBtn" type="button">
                     {district.name}
                   </button>))}
@@ -887,7 +887,7 @@ const Sidebar = () => {
                 İl
               </button>
               {isPlotProvinceOpen && (
-                <div className="custom-dropdown-menu">
+                <div className="dropdownUlLi custom-dropdown-menu">
                   <ul>
                     {provinces.map((province, index) => (
                       <li key={index}>{province.state}</li>
@@ -902,8 +902,8 @@ const Sidebar = () => {
               >
                 İlçe
               </button>
-              {isPlotDistrictOpen && selectedProvince != "" && (
-                <div className="custom-dropdown-menu">
+              {isPlotDistrictOpen &&(
+                <div className="dropdownUlLi custom-dropdown-menu">
                   {districts.filter((district) => district.state == selectedProvince).map((district) => (<button className="btn sidebarBtn" type="button">
                     {district.name}
                   </button>))}
