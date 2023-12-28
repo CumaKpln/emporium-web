@@ -20,10 +20,10 @@ const PasswordChange = () => {
 
     // Şifre değiştirme isteği gönder
     axios
-      .post(`http://localhost:3000/reset-password/${resetToken}`, {
-        newPassword: newPassword,
-        newPassword2: newPassword2,
-      })
+      // .post(`http://localhost:3000/reset-password/${resetToken}`, {
+      //   newPassword: newPassword,
+      //   newPassword2: newPassword2,
+      // })
       .then((response) => {
         // Şifre değiştirme başarılı olduysa
         toast.success("Şifre başarıyla değiştirildi.");
