@@ -19,24 +19,24 @@ const PasswordChange = () => {
     }
 
     // Şifre değiştirme isteği gönder
-    axios
-      .post(`http://localhost:3000/reset-password/${resetToken}`, {
-        newPassword: newPassword,
-        newPassword2: newPassword2,
-      })
-      .then((response) => {
-        // Şifre değiştirme başarılı olduysa
-        toast.success("Şifre başarıyla değiştirildi.");
+  //   axios
+  //     .post(`http://localhost:3000/reset-password/${resetToken}`, {
+  //       newPassword: newPassword,
+  //       newPassword2: newPassword2,
+  //     })
+  //     .then((response) => {
+  //       // Şifre değiştirme başarılı olduysa
+  //       toast.success("Şifre başarıyla değiştirildi.");
 
-        setNewPassword("");
-        setNewPassword2("");
-      })
-      .catch((error) => {
-        console.error("İstek hatası:", error);
-        // Hata durumunda kullanıcıya hata mesajı gösterilebilir
-        toast.error("Şifre değiştirme başarısız oldu.");
-      });
-  };
+  //       setNewPassword("");
+  //       setNewPassword2("");
+  //     })
+  //     .catch((error) => {
+  //       console.error("İstek hatası:", error);
+  //       // Hata durumunda kullanıcıya hata mesajı gösterilebilir
+  //       toast.error("Şifre değiştirme başarısız oldu.");
+  //     });
+   };
 
   return (
     <>

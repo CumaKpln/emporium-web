@@ -14,6 +14,7 @@ function LogIn() {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const token = localStorage.getItem('token');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,6 +23,8 @@ function LogIn() {
       email: email,
       password: password,
     };
+    // Token'ı localStorage'a kaydetme
+    localStorage.setItem('token', token);
 
     axios
       .post("http://localhost:3000/user/login", userData)
@@ -34,8 +37,8 @@ function LogIn() {
           })
         );
         toast.success("Giriş başarıyla yapıldı!");
-        alert("Giriş başarıyla yapıldı!");
         navigate("/");
+        alert("Giriş başarıyla yapıldı!");
       })
       .catch((error) => {
         toast.error("Giriş başarısız oldu.");
