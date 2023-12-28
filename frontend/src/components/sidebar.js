@@ -7,6 +7,7 @@ import { districts } from "../data/Locations/District.js";
 
 const Sidebar = () => {
   const [selectedProvince, setSelectedProvince] = useState("");
+  const [selectedDistrict, setSelectedDistrict] = useState("");
 
   const { handleCategoryClick } = useCategory();
 
@@ -539,7 +540,7 @@ const Sidebar = () => {
 
                   <ul>
                     {provinces.map((province, index) => (
-                      <li key={index}>{province.state}</li>
+                      <li key={index} onClick={(e) => setSelectedProvince(province.state)}>{province.state}</li>
                     ))}
                   </ul>
                 </div>
@@ -665,7 +666,7 @@ const Sidebar = () => {
 
                     <ul>
                       {provinces.map((province, index) => (
-                        <li key={index}>{province.state}</li>
+                        <li key={index} onClick={(e) => setSelectedProvince(province.state)}>{province.state}</li>
                       ))}
                     </ul>
                   </div>
@@ -805,7 +806,7 @@ const Sidebar = () => {
 
                   <ul>
                     {provinces.map((province, index) => (
-                      <li key={index}>{province.state}</li>
+                      <li key={index} onClick={(e) => setSelectedProvince(province.state)}>{province.state}</li>
                     ))}
                   </ul>
                 </div>
@@ -890,7 +891,7 @@ const Sidebar = () => {
                 <div className="custom-dropdown-menu">
                   <ul>
                     {provinces.map((province, index) => (
-                      <li key={index}>{province.state}</li>
+                      <li key={index} onClick={(e) => setSelectedProvince(province.state)}>{province.state}</li>
                     ))}
                   </ul>
                 </div>
@@ -971,7 +972,7 @@ const Sidebar = () => {
                 <div className="dropdownUlLi custom-dropdown-menu">
                   <ul>
                     {provinces.map((province, index) => (
-                      <li key={index}>{province.state}</li>
+                      <li key={index} onClick={(e) => setSelectedProvince(province.state)}>{province.state}</li>
                     ))}
                   </ul>
                 </div>
