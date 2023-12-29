@@ -2,8 +2,6 @@
 const express = require("express");
 const router = express.Router();
 const productController = require("../controllers/productController");
-const multer = require("multer");
-
 router.post(
   "/product-post",
   productController.upload.array("images", 5),
@@ -13,6 +11,8 @@ router.post(
   }
 );
 
-router.get("/product-getOneProduct", productController.getOneProduct);
+router.delete("/:productId/:subcategory/:id", productController.deleteProduct);
+
+router.get("/getUserProduct", productController.getUserProduct);
 
 module.exports = router;

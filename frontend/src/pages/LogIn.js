@@ -24,6 +24,7 @@ function LogIn() {
     };
 
     axios
+
       .post("http://localhost:3000/user/login", userData)
 
       .then((response) => {
@@ -34,7 +35,10 @@ function LogIn() {
           })
         );
         toast.success("Giriş başarıyla yapıldı!");
-        alert("Giriş başarıyla yapıldı!");
+
+        const token = response.data.token;
+
+        localStorage.setItem("token", token);
         navigate("/");
       })
       .catch((error) => {
