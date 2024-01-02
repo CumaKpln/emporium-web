@@ -2,7 +2,7 @@
     max-width: 960px;
     margin: 0 auto;
     padding: 20px;
-
+min-height: 70vh;
 }
 
 .container-login a {
@@ -13,6 +13,7 @@
     background-color: #f5f5f5;
     padding: 20px;
     border-radius: 8px;
+    border: 1px solid lightgray;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -29,7 +30,7 @@
 }
 
 .loginİmage img {
-    margin: 40% 0px;
+    margin: 20% 0px;
     max-width: 500px;
     height: auto;
 }

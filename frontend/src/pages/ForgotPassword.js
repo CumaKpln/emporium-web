@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import Logo from "../images/logo.png";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../Styles/Pages/ForgotPassword.css";
-import { Link } from 'react-router-dom';
+import toast, { Toaster } from "react-hot-toast";
 
 const ForgotPassword = () => {
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
+  const [email, setEmail] = useState("");
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -16,42 +15,53 @@ const ForgotPassword = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      // Şifre sıfırlama API çağrısını burada yapabilirsiniz.
-      // Örneğin, Firebase Authentication kullanıyorsanız:
-      // await firebase.auth().sendPasswordResetEmail(email);
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      // Geçerli bir e-posta girilmediğinde veya e-posta alanı boş bırakıldığında
+      toast.error("Lütfen geçerli bir e-posta adresi girin.");
+      return; // Mesaj gönderimini engellemek için işlemi burada sonlandırın
+    }
 
-      setMessage('Şifre sıfırlama bağlantısı e-posta adresinize gönderildi.');
+    try {
+      // E-posta geçerli ise mesaj gönderimi yapabilirsiniz
+      toast.success(
+        "Şifre sıfırlama bağlantısı e-posta adresinize gönderildi."
+      );
     } catch (error) {
-      console.error('Şifre sıfırlama hatası:', error.message);
-      setMessage('Şifre sıfırlama işlemi başarısız oldu.');
+      toast.error("Şifre sıfırlama işlemi başarısız oldu.");
     }
   };
 
   return (
     <>
+    <Toaster
+    position="bottom-right"
+    reverseOrder={false}
+    />
       <Navbar />
       <div className="forgot-password-container">
-
         <div className="form-container">
           <h2>Şifrenizi mi unuttunuz?</h2>
 
-          <form className='form' onSubmit={handleFormSubmit}>
-            <div className="image">
-              <img src={Logo} alt="Logo" />
+          <form className="form" onSubmit={handleFormSubmit}>
+            <div className="image mx-auto">
+              <img  src={Logo} alt="Logo" />
             </div>
-            <label>
-              E-posta adresiniz:
-              <input className='ForgotPasswordİnput' type="email" value={email} onChange={handleEmailChange} />
-            </label>
-              <Link  to="/sifremiunuttum/sifre-degistirme" >
-            <button className='ForgotPasswordBtn' type="submit">Şifre Sıfırlama Bağlantısı Gönder</button>
-              </Link>
+            <div className="inputs">
+             
+              <label>E-posta adresiniz: </label>
+              <input
+                className="ForgotPasswordİnput"
+                type="email"
+                value={email}
+                onChange={handleEmailChange}
+              />
+            </div>
 
+            <button className="ForgotPasswordBtn" type="submit">
+              Şifre Sıfırlama Bağlantısı Gönder
+            </button>
           </form>
-          <p className="message">{message}</p>
         </div>
-
       </div>
       <Footer />
     </>

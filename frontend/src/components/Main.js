@@ -8,9 +8,7 @@ const Main = () => {
   return (
     <>
       <Navbar />
-
       <div className="main ">
-
         <div className="container d-flex">
           <CategoryProvider>
             <div className="col-md-3 col-sm-3 sidebar">
@@ -22,7 +20,6 @@ const Main = () => {
             </div>
           </CategoryProvider>
         </div>
-
       </div>
       <Footer />
     </>
