@@ -8,6 +8,13 @@ import { districts } from "../data/Locations/District.js";
 const Sidebar = () => {
   const [selectedProvince, setSelectedProvince] = useState("");
   const [selectedDistrict, setSelectedDistrict] = useState("");
+  const [selectedBrand, setSelectedBrand] = useState("");
+  const [selectedSeries, setSelectedSeries] = useState("");
+  const [selectedColor, setSelectedColor] = useState("");
+  const [selectedGear, setSelectedGear] = useState("");
+  const [selectedM2, setSelectedM2] = useState("");
+  const [selectedNumberOfRooms, setSelectedNumberOfRooms] = useState("");
+
 
   const [nameFilter, setNameFilter] = useState("");
   const [priceFilter, setPriceFilter] = useState([]);
