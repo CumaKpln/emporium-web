@@ -7,6 +7,6 @@ export const store = configureStore({
   reducer: {
     products: productReducer,
     favProducts: favReducer,
-    userToken: userReducer.Login.token
+    // userToken: userReducer.Login.token
   },
 });
