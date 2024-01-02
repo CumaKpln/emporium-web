@@ -511,8 +511,7 @@ const Sidebar = () => {
         className="btn sidebarMainTitle dropdown-toggle"
         type="button"
         onClick={() => {
-
-          handleCategoryClick({ category: 'vasıta' });
+          handleCategoryClick({ category: "vasıta" });
 
           toggleVehicleDropdown();
         }}
@@ -525,8 +524,8 @@ const Sidebar = () => {
             className="btn sidebarBtn dropdown-toggle"
             type="button"
             onClick={() => {
-              toggleCarDropdown()
-              handleCategoryClick({ category: 'vasıta', subCategory: 'araba' })
+              toggleCarDropdown();
+              handleCategoryClick({ category: "vasıta", subCategory: "araba" });
             }}
           >
             Araba
@@ -541,9 +540,19 @@ const Sidebar = () => {
                 İl
               </button>
               {isCarProvinceOpen && (
-                <div className="custom-dropdown-menu">
-
-                  {provinces.map((province) => (<button className="btn sidebarBtn" type="button" onClick={(e) => setSelectedProvince(province.state)}> {province.state} </button>))}
+                <div className="dropdownUlLi custom-dropdown-menu">
+                  <ul>
+                    {provinces.map((province) => (
+                      <li key={province.state}>
+                        <span
+                          className="dropdownUlLi"
+                          onClick={(e) => setSelectedProvince(province.state)}
+                        >
+                          {province.state}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               )}
               <button
@@ -555,9 +564,13 @@ const Sidebar = () => {
               </button>
               {isCarDistrictOpen && selectedProvince !== "" && (
                 <div className="dropdownUlLi custom-dropdown-menu">
-                  {districts.filter((district) => district.state == selectedProvince).map((district) => (<button className="btn sidebarBtn" type="button">
-                    {district.name}
-                  </button>))}
+                  {districts
+                    .filter((district) => district.state == selectedProvince)
+                    .map((district) => (
+                      <button className="btn sidebarBtn" type="button">
+                        {district.name}
+                      </button>
+                    ))}
                 </div>
               )}
               <button
@@ -646,8 +659,11 @@ const Sidebar = () => {
             className="btn sidebarBtn dropdown-toggle"
             type="button"
             onClick={() => {
-              toggleMotorcycleDropdown()
-              handleCategoryClick({ category: 'vasıta', subCategory: 'motorsiklet' })
+              toggleMotorcycleDropdown();
+              handleCategoryClick({
+                category: "vasıta",
+                subCategory: "motorsiklet",
+              });
             }}
           >
             Motorsiklet
@@ -662,16 +678,18 @@ const Sidebar = () => {
                 İl
               </button>
               {isMotorcycleProvinceOpen && (
-                (
-                  <div className="dropdownUlLi custom-dropdown-menu">
-
-                    <ul>
-                      {provinces.map((province, index) => (
-                        <li key={index} onClick={(e) => setSelectedProvince(province.state)}>{province.state}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )
+                <div className="dropdownUlLi custom-dropdown-menu">
+                  <ul>
+                    {provinces.map((province, index) => (
+                      <li
+                        key={index}
+                        onClick={(e) => setSelectedProvince(province.state)}
+                      >
+                        {province.state}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               )}
               <button
                 className="btn sidebarBtn dropdown-toggle"
@@ -682,9 +700,13 @@ const Sidebar = () => {
               </button>
               {isMotorcycleDistrictOpen && selectedProvince !== "" && (
                 <div className="dropdownUlLi custom-dropdown-menu">
-                  {districts.filter((district) => district.state == selectedProvince).map((district) => (<button className="btn sidebarBtn" type="button">
-                    {district.name}
-                  </button>))}
+                  {districts
+                    .filter((district) => district.state == selectedProvince)
+                    .map((district) => (
+                      <button className="btn sidebarBtn" type="button">
+                        {district.name}
+                      </button>
+                    ))}
                 </div>
               )}
               <button
@@ -775,7 +797,7 @@ const Sidebar = () => {
         className="btn sidebarMainTitle dropdown-toggle"
         type="button"
         onClick={() => {
-          handleCategoryClick({ category: 'emlak' });
+          handleCategoryClick({ category: "emlak" });
           toggleRealEstateDropdown();
         }}
       >
@@ -787,8 +809,8 @@ const Sidebar = () => {
             className="btn sidebarBtn dropdown-toggle"
             type="button"
             onClick={() => {
-              handleCategoryClick({ category: 'emlak', subCategory: 'ev' });
-              toggleHomeDropdown()
+              handleCategoryClick({ category: "emlak", subCategory: "ev" });
+              toggleHomeDropdown();
             }}
           >
             Ev
@@ -802,16 +824,19 @@ const Sidebar = () => {
               >
                 İl
               </button>
-              {isHomeProvinceOpen && ((
+              {isHomeProvinceOpen && (
                 <div className="dropdownUlLi custom-dropdown-menu">
-
                   <ul>
                     {provinces.map((province, index) => (
-                      <li key={index} onClick={(e) => setSelectedProvince(province.state)}>{province.state}</li>
+                      <li
+                        key={index}
+                        onClick={(e) => setSelectedProvince(province.state)}
+                      >
+                        {province.state}
+                      </li>
                     ))}
                   </ul>
                 </div>
-              )
               )}
               <button
                 className="btn sidebarBtn dropdown-toggle"
@@ -822,9 +847,13 @@ const Sidebar = () => {
               </button>
               {isHomeDistrictOpen && selectedProvince !== "" && (
                 <div className="dropdownUlLi custom-dropdown-menu">
-                  {districts.filter((district) => district.state == selectedProvince).map((district) => (<button className="btn sidebarBtn" type="button">
-                    {district.name}
-                  </button>))}
+                  {districts
+                    .filter((district) => district.state == selectedProvince)
+                    .map((district) => (
+                      <button className="btn sidebarBtn" type="button">
+                        {district.name}
+                      </button>
+                    ))}
                 </div>
               )}
               <button
@@ -873,8 +902,8 @@ const Sidebar = () => {
             className="btn sidebarBtn dropdown-toggle"
             type="button"
             onClick={() => {
-              handleCategoryClick({ category: 'emlak', subCategory: 'arsa' })
-              togglePlotDropdown()
+              handleCategoryClick({ category: "emlak", subCategory: "arsa" });
+              togglePlotDropdown();
             }}
           >
             Arsa
@@ -890,7 +919,16 @@ const Sidebar = () => {
               </button>
               {isPlotProvinceOpen && (
                 <div className="custom-dropdown-menu">
-                  {provinces.map((province) => (<button className="btn sidebarBtn" type="button" onClick={(e) => setSelectedProvince(province.state)}> {province.state} </button>))}
+                  {provinces.map((province) => (
+                    <button
+                      className="btn sidebarBtn"
+                      type="button"
+                      onClick={(e) => setSelectedProvince(province.state)}
+                    >
+                      {" "}
+                      {province.state}{" "}
+                    </button>
+                  ))}
                 </div>
               )}
               <button
@@ -902,9 +940,13 @@ const Sidebar = () => {
               </button>
               {isPlotDistrictOpen && selectedProvince !== "" && (
                 <div className="custom-dropdown-menu">
-                  {districts.filter((district) => district.state == selectedProvince).map((district) => (<button className="btn sidebarBtn" type="button">
-                    {district.name}
-                  </button>))}
+                  {districts
+                    .filter((district) => district.state == selectedProvince)
+                    .map((district) => (
+                      <button className="btn sidebarBtn" type="button">
+                        {district.name}
+                      </button>
+                    ))}
                 </div>
               )}
               <button
@@ -935,7 +977,7 @@ const Sidebar = () => {
         className="btn sidebarMainTitle dropdown-toggle"
         type="button"
         onClick={() => {
-          handleCategoryClick({ category: 'elektronik eşya' });
+          handleCategoryClick({ category: "elektronik eşya" });
           toggleElectronicStuffDropdown();
         }}
       >
@@ -947,8 +989,11 @@ const Sidebar = () => {
             className="btn sidebarBtn dropdown-toggle"
             type="button"
             onClick={() => {
-              handleCategoryClick({ category: 'elektronik eşya', subCategory: 'telefon' })
-              togglePhoneDropdown()
+              handleCategoryClick({
+                category: "elektronik eşya",
+                subCategory: "telefon",
+              });
+              togglePhoneDropdown();
             }}
           >
             Telefon
@@ -963,12 +1008,18 @@ const Sidebar = () => {
                 İl
               </button>
               {isPhoneProvinceOpen && (
-                (
-                  <div className="custom-dropdown-menu">
-
-                    {provinces.map((province) => (<button className="btn sidebarBtn" type="button" onClick={(e) => setSelectedProvince(province.state)}> {province.state} </button>))}
-                  </div>
-                )
+                <div className="custom-dropdown-menu">
+                  {provinces.map((province) => (
+                    <button
+                      className="btn sidebarBtn"
+                      type="button"
+                      onClick={(e) => setSelectedProvince(province.state)}
+                    >
+                      {" "}
+                      {province.state}{" "}
+                    </button>
+                  ))}
+                </div>
               )}
               <button
                 className="btn sidebarBtn dropdown-toggle"
@@ -979,9 +1030,13 @@ const Sidebar = () => {
               </button>
               {isPhoneDistrictOpen && selectedProvince !== "" && (
                 <div className="custom-dropdown-menu">
-                  {districts.filter((district) => district.state == selectedProvince).map((district) => (<button className="btn sidebarBtn" type="button">
-                    {district.name}
-                  </button>))}
+                  {districts
+                    .filter((district) => district.state == selectedProvince)
+                    .map((district) => (
+                      <button className="btn sidebarBtn" type="button">
+                        {district.name}
+                      </button>
+                    ))}
                 </div>
               )}
               <button
@@ -1105,14 +1160,16 @@ const Sidebar = () => {
                 </div>
               )}
             </div>
-          )
-          }
+          )}
           <button
             className="btn sidebarBtn dropdown-toggle"
             type="button"
             onClick={() => {
-              handleCategoryClick({ category: 'elektronik eşya', subCategory: 'bilgisayar' })
-              togglePcDropdown()
+              handleCategoryClick({
+                category: "elektronik eşya",
+                subCategory: "bilgisayar",
+              });
+              togglePcDropdown();
             }}
           >
             Bilgisayar
@@ -1128,7 +1185,16 @@ const Sidebar = () => {
               </button>
               {isPcProvinceOpen && (
                 <div className="custom-dropdown-menu">
-                  {provinces.map((province) => (<button className="btn sidebarBtn" type="button" onClick={(e) => setSelectedProvince(province.state)}> {province.state} </button>))}
+                  {provinces.map((province) => (
+                    <button
+                      className="btn sidebarBtn"
+                      type="button"
+                      onClick={(e) => setSelectedProvince(province.state)}
+                    >
+                      {" "}
+                      {province.state}{" "}
+                    </button>
+                  ))}
                 </div>
               )}
               <button
@@ -1140,9 +1206,13 @@ const Sidebar = () => {
               </button>
               {isPcDistrictOpen && selectedProvince != "" && (
                 <div className="custom-dropdown-menu">
-                  {districts.filter((district) => district.state == selectedProvince).map((district) => (<button className="btn sidebarBtn" type="button">
-                    {district.name}
-                  </button>))}
+                  {districts
+                    .filter((district) => district.state == selectedProvince)
+                    .map((district) => (
+                      <button className="btn sidebarBtn" type="button">
+                        {district.name}
+                      </button>
+                    ))}
                 </div>
               )}
               <button
@@ -1236,9 +1306,9 @@ const Sidebar = () => {
                 <div className="dropdownUlLi custom-dropdown-menu">
                   <button className="btn sidebarBtn" type="button">
                     Model X
-                  <button className="btn sidebarBtn" type="button">
-                    Model Y
-                  </button>
+                    <button className="btn sidebarBtn" type="button">
+                      Model Y
+                    </button>
                   </button>
                   <button className="btn sidebarBtn" type="button">
                     Model Z
@@ -1269,10 +1339,7 @@ const Sidebar = () => {
           )}
         </div>
       )}
-
-
-
-    </div >
+    </div>
   );
 };
 
