@@ -7,13 +7,15 @@ import Logo from "../images/logo.png";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import axios from "axios";
-import toast from "react-hot-toast";
+import { Toaster, toast } from "react-hot-toast"
+
 
 function LogIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const token = localStorage.getItem("token");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,6 +24,9 @@ function LogIn() {
       email: email,
       password: password,
     };
+
+    // Token'ı localStorage'a kaydetme
+    localStorage.setItem("token", token);
 
     axios
 
@@ -35,18 +40,20 @@ function LogIn() {
           })
         );
         toast.success("Giriş başarıyla yapıldı!");
+<<<<<<< HEAD
 
         const token = response.data.token;
 
         localStorage.setItem("token", token);
+=======
+>>>>>>> 08d1c47d32fa0ccf5102cdeb0db736fbf107507a
         navigate("/");
       })
-      .catch((error) => {
-        toast.error("Giriş başarısız oldu.");
-        console.error("İstek hatası:", error);
-        alert("Bir hata oluştu. Lütfen tekrar deneyin.");
+      .catch(() => {
+        toast.error("Bir hata oluştu.Lütfen tekrar deneyiniz.");
       });
   };
+
 
   const handleNavigate = () => {
     navigate("/register");
@@ -59,9 +66,12 @@ function LogIn() {
   return (
     <>
       <Navbar />
+      <Toaster
+      position="bottom-right"
+      reverseOrder={false}
+      />
       <div className="container-login mt-5">
         <div className="LogIn">
-          <h1 className="mt-5">Üye Girişi</h1>
           <h1 className="mt-5">Üye Girişi</h1>
           <form onSubmit={(e) => handleSubmit(e)} id="form-login">
             <div className="row">
@@ -126,6 +136,7 @@ function LogIn() {
           </form>
         </div>
       </div>
+
       <Footer />
     </>
   );

@@ -98,17 +98,17 @@ function SignIn() {
                 <div>
                   <label>
                     Kullanıcı adı soyadı: </label>
-                    <input
-                      className="signIn-inputs"
-                      type="text"
-                      name="username"
-                      value={formData.username}
-                      onChange={handleChange}
-                    />
-                    {errors.username && (
-                      <span className="error">{errors.username}</span>
-                    )}
-                 
+                  <input
+                    className="signIn-inputs"
+                    type="text"
+                    name="username"
+                    value={formData.username}
+                    onChange={handleChange}
+                  />
+                  {errors.username && (
+                    <span className="error">{errors.username}</span>
+                  )}
+
                 </div>
 
                 <div>

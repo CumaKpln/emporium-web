@@ -13,16 +13,17 @@ const Motorcycle = require("../models/products/motorcycle");
 const Phone = require("../models/products/phone");
 const User = require("../models/user");
 const Images = require("../models/images");
+const { BOOLEAN } = require("sequelize");
 
 //! CREATE PRODUCT İŞLEMLERİ
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "images/"); // Dosyaların yükleneceği klasörü belirtin
+    cb(null, "images/");
   },
   filename: function (req, file, cb) {
     const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
     const fileExtension = path.extname(file.originalname);
-    cb(null, file.fieldname + "-" + uniqueSuffix + fileExtension); // Yüklenecek dosyanın adını belirtin
+    cb(null, file.fieldname + "-" + uniqueSuffix + fileExtension);
   },
 });
 
@@ -171,6 +172,7 @@ const createProduct = async (req, res) => {
     res.status(500).json({ error: "Ürün eklenirken bir hata oluştu" });
   }
 };
+
 // //! GET USER PRODUCT İŞLEMLERİ
 const getUserProduct = async (req, res) => {
   try {
@@ -193,13 +195,53 @@ const getUserProduct = async (req, res) => {
         .status(401)
         .json({ error: "Yetkilendirme başarısız. Kullanıcı bulunamadı." });
     }
+    // userId ile product tablosunda kullanıcı ürünü bulmak
     const userProduct = await Product.findAll({
       where: { userId: userId },
-      include: ["image"],
     });
 
+    //
+    const userProductId = await Product.findAll({
+      attiributes: ["id"],
+      where: { userId: userId },
+    });
+    const x = userProductId.map((Product) => Product.id);
+
+    const userSubcategoryId = await Product.findAll({
+      attributes: ["subcategory"],
+      where: { userId: userId },
+    });
+    const y = userSubcategoryId.map((Product) => Product.subcategory);
+
+    function uniqueItems(arr) {
+      const uniqueSet = new Set(arr);
+      const uniqueArray = Array.from(uniqueSet);
+      return uniqueArray;
+    }
+    const resultArray = uniqueItems(y);
+
+    // switch (y) {
+    //   case "car":
+    //     break;
+    //   case "motorcycle":
+    //     break;
+    //   case "home":
+    //     break;
+    //   case "land":
+    //     break;
+    //   case "phone":
+    //     break;
+    //   case "computer":
+    //     break;
+    // }
+
+    // const search = await y.findAll({
+    //   where: { productId: x },
+    // });
+
     // Başarılı bir şekilde eklendiyse, istemciye başarı mesajı gönderin
-    res.status(201).json(userProduct);
+
+    res.status(201).json(t);
   } catch (error) {
     // Hata oluştuğunda istemciye hata mesajını gönderin
     console.error("Ürün eklenirken bir hata oluştu:", error.message);

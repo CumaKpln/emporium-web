@@ -1,16 +1,13 @@
-// models/index.js
-const fs = require("fs");
 const Sequelize = require("sequelize");
-const path = require("path");
-const dbConfig = require(path.join(__dirname, "..", "config", "config.json"));
+require("dotenv").config();
 
 const sequelize = new Sequelize(
-  dbConfig.development.database,
-  dbConfig.development.username,
-  dbConfig.development.password,
+  process.env.DEV_DB_NAME,
+  process.env.DEV_DB_USERNAME,
+  process.env.DEV_DB_PASSWORD,
   {
-    host: dbConfig.development.host,
-    dialect: dbConfig.development.dialect,
+    host: process.env.DEV_DB_HOST,
+    dialect: "mysql",
   }
 );
 

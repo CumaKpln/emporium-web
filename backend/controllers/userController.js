@@ -3,6 +3,7 @@ const mailConfig = require("../config/email.json");
 const nodemailer = require("nodemailer");
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
+const Product = require("../models/product");
 
 //! BURASI REGISTER BÖLÜMÜ
 async function registerUser(req, res) {
