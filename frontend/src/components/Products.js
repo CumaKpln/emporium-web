@@ -1,4 +1,3 @@
-// Products.jsx
 import React from "react";
 import { useCategory } from "./CategoryContext";
 import { useDispatch } from "react-redux";
@@ -6,19 +5,23 @@ import data from "../data/db.json";
 import "../Styles/Product.css";
 import { Link } from "react-router-dom";
 import { selectProduct } from "../control/slices/productSlice";
+import { useSearch } from './SearchContext';
 
 function Products() {
   const { selectedCategory, selectedSubCategory } = useCategory();
   const dispatch = useDispatch();
+  const { nameFilter } = useSearch();
 
   const selectedProduct = (product) => {
     dispatch(selectProduct(product));
   };
 
+
   const filteredProducts = data["ilan-ver"].filter((product) => {
     const categoryMatch = selectedCategory ? product.category.toLowerCase() === selectedCategory.toLowerCase() : true;
     const subCategoryMatch = selectedSubCategory ? product.subCategory.toLowerCase() === selectedSubCategory.toLowerCase() : true;
-    return categoryMatch && subCategoryMatch;
+    const nameMatch = nameFilter ? product.title.toLowerCase().includes(nameFilter.toLowerCase()) : true;
+    return categoryMatch && subCategoryMatch && nameMatch;
   });
 
   return (

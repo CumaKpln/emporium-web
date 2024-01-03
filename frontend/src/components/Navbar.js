@@ -3,14 +3,16 @@ import logo from "../images/logo.png";
 import "../Styles/navbar.css";
 import { Link } from "react-router-dom";
 import filter from "./FilterPage/Filtering";
+import { useSearch } from './SearchContext';
+
 const Navbar = () => {
+  const { updateNameFilter } = useSearch();
   return (
     <>
-      <nav className="navbar" id="nav">
+     <nav className="navbar" id="nav">
         <div className="container">
           <div className="left-navbar">
             <Link to="/">
-              {" "}
               <div className="nav-logo">
                 <img src={logo} alt="logo-png" />
               </div>
@@ -18,11 +20,11 @@ const Navbar = () => {
 
             <div className="nav-search">
               <input
-                className="searchİnput"
+                className="searchInput"
                 type="search"
                 placeholder="Arama yapınız"
                 onInput={(event) => {
-                  filter.nameFilter = event.target.value;
+                  updateNameFilter(event.target.value);
                 }}
               />
               <div className="search-icon">

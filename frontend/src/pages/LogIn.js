@@ -61,7 +61,6 @@ function LogIn() {
       <div className="container-login mt-5">
         <div className="LogIn">
           <h1 className="mt-5">Üye Girişi</h1>
-          <h1 className="mt-5">Üye Girişi</h1>
           <form onSubmit={(e) => handleSubmit(e)} id="form-login">
             <div className="row">
               <div className="logo col-md-6">
