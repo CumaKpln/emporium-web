@@ -1,6 +1,7 @@
 // Products.jsx
 import React from "react";
 import { useCategory } from "./CategoryContext";
+import { useProvince } from "./ProvinceContext";
 import { useDispatch } from "react-redux";
 import data from "../data/db.json";
 import "../Styles/Product.css";
@@ -9,6 +10,7 @@ import { selectProduct } from "../control/slices/productSlice";
 
 function Products() {
   const { selectedCategory, selectedSubCategory } = useCategory();
+  const { selectedProvince } = useProvince();
   const dispatch = useDispatch();
 
   const selectedProduct = (product) => {
@@ -18,7 +20,8 @@ function Products() {
   const filteredProducts = data["ilan-ver"].filter((product) => {
     const categoryMatch = selectedCategory ? product.category.toLowerCase() === selectedCategory.toLowerCase() : true;
     const subCategoryMatch = selectedSubCategory ? product.subCategory.toLowerCase() === selectedSubCategory.toLowerCase() : true;
-    return categoryMatch && subCategoryMatch;
+    const provinceMatch = selectedProvince ? product.province.toLowerCase() === selectedProvince.toLowerCase() : true;
+    return categoryMatch && subCategoryMatch && provinceMatch;
   });
 
   return (
