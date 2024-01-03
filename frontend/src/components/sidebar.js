@@ -4,24 +4,11 @@ import "../Styles/sidebar.css";
 import { useCategory } from "./CategoryContext";
 import { provinces } from "../data/Locations/Province.js";
 import { districts } from "../data/Locations/District.js";
-import { useProvince } from "./ProvinceContext.js";
 
 const Sidebar = () => {
     const [selectedProvince, setSelectedProvince] = useState("");
-    const [selectedDistrict, setSelectedDistrict] = useState("");
-    const [selectedBrand, setSelectedBrand] = useState("");
-    const [selectedSeries, setSelectedSeries] = useState("");
-    const [selectedColor, setSelectedColor] = useState("");
-    const [selectedGear, setSelectedGear] = useState("");
-    const [selectedM2, setSelectedM2] = useState("");
-    const [selectedNumberOfRooms, setSelectedNumberOfRooms] = useState("");
-
-
-    const [nameFilter, setNameFilter] = useState("");
-    const [priceFilter, setPriceFilter] = useState([]);
 
     const { handleCategoryClick } = useCategory();
-    const { handleProvinceClick } = useProvince();
 
     // vasıta bölümü
     const [isVehicleOpen, setVehicleOpen] = useState(false);
@@ -555,7 +542,7 @@ const Sidebar = () => {
                                             <li key={province.state}>
                                                 <span
                                                     className="dropdownUlLi"
-                                                    onClick={(e) => { setSelectedProvince(province.state); handleProvinceClick({ province: province.state }); }}
+                                                    onClick={(e) => setSelectedProvince(province.state)}
                                                 >
                                                     {province.state}
                                                 </span>
@@ -574,7 +561,7 @@ const Sidebar = () => {
                             {isCarDistrictOpen && selectedProvince !== "" && (
                                 <div className="dropdownUlLi custom-dropdown-menu">
                                     {districts
-                                        .filter((district) => district.state == selectedProvince)
+                                        .filter((district) => district.state === selectedProvince)
                                         .map((district) => (
                                             <button className="btn sidebarBtn" type="button">
                                                 {district.name}
