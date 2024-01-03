@@ -4,30 +4,31 @@ import Sidebar from "./sidebar";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { CategoryProvider } from "./CategoryContext";
-import Sidebar from "./sidebar";
+import { ProvinceProvider } from "./ProvinceContext";
 
 const Main = () => {
-  const { nameFilter } = useSearch();
 
   return (
-    <>
+    <div>
       <Navbar />
       <div className="main ">
         <div className="container d-flex">
           <CategoryProvider>
-            <div className="col-md-3 col-sm-3 sidebar">
-              <Sidebar />
-            </div>
-            <div className="col-md-9 col-sm-9">
-              <Article />
-              {/* <FilterBar category="asd" />  */}
-            </div>
+            <ProvinceProvider>
+              <div className="col-md-3 col-sm-3 sidebar">
+                <Sidebar />
+              </div>
+              <div className="col-md-9 col-sm-9">
+                <Article />
+                {/* <FilterBar category="asd" />  */}
+              </div>
+            </ProvinceProvider>
           </CategoryProvider>
         </div>
-        </SearchProvider >
         <Footer />
-      </>
-      );
+      </div>
+    </div>
+  );
 };
 
-      export default Main;
+export default Main;

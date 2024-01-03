@@ -4,11 +4,13 @@ import "../Styles/sidebar.css";
 import { useCategory } from "./CategoryContext";
 import { provinces } from "../data/Locations/Province.js";
 import { districts } from "../data/Locations/District.js";
+import { useProvince } from "./ProvinceContext.js";
 
 const Sidebar = () => {
   const [selectedProvince, setSelectedProvince] = useState("");
- 
+
   const { handleCategoryClick } = useCategory();
+  const { handleProvinceClick } = useProvince();
 
   // vasıta bölümü
   const [isVehicleOpen, setVehicleOpen] = useState(false);
@@ -542,7 +544,7 @@ const Sidebar = () => {
                       <li key={province.state}>
                         <span
                           className="dropdownUlLi"
-                          onClick={(e) => setSelectedProvince(province.state)}
+                          onClick={(e) => { setSelectedProvince(province.state); handleProvinceClick({ province: province.state.toString() }); }}
                         >
                           {province.state}
                         </span>
