@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 export const userSlice = createSlice({
   name: 'user',
   initialState: {
-    users: [],
+    users: {},
     currentUserIndex: -1,
     token: {}, // Token'i boş bir string veya null olarak başlatın
   },
@@ -23,7 +23,6 @@ export const userSlice = createSlice({
   },
 });
 
-export const { logIn, logOut } = userSlice.reducer;
 
 // export const selectUsers = (state) => state.user.users;
 export const getCurrentUser = (state) => {
@@ -33,4 +32,5 @@ export const getCurrentUser = (state) => {
   return null;
 };
 
-export default userSlice.reducer;
+export const userReducer= userSlice.reducer;
+export const { logIn, logOut } = userSlice.reducer;
