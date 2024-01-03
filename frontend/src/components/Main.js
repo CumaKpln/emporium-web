@@ -23,7 +23,7 @@ const Main = () => {
             </div>
           </CategoryProvider>
         </div>
-      
+      </SearchProvider>
       <Footer />
     </>
   );

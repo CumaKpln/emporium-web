@@ -23,8 +23,7 @@ function Products() {
     const categoryMatch = selectedCategory ? product.category.toLowerCase() === selectedCategory.toLowerCase() : true;
     const subCategoryMatch = selectedSubCategory ? product.subCategory.toLowerCase() === selectedSubCategory.toLowerCase() : true;
     const nameMatch = nameFilter ? product.title.toLowerCase().includes(nameFilter.toLowerCase()) : true;
-    const provinceMatch = selectedProvince ? product.province.toLowerCase() === selectedProvince.toLowerCase() : true;
-    return categoryMatch && subCategoryMatch && nameMatch && provinceMatch;
+    return categoryMatch && subCategoryMatch && nameMatch;
   });
 
   return (
