@@ -54,12 +54,17 @@ function ProductInfo() {
 
   const handleImageAdd = (e) => {
     const newImages = [];
+  
     Array.from(e.target.files).forEach((file) => {
-      newImages.push({ url: URL.createObjectURL(file) });
+      // Check if the file type is an image
+      if (file.type.startsWith('image/')) {
+        newImages.push({ url: URL.createObjectURL(file) });
+      }
     });
+  
     setEditedImages([...editedImages, ...newImages]);
   };
-
+  
   const handleImageRemove = (index) => {
     const newImages = [...editedImages];
     newImages.splice(index, 1);

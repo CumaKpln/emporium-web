@@ -1,4 +1,3 @@
-// Products.jsx
 import React from "react";
 import { useCategory } from "./CategoryContext";
 import { useProvince } from "./ProvinceContext";
@@ -7,21 +6,24 @@ import data from "../data/db.json";
 import "../Styles/Product.css";
 import { Link } from "react-router-dom";
 import { selectProduct } from "../control/slices/productSlice";
+import { useSearch } from './SearchContext';
 
 function Products() {
   const { selectedCategory, selectedSubCategory } = useCategory();
   const { selectedProvince } = useProvince();
   const dispatch = useDispatch();
+  const { nameFilter } = useSearch();
 
   const selectedProduct = (product) => {
     dispatch(selectProduct(product));
   };
 
+
   const filteredProducts = data["ilan-ver"].filter((product) => {
     const categoryMatch = selectedCategory ? product.category.toLowerCase() === selectedCategory.toLowerCase() : true;
     const subCategoryMatch = selectedSubCategory ? product.subCategory.toLowerCase() === selectedSubCategory.toLowerCase() : true;
-    const provinceMatch = selectedProvince ? product.province.toLowerCase() === selectedProvince.toLowerCase() : true;
-    return categoryMatch && subCategoryMatch && provinceMatch;
+    const nameMatch = nameFilter ? product.title.toLowerCase().includes(nameFilter.toLowerCase()) : true;
+    return categoryMatch && subCategoryMatch && nameMatch;
   });
 
   return (

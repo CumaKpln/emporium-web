@@ -9,7 +9,7 @@ import SignIn from "./pages/SignIn";
 import ChangePassword from "./pages/ChangePassword";
 import ForgotPassword from "./pages/ForgotPassword";
 import { useSelector } from "react-redux";
-
+import { SearchProvider } from './components/SearchContext';
 
 
 function App() {
@@ -20,6 +20,8 @@ function App() {
 
   return (
     <>
+        <SearchProvider>
+
       <Routes>
         <Route path="/" element={<Main />} />
 
@@ -33,6 +35,7 @@ function App() {
         <Route path="/sifremiunuttum/sifre-degistirme" element={<ChangePassword />} />
 
       </Routes>
+      </SearchProvider>
 
 
 
