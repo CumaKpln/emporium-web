@@ -11,7 +11,7 @@ const Main = () => {
   return (
     <div>
       <Navbar />
-      <div className="main">
+      <div className="main bg-danger">
         <div className="container d-flex">
           <CategoryProvider>
             <ProvinceProvider>
