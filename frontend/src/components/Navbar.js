@@ -3,7 +3,7 @@ import logo from "../images/logo.png";
 import "../Styles/navbar.css";
 import { Link } from "react-router-dom";
 import filter from "./FilterPage/Filtering";
-import { useSearch } from './SearchContext';
+import { useSearch } from './Context/SearchContext';
 
 const Navbar = () => {
   const { updateNameFilter } = useSearch();

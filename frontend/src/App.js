@@ -9,7 +9,7 @@ import SignIn from "./pages/SignIn";
 import ChangePassword from "./pages/ChangePassword";
 import ForgotPassword from "./pages/ForgotPassword";
 import { useSelector } from "react-redux";
-import { SearchProvider } from './components/SearchContext';
+import { SearchProvider } from './components/Context/SearchContext';
 
 
 function App() {

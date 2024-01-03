@@ -1,12 +1,12 @@
 import React from "react";
-import { useCategory } from "./CategoryContext";
-import { useProvince } from "./ProvinceContext";
+import { useCategory } from "./Context/CategoryContext";
+import { useProvince } from "./Context/ProvinceContext";
 import { useDispatch } from "react-redux";
 import data from "../data/db.json";
 import "../Styles/Product.css";
 import { Link } from "react-router-dom";
 import { selectProduct } from "../control/slices/productSlice";
-import { useSearch } from './SearchContext';
+import { useSearch } from './Context/SearchContext';
 
 function Products() {
   const { selectedCategory, selectedSubCategory } = useCategory();

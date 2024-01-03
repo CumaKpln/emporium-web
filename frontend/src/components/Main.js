@@ -3,8 +3,8 @@ import Article from "./Article";
 import Sidebar from "./sidebar";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import { CategoryProvider } from "./CategoryContext";
-import { ProvinceProvider } from "./ProvinceContext";
+import { CategoryProvider } from "./Context/CategoryContext";
+import { ProvinceProvider } from "./Context/ProvinceContext";
 
 const Main = () => {
 
