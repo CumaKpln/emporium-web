@@ -58,7 +58,7 @@ function SignIn() {
       const dataToSend = { ...formData };
 
       axios
-        .post("http://localhost:3000/user/register", dataToSend)
+        .post("https://mysql-emporium-deploy1.onrender.com/user/register", dataToSend)
         .then((response) => {
           toast.success("Kayıt başarıyla yapıldı!");
 
