@@ -40,13 +40,10 @@ function LogIn() {
           })
         );
         toast.success("Giriş başarıyla yapıldı!");
-<<<<<<< HEAD
 
         const token = response.data.token;
 
         localStorage.setItem("token", token);
-=======
->>>>>>> 08d1c47d32fa0ccf5102cdeb0db736fbf107507a
         navigate("/");
       })
       .catch(() => {
