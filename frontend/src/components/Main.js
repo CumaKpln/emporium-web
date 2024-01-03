@@ -4,7 +4,7 @@ import Article from "./Article";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { CategoryProvider } from "./CategoryContext";
-import { ProvinceProvider } from "./ProvinceContext";
+import Sidebar from "./sidebar";
 const Main = () => {
   return (
     <>
@@ -13,11 +13,11 @@ const Main = () => {
         <div className="container d-flex">
           <CategoryProvider>
             <div className="col-md-3 col-sm-3 sidebar">
-              {/* <Sidebar /> */}
+              <Sidebar /> 
             </div>
             <div className="col-md-9 col-sm-9">
               <Article />
-              {/* <FilterBar category="asd" /> */}
+           {/* <FilterBar category="asd" />  */}
             </div>
           </CategoryProvider>
         </div>
