@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Styles/sidebar.css";
-import { useCategory } from "./CategoryContext";
+import { useCategory } from "./Context/CategoryContext.js";
 import { provinces } from "../data/Locations/Province.js";
 import { districts } from "../data/Locations/District.js";
-import { useProvince } from "./ProvinceContext.js";
+import { useProvince } from "./Context/ProvinceContext.js";
 
 const Sidebar = () => {
   const [selectedProvince, setSelectedProvince] = useState("");
