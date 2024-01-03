@@ -1,5 +1,6 @@
 import React from "react";
 import { useCategory } from "./CategoryContext";
+import { useProvince } from "./ProvinceContext";
 import { useDispatch } from "react-redux";
 import data from "../data/db.json";
 import "../Styles/Product.css";
@@ -9,6 +10,7 @@ import { useSearch } from './SearchContext';
 
 function Products() {
   const { selectedCategory, selectedSubCategory } = useCategory();
+  const { selectedProvince } = useProvince();
   const dispatch = useDispatch();
   const { nameFilter } = useSearch();
 

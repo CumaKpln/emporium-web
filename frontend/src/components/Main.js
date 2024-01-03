@@ -1,5 +1,3 @@
-// Main.js
-
 import React from "react";
 import Article from "./Article";
 import Sidebar from "./sidebar";

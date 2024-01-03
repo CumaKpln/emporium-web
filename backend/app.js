@@ -22,6 +22,7 @@ const Computer = require("./models/products/computer");
 const Home = require("./models/products/home");
 const Land = require("./models/products/land");
 const Product = require("./models/product");
+const Images = require("./models/images");
 
 //! Tablolar arası ilişkileri yapalım
 
@@ -41,6 +42,7 @@ function associate() {
   Product.hasOne(Land);
 
   User.hasMany(Product);
+  Images.hasMany(Product);
 }
 associate();
 

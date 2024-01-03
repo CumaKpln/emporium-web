@@ -1,5 +1,4 @@
 // models/products.js
-const { DataTypes } = require("sequelize");
 const { Sequelize, sequelize } = require("./index");
 
 const Product = sequelize.define("product", {
@@ -33,10 +32,6 @@ const Product = sequelize.define("product", {
   },
   neighbourhood: {
     type: Sequelize.STRING,
-    allowNull: false,
-  },
-  images: {
-    type: DataTypes.BLOB("long"),
     allowNull: false,
   },
 });

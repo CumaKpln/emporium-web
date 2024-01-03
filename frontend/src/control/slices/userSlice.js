@@ -3,35 +3,28 @@ import { createSlice } from '@reduxjs/toolkit';
 export const userSlice = createSlice({
   name: 'user',
   initialState: {
-    users: [],
+    users: {},
     currentUserIndex: -1,
+    token: {}, // Token'i boş bir string veya null olarak başlatın
   },
   reducers: {
-    addUser: (state, action) => {
-      state.users.push(action.payload);
-      state.currentUserIndex = state.users.length - 1;
-    },
     logIn: (state, action) => {
       const { email, password } = action.payload;
       const userIndex = state.users.findIndex((user) => user.email === email && user.password === password);
       if (userIndex !== -1) {
         state.currentUserIndex = userIndex;
+        state.token = 'generate_token_here'; // Burada gerçek bir token oluşturulmalıdır
       }
     },
     logOut: (state) => {
       state.currentUserIndex = -1;
-    },
-    update: (state, action) => {
-      if (state.currentUserIndex !== -1) {
-        state.users[state.currentUserIndex] = { ...state.users[state.currentUserIndex], ...action.payload };
-      }
+      state.token = null; // Çıkış yapıldığında token'i sıfırlayın
     },
   },
 });
 
-export const { addUser, logIn, logOut, update } = userSlice.actions;
 
-export const selectUsers = (state) => state.user.users;
+// export const selectUsers = (state) => state.user.users;
 export const getCurrentUser = (state) => {
   if (state.user.currentUserIndex !== -1) {
     return state.user.users[state.user.currentUserIndex];
@@ -39,4 +32,5 @@ export const getCurrentUser = (state) => {
   return null;
 };
 
-export default userSlice.reducer;
+export const userReducer= userSlice.reducer;
+export const { logIn, logOut } = userSlice.reducer;

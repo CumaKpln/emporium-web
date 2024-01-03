@@ -7,6 +7,7 @@ import Navbar from "../components/Navbar";
 const PasswordChange = () => {
   const [newPassword, setNewPassword] = useState("");
   const [newPassword2, setNewPassword2] = useState("");
+  const resetToken = localStorage.getItem('resetToken');
 
   const handlePasswordChange = (e) => {
     e.preventDefault();
@@ -14,29 +15,28 @@ const PasswordChange = () => {
     // Şifreleri kontrol et
     if (newPassword !== newPassword2) {
       toast.error("Şifreler uyuşmuyor.");
-
       return;
     }
-
+    
     // Şifre değiştirme isteği gönder
-  //   axios
-  //     .post(`http://localhost:3000/reset-password/${resetToken}`, {
-  //       newPassword: newPassword,
-  //       newPassword2: newPassword2,
-  //     })
-  //     .then((response) => {
-  //       // Şifre değiştirme başarılı olduysa
-  //       toast.success("Şifre başarıyla değiştirildi.");
+    axios
+      .post(`http://localhost:3000/reset-password/${resetToken}`, {
+        newPassword: newPassword,
+        newPassword2: newPassword2,
+      })
+      .then((response) => {
+        // Şifre değiştirme başarılı olduysa
+        toast.success("Şifre başarıyla değiştirildi.");
 
-  //       setNewPassword("");
-  //       setNewPassword2("");
-  //     })
-  //     .catch((error) => {
-  //       console.error("İstek hatası:", error);
-  //       // Hata durumunda kullanıcıya hata mesajı gösterilebilir
-  //       toast.error("Şifre değiştirme başarısız oldu.");
-  //     });
-   };
+        setNewPassword("");
+        setNewPassword2("");
+      })
+      .catch((error) => {
+        console.error("İstek hatası:", error);
+        // Hata durumunda kullanıcıya hata mesajı gösterilebilir
+        toast.error("Şifre değiştirme başarısız oldu.");
+      });
+  };
 
   return (
     <>
@@ -61,6 +61,7 @@ const PasswordChange = () => {
               className="newPassword"
               type="password"
               value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)} 
             />
           </label>
           <label className="mt-3">
@@ -69,9 +70,9 @@ const PasswordChange = () => {
               className="newPassword"
               type="password"
               value={newPassword2}
+              onChange={(e) => setNewPassword2(e.target.value)} 
             />
           </label>
-
           <button className="ForgotPasswordBtn mt-5" type="submit">
             Şifreyi Değiştir
           </button>

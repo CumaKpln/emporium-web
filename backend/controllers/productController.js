@@ -12,20 +12,29 @@ const Land = require("../models/products/land");
 const Motorcycle = require("../models/products/motorcycle");
 const Phone = require("../models/products/phone");
 const User = require("../models/user");
+const Images = require("../models/images");
+const { BOOLEAN } = require("sequelize");
 
 //! CREATE PRODUCT İŞLEMLERİ
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "images/"); // Dosyaların yükleneceği klasörü belirtin
+    cb(null, "images/");
   },
   filename: function (req, file, cb) {
-    cb(null, file.originalname); // Yüklenecek dosyanın adını belirtin
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+    const fileExtension = path.extname(file.originalname);
+    cb(null, file.fieldname + "-" + uniqueSuffix + fileExtension);
   },
 });
 
 const upload = multer({ storage: storage });
 
 const createProduct = async (req, res) => {
+  const images = req.files;
+
+  // Dosya adlarını al
+  const fileNames = images.map((file) => file.filename);
+
   const {
     productTitle,
     productName,
@@ -73,7 +82,23 @@ const createProduct = async (req, res) => {
 
     // Transaction başlatın
     await sequelize.transaction(async (t) => {
-      const images = req.files;
+      if (images.length > 5) {
+        return res
+          .status(400)
+          .json({ error: "En fazla 5 fotoğraf ekleyebilirsiniz." });
+      }
+
+      const imgCreate = await Images.create(
+        {
+          img1: fileNames[0],
+          img2: fileNames[1],
+          img3: fileNames[2],
+          img4: fileNames[3],
+          img5: fileNames[4],
+        },
+        { transaction: t }
+      );
+
       // Product tablosuna yeni bir ürün ekleyin
       const createdProduct = await Product.create(
         {
@@ -86,7 +111,7 @@ const createProduct = async (req, res) => {
           district,
           neighbourhood,
           userId,
-          images: images.map((image) => image.filename),
+          imageId: imgCreate.id,
         },
         { transaction: t }
       );
@@ -147,8 +172,9 @@ const createProduct = async (req, res) => {
     res.status(500).json({ error: "Ürün eklenirken bir hata oluştu" });
   }
 };
-//! GETONE PRODUCT İŞLEMLERİ
-const getOneProduct = async (req, res) => {
+
+// //! GET USER PRODUCT İŞLEMLERİ
+const getUserProduct = async (req, res) => {
   try {
     // Token kontrolü
     const token = req.headers.authorization;
@@ -169,32 +195,130 @@ const getOneProduct = async (req, res) => {
         .status(401)
         .json({ error: "Yetkilendirme başarısız. Kullanıcı bulunamadı." });
     }
-    const findOneProduct = await Product.findByPk(2);
+    // userId ile product tablosunda kullanıcı ürünü bulmak
+    const userProduct = await Product.findAll({
+      where: { userId: userId },
+    });
+
+    //
+    const userProductId = await Product.findAll({
+      attiributes: ["id"],
+      where: { userId: userId },
+    });
+    const x = userProductId.map((Product) => Product.id);
+
+    const userSubcategoryId = await Product.findAll({
+      attributes: ["subcategory"],
+      where: { userId: userId },
+    });
+    const y = userSubcategoryId.map((Product) => Product.subcategory);
+
+    function uniqueItems(arr) {
+      const uniqueSet = new Set(arr);
+      const uniqueArray = Array.from(uniqueSet);
+      return uniqueArray;
+    }
+    const resultArray = uniqueItems(y);
+
+    // switch (y) {
+    //   case "car":
+    //     break;
+    //   case "motorcycle":
+    //     break;
+    //   case "home":
+    //     break;
+    //   case "land":
+    //     break;
+    //   case "phone":
+    //     break;
+    //   case "computer":
+    //     break;
+    // }
+
+    // const search = await y.findAll({
+    //   where: { productId: x },
+    // });
 
     // Başarılı bir şekilde eklendiyse, istemciye başarı mesajı gönderin
-    res.status(201).json(findOneProduct);
+
+    res.status(201).json(t);
   } catch (error) {
     // Hata oluştuğunda istemciye hata mesajını gönderin
     console.error("Ürün eklenirken bir hata oluştu:", error.message);
     res.status(500).json({ error: "Ürün eklenirken bir hata oluştu" });
   }
 };
-//! DELETEONE PRODUCT İŞLEMLERİ
-/*const deleteProduct = () => {
-switch (key) {
-  case value:
-    
-    break;
+// //! DELETE PRODUCT İŞLEMLERİ
 
-  default:
-    break;
-}
+const deleteProduct = async (req, res) => {
+  try {
+    //token kontrolü
+    const token = req.headers.authorization;
+    if (!token) {
+      return res
+        .status(401)
+        .json({ error: "Yetkilendirme başarısız. token bulunamadı." });
+    }
 
+    //token doğrulama
+    const decodedToken = jwt.verify(token, "jwtSecretKey123456789");
+    const userId = decodedToken.userId;
+
+    //Kullanıcı kontrolü
+    const user = await User.findByPk(userId);
+    if (!user) {
+      return res
+        .status(401)
+        .json({ error: "Yetkilendirme başarısız. Kullanıcı bulunamadı." });
+    }
+    //Ürün ve fotoğrafları silme işlemi
+    await sequelize.transaction(async (t) => {
+      const productId = req.params.productId;
+
+      // Ürünü sil
+      await Product.destroy({ where: { id: productId }, transaction: t });
+
+      img;
+    });
+  } catch {}
 };
-*/
+
+//     // Ürünü ve fotoğrafları silme işlemi
+//     await sequelize.transaction(async (t) => {
+//       const productId = req.params.productId;
+
+//       // Ürünü sil
+//       await Product.destroy({ where: { id: productId }, transaction: t });
+
+//       img.destroy();
+//       // // Fotoğrafları sil
+//       // await Image.destroy({ where: { productId: productId }, transaction: t });
+
+//       // Diğer tablolardan ürünü sil
+//       const subcategory = req.params.subcategory;
+//       await sequelize.models[subcategory.toLowerCase()].destroy({
+//         where: { productId: productId },
+//         transaction: t,
+//       });
+//     });
+
+//     // Başarılı bir şekilde silindiğinde istemciye başarı mesajı gönderin
+//     res.status(200).json({ message: "Ürün başarıyla silindi" });
+//   } catch (error) {
+//     // Hata oluştuğunda istemciye hata mesajını gönderin
+//     console.error("Ürün silinirken bir hata oluştu:", error.message);
+//     res.status(500).json({ error: "Ürün silinirken bir hata oluştu" });
+//   }
+// };
+
+// Kullanımı
+// DELETE /products/:subcategory/:productId
+// Örneğin, /products/car/1
+// router.delete("/products/:subcategory/:productId", deleteProduct);
 
 module.exports = {
   createProduct,
-  getOneProduct,
+  getUserProduct,
   upload,
+  deleteProduct,
 };
