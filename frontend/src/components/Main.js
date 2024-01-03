@@ -4,7 +4,6 @@ import Sidebar from "./sidebar";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { CategoryProvider } from "./CategoryContext";
-import Sidebar from "./sidebar";
 
 const Main = () => {
   const { nameFilter } = useSearch();
@@ -16,18 +15,18 @@ const Main = () => {
         <div className="container d-flex">
           <CategoryProvider>
             <div className="col-md-3 col-sm-3 sidebar">
-              <Sidebar />
+              <Sidebar /> 
             </div>
             <div className="col-md-9 col-sm-9">
               <Article />
-              {/* <FilterBar category="asd" />  */}
+           {/* <FilterBar category="asd" />  */}
             </div>
           </CategoryProvider>
         </div>
-        </SearchProvider >
-        <Footer />
-      </>
-      );
+      </SearchProvider>
+      <Footer />
+    </>
+  );
 };
 
-      export default Main;
+export default Main;
