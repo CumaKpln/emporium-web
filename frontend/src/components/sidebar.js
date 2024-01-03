@@ -699,7 +699,7 @@ const Sidebar = () => {
               {isMotorcycleDistrictOpen && selectedProvince !== "" && (
                 <div className="dropdownUlLi custom-dropdown-menu">
                   {districts
-                    .filter((district) => district.state == selectedProvince)
+                    .filter((district) => district.state === selectedProvince)
                     .map((district) => (
                       <button className="btn sidebarBtn" type="button">
                         {district.name}
@@ -846,7 +846,7 @@ const Sidebar = () => {
               {isHomeDistrictOpen && selectedProvince !== "" && (
                 <div className="dropdownUlLi custom-dropdown-menu">
                   {districts
-                    .filter((district) => district.state == selectedProvince)
+                    .filter((district) => district.state === selectedProvince)
                     .map((district) => (
                       <button className="btn sidebarBtn" type="button">
                         {district.name}
@@ -939,7 +939,7 @@ const Sidebar = () => {
               {isPlotDistrictOpen && selectedProvince !== "" && (
                 <div className="custom-dropdown-menu">
                   {districts
-                    .filter((district) => district.state == selectedProvince)
+                    .filter((district) => district.state === selectedProvince)
                     .map((district) => (
                       <button className="btn sidebarBtn" type="button">
                         {district.name}
@@ -1029,7 +1029,7 @@ const Sidebar = () => {
               {isPhoneDistrictOpen && selectedProvince !== "" && (
                 <div className="custom-dropdown-menu">
                   {districts
-                    .filter((district) => district.state == selectedProvince)
+                    .filter((district) => district.state === selectedProvince)
                     .map((district) => (
                       <button className="btn sidebarBtn" type="button">
                         {district.name}
@@ -1202,10 +1202,10 @@ const Sidebar = () => {
               >
                 İlçe
               </button>
-              {isPcDistrictOpen && selectedProvince != "" && (
+              {isPcDistrictOpen && selectedProvince !== "" && (
                 <div className="custom-dropdown-menu">
                   {districts
-                    .filter((district) => district.state == selectedProvince)
+                    .filter((district) => district.state === selectedProvince)
                     .map((district) => (
                       <button className="btn sidebarBtn" type="button">
                         {district.name}
