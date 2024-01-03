@@ -159,7 +159,8 @@
       "GPU": "ekran kartı",
       "processor": "işlemci",
       "memory": "hafıza",
-      "id": 6
+      "id": 6,
+      "province": "Elazığ"
     },
     {
       "selectedFiles": [
@@ -180,7 +181,8 @@
       "productName": "Araba Modeli 1",
       "price": "100000",
       "brand": "Marka 1",
-      "id": 7
+      "id": 7,
+      "province": "Diyarbakır"
     },
     {
       "selectedFiles": [
@@ -201,7 +203,8 @@
       "productName": "Motorsiklet Modeli 1",
       "price": "50000",
       "brand": "Marka 2",
-      "id": 8
+      "id": 8,
+      "province": "Antalya"
     },
     {
       "selectedFiles": [
@@ -222,7 +225,8 @@
       "productName": "Daire Modeli 1",
       "price": "250000",
       "brand": "Marka 3",
-      "id": 9
+      "id": 9,
+      "province": "İstanbul"
     },
     {
       "selectedFiles": [
@@ -243,7 +247,8 @@
       "productName": "Araba Modeli 1",
       "price": "100000",
       "brand": "Marka 1",
-      "id": 10
+      "id": 10,
+      "province": "Kastamonu"
     },
     {
       "selectedFiles": [
@@ -264,7 +269,8 @@
       "productName": "Motorsiklet Modeli 1",
       "price": "50000",
       "brand": "Marka 2",
-      "id": 11
+      "id": 11,
+      "province": "Bursa"
     },
     {
       "selectedFiles": [
@@ -285,7 +291,8 @@
       "productName": "Daire Modeli 1",
       "price": "250000",
       "brand": "Marka 3",
-      "id": 12
+      "id": 12,
+      "province": "Mersin"
     },
     {
       "selectedFiles": [
@@ -306,7 +313,8 @@
       "productName": "Araba Modeli 1",
       "price": "100000",
       "brand": "Marka 1",
-      "id": 13
+      "id": 13,
+      "province": "Hatay"
     },
     {
       "selectedFiles": [
@@ -327,7 +335,8 @@
       "productName": "Motorsiklet Modeli 1",
       "price": "50000",
       "brand": "Marka 2",
-      "id": 14
+      "id": 14,
+      "province": "İzmir"
     },
     {
       "selectedFiles": [
@@ -348,7 +357,8 @@
       "productName": "Daire Modeli 1",
       "price": "250000",
       "brand": "Marka 3",
-      "id": 15
+      "id": 15,
+      "province": "Manisa"
     },
     {
       "selectedFiles": [
@@ -369,7 +379,8 @@
       "productName": "Araba Modeli 1",
       "price": "100000",
       "brand": "Marka 1",
-      "id": 16
+      "id": 16,
+      "province": "Eskişehir"
     },
     {
       "selectedFiles": [
@@ -390,7 +401,8 @@
       "productName": "Motorsiklet Modeli 1",
       "price": "50000",
       "brand": "Marka 2",
-      "id": 17
+      "id": 17,
+      "province": "Edirne"
     },
     {
       "selectedFiles": [
@@ -411,7 +423,8 @@
       "productName": "Daire Modeli 1",
       "price": "250000",
       "brand": "Marka 3",
-      "id": 18
+      "id": 18,
+      "province": "İstanbul"
     }
   ]
 }

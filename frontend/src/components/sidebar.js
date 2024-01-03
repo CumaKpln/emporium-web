@@ -4,6 +4,7 @@ import "../Styles/sidebar.css";
 import { useCategory } from "./CategoryContext";
 import { provinces } from "../data/Locations/Province.js";
 import { districts } from "../data/Locations/District.js";
+import { useProvince } from "./ProvinceContext.js";
 
 const Sidebar = () => {
 //   const [selectedProvince, setSelectedProvince] = useState("");

@@ -4,6 +4,7 @@ import Article from "./Article";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { CategoryProvider } from "./CategoryContext";
+import { ProvinceProvider } from "./ProvinceContext";
 const Main = () => {
   return (
     <>
