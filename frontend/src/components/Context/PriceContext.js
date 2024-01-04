@@ -4,7 +4,7 @@ const PriceContext = createContext();
 
 export const PriceProvider = ({ children }) => {
     const [minPrice, setMinPrice] = useState(0);
-    const [maxPrice, setMaxPrice] = useState(Number.MAX_VALUE);
+    const [maxPrice, setMaxPrice] = useState(10000000000);
 
     const handlePriceClick = ({ minPrice, maxPrice }) => {
         setMinPrice((prevMinPrice) =>

@@ -507,8 +507,8 @@ const Sidebar = () => {
 
   return (
     <div className="dropdown">
-      <input type="number" id=" minPrice" onInput={(e) => handlePriceClick({ minPrice: e.target.value })}></input>
-      <input type="number" id="maxPrice" onInput={(e) => handlePriceClick({ maxPrice: e.target.value })}></input>
+      <input type="number" id=" minPrice" onInput={(e) => handlePriceClick({ minPrice: e.target.value, maxPrice: maxPrice })} />
+      <input type="number" id="maxPrice" onInput={(e) => handlePriceClick({ maxPrice: e.target.value, minPrice: minPrice })} />
       <button
         className="btn sidebarMainTitle dropdown-toggle"
         type="button"
