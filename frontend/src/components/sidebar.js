@@ -681,7 +681,7 @@ const Sidebar = () => {
                     {provinces.map((province, index) => (
                       <li
                         key={index}
-                        onClick={(e) => setSelectedProvince(province.state)}
+                        onClick={(e) => { setSelectedProvince(province.state); handleProvinceClick({ province: province.state.toString() }); }}
                       >
                         {province.state}
                       </li>
@@ -828,7 +828,7 @@ const Sidebar = () => {
                     {provinces.map((province, index) => (
                       <li
                         key={index}
-                        onClick={(e) => setSelectedProvince(province.state)}
+                        onClick={(e) => { setSelectedProvince(province.state); handleProvinceClick({ province: province.state.toString() }); }}
                       >
                         {province.state}
                       </li>
@@ -921,7 +921,7 @@ const Sidebar = () => {
                     <button
                       className="btn sidebarBtn"
                       type="button"
-                      onClick={(e) => setSelectedProvince(province.state)}
+                      onClick={(e) => { setSelectedProvince(province.state); handleProvinceClick({ province: province.state.toString() }); }}
                     >
                       {" "}
                       {province.state}{" "}
@@ -1011,7 +1011,7 @@ const Sidebar = () => {
                     <button
                       className="btn sidebarBtn"
                       type="button"
-                      onClick={(e) => setSelectedProvince(province.state)}
+                      onClick={(e) => { setSelectedProvince(province.state); handleProvinceClick({ province: province.state.toString() }); }}
                     >
                       {" "}
                       {province.state}{" "}
@@ -1187,7 +1187,7 @@ const Sidebar = () => {
                     <button
                       className="btn sidebarBtn"
                       type="button"
-                      onClick={(e) => setSelectedProvince(province.state)}
+                      onClick={(e) => { setSelectedProvince(province.state); handleProvinceClick({ province: province.state.toString() }); }}
                     >
                       {" "}
                       {province.state}{" "}

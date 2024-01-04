@@ -2,7 +2,7 @@ import React from "react";
 import logo from "../images/logo.png";
 import "../Styles/navbar.css";
 import { Link } from "react-router-dom";
-import { useSearch } from './SearchContext';
+import { useSearch } from './Context/SearchContext';
 import { useSelector } from "react-redux";
 
 const Navbar = () => {
@@ -98,11 +98,11 @@ const Navbar = () => {
               </div>}
             </Link>
             <Link to="/register ">
-            {token.length > 0 ? (
+              {token.length > 0 ? (
                 null
-              ) :  <div className=" navBtn">
-              <span className="m-0">Kayıt ol</span>
-            </div>}
+              ) : <div className=" navBtn">
+                <span className="m-0">Kayıt ol</span>
+              </div>}
             </Link>
           </div>
         </div>
