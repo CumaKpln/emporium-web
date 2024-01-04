@@ -7,10 +7,12 @@ import "../Styles/Product.css";
 import { Link } from "react-router-dom";
 import { selectProduct } from "../control/slices/productSlice";
 import { useSearch } from "./Context/SearchContext";
+import { usePrice } from "./Context/PriceContext";
 
 function Products() {
   const { selectedCategory, selectedSubCategory } = useCategory();
   const { selectedProvince } = useProvince();
+  const { minPrice, maxPrice, handlePriceClick } = usePrice();
   const dispatch = useDispatch();
   const { nameFilter } = useSearch();
 
@@ -34,7 +36,8 @@ function Products() {
     const provinceMatch = selectedProvince
       ? product.province.toLowerCase() === selectedProvince.toLowerCase()
       : true;
-    return categoryMatch && subCategoryMatch && nameMatch && provinceMatch;
+    const priceMatch = parseInt(product.price) >= minPrice && parseInt(product.price) <= maxPrice;
+    return categoryMatch && subCategoryMatch && nameMatch && provinceMatch && priceMatch;
   });
 
   return (

@@ -5,12 +5,14 @@ import { useCategory } from "./Context/CategoryContext.js";
 import { provinces } from "../data/Locations/Province.js";
 import { districts } from "../data/Locations/District.js";
 import { useProvince } from "./Context/ProvinceContext.js";
+import { usePrice } from "./Context/PriceContext.js";
 
 const Sidebar = () => {
   const [selectedProvince, setSelectedProvince] = useState("");
 
   const { handleCategoryClick } = useCategory();
   const { handleProvinceClick } = useProvince();
+  const { minPrice, maxPrice, handlePriceClick } = usePrice();
 
   // vasıta bölümü
   const [isVehicleOpen, setVehicleOpen] = useState(false);
@@ -505,6 +507,8 @@ const Sidebar = () => {
 
   return (
     <div className="dropdown">
+      <input type="number" id=" minPrice" onInput={(e) => handlePriceClick({ minPrice: e.target.value })}></input>
+      <input type="number" id="maxPrice" onInput={(e) => handlePriceClick({ maxPrice: e.target.value })}></input>
       <button
         className="btn sidebarMainTitle dropdown-toggle"
         type="button"
