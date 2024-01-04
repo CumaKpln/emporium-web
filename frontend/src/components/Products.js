@@ -1,12 +1,12 @@
 import React from "react";
-import { useCategory } from "./CategoryContext";
-import { useProvince } from "./ProvinceContext";
+import { useCategory } from "./Context/CategoryContext";
+import { useProvince } from "./Context//ProvinceContext";
 import { useDispatch, useSelector } from "react-redux";
 import data from "../data/db.json";
 import "../Styles/Product.css";
 import { Link } from "react-router-dom";
 import { selectProduct } from "../control/slices/productSlice";
-import { useSearch } from "./SearchContext";
+import { useSearch } from './Context/SearchContext';
 
 function Products() {
   const { selectedCategory, selectedSubCategory } = useCategory();
@@ -17,10 +17,13 @@ function Products() {
   const selectedProduct = (product) => {
     dispatch(selectProduct(product));
   };
+
+
   // token kullnama
   const token = useSelector((state) => state.userToken.value);
   console.log(token);
 
+  // filtreleme
   const filteredProducts = data["ilan-ver"].filter((product) => {
     const categoryMatch = selectedCategory
       ? product.category.toLowerCase() === selectedCategory.toLowerCase()

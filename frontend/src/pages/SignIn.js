@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../Styles/Pages/SignIn.css";
 import axios from "axios";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 function SignIn() {
   const [formData, setFormData] = useState({
@@ -83,6 +83,10 @@ function SignIn() {
 
   return (
     <>
+      <Toaster
+        position="center-top"
+        reverseOrder={false}
+      />
       <Navbar />
       <div className="container-login mt-5">
         <div className="SignIn">
