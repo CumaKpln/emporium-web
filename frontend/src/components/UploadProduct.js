@@ -72,6 +72,7 @@ const UploadProduct = () => {
     setİmages(filesArray);
   };
  const token= localStorage.getItem('token');
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -101,6 +102,10 @@ const UploadProduct = () => {
     };
     console.log(datasToProduct)
 
+ for (let i = 0; i < images.length; i++) {
+  datasToProduct.append('images', images[i]);
+  }
+    
     // Veri mevcut ve veri uzunluğu 0'dan büyükse, isteği gönder
     await axios.post("https://mysql-emporium-deploy1.onrender.com/product/product-post", datasToProduct, {
       headers: {
