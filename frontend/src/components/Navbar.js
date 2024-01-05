@@ -2,7 +2,7 @@ import React from "react";
 import logo from "../images/logo.png";
 import "../Styles/navbar.css";
 import { Link } from "react-router-dom";
-import filter from "./FilterPage/Filtering";
+// import filter from "./FilterPage/Filtering";
 import { useSearch } from './Context/SearchContext';
 
 const Navbar = () => {

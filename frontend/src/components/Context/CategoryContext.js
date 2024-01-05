@@ -8,12 +8,17 @@ export const CategoryProvider = ({ children }) => {
   const [selectedSubCategory, setSelectedSubCategory] = useState(null);
 
   const handleCategoryClick = ({ category, subCategory }) => {
-    setSelectedCategory((prevCategory) =>
-      prevCategory === category ? null : category
-    );
-    setSelectedSubCategory((prevSubCategory) =>
-      prevSubCategory === subCategory ? null : subCategory
-    );
+    // Eğer tıklanan kategori veya alt kategori zaten seçiliyse, seçili kategorileri temizle
+    if (
+      (selectedCategory === category && selectedSubCategory === subCategory) ||
+      (selectedSubCategory === subCategory)
+    ) {
+      setSelectedCategory(null);
+      setSelectedSubCategory(null);
+    } else {
+      setSelectedCategory(category);
+      setSelectedSubCategory(subCategory);
+    }
   };
 
   return (

@@ -1,3 +1,4 @@
+// Güncellenmiş Products.jsx
 import React from "react";
 import { useCategory } from "./Context/CategoryContext";
 import { useProvince } from "./Context/ProvinceContext";
@@ -18,7 +19,6 @@ function Products() {
     dispatch(selectProduct(product));
   };
 
-
   const filteredProducts = data["ilan-ver"].filter((product) => {
     const categoryMatch = selectedCategory ? product.category.toLowerCase() === selectedCategory.toLowerCase() : true;
     const subCategoryMatch = selectedSubCategory ? product.subCategory.toLowerCase() === selectedSubCategory.toLowerCase() : true;
@@ -31,7 +31,7 @@ function Products() {
     <div className="products">
       {filteredProducts.map((product, id) => (
         <div className="img p-3" key={id} style={{ cursor: "pointer" }}>
-          <Link to={`/urun-detayi/${id}`} onClick={() => selectedProduct(product)}>
+          <Link to={`/urun-detayi/${product.id - 1}`} onClick={() => selectedProduct(product)}>
             <img src={product.selectedFiles[0].url} alt="foto" />
             <p className="title" style={{ flex: "1" }}>
               {product.title}

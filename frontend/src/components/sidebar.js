@@ -562,13 +562,15 @@ const Sidebar = () => {
               </button>
               {isCarDistrictOpen && selectedProvince !== "" && (
                 <div className="dropdownUlLi custom-dropdown-menu">
+                  <ul>
                   {districts
                     .filter((district) => district.state === selectedProvince)
                     .map((district) => (
-                      <button className="btn sidebarBtn" type="button">
+                      <li className="dropdownUlLi">
                         {district.name}
-                      </button>
+                      </li>
                     ))}
+                    </ul>
                 </div>
               )}
               <button
