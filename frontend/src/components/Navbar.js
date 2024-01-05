@@ -1,10 +1,10 @@
 import React from "react";
 import logo from "../images/logo.png";
 import "../Styles/navbar.css";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 // import filter from "./FilterPage/Filtering";
 import { useSearch } from './Context/SearchContext';
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
 const Navbar = () => {
 
@@ -14,6 +14,7 @@ const Navbar = () => {
 
   const handleLogOut = () => {
     localStorage.removeItem('userToken');
+   
   }
 
 
@@ -88,7 +89,7 @@ const Navbar = () => {
                       </button>
                       <ul className="dropdown-menu">
                         <li><a className="dropdown-item" href="/account">Hesabım</a></li>
-                        <li onClick={handleLogOut}><a className="dropdown-item" href="/Login">Çıkış Yap</a></li>
+                        <li onClick={handleLogOut}><a className="dropdown-item" href="/">Çıkış Yap</a></li>
                       </ul>
                     </div>
                   </div>

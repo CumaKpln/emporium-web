@@ -27,7 +27,6 @@ const UploadProduct = () => {
   const [district, setDistrict] = useState("");
   const [neigbourhood, setNeigbourhood] = useState("");
   const [propertyType, setPropertyType] = useState("");
-  const [datasToProduct, setDatasToProduct] = useState("");
 
   // Kategori değiştiğinde alt kategoriyi sıfırla
   const handleCategoryChange = (e) => {
@@ -67,71 +66,93 @@ const UploadProduct = () => {
     }
   };
 
-
-
-  const handleFileChange = (event) => {
+  const handleFileChange = async (event) => {
     const photos = event.target.files;
-    console.log(photos)
     const filesArray = Array.from(images);
     setİmages(filesArray);
   };
-
-
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    // Gerekli tüm verileri içeren datasToProduct objesini oluşturuyoruz
+    const datasToProduct = {
+      productTitle,
+      description,
+      category,
+      subcategory,
+      productName,
+      price,
+      brand,
+      images,
+      squareMeters,
+      color,
+      series,
+      gear,
+      ram,
+      processor,
+      memory,
+      room,
+      gpu,
+      province,
+      district,
+      neigbourhood,
+      propertyType,
+    };
+    console.log(datasToProduct)
 
-    axios
-      .post("https://mysql-emporium-deploy1.onrender.com/product/product-post", datasToProduct)
+    // Veri mevcut ve veri uzunluğu 0'dan büyükse, isteği gönder
+    axios.post("https://mysql-emporium-deploy1.onrender.com/product/product-post", datasToProduct)
       .then((response) => {
+        // Başarılı bir şekilde istek gönderildiğinde başarılı bir toast göster
         toast.success("Ürün başarıyla Yüklendi!");
         console.log("İstek başarılı. Yanıt:", response.data);
-        
-
       })
       .catch((error) => {
+        // Hata durumunda hatayı toast olarak göster ve konsola yaz
         toast.error("Ürün yükleme başarısız oldu.");
         console.error("İstek hatası:", error);
-        // Hata durumunda hata mesajını burada işleyebilirsiniz
       });
 
-    setDatasToProduct({
-      productTitle: "",
-      description: "",
-      category: "",
-      subcategory: "",
-      productName: "",
-      price: "",
-      brand: "",
-      images: [],
-      squareMeters: "",
-      color: "",
-      series: "",
-      gear: "",
-      ram: "",
-      processor: "",
-      memory: "",
-      room: "",
-      gpu: "",
-      province: "",
-      district: "",
-      neigbourhood: "",
-      propertyType: "",
-    });
-  };
+  }
+
+  // // DatasToProduct state'ini sıfırlamak için boş bir obje ataması yapılır
+  // setDatasToProduct({
+  //   productTitle: "",
+  //   description: "",
+  //   category: "",
+  //   subcategory: "",
+  //   productName: "",
+  //   price: "",
+  //   brand: "",
+  //   images: [],
+  //   squareMeters: "",
+  //   color: "",
+  //   series: "",
+  //   gear: "",
+  //   ram: "",
+  //   processor: "",
+  //   memory: "",
+  //   room: "",
+  //   gpu: "",
+  //   province: "",
+  //   district: "",
+  //   neigbourhood: "",
+  //   propertyType: "",
+  // });
+
+
 
 
   return (
     <>
-      <Toaster
+      <Toaster />
 
-      />
       <Navbar />
       <div className="container product-update mt-5 mb-5">
         <div className="row">
           <div className="col-md-4 col-sm-2 col-1"></div>
           <div className="col-md-4 col-sm-8 col-10">
-            <form onSubmit={handleSubmit}>
+            <form >
               <div className="product-foto">
                 <input
                   type="file"
@@ -154,6 +175,7 @@ const UploadProduct = () => {
                   onChange={(e) => setProductName(e.target.value)}
                   required
                 />
+
               </div>
               <div className="product-title">
                 <label htmlFor="title">Ürün Başlığı:</label>
@@ -278,7 +300,7 @@ const UploadProduct = () => {
                   <div className="product-propertyType">
                     <label htmlFor="propertyType">Emlak Tipi:</label>
                     <select
-                    
+
                       id="propertyType"
                       value={propertyType}
                       onChange={(e) => setPropertyType(e.target.value)}
@@ -397,7 +419,7 @@ const UploadProduct = () => {
               )}
 
               {/* Formun gönderme butonu */}
-              <button className="submitBtn float-end" type="submit">
+              <button onClick={handleSubmit} className="submitBtn float-end" type="submit">
                 Ürünü Yükle
               </button>
             </form>
