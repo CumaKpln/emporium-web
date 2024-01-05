@@ -44,7 +44,6 @@ function LogIn() {
 
         dispatch(setUserData(userData));
         console.log(userData)
-        // Redirect to home page or any desired route
 
       })
       .catch(() => {

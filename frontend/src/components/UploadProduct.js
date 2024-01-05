@@ -67,11 +67,11 @@ const UploadProduct = () => {
   };
 
   const handleFileChange = async (event) => {
-    const images =  event.target.files;
+    const images = event.target.files;
     const filesArray = Array.from(images);
     setİmages(filesArray);
   };
- const token= localStorage.getItem('token');
+  const token = localStorage.getItem('token');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -102,58 +102,31 @@ const UploadProduct = () => {
     };
     console.log(datasToProduct)
 
- for (let i = 0; i < images.length; i++) {
-  datasToProduct.append('images', images[i]);
-  }
+
     
-    // Veri mevcut ve veri uzunluğu 0'dan büyükse, isteği gönder
-    await axios.post("https://mysql-emporium-deploy1.onrender.com/product/product-post", datasToProduct, {
-      headers: {
-        "Authorization": `Bearer ${token}`,
-        "Content-Type": 'multipart/form-data'
-      }
-    })
-      .then((response) => {
-        // Başarılı bir şekilde istek gönderildiğinde başarılı bir toast göster
-        toast.success("Ürün başarıyla Yüklendi!");
-        console.log("İstek başarılı. Yanıt:", response.data);
-      })
-      .catch((error) => {
-        // Hata durumunda hatayı toast olarak göster ve konsola yaz
-        toast.error("Ürün yükleme başarısız oldu.");
-        console.error("İstek hatası:", error);
-      });
+    try {
+      const response = await axios.post(
+        "https://mysql-emporium-deploy1.onrender.com/product/product-post",
+        datasToProduct,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+    
+      // Başarılı yanıt
+      toast.success("Ürün başarıyla Yüklendi!");
+      console.log("İstek başarılı. Yanıt:", response.data);
+    } catch (error) {
+      // Hata durumunda
+      toast.error("Ürün yükleme başarısız oldu.");
+      console.error("İstek hatası:", error);
+    }
+    
 
   }
-
-  // // DatasToProduct state'ini sıfırlamak için boş bir obje ataması yapılır
-  // setDatasToProduct({
-  //   productTitle: "",
-  //   description: "",
-  //   category: "",
-  //   subcategory: "",
-  //   productName: "",
-  //   price: "",
-  //   brand: "",
-  //   images: [],
-  //   squareMeters: "",
-  //   color: "",
-  //   series: "",
-  //   gear: "",
-  //   ram: "",
-  //   processor: "",
-  //   memory: "",
-  //   room: "",
-  //   gpu: "",
-  //   province: "",
-  //   district: "",
-  //   neigbourhood: "",
-  //   propertyType: "",
-  // });
-
-
-
-
   return (
     <>
       <Toaster />

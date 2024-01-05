@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../images/logo.png";
 import "../Styles/navbar.css";
-import { Link, useHistory  } from "react-router-dom";
+import { Link  } from "react-router-dom";
 // import filter from "./FilterPage/Filtering";
 import { useSearch } from './Context/SearchContext';
 // import { useSelector } from "react-redux";
@@ -12,11 +12,9 @@ const Navbar = () => {
 
   const { updateNameFilter } = useSearch();
 
-  const history = useHistory();
 
   const handleLogOut = () => {
     localStorage.removeItem('token');
-    history.push("/login");
   }
 
 
