@@ -13,10 +13,10 @@ import { SearchProvider } from './components/Context/SearchContext';
 
 
 function App() {
-  const id = useSelector(
-    (state) => state.products.selectedProduct.id - 1
+  var id = useSelector(
+    (state) => state.products.selectedProduct.id 
   );
-
+ id-=1;
 
   return (
     <>

@@ -3,17 +3,17 @@ import "../Styles/UploadProduct.css";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import axios from "axios";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 const UploadProduct = () => {
-  const [title, setTitle] = useState("");
+  const [productTitle, setProductTitle] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
-  const [subCategory, setSubCategory] = useState(""); // Alt kategori seçimi için state
+  const [subcategory, setSubCategory] = useState(""); // Alt kategori seçimi için state
   const [productName, setProductName] = useState("");
   const [price, setPrice] = useState("");
   const [brand, setBrand] = useState("");
-  const [photos, setPhotos] = useState([]);
+  const [images, setİmages] = useState([]);
   const [squareMeters, setSquareMeters] = useState("");
   const [color, setColor] = useState("");
   const [series, setSeries] = useState("");
@@ -21,11 +21,11 @@ const UploadProduct = () => {
   const [ram, setRam] = useState("");
   const [processor, setProcessor] = useState("");
   const [memory, setMemory] = useState("");
-  const [productRoom, setProductRoom] = useState("");
-  const [graphicCard, setGraphicCard] = useState("");
+  const [room, setRoom] = useState("");
+  const [gpu, setGpu] = useState("");
   const [province, setProvince] = useState("");
   const [district, setDistrict] = useState("");
-  const [neigborhood, setNeigborhood] = useState("");
+  const [neigbourhood, setNeigbourhood] = useState("");
   const [propertyType, setPropertyType] = useState("");
   const [datasToProduct, setDatasToProduct] = useState("");
 
@@ -67,55 +67,65 @@ const UploadProduct = () => {
     }
   };
 
+
+
   const handleFileChange = (event) => {
     const photos = event.target.files;
-    const filesArray = Array.from(photos);
-    setPhotos(filesArray);
+    console.log(photos)
+    const filesArray = Array.from(images);
+    setİmages(filesArray);
   };
 
-  // Form submit işlemi
+
   const handleSubmit = (event) => {
     event.preventDefault();
+
+
     axios
-      .post("http://localhost:3000/product/product-post", datasToProduct)
+      .post("https://mysql-emporium-deploy1.onrender.com/product/product-post", datasToProduct)
       .then((response) => {
         toast.success("Ürün başarıyla Yüklendi!");
         console.log("İstek başarılı. Yanıt:", response.data);
-        // Form verilerini temizle
-        setDatasToProduct({
-          title: "",
-          description: "",
-          category: "",
-          subCategory: "",
-          productName: "",
-          price: "",
-          brand: "",
-          photos: "",
-          squareMeters: "",
-          color: "",
-          series: "",
-          gear: "",
-          ram: "",
-          processor: "",
-          memory: "",
-          productRoom: "",
-          graphicCard: "",
-          province: "",
-          district: "",
-          neigborhood: "",
-          propertyType: "",
-        });
+        
+
       })
       .catch((error) => {
         toast.error("Ürün yükleme başarısız oldu.");
-
         console.error("İstek hatası:", error);
         // Hata durumunda hata mesajını burada işleyebilirsiniz
       });
+
+    setDatasToProduct({
+      productTitle: "",
+      description: "",
+      category: "",
+      subcategory: "",
+      productName: "",
+      price: "",
+      brand: "",
+      images: [],
+      squareMeters: "",
+      color: "",
+      series: "",
+      gear: "",
+      ram: "",
+      processor: "",
+      memory: "",
+      room: "",
+      gpu: "",
+      province: "",
+      district: "",
+      neigbourhood: "",
+      propertyType: "",
+    });
   };
+
 
   return (
     <>
+      <Toaster
+
+      />
       <Navbar />
       <div className="container product-update mt-5 mb-5">
         <div className="row">
@@ -150,8 +160,8 @@ const UploadProduct = () => {
                 <input
                   type="text"
                   id="title"
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
+                  value={productTitle}
+                  onChange={(e) => setProductTitle(e.target.value)}
                   required
                 />
               </div>
@@ -190,8 +200,8 @@ const UploadProduct = () => {
                 <input
                   type="text"
                   id="neigborhood"
-                  value={neigborhood}
-                  onChange={(e) => setNeigborhood(e.target.value)}
+                  value={neigbourhood}
+                  onChange={(e) => setNeigbourhood(e.target.value)}
                   required
                 />
               </div>
@@ -227,7 +237,7 @@ const UploadProduct = () => {
                   <label htmlFor="subCategory">Alt Kategori:</label>
                   <select
                     id="subCategory"
-                    value={subCategory}
+                    value={subcategory}
                     onChange={(e) => setSubCategory(e.target.value)}
                     required
                   >
@@ -238,7 +248,7 @@ const UploadProduct = () => {
 
               {category === "emlak" && (
                 <div className="product-squareMeters">
-                  <label htmlFor="squareMeters">{subCategory} m2'si:</label>
+                  <label htmlFor="squareMeters">{subcategory} m2'si:</label>
                   <input
                     type="text"
                     id="squareMeters"
@@ -249,14 +259,14 @@ const UploadProduct = () => {
                 </div>
               )}
 
-              {subCategory === "home" && (
+              {subcategory === "home" && (
                 <div>
                   <div className="product-productRoom">
                     <label htmlFor="productRoom">Emlak Tipi:</label>
                     <select
                       id="productRoom"
-                      value={productRoom}
-                      onChange={(e) => setProductRoom(e.target.value)}
+                      value={room}
+                      onChange={(e) => setRoom(e.target.value)}
                       required
                     >
                       <option value="">Oda Sayısını Seçiniz</option>
@@ -268,6 +278,7 @@ const UploadProduct = () => {
                   <div className="product-propertyType">
                     <label htmlFor="propertyType">Emlak Tipi:</label>
                     <select
+                    
                       id="propertyType"
                       value={propertyType}
                       onChange={(e) => setPropertyType(e.target.value)}
@@ -360,7 +371,7 @@ const UploadProduct = () => {
                 </div>
               )}
 
-              {subCategory === "computer" && (
+              {subcategory === "computer" && (
                 <div>
                   <div className="product-memory">
                     <label htmlFor="memory">Hafıza:</label>
@@ -377,8 +388,8 @@ const UploadProduct = () => {
                     <input
                       type="text"
                       id="graphicCard"
-                      value={graphicCard}
-                      onChange={(e) => setGraphicCard(e.target.value)}
+                      value={gpu}
+                      onChange={(e) => setGpu(e.target.value)}
                       required
                     />
                   </div>

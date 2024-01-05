@@ -1,23 +1,25 @@
 import React, { useState } from "react";
 import "../Styles/Pages/LogIn.css";
 import { useDispatch } from "react-redux";
-import { logIn } from "../control/slices/userSlice";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../images/logo.png";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import axios from "axios";
 import { Toaster, toast } from "react-hot-toast"
+import { userToken } from "../control/slices/tokenSlice";
 
 
 function LogIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [userData, setUserData] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const token = localStorage.getItem("token");
 
-  const handleSubmit = (e) => {
+
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const userData = {
@@ -25,29 +27,28 @@ function LogIn() {
       password: password,
     };
 
-    // Token'ı localStorage'a kaydetme
-    localStorage.setItem("token", token);
-
-    axios
-
+    // const setUserData = () => {
+    //   dispatch(setUserData(userData));
+    // };
+    console.log(userData)
+    // setUserData fonksiyonunu çağırarak loginUser'ı tetikleyin
+    // setUserData();
+    await axios
       .post("https://mysql-emporium-deploy1.onrender.com/user/login", userData)
-
       .then((response) => {
-        dispatch(
-          logIn({
-            email: email,
-            password: password,
-          })
-        );
         toast.success("Giriş başarıyla yapıldı!");
-
         const token = response.data.token;
-
-        localStorage.setItem("token", token);
         navigate("/");
+        // Save token in localStorage
+        localStorage.setItem("userToken", token); // Burada 'userToken' olarak saklayın
+
+        dispatch(setUserData(userData));
+        console.log(userData)
+        // Redirect to home page or any desired route
+
       })
       .catch(() => {
-        toast.error("Bir hata oluştu.Lütfen tekrar deneyiniz.");
+        toast.error("Bir hata oluştu. Lütfen tekrar deneyiniz.");
       });
   };
 
@@ -60,17 +61,24 @@ function LogIn() {
     navigate("/sifremiunuttum");
   };
 
+
+
+
+
+
+
+
   return (
     <>
       <Navbar />
       <Toaster
-      position="bottom-right"
-      reverseOrder={false}
+        position="center-top"
+        reverseOrder={false}
       />
       <div className="container-login mt-5">
         <div className="LogIn">
           <h1 className="mt-5">Üye Girişi</h1>
-          <form onSubmit={(e) => handleSubmit(e)} id="form-login">
+          <form id="form-login">
             <div className="row">
               <div className="logo col-md-6">
                 <div className="loginİmage">
@@ -86,8 +94,10 @@ function LogIn() {
                     name="email"
                     placeholder="E-posta"
                     value={email}
+
                     onChange={(e) => setEmail(e.target.value)}
                   />
+
                 </div>
                 <div className="password">
                   <label className="Item">Şifre</label>
@@ -112,7 +122,7 @@ function LogIn() {
                 </div>
                 <br />
                 <div className="btn mb-2" id="Login">
-                  <button type="submit">
+                  <button type="submit" onClick={(e) => handleSubmit(e)}>
                     <p className="mb-0">Giriş</p>
                   </button>
                 </div>
