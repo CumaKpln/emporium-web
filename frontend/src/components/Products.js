@@ -19,9 +19,6 @@ function Products() {
   };
 
 
-  // token kullnama
-  const token = useSelector((state) => state.userToken.value);
-  console.log(token);
 
   // filtreleme
   const filteredProducts = data["ilan-ver"].filter((product) => {

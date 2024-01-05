@@ -3,13 +3,12 @@ import { createSlice } from '@reduxjs/toolkit';
 const userSlice = createSlice({
   name: 'user',
   initialState: {
-    userData: {} // Varsayılan olarak boş bir userData nesnesi
+    userData: {} // başlangıç değeri
   },
   reducers: {
     setUserData(state, action) {
       state.userData = action.payload; // payload'dan gelen veriyi userData'ya ata
     },
-    // Diğer reducer fonksiyonları buraya eklenebilir
   }
 });
 

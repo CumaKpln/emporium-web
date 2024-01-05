@@ -16,10 +16,14 @@ const Navbar = () => {
   }
 
 
-  const selectUserData = useSelector(
-    (state) => state.userİnfo
-  );
-  console.log(selectUserData)
+  // const selectedProduct = useSelector(
+  //   (state) => state.products.selectedProduct
+  // );
+
+  // const userData = useSelector(
+  //   (state) => state.userİnfo
+  // );
+  // // console.log(userData)
 
   // Hesap ismi
   // const atIndex = email.indexOf("@");

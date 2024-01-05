@@ -63,6 +63,7 @@ function SignIn() {
           toast.success("Kayıt başarıyla yapıldı!");
 
           console.log("İstek başarılı. Yanıt:", response.data);
+          
           // Form verilerini temizle
           setFormData({
             username: "",
