@@ -67,11 +67,12 @@ const UploadProduct = () => {
   };
 
   const handleFileChange = async (event) => {
-    const photos = event.target.files;
+    const images =  event.target.files;
     const filesArray = Array.from(images);
     setİmages(filesArray);
   };
-  const handleSubmit = (event) => {
+ const token= localStorage.getItem('token');
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     // Gerekli tüm verileri içeren datasToProduct objesini oluşturuyoruz
@@ -101,7 +102,12 @@ const UploadProduct = () => {
     console.log(datasToProduct)
 
     // Veri mevcut ve veri uzunluğu 0'dan büyükse, isteği gönder
-    axios.post("https://mysql-emporium-deploy1.onrender.com/product/product-post", datasToProduct)
+    await axios.post("https://mysql-emporium-deploy1.onrender.com/product/product-post", datasToProduct, {
+      headers: {
+        "Authorization": `Bearer ${token}`,
+        "Content-Type": 'multipart/form-data'
+      }
+    })
       .then((response) => {
         // Başarılı bir şekilde istek gönderildiğinde başarılı bir toast göster
         toast.success("Ürün başarıyla Yüklendi!");

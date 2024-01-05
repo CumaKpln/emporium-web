@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../images/logo.png";
 import "../Styles/navbar.css";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useHistory  } from "react-router-dom";
 // import filter from "./FilterPage/Filtering";
 import { useSearch } from './Context/SearchContext';
 // import { useSelector } from "react-redux";
@@ -12,9 +12,11 @@ const Navbar = () => {
 
   const { updateNameFilter } = useSearch();
 
+  const history = useHistory();
+
   const handleLogOut = () => {
-    localStorage.removeItem('userToken');
-   
+    localStorage.removeItem('token');
+    history.push("/login");
   }
 
 
@@ -67,33 +69,33 @@ const Navbar = () => {
           <div className="right-navbar ml-5">
             {token ? (
               <>
-                <Link to="/account">
-                  <div id="account">
-                    <div className="dropdown">
-                      <button className="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <svg
-                          style={{ marginRight: "10px" }}
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="25"
-                          height="25"
-                          fill="currentColor"
-                          className="bi bi-person-circle"
-                          viewBox="0 0 16 16"
-                        >
-                          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                          <path
-                            fillRule="evenodd"
-                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
-                          />
-                        </svg>   Hesap
-                      </button>
-                      <ul className="dropdown-menu">
-                        <li><a className="dropdown-item" href="/account">Hesabım</a></li>
-                        <li onClick={handleLogOut}><a className="dropdown-item" href="/">Çıkış Yap</a></li>
-                      </ul>
-                    </div>
+                <div id="account">
+                  <div className="dropdown">
+                    <button className="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <svg
+                        style={{ marginRight: "10px" }}
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="25"
+                        height="25"
+                        fill="currentColor"
+                        className="bi bi-person-circle"
+                        viewBox="0 0 16 16"
+                      >
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                        <path
+                          fillRule="evenodd"
+                          d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+                        />
+                      </svg>   Hesap
+                    </button>
+                    <ul className="dropdown-menu">
+                      <li><a className="dropdown-item" href="/account">Hesabım</a></li>
+                      {/* <li><a href="/login" onClick={handleLogOut} className="dropdown-item">Çıkış Yap</a></li> */}
+                      <button onClick={handleLogOut}>Çıkış Yap</button>
+
+                    </ul>
                   </div>
-                </Link>
+                </div>
                 <div className="btn fav-icon p-2 mt-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
