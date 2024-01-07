@@ -87,6 +87,11 @@ nav.navbar {
 
 }
 
+#logout:hover {
+    background-color: rgb(236, 195, 195);
+    padding-bottom: 10px;
+}
+
 .fav-icon {
     margin-right: 15px;
     color: black;
@@ -189,7 +194,7 @@ a {
         cursor: pointer;
         width: 100%;
         justify-content: center;
-        
+
     }
 
     .nav2-Login:hover,

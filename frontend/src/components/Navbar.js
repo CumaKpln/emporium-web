@@ -86,10 +86,10 @@ const Navbar = () => {
                         />
                       </svg>   Hesap
                     </button>
-                    <ul className="dropdown-menu">
+                    <ul className="dropdown-menu text-center">
                       <li><a className="dropdown-item" href="/account">Hesabım</a></li>
-                      {/* <li><a href="/login" onClick={handleLogOut} className="dropdown-item">Çıkış Yap</a></li> */}
-                      <button onClick={handleLogOut}>Çıkış Yap</button>
+                     <li><a id="logout"  href="/login" onClick={handleLogOut} className="dropdown-item">Çıkış Yap</a></li> 
+                     
 
                     </ul>
                   </div>

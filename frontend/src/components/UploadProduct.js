@@ -6,14 +6,16 @@ import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 
 const UploadProduct = () => {
+  const token = localStorage.getItem('token');
+
   const [productTitle, setProductTitle] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
-  const [subcategory, setSubCategory] = useState(""); // Alt kategori seçimi için state
+  const [subcategory, setSubCategory] = useState("");
   const [productName, setProductName] = useState("");
   const [price, setPrice] = useState("");
   const [brand, setBrand] = useState("");
-  const [images, setİmages] = useState([]);
+  const [images, setİmages] = useState("");
   const [squareMeters, setSquareMeters] = useState("");
   const [color, setColor] = useState("");
   const [series, setSeries] = useState("");
@@ -25,7 +27,7 @@ const UploadProduct = () => {
   const [gpu, setGpu] = useState("");
   const [province, setProvince] = useState("");
   const [district, setDistrict] = useState("");
-  const [neigbourhood, setNeigbourhood] = useState("");
+  const [neighbourhood, setNeighbourhood] = useState("");
   const [propertyType, setPropertyType] = useState("");
 
   // Kategori değiştiğinde alt kategoriyi sıfırla
@@ -66,17 +68,17 @@ const UploadProduct = () => {
     }
   };
 
+  //fotoğraf gönderme fonsiyonu
   const handleFileChange = async (event) => {
     const images = event.target.files;
-    const filesArray = Array.from(images);
-    setİmages(filesArray);
+    const imagesArray = Array.from(images);
+    setİmages(imagesArray);
+    console.log(imagesArray);
   };
-  const token = localStorage.getItem('token');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // Gerekli tüm verileri içeren datasToProduct objesini oluşturuyoruz
     const datasToProduct = {
       productTitle,
       description,
@@ -97,36 +99,38 @@ const UploadProduct = () => {
       gpu,
       province,
       district,
-      neigbourhood,
+      neighbourhood,
       propertyType,
     };
+
     console.log(datasToProduct)
 
 
-    
-    try {
-      const response = await axios.post(
-        "https://mysql-emporium-deploy1.onrender.com/product/product-post",
-        datasToProduct,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-    
-      // Başarılı yanıt
-      toast.success("Ürün başarıyla Yüklendi!");
-      console.log("İstek başarılı. Yanıt:", response.data);
-    } catch (error) {
-      // Hata durumunda
-      toast.error("Ürün yükleme başarısız oldu.");
-      console.error("İstek hatası:", error);
-    }
-    
+    await axios.post("https://mysql-emporium-deploy1.onrender.com/product/product-post", datasToProduct, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": 'multipart/form-data'
+      }
 
-  }
+    })
+
+      .then((response) => {
+        console.log(response)
+        toast.success("Ürün başarıyla Yüklendi!");
+        console.log("İstek başarılı. Yanıt:", response.data);
+      })
+   
+   .catch((error) => {
+        toast.error("Ürün yükleme başarısız oldu.");
+        console.error("İstek hatası:", error);
+        console.error("İstek hatası:", error.response.data);
+
+      })
+
+  }//handleSubmit fonsiyonu
+
+
+
   return (
     <>
       <Toaster />
@@ -149,7 +153,7 @@ const UploadProduct = () => {
                   required
                 />
               </div>
-              {/* Ürün başlığı giriş alanı */}
+
               <div className="product-name">
                 <label htmlFor="productName">Ürün Adı:</label>
                 <input
@@ -174,13 +178,13 @@ const UploadProduct = () => {
               <div className="product-desc">
                 <label htmlFor="description">Ürün Açıklaması:</label>
                 <textarea
+                  type="text"
                   id="description"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   required
                 ></textarea>
               </div>
-              {/* Ürün açıklama alanı */}
               <div className="product-pro">
                 <label htmlFor="province">İl:</label>
                 <input
@@ -206,8 +210,8 @@ const UploadProduct = () => {
                 <input
                   type="text"
                   id="neigborhood"
-                  value={neigbourhood}
-                  onChange={(e) => setNeigbourhood(e.target.value)}
+                  value={neighbourhood}
+                  onChange={(e) => setNeighbourhood(e.target.value)}
                   required
                 />
               </div>
@@ -221,7 +225,6 @@ const UploadProduct = () => {
                   required
                 />
               </div>
-              {/* Ana kategori seçim alanı */}
               <div className="product-category">
                 <label htmlFor="category">Kategori:</label>
                 <select
@@ -236,8 +239,6 @@ const UploadProduct = () => {
                   <option value="elektronik-esya">Elektronik Eşya</option>
                 </select>
               </div>
-
-              {/* Alt kategori seçim alanı */}
               {category && (
                 <div className="product-subCategory">
                   <label htmlFor="subCategory">Alt Kategori:</label>
@@ -251,40 +252,22 @@ const UploadProduct = () => {
                   </select>
                 </div>
               )}
-
               {category === "emlak" && (
-                <div className="product-squareMeters">
-                  <label htmlFor="squareMeters">{subcategory} m2'si:</label>
-                  <input
-                    type="text"
-                    id="squareMeters"
-                    value={squareMeters}
-                    onChange={(e) => setSquareMeters(e.target.value)}
-                    required
-                  />
-                </div>
-              )}
-
-              {subcategory === "home" && (
-                <div>
-                  <div className="product-productRoom">
-                    <label htmlFor="productRoom">Emlak Tipi:</label>
-                    <select
-                      id="productRoom"
-                      value={room}
-                      onChange={(e) => setRoom(e.target.value)}
+                <>
+                  <div className="product-squareMeters">
+                    <label htmlFor="squareMeters">{subcategory} m2'si:</label>
+                    <input
+                      type="number"
+                      id="squareMeters"
+                      value={squareMeters}
+                      onChange={(e) => setSquareMeters(e.target.value)}
                       required
-                    >
-                      <option value="">Oda Sayısını Seçiniz</option>
-                      <option value="emlak">2+1</option>
-                      <option value="vasıta">3+1</option>
-                    </select>
+                    />
                   </div>
-
                   <div className="product-propertyType">
-                    <label htmlFor="propertyType">Emlak Tipi:</label>
+                    <label htmlFor="propertyType">Emlak Tipi 1  :</label>
                     <select
-
+                      type="text"
                       id="propertyType"
                       value={propertyType}
                       onChange={(e) => setPropertyType(e.target.value)}
@@ -295,9 +278,25 @@ const UploadProduct = () => {
                       <option value="vasıta">Satılık</option>
                     </select>
                   </div>
+                </>
+              )}
+              {subcategory === "home" && (
+
+                <div className="product-productRoom">
+                  <label htmlFor="productRoom">Oda Sayısını Seçiniz:</label>
+                  <select
+                    type="number"
+                    id="productRoom"
+                    value={room}
+                    onChange={(e) => setRoom(e.target.value)}
+                    required
+                  >
+                    <option value="">Oda Sayısını Seçiniz</option>
+                    <option value="emlak">2+1</option>
+                    <option value="vasıta">3+1</option>
+                  </select>
                 </div>
               )}
-
               {(category === "vasıta" || category === "elektronik-esya") && (
                 <div>
                   <div className="product-brand">
@@ -335,8 +334,6 @@ const UploadProduct = () => {
                   </div>
                 </div>
               )}
-
-              {/* Ürün vasıta vites giriş  */}
               {category === "vasıta" && (
                 <div className="product-gear">
                   <label htmlFor="gear">Vites:</label>
@@ -350,14 +347,13 @@ const UploadProduct = () => {
                   />
                 </div>
               )}
-
               {category === "elektronik-esya" && (
                 <div>
                   <div className="product-ram">
                     <label htmlFor="ram">Ram Bellek :</label>
                     <br />
                     <input
-                      type="text"
+                      type="number"
                       id="ram"
                       value={ram}
                       onChange={(e) => setRam(e.target.value)}
@@ -376,13 +372,12 @@ const UploadProduct = () => {
                   </div>
                 </div>
               )}
-
               {subcategory === "computer" && (
                 <div>
                   <div className="product-memory">
                     <label htmlFor="memory">Hafıza:</label>
                     <input
-                      type="text"
+                      type="number"
                       id="memory"
                       value={memory}
                       onChange={(e) => setMemory(e.target.value)}
@@ -401,8 +396,6 @@ const UploadProduct = () => {
                   </div>
                 </div>
               )}
-
-              {/* Formun gönderme butonu */}
               <button onClick={handleSubmit} className="submitBtn float-end" type="submit">
                 Ürünü Yükle
               </button>
