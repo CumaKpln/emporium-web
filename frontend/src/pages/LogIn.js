@@ -30,7 +30,6 @@ function LogIn() {
     // const setUserData = () => {
     //   dispatch(setUserData(userData));
     // };
-    console.log(userData)
     // setUserData fonksiyonunu çağırarak loginUser'ı tetikleyin
     // setUserData();
     await axios

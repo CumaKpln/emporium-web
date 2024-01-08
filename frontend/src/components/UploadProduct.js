@@ -15,7 +15,7 @@ const UploadProduct = () => {
   const [productName, setProductName] = useState("");
   const [price, setPrice] = useState("");
   const [brand, setBrand] = useState("");
-  const [images, setİmages] = useState("");
+  const [images, setİmages] = useState([]);
   const [squareMeters, setSquareMeters] = useState("");
   const [color, setColor] = useState("");
   const [series, setSeries] = useState("");
@@ -29,6 +29,7 @@ const UploadProduct = () => {
   const [district, setDistrict] = useState("");
   const [neighbourhood, setNeighbourhood] = useState("");
   const [propertyType, setPropertyType] = useState("");
+  const [model, setModel] = useState("");
 
   // Kategori değiştiğinde alt kategoriyi sıfırla
   const handleCategoryChange = (e) => {
@@ -70,10 +71,9 @@ const UploadProduct = () => {
 
   //fotoğraf gönderme fonsiyonu
   const handleFileChange = async (event) => {
-    const images = event.target.files;
-    const imagesArray = Array.from(images);
-    setİmages(imagesArray);
-    console.log(imagesArray);
+    const images = await event.target.files;
+    // const imagesArray = Array.from(images);
+    setİmages(images);
   };
 
   const handleSubmit = async (event) => {
@@ -88,6 +88,7 @@ const UploadProduct = () => {
       price,
       brand,
       images,
+      model,
       squareMeters,
       color,
       series,
@@ -106,7 +107,7 @@ const UploadProduct = () => {
     console.log(datasToProduct)
 
 
-    await axios.post("https://mysql-emporium-deploy1.onrender.com/product/product-post", datasToProduct, {
+    axios.post("https://mysql-emporium-deploy1.onrender.com/product/product-post", datasToProduct, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": 'multipart/form-data'
@@ -117,18 +118,15 @@ const UploadProduct = () => {
       .then((response) => {
         console.log(response)
         toast.success("Ürün başarıyla Yüklendi!");
-        console.log("İstek başarılı. Yanıt:", response.data);
       })
-   
-   .catch((error) => {
+
+      .catch((error) => {
         toast.error("Ürün yükleme başarısız oldu.");
         console.error("İstek hatası:", error);
-        console.error("İstek hatası:", error.response.data);
 
       })
 
   }//handleSubmit fonsiyonu
-
 
 
   return (
@@ -146,11 +144,11 @@ const UploadProduct = () => {
                   type="file"
                   id="fileInput"
                   onChange={handleFileChange}
+                  // onChange={(e) => setİmages(e.target.value)}
                   accept="image/*"
-                  // width="100"
-                  // height="auto"
+                  width="100"
+                  height="auto"
                   multiple
-                  required
                 />
               </div>
 
@@ -281,7 +279,6 @@ const UploadProduct = () => {
                 </>
               )}
               {subcategory === "home" && (
-
                 <div className="product-productRoom">
                   <label htmlFor="productRoom">Oda Sayısını Seçiniz:</label>
                   <select
@@ -367,6 +364,17 @@ const UploadProduct = () => {
                       id="processor"
                       value={processor}
                       onChange={(e) => setProcessor(e.target.value)}
+                      required
+                    />
+                  </div>
+                  <div className="product-serie">
+                    <label htmlFor="model"> Model:</label>
+                    <br />
+                    <input
+                      type="text"
+                      id="model"
+                      value={model}
+                      onChange={(e) => setModel(e.target.value)}
                       required
                     />
                   </div>
