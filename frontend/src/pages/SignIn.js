@@ -85,8 +85,7 @@ function SignIn() {
   return (
     <>
       <Toaster
-        position="center-top"
-        reverseOrder={false}
+        
       />
       <Navbar />
       <div className="container-login mt-5">
