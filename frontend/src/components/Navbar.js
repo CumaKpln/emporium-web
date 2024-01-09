@@ -25,11 +25,7 @@ const Navbar = () => {
   // const userData = useSelector(
   //   (state) => state.userİnfo
   // );
-  // // console.log(userData)
-
-  // Hesap ismi
-  // const atIndex = email.indexOf("@");
-  // const username = atIndex !== -1 ? email.slice(0, atIndex) : email;
+  
   return (
     <>
       <nav className="navbar" id="nav">
@@ -132,9 +128,11 @@ const Navbar = () => {
       </nav>
       <nav id="nav2" className="navbar bg-body-tertiary">
         <div className="container nav2-container">
+          <Link to={"/"}>
           <div className="nav-logo">
             <img src={logo} alt="logo-png" />
           </div>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"

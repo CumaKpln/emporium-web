@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css"; // Stil dosyasını ekleyin
 import Logo from "../images/logo.png";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -84,9 +86,7 @@ function SignIn() {
 
   return (
     <>
-      <Toaster
-        
-      />
+      <Toaster />
       <Navbar />
       <div className="container-login mt-5">
         <div className="SignIn">
@@ -100,8 +100,7 @@ function SignIn() {
               </div>
               <div className="logo col-md-6 ">
                 <div>
-                  <label>
-                    Kullanıcı adı soyadı: </label>
+                  <label>Kullanıcı adı soyadı: </label>
                   <input
                     className="signIn-inputs"
                     type="text"
@@ -112,12 +111,10 @@ function SignIn() {
                   {errors.username && (
                     <span className="error">{errors.username}</span>
                   )}
-
                 </div>
 
                 <div>
-                  <label> E-posta: </label>
-
+                  <label>E-posta: </label>
                   <input
                     className="signIn-inputs"
                     type="email"
@@ -132,13 +129,14 @@ function SignIn() {
 
                 <div className="d-dlex ">
                   <label>Telefon Numarası: </label>
-                  <input
-                    className="signIn-inputs"
-                    placeholder="(242) 242 24 24"
-                    type="tel"
-                    name="phoneNumber"
+                  <PhoneInput
+                    inputProps={{
+                      name: "phoneNumber",
+                      required: true,
+                    }}
+                    country={"tr"} // Türkiye için
                     value={formData.phoneNumber}
-                    onChange={handleChange}
+                    onChange={(value) => handleChange({ target: { name: "phoneNumber", value } })}
                   />
                   {errors.phoneNumber && (
                     <span className="error">{errors.phoneNumber}</span>
@@ -160,7 +158,6 @@ function SignIn() {
                 </div>
 
                 <div className="mb-4">
-                  {" "}
                   <label>Şifre Tekrar:</label>
                   <input
                     className="signIn-inputs"

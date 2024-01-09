@@ -27,6 +27,11 @@ body .SignIn {
 
 }
 
+input.form-control{
+width: 100% !important;
+height: 41.6px !important;
+}
+
 #Signin button {
   width: 100%;
   background-color: #007bff;

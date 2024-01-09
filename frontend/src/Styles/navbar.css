@@ -157,19 +157,13 @@ a {
 
 @media screen and (max-width: 1400px) {
 
-    #root,
-    .vsc-initialized {
-        overflow: none !important;
-        padding-right: 0px !important;
-    }
-
     #nav {
         display: none;
     }
 
     #nav2 {
         display: inline-block;
-        width: 100%;
+        min-width: 100%;
     }
 
     .nav2-container {
@@ -212,4 +206,12 @@ a {
     .nav2-upload-product:hover {
         background: lightblue;
     }
+}
+@media screen and (max-width: 425px) {
+#sidebar{
+    display: none;
+}
+.nav-search{
+    display:none;
+}
 }

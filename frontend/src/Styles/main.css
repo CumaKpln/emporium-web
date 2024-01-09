@@ -1,5 +1,11 @@
-@media screen and (max-width:765px) {
-   .sidebar{
-    display: none;
+@media screen and (max-width: 3000px) {
+   #searchMain.nav-search{
+       display: none;
    }
-}
+ }
+
+ @media screen and (max-width: 425px) {
+   #searchMain.nav-search{
+       display:flex;
+   }
+ }

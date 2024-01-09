@@ -1,16 +1,17 @@
 import React, { useState } from "react";
-import "../../Styles/Account/AccountMenu.css";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css"; // Stil dosyasını ekleyin
 import Edit from "./AccountEditButton";
-import "../../Styles/Account/AccountInfo.css"
+import "../../Styles/Account/AccountInfo.css";
 
 function İnfo() {
   const [name, setName] = useState("Ömer Enes");
   const [surname, setSurname] = useState("Genç");
   const [email, setEmail] = useState("omerenesgenc@gmail.com");
-  const [phone, setPhone] = useState("05541510843");
+  const [phone, setPhone] = useState("+90 554 151 0843");
   const [editMod, setEditMod] = useState(false);
 
-  const handleInputChange = (event) => { 
+  const handleInputChange = (event) => {
     const { id, value } = event.target;
 
     switch (id) {
@@ -42,7 +43,7 @@ function İnfo() {
       default:
         break;
     }
-  }; 
+  };
 
   const isEmailValid = () => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
@@ -125,7 +126,15 @@ function İnfo() {
               Telefon No
             </label>
             {editMod ? (
-              <Edit field="phone" value={phone} onChange={(e) => handleInputChange(e)} />
+              <PhoneInput
+                inputProps={{
+                  name: "phoneInput",
+                  required: true,
+                }}
+                country={"tr"} // Türkiye için
+                value={phone}
+                onChange={(value) => handleInputChange({ target: { id: "phoneInput", value } })}
+              />
             ) : (
               <input
                 required

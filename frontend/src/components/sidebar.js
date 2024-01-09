@@ -504,7 +504,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="dropdown">
+    <div className="dropdown" id="sidebar">
       <button
         className="btn sidebarMainTitle dropdown-toggle"
         type="button"
