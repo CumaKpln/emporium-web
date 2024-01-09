@@ -38,7 +38,7 @@ function LogIn() {
         //token işlemi
         const token = response.data.token;
         localStorage.setItem("token", token);
-        console.log(token)
+        console.log(token,"then")
       })
       .catch(() => {
         toast.error("Bir hata oluştu. Lütfen tekrar deneyiniz.");
