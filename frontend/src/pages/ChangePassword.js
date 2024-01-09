@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Logo from "../images/logo.png";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import Navbar from "../components/Navbar";
 
 const PasswordChange = () => {
@@ -40,6 +40,7 @@ const PasswordChange = () => {
 
   return (
     <>
+    <Toaster/>
       <Navbar />
       <div className="form-container m-auto mt-5">
         <h2>Şifre Değiştirme</h2>

@@ -1,50 +1,44 @@
 import React, { useState } from "react";
 import "../Styles/Pages/LogIn.css";
-import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../images/logo.png";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import axios from "axios";
 import { Toaster, toast } from "react-hot-toast"
-import { userToken } from "../control/slices/tokenSlice";
+
 
 
 function LogIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  //reduxta token tutma
-  const loginToken = (token) => {
-    dispatch(userToken(token));
-  };
 
 
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     const userData = {
       email: email,
       password: password,
     };
-  
-    axios
+
+    // const setUserData = () => {
+    //   dispatch(setUserData(userData));
+    // };
+    // // setUserData fonksiyonunu çağırarak loginUser'ı tetikleyin
+    // setUserData();
+    await axios
       .post("https://mysql-emporium-deploy1.onrender.com/user/login", userData)
       .then((response) => {
         toast.success("Giriş başarıyla yapıldı!");
-        const token = response.data.token;
-  
-        // Save token in localStorage
-        localStorage.setItem("token", token);
-  
-        // Dispatch action to save token in Redux store
-        loginToken(token);
-  
-        // Redirect to home page or any desired route
         navigate("/");
+
+        //token işlemi
+        const token = response.data.token;
+        localStorage.setItem("token", token);
+        console.log(token,"then")
       })
       .catch(() => {
         toast.error("Bir hata oluştu. Lütfen tekrar deneyiniz.");
@@ -60,11 +54,13 @@ function LogIn() {
     navigate("/sifremiunuttum");
   };
 
+
+
   return (
     <>
       <Navbar />
       <Toaster
-        position="bottom-right"
+        position="center-top"
         reverseOrder={false}
       />
       <div className="container-login mt-5">

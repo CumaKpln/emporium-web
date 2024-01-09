@@ -1,19 +1,22 @@
 import React, { useState } from "react";
-import "../Styles/UploadProduct.css";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
 import axios from "axios";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
+import "../Styles/UploadProduct.css";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const UploadProduct = () => {
-  const [title, setTitle] = useState("");
+  const token = localStorage.getItem("token");
+  localStorage.setItem("token", token);
+
+  const [productTitle, setProductTitle] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
-  const [subCategory, setSubCategory] = useState(""); // Alt kategori seçimi için state
+  const [subcategory, setSubCategory] = useState("");
   const [productName, setProductName] = useState("");
   const [price, setPrice] = useState("");
   const [brand, setBrand] = useState("");
-  const [photos, setPhotos] = useState([]);
+  const [images, setImages] = useState([]);
   const [squareMeters, setSquareMeters] = useState("");
   const [color, setColor] = useState("");
   const [series, setSeries] = useState("");
@@ -21,21 +24,19 @@ const UploadProduct = () => {
   const [ram, setRam] = useState("");
   const [processor, setProcessor] = useState("");
   const [memory, setMemory] = useState("");
-  const [productRoom, setProductRoom] = useState("");
-  const [graphicCard, setGraphicCard] = useState("");
+  const [room, setRoom] = useState("");
+  const [gpu, setGpu] = useState("");
   const [province, setProvince] = useState("");
   const [district, setDistrict] = useState("");
-  const [neigborhood, setNeigborhood] = useState("");
+  const [neighbourhood, setNeighbourhood] = useState("");
   const [propertyType, setPropertyType] = useState("");
-  const [datasToProduct, setDatasToProduct] = useState("");
+  const [model, setModel] = useState("");
 
-  // Kategori değiştiğinde alt kategoriyi sıfırla
   const handleCategoryChange = (e) => {
     setCategory(e.target.value);
     setSubCategory("");
   };
 
-  // Kategoriye göre alt kategorileri belirleyen bir yardımcı fonksiyon
   const getSubCategories = () => {
     switch (category) {
       case "emlak":
@@ -68,50 +69,60 @@ const UploadProduct = () => {
   };
 
   const handleFileChange = (event) => {
-    const photos = event.target.files;
-    const filesArray = Array.from(photos);
-    setPhotos(filesArray);
+    const selectedImages = event.target.files;
+    setImages(selectedImages);
   };
 
-  // Form submit işlemi
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    axios
-      .post("http://localhost:3000/product/product-post", datasToProduct)
-      .then((response) => {
-        toast.success("Ürün başarıyla Yüklendi!");
-        console.log("İstek başarılı. Yanıt:", response.data);
-        // Form verilerini temizle
-        setDatasToProduct({
-          title: "",
-          description: "",
-          category: "",
-          subCategory: "",
-          productName: "",
-          price: "",
-          brand: "",
-          photos: "",
-          squareMeters: "",
-          color: "",
-          series: "",
-          gear: "",
-          ram: "",
-          processor: "",
-          memory: "",
-          productRoom: "",
-          graphicCard: "",
-          province: "",
-          district: "",
-          neigborhood: "",
-          propertyType: "",
-        });
-      })
-      .catch((error) => {
-        toast.error("Ürün yükleme başarısız oldu.");
 
-        console.error("İstek hatası:", error);
-        // Hata durumunda hata mesajını burada işleyebilirsiniz
-      });
+    const formData = new FormData();
+
+    formData.append("productTitle", productTitle);
+    formData.append("description", description);
+    formData.append("category", category);
+    formData.append("subcategory", subcategory);
+    formData.append("productName", productName);
+    formData.append("price", price);
+    formData.append("brand", brand);
+    formData.append("model", model);
+    formData.append("squareMeters", squareMeters);
+    formData.append("color", color);
+    formData.append("series", series);
+    formData.append("gear", gear);
+    formData.append("ram", ram);
+    formData.append("processor", processor);
+    formData.append("memory", memory);
+    formData.append("room", room);
+    formData.append("gpu", gpu);
+    formData.append("province", province);
+    formData.append("district", district);
+    formData.append("neighbourhood", neighbourhood);
+    formData.append("propertyType", propertyType);
+
+    // Multiple files
+    for (let i = 0; i < images.length; i++) {
+      formData.append("images", images[i]);
+    }
+
+    try {
+      const response = await axios.post(
+        "https://mysql-emporium-deploy1.onrender.com/product/product-post",
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      console.log(response.data);
+      toast.success("Ürün başarıyla Yüklendi!");
+    } catch (error) {
+      toast.error("Ürün yükleme başarısız oldu.");
+      console.error("İstek hatası:", error);
+    }
   };
 
   return (
@@ -121,23 +132,25 @@ const UploadProduct = () => {
         <div className="row">
           <div className="col-md-4 col-sm-2 col-1"></div>
           <div className="col-md-4 col-sm-8 col-10">
-            <form onSubmit={handleSubmit}>
+            <Toaster />
+            <form>
               <div className="product-foto">
                 <input
+                  name="images"
                   type="file"
                   id="fileInput"
                   onChange={handleFileChange}
-                  accept="image/*"
-                  // width="100"
-                  // height="auto"
+                  accept="image/"
+                  width="100"
+                  height="auto"
                   multiple
-                  required
                 />
               </div>
-              {/* Ürün başlığı giriş alanı */}
+
               <div className="product-name">
                 <label htmlFor="productName">Ürün Adı:</label>
                 <input
+                  name="productName"
                   type="text"
                   id="productName"
                   value={productName}
@@ -148,26 +161,29 @@ const UploadProduct = () => {
               <div className="product-title">
                 <label htmlFor="title">Ürün Başlığı:</label>
                 <input
+                  name="productTitle"
                   type="text"
                   id="title"
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
+                  value={productTitle}
+                  onChange={(e) => setProductTitle(e.target.value)}
                   required
                 />
               </div>
               <div className="product-desc">
                 <label htmlFor="description">Ürün Açıklaması:</label>
                 <textarea
+                  name="description"
+                  type="text"
                   id="description"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   required
                 ></textarea>
               </div>
-              {/* Ürün açıklama alanı */}
               <div className="product-pro">
                 <label htmlFor="province">İl:</label>
                 <input
+                  name="province"
                   type="text"
                   id="province"
                   value={province}
@@ -178,6 +194,7 @@ const UploadProduct = () => {
               <div className="product-dist">
                 <label htmlFor="district">İlçe:</label>
                 <input
+                  name="district"
                   type="text"
                   id="district"
                   value={district}
@@ -188,16 +205,18 @@ const UploadProduct = () => {
               <div className="product-neigbor">
                 <label htmlFor="neigborhood">Mahalle:</label>
                 <input
+                  name="neighbourhood"
                   type="text"
                   id="neigborhood"
-                  value={neigborhood}
-                  onChange={(e) => setNeigborhood(e.target.value)}
+                  value={neighbourhood}
+                  onChange={(e) => setNeighbourhood(e.target.value)}
                   required
                 />
               </div>
               <div className="product-price">
                 <label htmlFor="price">Fiyat:</label>
                 <input
+                  name="price"
                   type="text"
                   id="price"
                   value={price}
@@ -205,10 +224,10 @@ const UploadProduct = () => {
                   required
                 />
               </div>
-              {/* Ana kategori seçim alanı */}
               <div className="product-category">
                 <label htmlFor="category">Kategori:</label>
                 <select
+                  name="category"
                   id="category"
                   value={category}
                   onChange={handleCategoryChange}
@@ -220,14 +239,13 @@ const UploadProduct = () => {
                   <option value="elektronik-esya">Elektronik Eşya</option>
                 </select>
               </div>
-
-              {/* Alt kategori seçim alanı */}
               {category && (
                 <div className="product-subCategory">
                   <label htmlFor="subCategory">Alt Kategori:</label>
                   <select
+                    name="subcategory"
                     id="subCategory"
-                    value={subCategory}
+                    value={subcategory}
                     onChange={(e) => setSubCategory(e.target.value)}
                     required
                   >
@@ -235,58 +253,60 @@ const UploadProduct = () => {
                   </select>
                 </div>
               )}
-
               {category === "emlak" && (
-                <div className="product-squareMeters">
-                  <label htmlFor="squareMeters">{subCategory} m2'si:</label>
-                  <input
-                    type="text"
-                    id="squareMeters"
-                    value={squareMeters}
-                    onChange={(e) => setSquareMeters(e.target.value)}
-                    required
-                  />
-                </div>
-              )}
-
-              {subCategory === "home" && (
-                <div>
-                  <div className="product-productRoom">
-                    <label htmlFor="productRoom">Emlak Tipi:</label>
-                    <select
-                      id="productRoom"
-                      value={productRoom}
-                      onChange={(e) => setProductRoom(e.target.value)}
+                <>
+                  <div className="product-squareMeters">
+                    <label htmlFor="squareMeters">{subcategory} m2'si:</label>
+                    <input
+                      name="squareMeters"
+                      type="number"
+                      id="squareMeters"
+                      value={squareMeters}
+                      onChange={(e) => setSquareMeters(e.target.value)}
                       required
-                    >
-                      <option value="">Oda Sayısını Seçiniz</option>
-                      <option value="emlak">2+1</option>
-                      <option value="vasıta">3+1</option>
-                    </select>
+                    />
                   </div>
-
                   <div className="product-propertyType">
-                    <label htmlFor="propertyType">Emlak Tipi:</label>
+                    <label htmlFor="propertyType">Emlak Tipi 1 :</label>
                     <select
+                      type="text"
+                      name="propertyType"
                       id="propertyType"
                       value={propertyType}
                       onChange={(e) => setPropertyType(e.target.value)}
                       required
                     >
                       <option value="">Emlak Tipi Seçiniz</option>
-                      <option value="emlak">Kiralık</option>
-                      <option value="vasıta">Satılık</option>
+                      <option value="Kiralık">Kiralık</option>
+                      <option value="Satılık">Satılık</option>
                     </select>
                   </div>
+                </>
+              )}
+              {subcategory === "home" && (
+                <div className="product-productRoom">
+                  <label htmlFor="productRoom">Oda Sayısını Seçiniz:</label>
+                  <select
+                    name="room"
+                    type="number"
+                    id="productRoom"
+                    value={room}
+                    onChange={(e) => setRoom(e.target.value)}
+                    required
+                  >
+                    <option value="">Oda Sayısını Seçiniz</option>
+                    <option value="emlak">2+1</option>
+                    <option value="vasıta">3+1</option>
+                  </select>
                 </div>
               )}
-
               {(category === "vasıta" || category === "elektronik-esya") && (
                 <div>
                   <div className="product-brand">
                     <label htmlFor="brand">Markası:</label>
                     <br />
                     <input
+                      name="brand"
                       type="text"
                       id="brand"
                       value={brand}
@@ -298,6 +318,7 @@ const UploadProduct = () => {
                     <label htmlFor="color"> Renk:</label>
                     <br />
                     <input
+                      name="color"
                       type="text"
                       id="color"
                       value={color}
@@ -309,6 +330,7 @@ const UploadProduct = () => {
                     <label htmlFor="series"> Model:</label>
                     <br />
                     <input
+                      name="series"
                       type="text"
                       id="series"
                       value={series}
@@ -318,13 +340,12 @@ const UploadProduct = () => {
                   </div>
                 </div>
               )}
-
-              {/* Ürün vasıta vites giriş  */}
               {category === "vasıta" && (
                 <div className="product-gear">
                   <label htmlFor="gear">Vites:</label>
                   <br />
                   <input
+                    name="gear"
                     type="text"
                     id="gear"
                     value={gear}
@@ -333,14 +354,14 @@ const UploadProduct = () => {
                   />
                 </div>
               )}
-
               {category === "elektronik-esya" && (
                 <div>
                   <div className="product-ram">
                     <label htmlFor="ram">Ram Bellek :</label>
                     <br />
                     <input
-                      type="text"
+                      name="ram"
+                      type="number"
                       id="ram"
                       value={ram}
                       onChange={(e) => setRam(e.target.value)}
@@ -350,6 +371,7 @@ const UploadProduct = () => {
                   <div className="product-processor">
                     <label htmlFor="processor">İşlemci:</label>
                     <input
+                      name="ram"
                       type="text"
                       id="processor"
                       value={processor}
@@ -357,15 +379,27 @@ const UploadProduct = () => {
                       required
                     />
                   </div>
+                  <div className="product-serie">
+                    <label htmlFor="model"> Model:</label>
+                    <br />
+                    <input
+                      name="model"
+                      type="text"
+                      id="model"
+                      value={model}
+                      onChange={(e) => setModel(e.target.value)}
+                      required
+                    />
+                  </div>
                 </div>
               )}
-
-              {subCategory === "computer" && (
+              {subcategory === "computer" && (
                 <div>
                   <div className="product-memory">
                     <label htmlFor="memory">Hafıza:</label>
                     <input
-                      type="text"
+                      name="memory"
+                      type="number"
                       id="memory"
                       value={memory}
                       onChange={(e) => setMemory(e.target.value)}
@@ -375,18 +409,21 @@ const UploadProduct = () => {
                   <div className="product-graphicCard">
                     <label htmlFor="graphicCard">Ekran kartı:</label>
                     <input
+                      name="gpu"
                       type="text"
                       id="graphicCard"
-                      value={graphicCard}
-                      onChange={(e) => setGraphicCard(e.target.value)}
+                      value={gpu}
+                      onChange={(e) => setGpu(e.target.value)}
                       required
                     />
                   </div>
                 </div>
               )}
-
-              {/* Formun gönderme butonu */}
-              <button className="submitBtn float-end" type="submit">
+              <button
+                onClick={handleSubmit}
+                className="submitBtn float-end"
+                type="submit"
+              >
                 Ürünü Yükle
               </button>
             </form>

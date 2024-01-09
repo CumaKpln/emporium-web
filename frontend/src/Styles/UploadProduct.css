@@ -4,9 +4,15 @@
     padding: 20px 20px 100px 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background: #cfcccc;
+    background: #cfcccc;;
 }
 
+.col-md-4.col-sm-8.col-10{
+    padding: 30px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background: linear-gradient(145.44deg, #F2F4FA 0%, #FAFBFC 100%);
+    border-radius: 20px
+}
 
 .step1-btn {
     margin-top: 45px;

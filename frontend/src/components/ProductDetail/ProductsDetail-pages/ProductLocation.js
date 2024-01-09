@@ -20,7 +20,9 @@ function Location() {
       const apiKey = 'AIzaSyD5HezO55OLorNSjAJE1Wk-te3ekpARToU'; // Google Haritalar API Anahtarınız
       const address = `${selectedProduct.province}, ${selectedProduct.district}, ${selectedProduct.neighbourhood}`;
 
-      fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${apiKey}`)
+// api keyi tırnaktan çıkar
+
+      fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${"apiKey"}`)
         .then((response) => response.json())
         .then((result) => {
           if (result && result.results && result.results[0] && result.results[0].geometry && result.results[0].geometry.location) {

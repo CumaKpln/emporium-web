@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../Styles/Pages/SignIn.css";
 import axios from "axios";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 function SignIn() {
   const [formData, setFormData] = useState({
@@ -63,6 +63,7 @@ function SignIn() {
           toast.success("Kayıt başarıyla yapıldı!");
 
           console.log("İstek başarılı. Yanıt:", response.data);
+          
           // Form verilerini temizle
           setFormData({
             username: "",
@@ -83,6 +84,9 @@ function SignIn() {
 
   return (
     <>
+      <Toaster
+        
+      />
       <Navbar />
       <div className="container-login mt-5">
         <div className="SignIn">
