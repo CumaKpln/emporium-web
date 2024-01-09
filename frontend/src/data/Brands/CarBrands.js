@@ -1,0 +1,22 @@
+export const carBrands =
+    [
+        "BMW",
+        "Mercedes",
+        "Audi",
+        "Renault",
+        "Fiat",
+        "Ford",
+        "Toyota",
+        "Volkswagen",
+        "Honda",
+        "Hyundai",
+        "Opel",
+        "Peugeot",
+        "Nissan",
+        "Dacia",
+        "Skoda",
+        "Seat",
+        "Citroen",
+        "Chevrolet",
+        "Mazda"
+    ]

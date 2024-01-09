@@ -3,12 +3,15 @@ import React, { createContext, useContext, useState } from "react";
 const BrandContext = createContext();
 
 export const BrandProvider = ({ children }) => {
-    const [selectedBrand, setSelectedBrand] = useState(null);
+    const [selectedBrand, setSelectedBrand] = useState([]);
 
     const handleBrandClick = ({ brand }) => {
-        setSelectedBrand((prevBrand) =>
-            prevBrand === brand ? null : brand
-        );
+        if (selectedBrand.includes(brand)) {
+            setSelectedBrand(selectedBrand.filter((item) => item !== brand));
+        }
+        else {
+            setSelectedBrand([...selectedBrand, brand]);
+        }
     };
 
     return (

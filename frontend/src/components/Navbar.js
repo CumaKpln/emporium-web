@@ -1,10 +1,9 @@
 import React from "react";
 import logo from "../images/logo.png";
 import "../Styles/navbar.css";
-import { Link  } from "react-router-dom";
-// import filter from "./FilterPage/Filtering";
+import { Link } from "react-router-dom";
 import { useSearch } from './Context/SearchContext';
-// import { useSelector } from "react-redux";
+
 
 const Navbar = () => {
 
@@ -44,6 +43,7 @@ const Navbar = () => {
                 placeholder="Arama yapınız"
                 onInput={(event) => {
                   updateNameFilter(event.target.value);
+
                 }}
               />
               <div className="search-icon">
@@ -84,8 +84,8 @@ const Navbar = () => {
                     </button>
                     <ul className="dropdown-menu text-center">
                       <li><a className="dropdown-item" href="/account">Hesabım</a></li>
-                     <li><a id="logout"  href="/login" onClick={handleLogOut} className="dropdown-item">Çıkış Yap</a></li> 
-                     
+                      <li><a id="logout" href="/login" onClick={handleLogOut} className="dropdown-item">Çıkış Yap</a></li>
+
 
                     </ul>
                   </div>

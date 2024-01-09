@@ -7,7 +7,8 @@ import Footer from "./Footer";
 import { CategoryProvider } from "./Context/CategoryContext";
 import { ProvinceProvider } from "./Context/ProvinceContext";
 import { useSearch } from './Context/SearchContext';
-
+import { PriceProvider } from "./Context/PriceContext";
+import { BrandProvider } from "./Context/BrandContext";
 const Main = () => {
   const { updateNameFilter } = useSearch();
 
@@ -38,16 +39,20 @@ const Main = () => {
               </div>
             </div>
         <div className="container d-flex">
-          <CategoryProvider>
-            <ProvinceProvider>
-              <div className="col-md-3 col-sm-3 sidebar">
-                <Sidebar />
-              </div>
-              <div className="col-md-9 col-sm-9">
-                <Article />
-              </div>
-            </ProvinceProvider>
-          </CategoryProvider>
+          <BrandProvider>
+            <PriceProvider>
+              <CategoryProvider>
+                <ProvinceProvider>
+                  <div className="col-md-3 col-sm-3 sidebar">
+                    <Sidebar />
+                  </div>
+                  <div className="col-md-9 col-sm-9">
+                    <Article />
+                  </div>
+                </ProvinceProvider>
+              </CategoryProvider>
+            </PriceProvider>
+          </BrandProvider>
         </div>
         <Footer />
       </div>
