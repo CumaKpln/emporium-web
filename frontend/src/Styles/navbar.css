@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
 }
 
 #nav {
@@ -155,11 +156,11 @@ a {
 }
 
 @media screen and (max-width: 1400px) {
-    
- #root,
-    .vsc-initialized{
-      overflow: scroll !important;
-    padding-right: 0px !important;
+
+    #root,
+    .vsc-initialized {
+        overflow: none !important;
+        padding-right: 0px !important;
     }
 
     #nav {

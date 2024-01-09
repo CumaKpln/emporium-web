@@ -8,7 +8,7 @@ import { useSearch } from './Context/SearchContext';
 
 const Navbar = () => {
 
-  const token = localStorage.getItem('userToken');
+  const token = localStorage.getItem('token');
 
   const { updateNameFilter } = useSearch();
 

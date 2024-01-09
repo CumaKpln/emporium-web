@@ -1,20 +1,17 @@
 import React, { useState } from "react";
 import "../Styles/Pages/LogIn.css";
-import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../images/logo.png";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import axios from "axios";
 import { Toaster, toast } from "react-hot-toast"
-import { userToken } from "../control/slices/tokenSlice";
+
 
 
 function LogIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [userData, setUserData] = useState("");
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
 
@@ -30,20 +27,18 @@ function LogIn() {
     // const setUserData = () => {
     //   dispatch(setUserData(userData));
     // };
-    // setUserData fonksiyonunu çağırarak loginUser'ı tetikleyin
+    // // setUserData fonksiyonunu çağırarak loginUser'ı tetikleyin
     // setUserData();
     await axios
       .post("https://mysql-emporium-deploy1.onrender.com/user/login", userData)
       .then((response) => {
         toast.success("Giriş başarıyla yapıldı!");
-        const token = response.data.token;
         navigate("/");
-        // Save token in localStorage
-        localStorage.setItem("userToken", token); // Burada 'userToken' olarak saklayın
 
-        dispatch(setUserData(userData));
-        console.log(userData)
-
+        //token işlemi
+        const token = response.data.token;
+        localStorage.setItem("token", token);
+        console.log(token,"then")
       })
       .catch(() => {
         toast.error("Bir hata oluştu. Lütfen tekrar deneyiniz.");
@@ -58,11 +53,6 @@ function LogIn() {
   const handleMessage = () => {
     navigate("/sifremiunuttum");
   };
-
-
-
-
-
 
 
 

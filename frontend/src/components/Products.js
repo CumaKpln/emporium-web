@@ -2,7 +2,7 @@
 import React from "react";
 import { useCategory } from "./Context/CategoryContext";
 import { useProvince } from "./Context//ProvinceContext";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import data from "../data/db.json";
 import "../Styles/Product.css";
 import { Link } from "react-router-dom";
