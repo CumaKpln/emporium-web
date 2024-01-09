@@ -8,6 +8,7 @@ import axios from "axios";
 import { Toaster, toast } from "react-hot-toast"
 
 
+
 function LogIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,18 +27,18 @@ function LogIn() {
     // const setUserData = () => {
     //   dispatch(setUserData(userData));
     // };
-    // setUserData fonksiyonunu çağırarak loginUser'ı tetikleyin
+    // // setUserData fonksiyonunu çağırarak loginUser'ı tetikleyin
     // setUserData();
     await axios
       .post("https://mysql-emporium-deploy1.onrender.com/user/login", userData)
       .then((response) => {
         toast.success("Giriş başarıyla yapıldı!");
-        const token = response.data.token;
         navigate("/");
-        // Save token in localStorage
-        localStorage.setItem("userToken", token); // Burada 'userToken' olarak saklayın
 
-        console.log(userData)
+        //token işlemi
+        const token = response.data.token;
+        localStorage.setItem("token", token);
+        console.log(token)
       })
       .catch(() => {
         toast.error("Bir hata oluştu. Lütfen tekrar deneyiniz.");
@@ -52,11 +53,6 @@ function LogIn() {
   const handleMessage = () => {
     navigate("/sifremiunuttum");
   };
-
-
-
-
-
 
 
 
