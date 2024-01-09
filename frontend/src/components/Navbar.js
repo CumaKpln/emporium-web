@@ -2,9 +2,8 @@ import React from "react";
 import logo from "../images/logo.png";
 import "../Styles/navbar.css";
 import { Link } from "react-router-dom";
-// import filter from "./FilterPage/Filtering";
 import { useSearch } from './Context/SearchContext';
-// import { useSelector } from "react-redux";
+
 
 const Navbar = () => {
 
@@ -48,6 +47,7 @@ const Navbar = () => {
                 placeholder="Arama yapınız"
                 onInput={(event) => {
                   updateNameFilter(event.target.value);
+
                 }}
               />
               <div className="search-icon">

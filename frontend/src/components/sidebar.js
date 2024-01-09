@@ -6,6 +6,10 @@ import { provinces } from "../data/Locations/Province.js";
 import { districts } from "../data/Locations/District.js";
 import { useProvince } from "./Context/ProvinceContext.js";
 import { usePrice } from "./Context/PriceContext.js";
+import { useBrand } from "./Context/BrandContext.js";
+import { carBrands } from "../data/Brands/CarBrands.js";
+
+
 
 const Sidebar = () => {
   const [selectedProvince, setSelectedProvince] = useState("");
@@ -13,6 +17,7 @@ const Sidebar = () => {
   const { handleCategoryClick } = useCategory();
   const { handleProvinceClick } = useProvince();
   const { minPrice, maxPrice, handlePriceClick } = usePrice();
+  const { handleBrandClick } = useBrand();
 
   // vasıta bölümü
   const [isVehicleOpen, setVehicleOpen] = useState(false);
@@ -567,14 +572,14 @@ const Sidebar = () => {
               {isCarDistrictOpen && selectedProvince !== "" && (
                 <div className="dropdownUlLi custom-dropdown-menu">
                   <ul>
-                  {districts
-                    .filter((district) => district.state === selectedProvince)
-                    .map((district) => (
-                      <li className="dropdownUlLi">
-                        {district.name}
-                      </li>
-                    ))}
-                    </ul>
+                    {districts
+                      .filter((district) => district.state === selectedProvince)
+                      .map((district) => (
+                        <li className="dropdownUlLi">
+                          {district.name}
+                        </li>
+                      ))}
+                  </ul>
                 </div>
               )}
               <button
@@ -586,15 +591,9 @@ const Sidebar = () => {
               </button>
               {isCarBrandOpen && (
                 <div className="dropdownUlLi custom-dropdown-menu">
-                  <button className="btn sidebarBtn" type="button">
-                    Model X
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Y
-                  </button>
-                  <button className="btn sidebarBtn" type="button">
-                    Model Z
-                  </button>
+                  {carBrands.map((brand) => (<button className="btn sidebarBtn" type="button" key={"carBrand" + brand} onClick={(e) => handleBrandClick({ brand: brand })}>
+                    {brand}
+                  </button>))}
                 </div>
               )}
               <button
