@@ -1,17 +1,17 @@
-import React, {  useState } from "react";
+import React, { useEffect, useState } from "react";
 import PhoneInput from "react-phone-input-2";
-import "react-phone-input-2/lib/style.css"; // Stil dosyasını ekleyin
+import "react-phone-input-2/lib/style.css";
 import Edit from "./AccountEditButton";
 import "../../Styles/Account/AccountInfo.css";
-import axios from "axios"
+import axios from "axios";
 
 function İnfo() {
-  const token = localStorage.getItem("token" )
-  const [name, setName] = useState("Ömer Enes");
-  const [date, setDate] = useState("");
+  const token = localStorage.getItem("token");
+  const [username, setUsername] = useState("");
+  const [createdAt, setCreatedAt] = useState("");
   const [data, setData] = useState("");
-  const [email, setEmail] = useState("omerenesgenc@gmail.com");
-  const [phone, setPhone] = useState("+90 554 151 0843");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [editMod, setEditMod] = useState(false);
 
   const handleInputChange = (event) => {
@@ -19,28 +19,17 @@ function İnfo() {
 
     switch (id) {
       case "nameInput":
+        setUsername(value);
+        break;
       case "surnameInput":
-        // Sadece harf ve boşluk içerebilir
-        if (/^[A-Za-z\s]*$/.test(value)) {
-          switch (id) {
-            case "nameInput":
-              setName(value);
-              break;
-            case "surnameInput":
-              setDate(value);
-              break;
-            default:
-              break;
-          }
-        }
+        setCreatedAt(value);
         break;
       case "emailInput":
         setEmail(value);
         break;
       case "phoneInput":
-        // Sadece rakam içerebilir ve maksimum 11 hane
         if (/^\d*$/.test(value) && value.length <= 11) {
-          setPhone(value);
+          setPhoneNumber(value);
         }
         break;
       default:
@@ -56,45 +45,46 @@ function İnfo() {
 
   const handleSaveClick = () => {
     if (isEmailValid()) {
-      // Eğer e-posta doğrulama başarılıysa, veriyi kaydet veya gerekli işlemleri gerçekleştir
       setEditMod(false);
     } else {
-      // E-posta doğrulama başarısızsa kullanıcıya uyarı verilebilir
       alert("Geçerli bir e-posta adresi giriniz.");
     }
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://mysql-emporium-deploy1.onrender.com/user/userInfo",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
 
-  // const fetchData = async () => {
-  //   try {
-  //     const response = await axios.get(
-  //       "https://mysql-emporium-deploy1.onrender.com/user/userInfo",
-  //       {
-  //         headers: {
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //       }
-  //     );
-  
-  //     // Kullanıcı bilgilerini consola yazdır
-  //     console.log("Kullanıcı Bilgileri:", response.data);
-  
-  //     // Diğer işlemleri gerçekleştir, örneğin veriyi bir state'e set et
-  //     setData(response.data);
-  
-  //     console.log("Veri çekme başarılı:", response.data);
-  //   } catch (error) {
-  //     console.error("Veri çekme hatası:", error);
-  
-  //     // Hata durumunda da diğer işlemleri gerçekleştir, örneğin state'i sıfırla
-  //     setData();
-  //   }
-  // };
-  
-  // fetchData fonksiyonunu çağır
-  // fetchData();
-  
+        setData(response.data);
+        setCreatedAt(response.data.joiningDate);
+        setUsername(response.data.username);
+        setEmail(response.data.email);
+        setPhoneNumber(response.data.phoneNumber);
 
+        const deneme = response.data.UserInfo;
+        setUsername(deneme);
+        console.log(deneme);
+        console.log("Veri çekme başarılı:", response.data);
+      } catch (error) {
+        console.error("Veri çekme hatası:", error);
+        setData("");
+        setCreatedAt("");
+        setUsername("");
+        setEmail("");
+        setPhoneNumber("");
+      }
+    };
+
+    fetchData();
+  }, [token]);
 
   return (
     <div className="accountForm">
@@ -104,10 +94,14 @@ function İnfo() {
         <div className="row name-surname">
           <div className="col-md-6">
             <label htmlFor="nameInput" className="form-label">
-              Ad Soyad
+              Kullanıcı Adı
             </label>
             {editMod ? (
-              <Edit field="name" value={name} onChange={(e) => handleInputChange(e)} />
+              <Edit
+                field="username"
+                value={username}
+                onChange={(e) => handleInputChange(e)}
+              />
             ) : (
               <input
                 disabled
@@ -115,7 +109,7 @@ function İnfo() {
                 className="form-control"
                 id="nameInput"
                 placeholder="Adınızı Giriniz."
-                value={name}
+                value={username}
               />
             )}
           </div>
@@ -123,13 +117,13 @@ function İnfo() {
             <label htmlFor="surnameInput" className="form-label">
               Katılım Tarihi
             </label>
-              <input
-               value={date}
-               type="number"
-               disabled
-               className="form-control"
-               id="surnameInput"
-               />
+            <input
+              value={createdAt}
+              type="number"
+              disabled
+              className="form-control"
+              id="surnameInput"
+            />
           </div>
         </div>
 
@@ -139,7 +133,11 @@ function İnfo() {
               Email Adresi
             </label>
             {editMod ? (
-              <Edit field="email" value={email} onChange={(e) => handleInputChange(e)} />
+              <Edit
+                field="email"
+                value={email}
+                onChange={(e) => handleInputChange(e)}
+              />
             ) : (
               <input
                 disabled
@@ -161,9 +159,11 @@ function İnfo() {
                   name: "phoneInput",
                   required: true,
                 }}
-                country={"tr"} // Türkiye için
-                value={phone}
-                onChange={(value) => handleInputChange({ target: { id: "phoneInput", value } })}
+                country={"tr"}
+                value={phoneNumber}
+                onChange={(value) =>
+                  handleInputChange({ target: { id: "phoneInput", value } })
+                }
               />
             ) : (
               <input
@@ -173,7 +173,7 @@ function İnfo() {
                 className="form-control"
                 id="phoneInput"
                 placeholder="Telefon Numaranızı Giriniz."
-                value={phone}
+                value={phoneNumber}
               />
             )}
           </div>
@@ -182,7 +182,11 @@ function İnfo() {
         {editMod ? (
           <div className="row AccountButton">
             <div className="col-md-4">
-              <button type="button" className="AccountSave btn" onClick={handleSaveClick}>
+              <button
+                type="button"
+                className="AccountSave btn"
+                onClick={handleSaveClick}
+              >
                 Kaydet
               </button>
             </div>
@@ -190,7 +194,11 @@ function İnfo() {
         ) : (
           <div className="row AccountButton">
             <div className="col-md-4">
-              <button type="button" className="AccountEdit btn" onClick={handleEditClick}>
+              <button
+                type="button"
+                className="AccountEdit btn"
+                onClick={handleEditClick}
+              >
                 Düzenle
               </button>
             </div>
