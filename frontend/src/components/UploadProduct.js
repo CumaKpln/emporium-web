@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
-import  { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 import "../Styles/UploadProduct.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
+
 const UploadProduct = () => {
   const token = localStorage.getItem("token");
-
-
   const [productTitle, setProductTitle] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
@@ -105,32 +104,27 @@ const UploadProduct = () => {
       data.append("images", images[i]);
     }
 
-    const headers = {
-      "Cache-Control": "no-cache",
-      Authorization: `Bearer ${token}`,
-    };
-
-    const formDataConfig = {
-      method: "post",
-      maxBodyLength: Infinity,
-      url: "https://mysql-emporium-deploy1.onrender.com/product/product-post", // localhost'un başına "http://" ekledim
-      headers: headers,
-      data: data,
-    };
-
-    axios
-      .request(formDataConfig)
+    await axios
+      .post("https://mysql-emporium-deploy1.onrender.com/product/product-post", data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'multipart/form-data'
+        }
+      })
       .then((response) => {
-        console.log(JSON.stringify(response.data));
+
+        console.log(response.data);
+
       })
       .catch((error) => {
         console.error(error);
       });
-  };
 
+  }
   return (
     <>
       <Navbar />
+     
       <div className="container product-update mt-5 mb-5">
         <div className="row">
           <div className="col-md-4 col-sm-2 col-1"></div>
@@ -143,7 +137,7 @@ const UploadProduct = () => {
                   type="file"
                   id="fileInput"
                   onChange={handleFileChange}
-                  accept="image/"
+                  accept="image/*"
                   width="100"
                   height="auto"
                   multiple
@@ -220,7 +214,7 @@ const UploadProduct = () => {
                 <label htmlFor="price">Fiyat:</label>
                 <input
                   name="price"
-                  type="text"
+                  type="number"
                   id="price"
                   value={price}
                   onChange={(e) => setPrice(e.target.value)}
@@ -439,4 +433,4 @@ const UploadProduct = () => {
   );
 };
 
-export default UploadProduct;
+export default UploadProduct

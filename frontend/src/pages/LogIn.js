@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../Styles/Pages/LogIn.css";
+import { Spinner } from "reactstrap"
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../images/logo.png";
 import Navbar from "../components/Navbar";
@@ -10,6 +11,7 @@ import { Toaster, toast } from "react-hot-toast"
 
 
 function LogIn() {
+  const [loading, setLoading] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -18,6 +20,7 @@ function LogIn() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     const userData = {
       email: email,
@@ -29,10 +32,11 @@ function LogIn() {
     // };
     // // setUserData fonksiyonunu çağırarak loginUser'ı tetikleyin
     // setUserData();
+
     await axios
       .post("https://mysql-emporium-deploy1.onrender.com/user/login", userData)
-      
-     
+
+
       .then((response) => {
         toast.success("Giriş başarıyla yapıldı!");
         navigate("/");
@@ -40,12 +44,15 @@ function LogIn() {
         //token işlemi
         const token = response.data.token;
         localStorage.setItem("token", token);
-        console.log(token,"then")
+        console.log(token, "then")
       })
       .catch(() => {
         toast.error("Bir hata oluştu. Lütfen tekrar deneyiniz.");
-      });
-  };
+      })
+    setLoading(false); // İşlem tamamlandığında loading gizlenecek
+  }
+
+
 
 
   const handleNavigate = () => {
@@ -61,6 +68,11 @@ function LogIn() {
   return (
     <>
       <Navbar />
+      {loading && ( // Loading true olduğunda Spinner görüntülenecek
+       <div className="d-flex justify-content-center align-items-center spinner-container">
+       <Spinner color="dark" />
+     </div>
+      )}
       <Toaster
         position="center-top"
         reverseOrder={false}

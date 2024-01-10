@@ -21,8 +21,11 @@ function Products() {
   const { selectedProvince } = useProvince();
   const { minPrice, maxPrice, handlePriceClick } = usePrice();
   const { selectedBrand } = useBrand();
-  const dispatch = useDispatch();
+  
   const { nameFilter } = useSearch();
+
+  
+  const dispatch = useDispatch();
 
   const selectedProduct = (product) => {
     dispatch(selectProduct(product));
@@ -46,7 +49,7 @@ function Products() {
     (
       brandMatch = brandMatch && product.brand.toLowerCase() === brand.toLowerCase()
     ));
-    console.log(selectedBrand);
+    // console.log(selectedBrand);
     const priceMatch = parseInt(product.price) >= minPrice && parseInt(product.price) <= maxPrice;
     return categoryMatch && subCategoryMatch && nameMatch && provinceMatch && priceMatch && brandMatch;
   });

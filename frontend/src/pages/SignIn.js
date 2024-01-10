@@ -8,6 +8,7 @@ import "../Styles/Pages/SignIn.css";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 
+
 function SignIn() {
   const [formData, setFormData] = useState({
     username: "",
@@ -16,6 +17,7 @@ function SignIn() {
     password: "",
     confirmPassword: "",
   });
+
 
   const [errors, setErrors] = useState({});
 
@@ -59,13 +61,13 @@ function SignIn() {
     if (Object.keys(validationErrors).length === 0) {
       const dataToSend = { ...formData };
 
-      axios
-        .post("https://mysql-emporium-deploy1.onrender.com/user/register", dataToSend)
+
+      axios.post("https://mysql-emporium-deploy1.onrender.com/user/register", dataToSend)
         .then((response) => {
           toast.success("Kayıt başarıyla yapıldı!");
 
           console.log("İstek başarılı. Yanıt:", response.data);
-          
+
           // Form verilerini temizle
           setFormData({
             username: "",
@@ -77,7 +79,6 @@ function SignIn() {
         })
         .catch((error) => {
           toast.error("Kayıt başarısız oldu!");
-
           console.error("İstek hatası:", error);
           // Hata durumunda hata mesajını burada işleyebilirsiniz
         });
@@ -134,15 +135,18 @@ function SignIn() {
                       name: "phoneNumber",
                       required: true,
                     }}
+
                     country={"tr"} // Türkiye için
-                    value={formData.phoneNumber}
-                    onChange={(value) => handleChange({ target: { name: "phoneNumber", value } })}
+                    value={formData.newPhoneNumber}
+                    onChange={(value) => {
+                      const newPhoneNumber = value.substring(2); // İlk iki karakteri sil
+                      handleChange({ target: { name: "phoneNumber", value: newPhoneNumber } });
+                    }}
                   />
                   {errors.phoneNumber && (
                     <span className="error">{errors.phoneNumber}</span>
                   )}
                 </div>
-
                 <div>
                   <label>Şifre: </label>
                   <input
