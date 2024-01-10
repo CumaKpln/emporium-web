@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, {  useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css"; // Stil dosyasını ekleyin
 import Edit from "./AccountEditButton";
 import "../../Styles/Account/AccountInfo.css";
+import axios from "axios"
 
 function İnfo() {
+  const token = localStorage.getItem("token" )
   const [name, setName] = useState("Ömer Enes");
-  const [surname, setSurname] = useState("Genç");
+  const [date, setDate] = useState("");
+  const [data, setData] = useState("");
   const [email, setEmail] = useState("omerenesgenc@gmail.com");
   const [phone, setPhone] = useState("+90 554 151 0843");
   const [editMod, setEditMod] = useState(false);
@@ -24,7 +27,7 @@ function İnfo() {
               setName(value);
               break;
             case "surnameInput":
-              setSurname(value);
+              setDate(value);
               break;
             default:
               break;
@@ -61,6 +64,38 @@ function İnfo() {
     }
   };
 
+
+  // const fetchData = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       "https://mysql-emporium-deploy1.onrender.com/user/userInfo",
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       }
+  //     );
+  
+  //     // Kullanıcı bilgilerini consola yazdır
+  //     console.log("Kullanıcı Bilgileri:", response.data);
+  
+  //     // Diğer işlemleri gerçekleştir, örneğin veriyi bir state'e set et
+  //     setData(response.data);
+  
+  //     console.log("Veri çekme başarılı:", response.data);
+  //   } catch (error) {
+  //     console.error("Veri çekme hatası:", error);
+  
+  //     // Hata durumunda da diğer işlemleri gerçekleştir, örneğin state'i sıfırla
+  //     setData();
+  //   }
+  // };
+  
+  // fetchData fonksiyonunu çağır
+  fetchData();
+  
+
+
   return (
     <div className="accountForm">
       <form>
@@ -69,7 +104,7 @@ function İnfo() {
         <div className="row name-surname">
           <div className="col-md-6">
             <label htmlFor="nameInput" className="form-label">
-              Ad
+              Ad Soyad
             </label>
             {editMod ? (
               <Edit field="name" value={name} onChange={(e) => handleInputChange(e)} />
@@ -86,20 +121,15 @@ function İnfo() {
           </div>
           <div className="col-md-6">
             <label htmlFor="surnameInput" className="form-label">
-              Soyad
+              Katılım Tarihi
             </label>
-            {editMod ? (
-              <Edit field="surname" value={surname} onChange={(e) => handleInputChange(e)} />
-            ) : (
               <input
-                disabled
-                type="text"
-                className="form-control"
-                id="surnameInput"
-                placeholder="Soyadınızı Giriniz."
-                value={surname}
-              />
-            )}
+               value={date}
+               type="number"
+               disabled
+               className="form-control"
+               id="surnameInput"
+               />
           </div>
         </div>
 
