@@ -12,6 +12,11 @@ import { useBrand } from "./Context/BrandContext";
 import { usePrice } from "./Context/PriceContext";
 
 function Products() {
+  const token = localStorage.getItem("token"); 
+
+
+  
+
   const { selectedCategory, selectedSubCategory } = useCategory();
   const { selectedProvince } = useProvince();
   const { minPrice, maxPrice, handlePriceClick } = usePrice();
@@ -50,7 +55,10 @@ function Products() {
     <div className="products">
       {filteredProducts.map((product, id) => (
         <div className="img p-3" key={id} style={{ cursor: "pointer" }}>
-          <Link to={`/urun-detayi/${product.id - 1}`} onClick={() => selectedProduct(product)}>
+          <Link
+            to={`/urun-detayi/${product.id - 1}`}
+            onClick={() => selectedProduct(product)}
+          >
             <img src={product.selectedFiles[0].url} alt="foto" />
             <p className="title" style={{ flex: "1" }}>
               {product.title}

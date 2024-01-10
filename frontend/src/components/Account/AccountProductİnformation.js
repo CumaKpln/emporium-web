@@ -27,9 +27,6 @@ function ProductInfo() {
       return;
     }
 
-    // Güncelleme işlemleri burada yapılacak
-    // editedProduct içindeki verileri ve editedImages içindeki resimleri kullanarak güncelleme işlemlerini gerçekleştirin
-    // ...
 
     // Güncelleme işlemi tamamlandıktan sonra products state'ini güncelle
     setProducts((prevProducts) =>
