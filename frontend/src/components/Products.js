@@ -7,13 +7,9 @@ import data from "../data/db.json";
 import "../Styles/Product.css";
 import { Link } from "react-router-dom";
 import { selectProduct } from "../control/slices/productSlice";
-<<<<<<< Updated upstream
 import { useSearch } from './Context/SearchContext';
 import { useBrand } from "./Context/BrandContext";
 import { usePrice } from "./Context/PriceContext";
-=======
-import { useSearch } from "./Context/SearchContext";
->>>>>>> Stashed changes
 
 function Products() {
   const token = localStorage.getItem("token"); 

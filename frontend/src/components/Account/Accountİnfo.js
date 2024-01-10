@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 import React, { useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css"; // Stil dosyasını ekleyin
@@ -10,46 +9,6 @@ function İnfo() {
   const [surname, setSurname] = useState("Genç");
   const [email, setEmail] = useState("omerenesgenc@gmail.com");
   const [phone, setPhone] = useState("+90 554 151 0843");
-=======
-import React, { useEffect, useState } from "react";
-import "../../Styles/Account/AccountMenu.css";
-import Edit from "./AccountEditButton";
-import "../../Styles/Account/AccountInfo.css"
-import axios from "axios";
-
-function İnfo() {
-  const token = localStorage.getItem("token");
-  const [data, setData] = useState("");
-  
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          "https://mysql-emporium-deploy1.onrender.com/product/getUserProduct",
-          {
-            headers: {
-              Authorization:`Bearer ${token}` ,
-            },
-          }
-        );
-
-        setData(response.data);
-        console.log(response.data);
-      } catch (error) {
-        console.error("Veri çekme hatası:", error);
-        setData([]);
-      }
-    };
-
-    fetchData();
-},[token]);
-
-  const [name, setName] = useState("");
-  const [surname, setSurname] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
->>>>>>> Stashed changes
   const [editMod, setEditMod] = useState(false);
 
   const handleInputChange = (event) => {
