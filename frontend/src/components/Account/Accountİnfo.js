@@ -92,7 +92,7 @@ function İnfo() {
   // };
   
   // fetchData fonksiyonunu çağır
-  fetchData();
+  // fetchData();
   
 
 
