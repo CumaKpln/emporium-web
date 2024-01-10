@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
-import toast, { Toaster } from "react-hot-toast";
+import  { Toaster } from "react-hot-toast";
 import "../Styles/UploadProduct.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 const UploadProduct = () => {
   const token = localStorage.getItem("token");
-  localStorage.setItem("token", token);
+
 
   const [productTitle, setProductTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -76,53 +76,56 @@ const UploadProduct = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const formData = new FormData();
+    const data = new FormData();
 
-    formData.append("productTitle", productTitle);
-    formData.append("description", description);
-    formData.append("category", category);
-    formData.append("subcategory", subcategory);
-    formData.append("productName", productName);
-    formData.append("price", price);
-    formData.append("brand", brand);
-    formData.append("model", model);
-    formData.append("squareMeters", squareMeters);
-    formData.append("color", color);
-    formData.append("series", series);
-    formData.append("gear", gear);
-    formData.append("ram", ram);
-    formData.append("processor", processor);
-    formData.append("memory", memory);
-    formData.append("room", room);
-    formData.append("gpu", gpu);
-    formData.append("province", province);
-    formData.append("district", district);
-    formData.append("neighbourhood", neighbourhood);
-    formData.append("propertyType", propertyType);
+    data.append("productTitle", productTitle);
+    data.append("description", description);
+    data.append("category", category);
+    data.append("subcategory", subcategory);
+    data.append("productName", productName);
+    data.append("price", price);
+    data.append("brand", brand);
+    data.append("model", model);
+    data.append("squareMeters", squareMeters);
+    data.append("color", color);
+    data.append("series", series);
+    data.append("gear", gear);
+    data.append("ram", ram);
+    data.append("processor", processor);
+    data.append("memory", memory);
+    data.append("room", room);
+    data.append("gpu", gpu);
+    data.append("province", province);
+    data.append("district", district);
+    data.append("neighbourhood", neighbourhood);
+    data.append("propertyType", propertyType);
 
     // Multiple files
     for (let i = 0; i < images.length; i++) {
-      formData.append("images", images[i]);
+      data.append("images", images[i]);
     }
 
-    try {
-      const response = await axios.post(
-        "https://mysql-emporium-deploy1.onrender.com/product/product-post",
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+    const headers = {
+      "Cache-Control": "no-cache",
+      Authorization: `Bearer ${token}`,
+    };
 
-      console.log(response.data);
-      toast.success("Ürün başarıyla Yüklendi!");
-    } catch (error) {
-      toast.error("Ürün yükleme başarısız oldu.");
-      console.error("İstek hatası:", error);
-    }
+    const formDataConfig = {
+      method: "post",
+      maxBodyLength: Infinity,
+      url: "https://mysql-emporium-deploy1.onrender.com/product/product-post", // localhost'un başına "http://" ekledim
+      headers: headers,
+      data: data,
+    };
+
+    axios
+      .request(formDataConfig)
+      .then((response) => {
+        console.log(JSON.stringify(response.data));
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
