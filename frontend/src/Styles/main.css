@@ -4,7 +4,7 @@
    }
  }
 
- @media screen and (max-width: 425px) {
+ @media screen and (max-width: 493px) {
    #searchMain.nav-search{
        display:flex;
    }

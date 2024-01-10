@@ -2,20 +2,16 @@ import React from "react";
 import logo from "../images/logo.png";
 import "../Styles/navbar.css";
 import { Link } from "react-router-dom";
-import { useSearch } from './Context/SearchContext';
-
+import { useSearch } from "./Context/SearchContext";
 
 const Navbar = () => {
-
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token");
 
   const { updateNameFilter } = useSearch();
 
-
   const handleLogOut = () => {
-    localStorage.removeItem('token');
-  }
-
+    localStorage.removeItem("token");
+  };
 
   // const selectedProduct = useSelector(
   //   (state) => state.products.selectedProduct
@@ -24,7 +20,7 @@ const Navbar = () => {
   // const userData = useSelector(
   //   (state) => state.userİnfo
   // );
-  
+
   return (
     <>
       <nav className="navbar" id="nav">
@@ -43,7 +39,6 @@ const Navbar = () => {
                 placeholder="Arama yapınız"
                 onInput={(event) => {
                   updateNameFilter(event.target.value);
-
                 }}
               />
               <div className="search-icon">
@@ -65,7 +60,12 @@ const Navbar = () => {
               <>
                 <div id="account">
                   <div className="dropdown">
-                    <button className="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button
+                      className="btn dropdown-toggle"
+                      type="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
                       <svg
                         style={{ marginRight: "10px" }}
                         xmlns="http://www.w3.org/2000/svg"
@@ -80,13 +80,25 @@ const Navbar = () => {
                           fillRule="evenodd"
                           d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
                         />
-                      </svg>   Hesap
+                      </svg>{" "}
+                      Hesap
                     </button>
                     <ul className="dropdown-menu text-center">
-                      <li><a className="dropdown-item" href="/account">Hesabım</a></li>
-                      <li><a id="logout" href="/login" onClick={handleLogOut} className="dropdown-item">Çıkış Yap</a></li>
-
-
+                      <li>
+                        <a className="dropdown-item" href="/account">
+                          Hesabım
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          id="logout"
+                          href="/login"
+                          onClick={handleLogOut}
+                          className="dropdown-item"
+                        >
+                          Çıkış Yap
+                        </a>
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -129,9 +141,9 @@ const Navbar = () => {
       <nav id="nav2" className="navbar bg-body-tertiary">
         <div className="container nav2-container">
           <Link to={"/"}>
-          <div className="nav-logo">
-            <img src={logo} alt="logo-png" />
-          </div>
+            <div className="nav-logo">
+              <img src={logo} alt="logo-png" />
+            </div>
           </Link>
           <button
             className="navbar-toggler"
@@ -225,8 +237,16 @@ const Navbar = () => {
                     <span>İlan ver</span>
                   </div>
                 </Link>
+                <Link
+                  to="/login"
+                  onClick={handleLogOut}
+                  className="LogOut nav2-upload-product"
+                >
+                  <div>
+                    <span>Çıkış Yap</span>
+                  </div>
+                </Link>
               </>
-
             ) : (
               <>
                 <Link to="/login">

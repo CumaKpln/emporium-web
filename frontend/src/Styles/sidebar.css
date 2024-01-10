@@ -68,7 +68,7 @@ h2 {
     border-bottom: none;
   }
   
-  @media screen and (max-width: 425px) {
+  @media screen and (max-width: 493px) {
     #sidebar{
         display: none;
     }
