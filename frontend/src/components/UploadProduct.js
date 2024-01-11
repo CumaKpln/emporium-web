@@ -144,8 +144,8 @@ const UploadProduct = () => {
                   id="fileInput"
                   onChange={handleFileChange}
                   accept="image/*"
-                  width="100"
-                  height="auto"
+                  width="auto"
+                  height="80"
                   multiple
                 />
               </div>
@@ -291,15 +291,15 @@ const UploadProduct = () => {
                   <label htmlFor="productRoom">Oda Sayısını Seçiniz:</label>
                   <select
                     name="room"
-                    type="number"
+                    type="text"
                     id="productRoom"
                     value={room}
                     onChange={(e) => setRoom(e.target.value)}
                     required
                   >
                     <option value="">Oda Sayısını Seçiniz</option>
-                    <option value="emlak">2+1</option>
-                    <option value="vasıta">3+1</option>
+                    <option value="2+1">2+1</option>
+                    <option value="3+1">3+1</option>
                   </select>
                 </div>
               )}
