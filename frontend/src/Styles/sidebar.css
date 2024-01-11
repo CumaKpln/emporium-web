@@ -19,6 +19,10 @@ h2 {
     width: 100%;
 }
 
+#sidebar.dropdown{
+  top: 5%;
+}
+
 .sidebarMainTitle{
     width: 85%;
     text-align: left;
@@ -68,6 +72,28 @@ h2 {
     border-bottom: none;
   }
   
+  @media screen and (max-width: 1024px) {
+    .dropdownUlLi {
+      width: 185px;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+  } 
+  @media screen and (max-width: 768px) {
+    .dropdownUlLi {
+      width: 135px;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+  } 
+  @media screen and (max-width: 540px) {
+    .dropdownUlLi {
+      width: 185px;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+  } 
+
   @media screen and (max-width: 493px) {
     #sidebar{
         display: none;
