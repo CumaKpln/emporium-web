@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Modal, Button, Form, Alert } from "react-bootstrap";
 import "../../Styles/Account/AccountProductİnformation.css";
-
 import data from "../../data/db.json";
+import axios from "axios";
 
 function ProductInfo() {
+  const token = localStorage.getItem("token");
+
   const [products, setProducts] = useState(data["ilan-ver"]);
   const [showModal, setShowModal] = useState(false);
   const [editedProduct, setEditedProduct] = useState(null);
@@ -51,22 +53,65 @@ function ProductInfo() {
 
   const handleImageAdd = (e) => {
     const newImages = [];
-  
+
     Array.from(e.target.files).forEach((file) => {
       // Check if the file type is an image
       if (file.type.startsWith('image/')) {
         newImages.push({ url: URL.createObjectURL(file) });
       }
     });
-  
+
     setEditedImages([...editedImages, ...newImages]);
   };
-  
+
   const handleImageRemove = (index) => {
     const newImages = [...editedImages];
     newImages.splice(index, 1);
     setEditedImages(newImages);
   };
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        "https://mysql-emporium-deploy1.onrender.com/product/getUserProduct",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      const userProduct = response.data.mergedResult
+
+      setEditedImages(userProduct.images);
+      setEditedProduct({
+        title: userProduct.title || "",
+        description: userProduct.description || "",
+        productName: userProduct.productName || "",
+        brand: userProduct.brand || "",
+        series: userProduct.series || "",
+        gear: userProduct.gear || "",
+        color: userProduct.color || "",
+        // Diğer ürün özelliklerini ekleyin
+
+        // Örnek: Alt kategoriye göre gerekli alanları ekleyin
+        // Örneğin, subCategory "Araba" ise:
+        // title: userProduct.title || "",
+        // description: userProduct.description || "",
+        // productName: userProduct.productName || "",
+        // ...
+
+        // SubCategory'ye göre diğer alanları da ekleyin
+      });
+      console.log("Kullanıcı verileri başarıyla alındı :", response.data);
+    } catch (error) {
+      // Hata durumunda kullanıcıya bilgi verilebilir veya hata işlenebilir
+      console.error("Kullanıcı  hatası:", error);
+    }
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
+
 
   const renderImages = () => {
     return (
@@ -77,7 +122,7 @@ function ProductInfo() {
               src={image.url}
               alt={`Resim-${index + 1}`}
               className="img-thumbnail"
-              style={{ width: "100px", height: "100px", margin:"5px" }}
+              style={{ width: "100px", height: "100px", margin: "5px" }}
             />
             <button
               type="button"
@@ -320,6 +365,7 @@ function ProductInfo() {
           </>
         );
       case "Arsa":
+        
         return (
           <>
             <Form.Group controlId="formTitle">
@@ -671,7 +717,7 @@ function ProductInfo() {
         <div className="row mb-3 cards" key={id}>
           <div className="col-md-4">
             <img
-              src={urun.selectedFiles[0].url}
+              // src={userProduct.img1}
               id="AccountMenuİmg"
               className="img-fluid rounded"
               alt="..."

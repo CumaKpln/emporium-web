@@ -5,16 +5,17 @@ import Edit from "./AccountEditButton";
 import "../../Styles/Account/AccountInfo.css";
 import axios from "axios";
 import AccountDelete from "./AccountDelete";
+import { useNavigate } from "react-router-dom";
 
 function İnfo() {
   const token = localStorage.getItem("token");
   const [username, setUsername] = useState("");
   const [createdAt, setCreatedAt] = useState("");
-  const [data, setData] = useState("");
+  const [setData] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [editMod, setEditMod] = useState(false);
-  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const navigate = useNavigate();
 
   const handleInputChange = (event) => {
     const { id, value } = event.target;
@@ -70,32 +71,32 @@ function İnfo() {
     }
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          "https://mysql-emporium-deploy1.onrender.com/user/userInfo",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        "https://mysql-emporium-deploy1.onrender.com/user/userInfo",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
-        const data = response.data.UserInfo;
-        setUsername(data.username);
-        setCreatedAt(data.createdAt);
-        setEmail(data.email);
-        setPhoneNumber(data.phoneNumber);
-      } catch (error) {
-        console.error("Veri çekme hatası:", error);
-        setData("");
-        setCreatedAt("");
-        setUsername("");
-        setEmail("");
-        setPhoneNumber("");
-      }
-    };
+      const data = response.data.UserInfo;
+      setUsername(data.username);
+      setCreatedAt(data.createdAt);
+      setEmail(data.email);
+      setPhoneNumber(data.phoneNumber);
+    } catch (error) {
+      console.error("Veri çekme hatası:", error);
+      setData("");
+      setCreatedAt("");
+      setUsername("");
+      setEmail("");
+      setPhoneNumber("");
+    }
+  };
+  useEffect(() => {
 
     fetchData();
   }, [token]);
@@ -110,7 +111,7 @@ function İnfo() {
           },
         }
       );
-
+      navigate("/login")
       console.log("Kullanıcı başarıyla silindi:", response.data);
     } catch (error) {
       // Hata durumunda kullanıcıya bilgi verilebilir veya hata işlenebilir
@@ -236,7 +237,7 @@ function İnfo() {
           <div className="col-md-6">
             <div className="row AccountButton justify-content-center">
               <div className="col-md-12">
-                <AccountDelete />
+                <AccountDelete onClick={handleDeleteUser} />
               </div>
             </div>
           </div>

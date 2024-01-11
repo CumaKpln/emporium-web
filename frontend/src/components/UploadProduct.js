@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Toaster } from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import "../Styles/UploadProduct.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -112,11 +112,14 @@ const UploadProduct = () => {
         }
       })
       .then((response) => {
-
+        toast.success("Ürün başarıyla eklendi!");
         console.log(response.data);
+
+        console.log()
 
       })
       .catch((error) => {
+        toast.error("Bir hata oluştu. Lütfen tekrar deneyiniz.");
         console.error(error);
       });
 
@@ -124,7 +127,10 @@ const UploadProduct = () => {
   return (
     <>
       <Navbar />
-     
+      <Toaster
+        position="center-top"
+        reverseOrder={false}
+      />
       <div className="container product-update mt-5 mb-5">
         <div className="row">
           <div className="col-md-4 col-sm-2 col-1"></div>

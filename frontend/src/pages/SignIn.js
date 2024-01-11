@@ -7,9 +7,12 @@ import Footer from "../components/Footer";
 import "../Styles/Pages/SignIn.css";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 
 function SignIn() {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -67,7 +70,7 @@ function SignIn() {
           toast.success("Kayıt başarıyla yapıldı!");
 
           console.log("İstek başarılı. Yanıt:", response.data);
-
+          navigate("/login")
           // Form verilerini temizle
           setFormData({
             username: "",
