@@ -1,75 +1,77 @@
-.accountForm{
-    margin: 0px;
-    padding: 0;
-    margin-top: 4%;
-}
-.name-surname{
-   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    background: linear-gradient(145.44deg, #F2F4FA 0%, #FAFBFC 100%);
-    padding: 30px;
-    border-radius: 20px;
-    justify-content: center;
-    margin-bottom: 25px;
+.accountForm {
+  margin: 0px;
+  padding: 0;
+  margin-top: 4%;
 }
 
-
-.province-district-neighborhood{
-   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    justify-content: center;
-    margin-bottom: 15px;
-    background: linear-gradient(145.44deg, #F2F4FA 0%, #FAFBFC 100%);
-    padding: 30px;
-    margin-bottom: 25px;
-    border-radius: 20px;
-}
-
-.mail-phone{
-   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    justify-content: center;
-    margin-bottom: 15px;
-    background: linear-gradient(145.44deg, #F2F4FA 0%, #FAFBFC 100%);
-    padding: 30px;
-    margin-bottom: 25px;
-    border-radius: 20px;
+.name-surname {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background: linear-gradient(145.44deg, #F2F4FA 0%, #FAFBFC 100%);
+  padding: 30px;
+  border-radius: 20px;
+  justify-content: center;
+  margin-bottom: 25px;
 }
 
 
-.row .AccountButton{
+.province-district-neighborhood {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  justify-content: center;
+  margin-bottom: 15px;
+  background: linear-gradient(145.44deg, #F2F4FA 0%, #FAFBFC 100%);
+  padding: 30px;
+  margin-bottom: 25px;
+  border-radius: 20px;
+}
+
+.mail-phone {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  justify-content: center;
+  margin-bottom: 15px;
+  background: linear-gradient(145.44deg, #F2F4FA 0%, #FAFBFC 100%);
+  padding: 30px;
+  margin-bottom: 25px;
+  border-radius: 20px;
+}
+
+
+.row .AccountButton {
   justify-content: center;
   padding: 15px;
 }
 
-.AccountEdit{
-    width: 100%;
+.AccountEdit {
+  max-width: 100%;
   background-color: #49eb34;
   color: white;
 }
 
-.AccountEdit:hover{
-background-color: #49eb34;
-color: white;
+.AccountEdit:hover {
+  background-color: #49eb34;
+  color: white;
 }
 
-.AccountSave{
+.AccountSave {
   width: 100%;
   background-color: #49eb34;
   color: white;
 }
 
-.AccountSave:hover{
+.AccountSave:hover {
   background-color: #49eb34;
   color: white;
 }
 
-@media (max-width: 1290px){
-  .accountForm{
-      margin: 0;
-      margin-top: 12%;
+@media (max-width: 1290px) {
+  .accountForm {
+    margin: 0;
+    margin-top: 12%;
   }
 }
-@media (max-width: 992px){
-    .accountForm{
-        margin: 0;
-        margin-top: 5%;
-    }
+
+@media (max-width: 992px) {
+  .accountForm {
+    margin: 0;
+    margin-top: 5%;
+  }
 }

@@ -4,6 +4,7 @@ import "react-phone-input-2/lib/style.css";
 import Edit from "./AccountEditButton";
 import "../../Styles/Account/AccountInfo.css";
 import axios from "axios";
+import AccountDelete from "./AccountDelete";
 
 function İnfo() {
   const token = localStorage.getItem("token");
@@ -13,6 +14,7 @@ function İnfo() {
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [editMod, setEditMod] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const handleInputChange = (event) => {
     const { id, value } = event.target;
@@ -37,17 +39,34 @@ function İnfo() {
     }
   };
 
-  const isEmailValid = () => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  // const isEmailValid = () => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
   const handleEditClick = () => {
     setEditMod(true);
   };
 
-  const handleSaveClick = () => {
-    if (isEmailValid()) {
-      setEditMod(false);
-    } else {
-      alert("Geçerli bir e-posta adresi giriniz.");
+  const handleSaveClick = async () => {
+    try {
+      const response = await axios.put(
+        "https://mysql-emporium-deploy1.onrender.com/user/update",
+        {
+          username,
+          createdAt,
+          email,
+          phoneNumber,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      // Başarılı bir şekilde güncellendiğine dair mesajı göstermek için kullanılabilir
+      console.log("Güncelleme başarılı:", response.data);
+    } catch (error) {
+      // Hata durumunda kullanıcıya bilgi verilebilir veya hata işlenebilir
+      console.error("Güncelleme hatası:", error);
     }
   };
 
@@ -63,16 +82,11 @@ function İnfo() {
           }
         );
 
-        setData(response.data);
-        setCreatedAt(response.data.joiningDate);
-        setUsername(response.data.username);
-        setEmail(response.data.email);
-        setPhoneNumber(response.data.phoneNumber);
-
-        const deneme = response.data.UserInfo;
-        setUsername(deneme);
-        console.log(deneme);
-        console.log("Veri çekme başarılı:", response.data);
+        const data = response.data.UserInfo;
+        setUsername(data.username);
+        setCreatedAt(data.createdAt);
+        setEmail(data.email);
+        setPhoneNumber(data.phoneNumber);
       } catch (error) {
         console.error("Veri çekme hatası:", error);
         setData("");
@@ -86,6 +100,23 @@ function İnfo() {
     fetchData();
   }, [token]);
 
+  const handleDeleteUser = async () => {
+    try {
+      const response = await axios.delete(
+        "https://mysql-emporium-deploy1.onrender.com/user/delete",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      console.log("Kullanıcı başarıyla silindi:", response.data);
+    } catch (error) {
+      // Hata durumunda kullanıcıya bilgi verilebilir veya hata işlenebilir
+      console.error("Kullanıcı silme hatası:", error);
+    }
+  };
   return (
     <div className="accountForm">
       <form>
@@ -100,7 +131,7 @@ function İnfo() {
               <Edit
                 field="username"
                 value={username}
-                onChange={(e) => handleInputChange(e)}
+                onChange={(e) => setUsername(e.target.value)}
               />
             ) : (
               <input
@@ -118,8 +149,8 @@ function İnfo() {
               Katılım Tarihi
             </label>
             <input
-              value={createdAt}
-              type="number"
+              value={createdAt.split("T")[0]}
+              type="text"
               disabled
               className="form-control"
               id="surnameInput"
@@ -160,7 +191,7 @@ function İnfo() {
                   required: true,
                 }}
                 country={"tr"}
-                value={phoneNumber}
+                value={"+90" + phoneNumber}
                 onChange={(value) =>
                   handleInputChange({ target: { id: "phoneInput", value } })
                 }
@@ -178,32 +209,38 @@ function İnfo() {
             )}
           </div>
         </div>
-
-        {editMod ? (
-          <div className="row AccountButton">
-            <div className="col-md-4">
-              <button
-                type="button"
-                className="AccountSave btn"
-                onClick={handleSaveClick}
-              >
-                Kaydet
-              </button>
+        <div className="row d-flex justify-content-center">
+          <div className="col-md-6">
+            <div className="row AccountButton justify-content-center">
+              <div className="col-md-4 justify-content-end align-items-center">
+                {editMod ? (
+                  <button
+                    type="button"
+                    className="AccountSave btn"
+                    onClick={handleSaveClick}
+                  >
+                    Kaydet
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="AccountEdit btn"
+                    onClick={handleEditClick}
+                  >
+                    Düzenle
+                  </button>
+                )}
+              </div>
             </div>
           </div>
-        ) : (
-          <div className="row AccountButton">
-            <div className="col-md-4">
-              <button
-                type="button"
-                className="AccountEdit btn"
-                onClick={handleEditClick}
-              >
-                Düzenle
-              </button>
+          <div className="col-md-6">
+            <div className="row AccountButton justify-content-center">
+              <div className="col-md-12">
+                <AccountDelete />
+              </div>
             </div>
           </div>
-        )}
+        </div>
       </form>
     </div>
   );
