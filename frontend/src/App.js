@@ -14,27 +14,27 @@ import { SearchProvider } from './components/Context/SearchContext';
 
 function App() {
   var id = useSelector(
-    (state) => state.products.selectedProduct.id 
+    (state) => state.products.selectedProduct.id
   );
- id-=1;
+  // id -= 1;
 
   return (
     <>
-        <SearchProvider>
+      <SearchProvider>
 
-      <Routes>
-        <Route path="/" element={<Main />} />
+        <Routes>
+          <Route path="/" element={<Main />} />
 
-        <Route path="/account" exact element={<Account />} />
-        <Route path="/upload-product" element={<UploadProduct />} />
-        <Route path="/login" element={<LogIn />} />
-        <Route path="/register" element={<SignIn />} /> 
+          <Route path="/account" exact element={<Account />} />
+          <Route path="/upload-product" element={<UploadProduct />} />
+          <Route path="/login" element={<LogIn />} />
+          <Route path="/register" element={<SignIn />} />
 
-        <Route path={`/urun-detayi/${id}`} element={<ProductDetail />} />
-        <Route path="/sifremiunuttum" element={<ForgotPassword />} />
-        <Route path="/sifremiunuttum/sifre-degistirme" element={<ChangePassword />} />
+          <Route path={`/urun-detayi/${id}`} element={<ProductDetail />} />
+          <Route path="/sifremiunuttum" element={<ForgotPassword />} />
+          <Route path="/sifremiunuttum/sifre-degistirme" element={<ChangePassword />} />
 
-      </Routes>
+        </Routes>
       </SearchProvider>
 
 

@@ -12,11 +12,10 @@ import axios from "axios";
 
 function Products() {
   const token = localStorage.getItem("token");
+  const allProducts = localStorage.getItem("allProduct");
 
   const [allProduct, setAllProduct] = useState([]);
-  // let image1=allProduct[0].img1.url
 
-  // const image=allProduct[0].img1
 
   const { selectedCategory, selectedSubCategory } = useCategory();
   const { selectedProvince } = useProvince();
@@ -26,12 +25,19 @@ function Products() {
 
   //redux ile ürün detay sayfasına yönlendirme
   const dispatch = useDispatch();
+
+
+
+  // Ürün bilgilerini Redux store'a gönder
   const selectedProduct = (product) => {
     dispatch(selectProduct(product));
+    localStorage.setItem("selectedProduct", JSON.stringify(product));
   };
-  //
 
-  const filteredProducts = allProduct.filter((product, id) => {
+  // Ürün bilgilerini localStorage'a kaydet
+
+
+  const filteredProducts = allProduct.filter((product) => {
     const categoryMatch = selectedCategory
       ? product.category.toLowerCase() === selectedCategory.toLowerCase()
       : true;
@@ -48,8 +54,8 @@ function Products() {
     if (selectedBrand.length !== 0 && product.brand !== undefined)
       selectedBrand.forEach(
         (brand) =>
-          (brandMatch =
-            brandMatch && product.brand.toLowerCase() === brand.toLowerCase())
+        (brandMatch =
+          brandMatch && product.brand.toLowerCase() === brand.toLowerCase())
       );
     const priceMatch =
       parseInt(product.price) >= minPrice &&
@@ -76,15 +82,11 @@ function Products() {
       );
       setAllProduct(response.data.allProducts);
 
-      console.log(
-        "Tüm veriler başarılı bir şekilde alındı :",
-        response.data.allProducts
-      );
+  
     } catch (error) {
       console.error("Kullanıcı hatası:", error);
     }
   };
-
   useEffect(() => {
     fetchData();
   }, []);
@@ -92,13 +94,13 @@ function Products() {
   return (
     <div className="products row">
       {allProduct.map((product) => (
-        <div className="img col-lg-4 col-md-6 col-12 mb-4" key={product.id} style={{ cursor: "pointer" }}>
-        
+        <div className="img col-xl-2 col-lg-4 col-md-6 col-12 mb-4" key={product.id} style={{ cursor: "pointer" }}>
+
           <Link
-            to={`/urun-detayi/${product.id - 1}`}
+            to={`/urun-detayi/${product.id}`}
             onClick={() => selectedProduct(product)}
           >
-           <div className="card">
+            <div className="card">
               <img
                 src={`https://mysql-emporium-deploy1.onrender.com/photo/${product.img1}`}
 
@@ -106,8 +108,8 @@ function Products() {
                 alt={product.productTitle}
               />
               <div className="card-body">
-                <h5 className="card-title">{allProduct.title}</h5>
-              
+                <h6 className="card-title">{product.productTitle}</h6>
+
 
               </div>
             </div>

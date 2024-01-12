@@ -20,12 +20,12 @@ function ProductDetail() {
       >
         <div className="row detail-row">
           <div className=" col-md-6 ">
-            <Slider />
+            {/* <Slider /> */}
           </div>
 
           <div className="col-md-6 section">
             <Detail />
-            <Owner />
+            {/* <Owner /> */}
           </div>
         </div>
         <div className="desc">

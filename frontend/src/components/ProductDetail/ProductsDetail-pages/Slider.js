@@ -11,7 +11,6 @@ function Slider() {
     dispatch(favItem(product));
   };
 
-  //! For Slider
 
   //reduxtan gelen veriler
   const selectedProduct = useSelector(

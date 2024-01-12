@@ -330,7 +330,7 @@ const UploadProduct = () => {
                     />
                   </div>
                   <div className="product-serie">
-                    <label htmlFor="series"> Model:</label>
+                    <label htmlFor="series"> Seri:</label>
                     <br />
                     <input
                       name="series"
