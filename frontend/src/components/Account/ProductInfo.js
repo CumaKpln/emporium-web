@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 function ProductInfo() {
   const token = localStorage.getItem("token");
   const [userProducts, setUserProducts] = useState([]);
-  const [userInfo, setUserInfo] = useState([]);
   const dispatch = useDispatch();
 
   // Ürün bilgilerini localStorage'e kaydeden fonksiyon
@@ -28,17 +27,36 @@ function ProductInfo() {
           },
         }
       );
-      setUserInfo(response.data)
       setUserProducts(response.data.mergedResult);
     } catch (error) {
       console.error("Kullanıcı hatası:", error);
     }
   };
-console.log(userInfo)
+
   // Component yüklendiğinde kullanıcı ürünlerini getir
   useEffect(() => {
     fetchData();
   }, [token]);
+
+  // Kullanıcının bir ürünü silmesini sağlayan fonksiyon
+  const handleDelete = async (product) => {
+    console.log(product)
+    try {
+      await axios.delete(
+        `https://mysql-emporium-deploy1.onrender.com/deleteProduct/:${product}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      // Ürün silindikten sonra kullanıcının güncellenmiş ürün listesini getir
+      fetchData();
+    } catch (error) {
+      console.error("Kullanıcı hatası:", error);
+    }
+  };
 
   return (
     <div className="row main-row">
@@ -49,6 +67,7 @@ console.log(userInfo)
           key={product.id}
         >
           <img
+            style={{ minHeight: "150px" }}
             src={`https://mysql-emporium-deploy1.onrender.com/photo/${product.img1}`}
             className="card-img-top"
             alt={product.productTitle}
@@ -80,7 +99,7 @@ console.log(userInfo)
                     display: "flex",
                     borderRadius: "5px",
                   }}
-                  // onClick={() => handleDelete(product.id)}
+                  onClick={() => handleDelete(product.id)}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
