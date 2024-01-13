@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { Modal, Button, Form, Alert } from "react-bootstrap";
 import "../../Styles/Account/AccountProductİnformation.css";
-import data from "../../data/db.json";
+// import data from "../../data/db.json";
 import axios from "axios";
 
 function ProductInfo() {
   const token = localStorage.getItem("token");
 
-  const [products, setProducts] = useState(data["ilan-ver"]);
+  const [products, setProducts] = useState();
   const [showModal, setShowModal] = useState(false);
-  const [editedProduct, setEditedProduct] = useState(null);
+  const [editedProduct, setEditedProduct] = useState({});
   const [editedImages, setEditedImages] = useState([]);
   const [showAlert, setShowAlert] = useState(false);
   const handleGearChange = (e) => {
     setEditedProduct({ ...editedProduct, gear: e.target.value });
+  };
+  const handleRoomChange = (e) => {
+    setEditedProduct({ ...editedProduct, room: e.target.value });
   };
 
   const handleUpdate = () => {
@@ -23,12 +26,11 @@ function ProductInfo() {
       return;
     }
 
-
     // Güncelleme işlemi tamamlandıktan sonra products state'ini güncelle
     setProducts((prevProducts) =>
       prevProducts.map((product) =>
         product.id === editedProduct.id
-          ? { ...editedProduct, selectedFiles: editedImages }
+          ? { ...editedProduct, images: editedImages }
           : product
       )
     );
@@ -50,7 +52,7 @@ function ProductInfo() {
 
     Array.from(e.target.files).forEach((file) => {
       // Check if the file type is an image
-      if (file.type.startsWith('image/')) {
+      if (file.type.startsWith("image/")) {
         newImages.push({ url: URL.createObjectURL(file) });
       }
     });
@@ -64,6 +66,8 @@ function ProductInfo() {
     setEditedImages(newImages);
   };
 
+  const [userProduct, setUserProduct] = useState([]);
+
   const fetchData = async () => {
     try {
       const response = await axios.get(
@@ -74,43 +78,29 @@ function ProductInfo() {
           },
         }
       );
-      const userProduct = response.data.mergedResult
+      const data = response.data.mergedResult;
+      // Eğer response.data.mergedResult boşsa hata kontrolü yapabilirsiniz
+      if (data.length === 0) {
+        console.log("Kullanıcı verisi bulunamadı veya boş.");
+        return;
+      }
 
-      setEditedImages(userProduct.images);
-      setEditedProduct({
-        title: userProduct.title || "",
-        description: userProduct.description || "",
-        productName: userProduct.productName || "",
-        brand: userProduct.brand || "",
-        series: userProduct.series || "",
-        gear: userProduct.gear || "",
-        color: userProduct.color || "",
-        // Diğer ürün özelliklerini ekleyin
+      setUserProduct(response.data.mergedResult);
 
-        // Örnek: Alt kategoriye göre gerekli alanları ekleyin
-        // Örneğin, subCategory "Araba" ise:
-        // title: userProduct.title || "",
-        // description: userProduct.description || "",
-        // productName: userProduct.productName || "",
-        // ...
-
-        // SubCategory'ye göre diğer alanları da ekleyin
-      });
-      console.log("Kullanıcı verileri başarıyla alındı :", response.data);
+      console.log("Kullanıcı verileri başarıyla alındı:", response.data);
     } catch (error) {
-      // Hata durumunda kullanıcıya bilgi verilebilir veya hata işlenebilir
-      console.error("Kullanıcı  hatası:", error);
+      console.error("Kullanıcı hatası:", error);
     }
   };
   useEffect(() => {
     fetchData();
   }, []);
 
-
+  //modal
   const renderImages = () => {
     return (
       <div className="İmgEdit mb-3">
-        {editedImages.map((image, index) => (
+        {editedProduct?.images?.map((image, index) => (
           <span key={index} className="mr-2 position-relative">
             <img
               src={image.url}
@@ -131,7 +121,7 @@ function ProductInfo() {
                 className="bi bi-trash3"
                 viewBox="0 0 16 16"
               >
-                <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5" />
+                <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.500 8.5a.5.5 0 0 1-.998.06l-.500-8.5a.5.5 0 0 1 .47-.53zM5 4v8.5a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5 0zm3 0v8.5a.5.5 0 1 1-1 0V4a.5.5 0 0 1 .5 0z" />
               </svg>
             </button>
           </span>
@@ -151,7 +141,7 @@ function ProductInfo() {
 
   return (
     <div className="card">
-      {products.map((urun, id) => (
+      {userProduct.map((product, id) => (
         <div className="row mb-3 cards" key={id}>
           <div className="col-md-4">
             <img
@@ -163,8 +153,8 @@ function ProductInfo() {
           </div>
           <div className="col-md-8">
             <div className="card-body">
-              <h5 className="card-title">{urun.title}</h5>
-              <p className="card-text">{urun.description}</p>
+              <h5 className="card-title">{product.title}</h5>
+              <p className="card-text">{product.description}</p>
               <p className="card-text">
                 <small className="text-body-secondary">
                   Son güncelleme 3 dakika önce
@@ -173,13 +163,13 @@ function ProductInfo() {
               <button
                 type="button"
                 className="btn AccountProductButton"
-                onClick={() => handleEdit(urun)}
+                onClick={() => handleEdit(product.id)}
               >
                 Düzenle
               </button>
               <button
                 className="icon AccountProductButton"
-                onClick={() => handleDelete(urun.id)}
+                onClick={() => handleDelete(product.id)}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
