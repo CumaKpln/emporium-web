@@ -1,23 +1,67 @@
 import React, { useEffect, useState } from "react";
 import { Modal, Button, Form, Alert } from "react-bootstrap";
 import "../../Styles/Account/AccountProductİnformation.css";
-// import data from "../../data/db.json";
+import data from "../../data/db.json";
 import axios from "axios";
 
 function ProductInfo() {
   const token = localStorage.getItem("token");
 
-  const [products, setProducts] = useState();
+  const [products, setProducts] = useState(data["ilan-ver"]);
   const [showModal, setShowModal] = useState(false);
-  const [editedProduct, setEditedProduct] = useState({});
+  const [editedProduct, setEditedProduct] = useState(null);
   const [editedImages, setEditedImages] = useState([]);
   const [showAlert, setShowAlert] = useState(false);
   const handleGearChange = (e) => {
     setEditedProduct({ ...editedProduct, gear: e.target.value });
   };
-  const handleRoomChange = (e) => {
-    setEditedProduct({ ...editedProduct, room: e.target.value });
+
+  const handleEdit = (id) => {
+    // id'ye göre ürünü bul
+    const selectedProduct = userProduct.find((product) => product.id === id);
+  
+    console.log("Gelen ürün:", selectedProduct);
+  
+    if (selectedProduct) {
+      console.log("Seçilen ürün:", selectedProduct);
+      setEditedProduct({
+        id: selectedProduct.id,
+        title: selectedProduct.productTitle,
+        description: selectedProduct.description,
+        productName: selectedProduct.productName,
+        brand: selectedProduct.brand,
+        series: selectedProduct.series,
+        gear: selectedProduct.gear,
+        color: selectedProduct.color,
+        price: selectedProduct.price,
+        category: selectedProduct.category,
+        subCategory: selectedProduct.subcategory,
+        squareMeters: selectedProduct.m2,
+        ram: selectedProduct.ram,
+        processor: selectedProduct.processor,
+        memory: selectedProduct.memory,
+        room: selectedProduct.room,
+        gpu: selectedProduct.gpu,
+        province: selectedProduct.province,
+        district: selectedProduct.district,
+        neighbourhood: selectedProduct.neighbourhood,
+        propertyType: selectedProduct.propertyType,
+        model: selectedProduct.model,
+        selectedFiles: selectedProduct.images
+          ? selectedProduct.images.map((image) => ({ url: image }))
+          : [],
+      });
+      setEditedImages(
+        selectedProduct.images
+          ? selectedProduct.images.map((image) => ({ url: image }))
+          : []
+      );
+      setShowModal(true);
+    } else {
+      console.log("Ürün tanımsız.");
+    }
   };
+  
 
   const handleUpdate = () => {
     // Tüm resimlerin silindiği durumu kontrol et
@@ -30,7 +74,7 @@ function ProductInfo() {
     setProducts((prevProducts) =>
       prevProducts.map((product) =>
         product.id === editedProduct.id
-          ? { ...editedProduct, images: editedImages }
+          ? { ...editedProduct, selectedFiles: editedImages }
           : product
       )
     );
@@ -67,7 +111,6 @@ function ProductInfo() {
   };
 
   const [userProduct, setUserProduct] = useState([]);
-
   const fetchData = async () => {
     try {
       const response = await axios.get(
@@ -78,18 +121,12 @@ function ProductInfo() {
           },
         }
       );
-      const data = response.data.mergedResult;
-      // Eğer response.data.mergedResult boşsa hata kontrolü yapabilirsiniz
-      if (data.length === 0) {
-        console.log("Kullanıcı verisi bulunamadı veya boş.");
-        return;
-      }
-
       setUserProduct(response.data.mergedResult);
 
-      console.log("Kullanıcı verileri başarıyla alındı:", response.data);
+      console.log("Kullanıcı verileri başarıyla alındı :", response.data);
     } catch (error) {
-      console.error("Kullanıcı hatası:", error);
+      // Hata durumunda kullanıcıya bilgi verilebilir veya hata işlenebilir
+      console.error("Kullanıcı  hatası:", error);
     }
   };
   useEffect(() => {
@@ -100,7 +137,7 @@ function ProductInfo() {
   const renderImages = () => {
     return (
       <div className="İmgEdit mb-3">
-        {editedProduct?.images?.map((image, index) => (
+        {editedProduct?.selectedFiles?.map((image, index) => (
           <span key={index} className="mr-2 position-relative">
             <img
               src={image.url}
@@ -121,7 +158,7 @@ function ProductInfo() {
                 className="bi bi-trash3"
                 viewBox="0 0 16 16"
               >
-                <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.500 8.5a.5.5 0 0 1-.998.06l-.500-8.5a.5.5 0 0 1 .47-.53zM5 4v8.5a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5 0zm3 0v8.5a.5.5 0 1 1-1 0V4a.5.5 0 0 1 .5 0z" />
+                <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.500 8.5a.5.5 0 0 1-.998.06l-.500-8.5a.5.5 0 0 1 .47-.53zM5 4v8.5a.5.5 0 0 1-1 0V4a.5.5 0 0 1 1 0zm3 0v8.5a.5.5 0 1 1-1 0V4a.5.5 0 0 1 1 0z" />
               </svg>
             </button>
           </span>
@@ -137,6 +174,562 @@ function ProductInfo() {
         )}
       </div>
     );
+  };
+
+  //modal içi düzenleme
+  const renderFormFields = () => {
+    // subCategory'ye göre form alanlarını döndür
+    switch (editedProduct?.subCategory) {
+      case "Araba":
+      case "Motorsiklet":
+        return (
+          <>
+            <Form.Group controlId="formTitle">
+              <Form.Label>title</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="title"
+                value={editedProduct?.title || ""}
+                onChange={(e) =>
+                  setEditedProduct({ ...editedProduct, title: e.target.value })
+                }
+              />
+            </Form.Group>
+            <Form.Group controlId="formDescription">
+              <Form.Label>description</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="description"
+                value={editedProduct?.description || ""}
+                onChange={(e) =>
+                  setEditedProduct({
+                    ...editedProduct,
+                    description: e.target.value,
+                  })
+                }
+              />
+            </Form.Group>
+            <Form.Group controlId="formProductName">
+              <Form.Label>productName</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="productName"
+                value={editedProduct?.productName || ""}
+                onChange={(e) =>
+                  setEditedProduct({
+                    ...editedProduct,
+                    productName: e.target.value,
+                  })
+                }
+              />
+            </Form.Group>
+            <Form.Group controlId="formBrand">
+              <Form.Label>Marka</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Marka"
+                value={editedProduct?.brand || ""}
+                onChange={(e) =>
+                  setEditedProduct({ ...editedProduct, brand: e.target.value })
+                }
+              />
+            </Form.Group>
+            <Form.Group controlId="formColor">
+              <Form.Label>color</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="color"
+                value={editedProduct?.color || ""}
+                onChange={(e) =>
+                  setEditedProduct({ ...editedProduct, color: e.target.value })
+                }
+              />
+            </Form.Group>
+            <Form.Group controlId="formSeries">
+              <Form.Label>series</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="series"
+                value={editedProduct?.series || ""}
+                onChange={(e) =>
+                  setEditedProduct({ ...editedProduct, series: e.target.value })
+                }
+              />
+            </Form.Group>
+            <Form.Group controlId="formGear">
+              <Form.Label>gear</Form.Label>
+              <Form.Select
+                value={editedProduct?.gear || ""}
+                onChange={handleGearChange}
+              >
+                <option value="" disabled>
+                  Seçiniz
+                </option>
+                <option value="otomatik">Otomatik</option>
+                <option value="manuel">Manuel</option>
+              </Form.Select>
+            </Form.Group>
+            <Form.Group controlId="formpPrice">
+              <Form.Label>price</Form.Label>
+              <div className="input-group">
+                <Form.Control
+                  type="number"
+                  placeholder="price"
+                  value={editedProduct?.price || ""}
+                  onChange={(e) =>
+                    setEditedProduct({
+                      ...editedProduct,
+                      price: e.target.value,
+                    })
+                  }
+                />
+                <span className="input-group-text">₺</span>
+              </div>
+            </Form.Group>
+
+            {/* Diğer araba özel form alanları buraya eklenmeli */}
+          </>
+        );
+      case "Ev":
+        return (
+          <>
+            <Form.Group controlId="formTitle">
+              <Form.Label>title</Form.Label>
+              <Form.Control
+                className="formİnput"
+                type="text"
+                placeholder="title"
+                value={editedProduct?.title || ""}
+                onChange={(e) =>
+                  setEditedProduct({
+                    ...editedProduct,
+                    title: e.target.value,
+                  })
+                }
+              />
+            </Form.Group>
+            <Form.Group controlId="formDescription">
+              <Form.Label>description</Form.Label>
+              <Form.Control
+                className="formİnput"
+                type="text"
+                placeholder="description"
+                value={editedProduct?.description || ""}
+                onChange={(e) =>
+                  setEditedProduct({
+                    ...editedProduct,
+                    description: e.target.value,
+                  })
+                }
+              />
+            </Form.Group>
+            <Form.Group controlId="formProductName">
+              <Form.Label>productName</Form.Label>
+              <Form.Control
+                className="formİnput"
+                type="text"
+                placeholder="productName"
+                value={editedProduct?.productName || ""}
+                onChange={(e) =>
+                  setEditedProduct({
+                    ...editedProduct,
+                    productName: e.target.value,
+                  })
+                }
+              />
+            </Form.Group>
+            <Form.Group controlId="formM2">
+              <Form.Label>m2</Form.Label>
+              <Form.Control
+                className="formİnput"
+                type="number"
+                placeholder="m2"
+                value={editedProduct?.m2 || ""}
+                onChange={(e) =>
+                  setEditedProduct({
+                    ...editedProduct,
+                    m2: e.target.value,
+                  })
+                }
+              />
+            </Form.Group>
+            <Form.Group controlId="formRooms">
+              <Form.Label>rooms</Form.Label>
+              <Form.Control
+                className="formİnput"
+                type="number"
+                placeholder="rooms"
+                value={editedProduct?.rooms || ""}
+                onChange={(e) =>
+                  setEditedProduct({
+                    ...editedProduct,
+                    rooms: e.target.value,
+                  })
+                }
+              />
+            </Form.Group>
+            <Form.Group controlId="formPrice">
+              <Form.Label>price</Form.Label>
+              <Form.Control
+                className="formİnput"
+                type="number"
+                placeholder="price"
+                value={editedProduct?.price || ""}
+                onChange={(e) =>
+                  setEditedProduct({
+                    ...editedProduct,
+                    price: e.target.value,
+                  })
+                }
+              />
+            </Form.Group>
+            {/* Diğer motorsiklet özel form alanları buraya eklenmeli */}
+          </>
+        );
+      case "Arsa":
+        return (
+          <>
+            <Form.Group controlId="formTitle">
+              <Form.Label>title</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="title"
+                value={editedProduct?.title || ""}
+                onChange={(e) =>
+                  setEditedProduct({
+                    ...editedProduct,
+                    title: e.target.value,
+                  })
+                }
+              />
+            </Form.Group>
+            <Form.Group controlId="formDescription">
+              <Form.Label>description</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="description"
+                value={editedProduct?.description || ""}
+                onChange={(e) =>
+                  setEditedProduct({
+                    ...editedProduct,
+                    description: e.target.value,
+                  })
+                }
+              />
+            </Form.Group>
+            <Form.Group controlId="formProductName">
+              <Form.Label>productName</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="productName"
+                value={editedProduct?.productName || ""}
+                onChange={(e) =>
+                  setEditedProduct({
+                    ...editedProduct,
+                    productName: e.target.value,
+                  })
+                }
+              />
+            </Form.Group>
+            <Form.Group controlId="formM2">
+              <Form.Label>m2</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="m2"
+                value={editedProduct?.m2 || ""}
+                onChange={(e) =>
+                  setEditedProduct({ ...editedProduct, m2: e.target.value })
+                }
+              />
+            </Form.Group>
+            <Form.Group controlId="formPrice">
+              <Form.Label>Fiyat</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="Fiyat"
+                value={editedProduct?.price || ""}
+                onChange={(e) =>
+                  setEditedProduct({ ...editedProduct, price: e.target.value })
+                }
+              />
+            </Form.Group>
+            {/* Diğer motorsiklet özel form alanları buraya eklenmeli */}
+          </>
+        );
+      case "Telefon":
+        return (
+          <>
+            <Form.Group controlId="formTitle">
+              <Form.Label>title</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="title"
+                value={editedProduct?.title || ""}
+                onChange={(e) =>
+                  setEditedProduct({ ...editedProduct, title: e.target.value })
+                }
+              />
+            </Form.Group>
+            <Form.Group controlId="formDescription">
+              <Form.Label>description</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="description"
+                value={editedProduct?.description || ""}
+                onChange={(e) =>
+                  setEditedProduct({
+                    ...editedProduct,
+                    description: e.target.value,
+                  })
+                }
+              />
+            </Form.Group>
+            <Form.Group controlId="formProductName">
+              <Form.Label>productName</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="productName"
+                value={editedProduct?.productName || ""}
+                onChange={(e) =>
+                  setEditedProduct({
+                    ...editedProduct,
+                    productName: e.target.value,
+                  })
+                }
+              />
+            </Form.Group>
+            <Form.Group controlId="formBrand">
+              <Form.Label>brand</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="brand"
+                value={editedProduct?.brand || ""}
+                onChange={(e) =>
+                  setEditedProduct({ ...editedProduct, brand: e.target.value })
+                }
+              />
+            </Form.Group>
+            <Form.Group controlId="formModel">
+              <Form.Label>model</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="model"
+                value={editedProduct?.model || ""}
+                onChange={(e) =>
+                  setEditedProduct({ ...editedProduct, model: e.target.value })
+                }
+              />
+            </Form.Group>
+            <Form.Group controlId="formColor">
+              <Form.Label>color</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="color"
+                value={editedProduct?.color || ""}
+                onChange={(e) =>
+                  setEditedProduct({ ...editedProduct, color: e.target.value })
+                }
+              />
+            </Form.Group>
+            <Form.Group controlId="formRam">
+              <Form.Label>Ram</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="Ram"
+                value={editedProduct?.ram || ""}
+                onChange={(e) =>
+                  setEditedProduct({ ...editedProduct, ram: e.target.value })
+                }
+              />
+            </Form.Group>
+            <Form.Group controlId="formProcessor">
+              <Form.Label>processor</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="processor"
+                value={editedProduct?.processor || ""}
+                onChange={(e) =>
+                  setEditedProduct({
+                    ...editedProduct,
+                    processor: e.target.value,
+                  })
+                }
+              />
+            </Form.Group>
+            <Form.Group controlId="formMemory">
+              <Form.Label>memory</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="memory"
+                value={editedProduct?.memory || ""}
+                onChange={(e) =>
+                  setEditedProduct({ ...editedProduct, memory: e.target.value })
+                }
+              />
+            </Form.Group>
+            <Form.Group controlId="formPrice">
+              <Form.Label>Fiyat</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="Fiyat"
+                value={editedProduct?.price || ""}
+                onChange={(e) =>
+                  setEditedProduct({ ...editedProduct, price: e.target.value })
+                }
+              />
+            </Form.Group>
+            {/* Diğer daire özel form alanları buraya eklenmeli */}
+          </>
+        );
+      case "Bilgisayar":
+        return (
+          <>
+            <Form.Group controlId="formTitle">
+              <Form.Label>title</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="title"
+                value={editedProduct?.title || ""}
+                onChange={(e) =>
+                  setEditedProduct({
+                    ...editedProduct,
+                    title: e.target.value,
+                  })
+                }
+              />
+            </Form.Group>
+            <Form.Group controlId="formDescription">
+              <Form.Label>description</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="description"
+                value={editedProduct?.description || ""}
+                onChange={(e) =>
+                  setEditedProduct({
+                    ...editedProduct,
+                    description: e.target.value,
+                  })
+                }
+              />
+            </Form.Group>
+            <Form.Group controlId="formProductName">
+              <Form.Label>productName</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="productName"
+                value={editedProduct?.productName || ""}
+                onChange={(e) =>
+                  setEditedProduct({
+                    ...editedProduct,
+                    productName: e.target.value,
+                  })
+                }
+              />
+            </Form.Group>
+            <Form.Group controlId="formBrand">
+              <Form.Label>brand</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="brand"
+                value={editedProduct?.brand || ""}
+                onChange={(e) =>
+                  setEditedProduct({
+                    ...editedProduct,
+                    brand: e.target.value,
+                  })
+                }
+              />
+            </Form.Group>
+            <Form.Group controlId="formModel">
+              <Form.Label>model</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="model"
+                value={editedProduct?.model || ""}
+                onChange={(e) =>
+                  setEditedProduct({
+                    ...editedProduct,
+                    model: e.target.value,
+                  })
+                }
+              />
+            </Form.Group>
+            <Form.Group controlId="formRam">
+              <Form.Label>ram</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="ram"
+                value={editedProduct?.ram || ""}
+                onChange={(e) =>
+                  setEditedProduct({
+                    ...editedProduct,
+                    ram: e.target.value,
+                  })
+                }
+              />
+            </Form.Group>
+            <Form.Group controlId="formGPU">
+              <Form.Label>GPU</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="GPU"
+                value={editedProduct?.GPU || ""}
+                onChange={(e) =>
+                  setEditedProduct({
+                    ...editedProduct,
+                    GPU: e.target.value,
+                  })
+                }
+              />
+            </Form.Group>
+            <Form.Group controlId="formProcessor">
+              <Form.Label>processor</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="processor"
+                value={editedProduct?.processor || ""}
+                onChange={(e) =>
+                  setEditedProduct({
+                    ...editedProduct,
+                    processor: e.target.value,
+                  })
+                }
+              />
+            </Form.Group>
+            <Form.Group controlId="formMemory">
+              <Form.Label>memory</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="memory"
+                value={editedProduct?.memory || ""}
+                onChange={(e) =>
+                  setEditedProduct({
+                    ...editedProduct,
+                    memory: e.target.value,
+                  })
+                }
+              />
+            </Form.Group>
+            <Form.Group controlId="formPrice">
+              <Form.Label>price</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="price"
+                value={editedProduct?.price || ""}
+                onChange={(e) =>
+                  setEditedProduct({
+                    ...editedProduct,
+                    price: e.target.value,
+                  })
+                }
+              />
+            </Form.Group>
+            {/* Diğer motorsiklet özel form alanları buraya eklenmeli */}
+          </>
+        );
+      default:
+        return null;
+    }
   };
 
   return (
@@ -163,7 +756,7 @@ function ProductInfo() {
               <button
                 type="button"
                 className="btn AccountProductButton"
-                onClick={() => handleEdit(product.id)}
+                onClick={() => handleEdit(product)}
               >
                 Düzenle
               </button>
