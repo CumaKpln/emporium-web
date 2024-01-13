@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import İnformation from './Accountİnfo';
-// import MyProducts from './MyProducts';
+import ProductInfo from './ProductInfo';
 import AccountSidebar from './AccountMenu';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
@@ -23,7 +23,7 @@ function Account() {
             </div>
             <div className='col-md-8'>
               {selectedPage === 'information' && <İnformation />}
-              {/* {selectedPage === 'product' && <MyProducts />} */}
+              {selectedPage === 'product' && <ProductInfo />}
             </div>
           </div>
         </div>
@@ -37,7 +37,7 @@ function Account() {
           </div>
           <div className='col-md-12'>
             {selectedPage === 'information' && <İnformation />}
-            {/* {selectedPage === 'product' && <MyProducts />} */}
+            {selectedPage === 'product' && <ProductInfo />}
           </div>
         </div>
       </div>

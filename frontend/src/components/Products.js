@@ -100,40 +100,39 @@ function Products() {
 
     } catch (error) {
       console.error("Kullanıcı hatası:", error);
-    } 
+    }
   };
   useEffect(() => {
     fetchData();
 
-  }, []);
-
+  }, [token]);
+  console.log(allProduct)
   return (
     <>
-        <div className="products row">
-          {allProduct.map((product) => (
-            <div className="img col-xl-3 col-lg-4 col-md-6 col-12 mb-4" key={product.id} style={{ border: "1px solid", cursor: "pointer" }}>
+      <div className="products row">
+        {allProduct.map((product) => (
+          <div className="img col-xl-3 col-lg-4 col-md-6 col-12 " key={product.id} style={{ cursor: "pointer" }}>
+            <Link
+              to={`/urun-detayi/${product.id}`}
+              onClick={() => selectedProduct(product)}
+            >
+              <div className="card" style={{ border: "1px solid lightgray", padding: "15px", height: "250px" }}>
+                <img
+                  src={`https://mysql-emporium-deploy1.onrender.com/photo/${product.img1}`}
 
-              <Link
-                to={`/urun-detayi/${product.id}`}
-                onClick={() => selectedProduct(product)}
-              >
-                <div className="card">
-                  <img
-                    src={`https://mysql-emporium-deploy1.onrender.com/photo/${product.img1}`}
+                  className="card-img-top "
+                  alt={product.productTitle}
+                  style={{ minHeight: "75px" }}
+                />
+                <div class="card-body">
+                  <h6 className="card-title mt-5">{product.productTitle}</h6>
+                </div>  
+              </div>
+            </Link>
+          </div>
+        ))}
+      </div>
 
-                    className="card-img-top fixed-size-image"
-                    alt={product.productTitle}
-                  />
-                  <div className="card-body">
-
-                    <h6 className="card-title">{product.productTitle}</h6>
-                  </div>
-                </div>
-              </Link>
-            </div>
-          ))}
-        </div>
-      
     </>
   );
 }

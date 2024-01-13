@@ -6,6 +6,7 @@ function Detail() {
   const selectedProduct = useSelector(
     (state) => state.products.selectedProduct
   );
+  console.log(selectedProduct)
   const productDetail = selectedProduct.details;
   
   return (
@@ -23,7 +24,7 @@ function Detail() {
         </p>
         <li className="mt-3"><b>Ürün Adı :</b> {selectedProduct.productName}</li>
         <hr style={{ margin: "1px 0px" }} />
-        <li><b>Kategori :       </b>  {selectedProduct.category}</li>
+        <li><b>Kategori :</b>  {selectedProduct.category}</li>
         <hr style={{ margin: "1px 0px" }} />
         <li><b>Alt Kategori :</b>  {selectedProduct.subcategory} </li>
         <hr style={{ margin: "1px 0px" }} />
