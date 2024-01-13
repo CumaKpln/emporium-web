@@ -16,11 +16,52 @@ function ProductInfo() {
     setEditedProduct({ ...editedProduct, gear: e.target.value });
   };
 
-  const handleEdit = (product) => {
-    setEditedProduct(product);
-    setEditedImages(product.selectedFiles.map((file) => ({ ...file })));
-    setShowModal(true);
+  const handleEdit = (id) => {
+    // id'ye göre ürünü bul
+    const selectedProduct = userProduct.find((product) => product.id === id);
+  
+    console.log("Gelen ürün:", selectedProduct);
+  
+    if (selectedProduct) {
+      console.log("Seçilen ürün:", selectedProduct);
+      setEditedProduct({
+        id: selectedProduct.id,
+        title: selectedProduct.productTitle,
+        description: selectedProduct.description,
+        productName: selectedProduct.productName,
+        brand: selectedProduct.brand,
+        series: selectedProduct.series,
+        gear: selectedProduct.gear,
+        color: selectedProduct.color,
+        price: selectedProduct.price,
+        category: selectedProduct.category,
+        subCategory: selectedProduct.subcategory,
+        squareMeters: selectedProduct.m2,
+        ram: selectedProduct.ram,
+        processor: selectedProduct.processor,
+        memory: selectedProduct.memory,
+        room: selectedProduct.room,
+        gpu: selectedProduct.gpu,
+        province: selectedProduct.province,
+        district: selectedProduct.district,
+        neighbourhood: selectedProduct.neighbourhood,
+        propertyType: selectedProduct.propertyType,
+        model: selectedProduct.model,
+        selectedFiles: selectedProduct.images
+          ? selectedProduct.images.map((image) => ({ url: image }))
+          : [],
+      });
+      setEditedImages(
+        selectedProduct.images
+          ? selectedProduct.images.map((image) => ({ url: image }))
+          : []
+      );
+      setShowModal(true);
+    } else {
+      console.log("Ürün tanımsız.");
+    }
   };
+  
 
   const handleUpdate = () => {
     // Tüm resimlerin silindiği durumu kontrol et
@@ -28,7 +69,6 @@ function ProductInfo() {
       setShowAlert(true);
       return;
     }
-
 
     // Güncelleme işlemi tamamlandıktan sonra products state'ini güncelle
     setProducts((prevProducts) =>
@@ -56,7 +96,7 @@ function ProductInfo() {
 
     Array.from(e.target.files).forEach((file) => {
       // Check if the file type is an image
-      if (file.type.startsWith('image/')) {
+      if (file.type.startsWith("image/")) {
         newImages.push({ url: URL.createObjectURL(file) });
       }
     });
@@ -70,6 +110,7 @@ function ProductInfo() {
     setEditedImages(newImages);
   };
 
+  const [userProduct, setUserProduct] = useState([]);
   const fetchData = async () => {
     try {
       const response = await axios.get(
@@ -80,28 +121,8 @@ function ProductInfo() {
           },
         }
       );
-      const userProduct = response.data.mergedResult
+      setUserProduct(response.data.mergedResult);
 
-      setEditedImages(userProduct.images);
-      setEditedProduct({
-        title: userProduct.title || "",
-        description: userProduct.description || "",
-        productName: userProduct.productName || "",
-        brand: userProduct.brand || "",
-        series: userProduct.series || "",
-        gear: userProduct.gear || "",
-        color: userProduct.color || "",
-        // Diğer ürün özelliklerini ekleyin
-
-        // Örnek: Alt kategoriye göre gerekli alanları ekleyin
-        // Örneğin, subCategory "Araba" ise:
-        // title: userProduct.title || "",
-        // description: userProduct.description || "",
-        // productName: userProduct.productName || "",
-        // ...
-
-        // SubCategory'ye göre diğer alanları da ekleyin
-      });
       console.log("Kullanıcı verileri başarıyla alındı :", response.data);
     } catch (error) {
       // Hata durumunda kullanıcıya bilgi verilebilir veya hata işlenebilir
@@ -112,11 +133,11 @@ function ProductInfo() {
     fetchData();
   }, []);
 
-
+  //modal
   const renderImages = () => {
     return (
       <div className="İmgEdit mb-3">
-        {editedImages.map((image, index) => (
+        {editedProduct?.selectedFiles?.map((image, index) => (
           <span key={index} className="mr-2 position-relative">
             <img
               src={image.url}
@@ -137,7 +158,7 @@ function ProductInfo() {
                 className="bi bi-trash3"
                 viewBox="0 0 16 16"
               >
-                <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5" />
+                <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.500 8.5a.5.5 0 0 1-.998.06l-.500-8.5a.5.5 0 0 1 .47-.53zM5 4v8.5a.5.5 0 0 1-1 0V4a.5.5 0 0 1 1 0zm3 0v8.5a.5.5 0 1 1-1 0V4a.5.5 0 0 1 1 0z" />
               </svg>
             </button>
           </span>
@@ -155,6 +176,7 @@ function ProductInfo() {
     );
   };
 
+  //modal içi düzenleme
   const renderFormFields = () => {
     // subCategory'ye göre form alanlarını döndür
     switch (editedProduct?.subCategory) {
@@ -365,7 +387,6 @@ function ProductInfo() {
           </>
         );
       case "Arsa":
-        
         return (
           <>
             <Form.Group controlId="formTitle">
@@ -713,7 +734,7 @@ function ProductInfo() {
 
   return (
     <div className="card">
-      {products.map((urun, id) => (
+      {userProduct.map((product, id) => (
         <div className="row mb-3 cards" key={id}>
           <div className="col-md-4">
             <img
@@ -725,8 +746,8 @@ function ProductInfo() {
           </div>
           <div className="col-md-8">
             <div className="card-body">
-              <h5 className="card-title">{urun.title}</h5>
-              <p className="card-text">{urun.description}</p>
+              <h5 className="card-title">{product.title}</h5>
+              <p className="card-text">{product.description}</p>
               <p className="card-text">
                 <small className="text-body-secondary">
                   Son güncelleme 3 dakika önce
@@ -735,13 +756,13 @@ function ProductInfo() {
               <button
                 type="button"
                 className="btn AccountProductButton"
-                onClick={() => handleEdit(urun)}
+                onClick={() => handleEdit(product)}
               >
                 Düzenle
               </button>
               <button
                 className="icon AccountProductButton"
-                onClick={() => handleDelete(urun.id)}
+                onClick={() => handleDelete(product.id)}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

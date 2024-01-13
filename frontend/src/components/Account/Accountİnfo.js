@@ -62,14 +62,12 @@ function İnfo() {
           },
         }
       );
-
-      // Başarılı bir şekilde güncellendiğine dair mesajı göstermek için kullanılabilir
-      console.log("Güncelleme başarılı:", response.data);
+      setEditMod(false);
     } catch (error) {
-      // Hata durumunda kullanıcıya bilgi verilebilir veya hata işlenebilir
-      console.error("Güncelleme hatası:", error);
+
     }
   };
+  
 
   const fetchData = async () => {
     try {
