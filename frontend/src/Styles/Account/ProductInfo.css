@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.card{
+    border-radius: 20px;
+}
+
+.main-row{
+    margin-top: 40px;
+    gap: 5px;
+    justify-content: center;
+}
+@media (max-width: 767px){
+    button{
+        margin-top: 5%;
+    }
+  }

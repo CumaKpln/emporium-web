@@ -9,6 +9,6 @@ export const store = configureStore({
     products: productReducer,
     favProducts: favReducer,
     userToken:tokenReducer,
-    userİnfo:userReducer
-  },
+    userİnfo:userReducer,
+  }
 });

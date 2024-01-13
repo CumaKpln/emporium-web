@@ -89,7 +89,7 @@ function İnfo() {
       setPhoneNumber(data.phoneNumber);
     } catch (error) {
       console.error("Veri çekme hatası:", error);
-      setData("");
+      // setData("");
       setCreatedAt("");
       setUsername("");
       setEmail("");
