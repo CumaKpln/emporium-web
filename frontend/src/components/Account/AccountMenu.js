@@ -28,7 +28,7 @@ function MyMenu({ onSelectPage }) {
               setSelectedPage('product');
             }}
           >
-            Ürün Bilgilerim
+            Ürünlerim
           </button>
         </div>
       </div>

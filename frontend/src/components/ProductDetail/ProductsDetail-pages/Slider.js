@@ -1,41 +1,56 @@
+import React from "react";
 import { Carousel } from "react-carousel-minimal";
 import { useDispatch, useSelector } from "react-redux";
-import { favItem } from "../../../control/slices/favSlice"; // Redux reducer'ınızdan gelen action
+import { favItem } from "../../../control/slices/favSlice";
 
 function Slider() {
-  //redux'a giden veriler yapımı
+  // Redux store'a erişim sağlamak için useDispatch ve useSelector hook'larını kullanıyoruz.
   const dispatch = useDispatch();
 
-  const favoriteItem = (product) => {
-    // Redux store'a seçilen ürünü gönderme
-    dispatch(favItem(product));
-  };
-
-
-  //reduxtan gelen veriler
+  // Redux store'dan gelen veriyi alıyoruz.
   const selectedProduct = useSelector(
     (state) => state.products.selectedProduct
   );
-  
-  const product = useSelector((state) => state.products);
 
+  // Redux'a seçilen ürünü favorilere eklemek için bir fonksiyon.
+  const favoriteItem = (product) => {
+    dispatch(favItem(product));
+  };
+
+  // Görüntü verilerini içeren bir nesne oluşturuyoruz.
+  const imgData = {
+    img1: `https://mysql-emporium-deploy1.onrender.com/photo/${selectedProduct.img1}`,
+    img2: `https://mysql-emporium-deploy1.onrender.com/photo/${selectedProduct.img2}`,
+    img3: `https://mysql-emporium-deploy1.onrender.com/photo/${selectedProduct.img3}`,
+    img4: `https://mysql-emporium-deploy1.onrender.com/photo/${selectedProduct.img4}`,
+    img5: `https://mysql-emporium-deploy1.onrender.com/photo/${selectedProduct.img5}`,
+  };
+
+  // imgData'daki değerleri bir diziye dönüştürüyoruz ve undefined olanları filtreliyoruz.
+  const imgArray = Object.values(imgData).filter((img) => img);
+
+  // Carousel bileşeni için stilleri tanımlıyoruz.
   const captionStyle = {
     fontSize: "2em",
     fontWeight: "bold",
   };
+
   const slideNumberStyle = {
     fontSize: "20px",
     fontWeight: "bold",
   };
 
-  const images = selectedProduct.selectedFiles.map((file, index) => ({
-    image: file.url,
-    index: index, // Dizi içindeki her bir dosya için index değeri oluşturuluyor
+  // Carousel için resim nesnelerini oluşturuyoruz.
+  const images = imgArray.map((file, index) => ({
+    image: file, // Resim URL'sini direkt olarak kullanıyoruz.
+    index: index,
   }));
 
+  // Bileşeni render ediyoruz.
   return (
     <div className="App">
-      <div onClick={() => favoriteItem(product)} className="fav-icon">
+      {/* Favori ekleme işlemi için bir ikon ve metin ekliyoruz. */}
+      <div onClick={() => favoriteItem(selectedProduct)} className="fav-icon">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="25"
@@ -71,7 +86,6 @@ function Slider() {
           maxWidth: "850px",
           maxHeight: "500px",
           margin: "40px auto",
-          
         }}
       />
     </div>
