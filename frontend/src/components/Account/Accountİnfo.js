@@ -62,6 +62,8 @@ function İnfo() {
         }
         );
         console.log("Güncelleme başarılı:", response.data);
+        setEditMod(false);
+
     } catch (error) {
       console.error("Güncelleme hatası:", error);
     }

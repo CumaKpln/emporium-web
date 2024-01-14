@@ -12,6 +12,7 @@ function Products() {
   const [allProduct, setAllProduct] = useState([]);
   const { selectedCategory, selectedSubCategory } = useCategory();
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const dispatch = useDispatch();
 
   //redux ile ürün detay sayfasına yönlendirme
@@ -47,17 +48,32 @@ function Products() {
       // Filtreleme kriterlerine göre ayarlamaları yapın
       return (
         (!selectedCategory || product.category === selectedCategory) &&
-        (!selectedSubCategory || product.subCategory === selectedSubCategory)
+        (!selectedSubCategory || product.subCategory === selectedSubCategory) &&
+        (product.productTitle.toLowerCase().includes(searchTerm.toLowerCase()))
       );
     });
 
     // Filtrelenmiş ürünleri state'e set et
     setFilteredProducts(filtered);
-  }, [allProduct, selectedCategory, selectedSubCategory]);
+  }, [allProduct, selectedCategory, selectedSubCategory, searchTerm]);
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
 
   return (
     <>
       <div className="products row">
+        {/* Arama kutusu eklenmiş */}
+        <div className="search-box">
+          <input
+            type="text"
+            placeholder="Ürün Ara"
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
+        </div>
+
         {filteredProducts.map((product) => (
           <div className="img col-xl-3 col-lg-4 col-md-6 col-12 " key={product.id} style={{ cursor: "pointer" }}>
             <Link

@@ -1,27 +1,30 @@
-// Sidebar.js
-import React from "react";
-import { useCategory } from "./Context/CategoryContext";
+// import React, { useState } from "react";
+// import "bootstrap/dist/css/bootstrap.min.css";
+// import "../Styles/sidebar.css";
 
-const Sidebar = () => {
-  const { handleCategoryClick } = useCategory();
+// const Sidebar = () => {
+//   const [searchTerm, setSearchTerm] = useState("");
 
-  const handleSidebarClick = (category, subCategory) => {
-    handleCategoryClick({ category, subCategory });
-  };
+//   const handleSearchChange = (event) => {
+//     setSearchTerm(event.target.value);
+//   };
 
-  return (
-    <div className="sidebarMain">
-      <button onClick={() => handleSidebarClick("vehicle", null)}>Araba</button>
-      <button onClick={() => handleSidebarClick("vehicle", "car")}>Araba - Car</button>
-      <button onClick={() => handleSidebarClick("vehicle", "motorcycle")}>Araba - Motorcycle</button>
-      <button onClick={() => handleSidebarClick("realEstate", null)}>Emlak</button>
-      <button onClick={() => handleSidebarClick("realEstate", "home")}>Emlak - Ev</button>
-      <button onClick={() => handleSidebarClick("realEstate", "plot")}>Emlak - Arsa</button>
-      <button onClick={() => handleSidebarClick("electronicStuff", null)}>Elektronik Eşya</button>
-      <button onClick={() => handleSidebarClick("electronicStuff", "phone")}>Elektronik Eşya - Telefon</button>
-      <button onClick={() => handleSidebarClick("electronicStuff", "pc")}>Elektronik Eşya - PC</button>
-    </div>
-  );
-};
+//   const handleSearchClick = () => {
+//     console.log("Search clicked:", searchTerm);
+//   };
 
-export default Sidebar;
+//   return (
+//     <div className="sidebarMain">
+//       <input
+//         type="text"
+//         placeholder="Search..."
+//         value={searchTerm}
+//         onChange={handleSearchChange}
+//       />
+
+//       <button onClick={handleSearchClick}>Search</button>
+//     </div>
+//   );
+// };
+
+// export default Sidebar;
