@@ -43,7 +43,7 @@ function ProductInfo() {
     console.log(product)
     try {
       await axios.delete(
-        `https://mysql-emporium-deploy1.onrender.com/deleteProduct/${product.details.productId}`,
+        `https://mysql-emporium-deploy1.onrender.com/product/${product.id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

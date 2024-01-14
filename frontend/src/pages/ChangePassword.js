@@ -20,7 +20,7 @@ const PasswordChange = () => {
     
     // Şifre değiştirme isteği gönder
     axios
-      .post(`https://mysql-emporium-deploy1.onrender.com/reset-password/${resetToken}`, {
+      .post(`https://mysql-emporium-deploy1.onrender.com/user/reset-password/${resetToken}`, {
         newPassword: newPassword,
         newPassword2: newPassword2,
       })

@@ -1,13 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useCategory } from "./Context/CategoryContext";
-import { useProvince } from "./Context/ProvinceContext";
 import { useDispatch } from "react-redux";
 import "../Styles/Product.css";
 import { Link } from "react-router-dom";
 import { selectProduct } from "../control/slices/productSlice";
-import { useSearch } from "./Context/SearchContext";
-import { useBrand } from "./Context/BrandContext";
-import { usePrice } from "./Context/PriceContext";
 import axios from "axios";
 
 function Products() {
@@ -17,12 +12,6 @@ function Products() {
 
   const [allProduct, setAllProduct] = useState([]);
 
-
-  const { selectedCategory, selectedSubCategory } = useCategory();
-  const { selectedProvince } = useProvince();
-  const { minPrice, maxPrice } = usePrice();
-  const { selectedBrand } = useBrand();
-  const { nameFilter } = useSearch();
 
   //redux ile ürün detay sayfasına yönlendirme
   const dispatch = useDispatch();
@@ -36,53 +25,6 @@ function Products() {
   };
 
   // Ürün bilgilerini localStorage'a kaydet
-
-
-  // Tüm ürünleri filtreleme
-  const filteredProducts = allProduct.filter((product) => {
-    // Kategori filtresi: Eğer bir kategori seçilmişse, ürünün kategorisi seçilen kategoriye eşit olmalıdır. Aksi halde true.
-    const categoryMatch = selectedCategory
-      ? product.category.toLowerCase() === selectedCategory.toLowerCase()
-      : true;
-    // Alt kategori filtresi: Eğer bir alt kategori seçilmişse, ürünün alt kategorisi seçilen alt kategoriye eşit olmalıdır. Aksi halde true.
-    const subCategoryMatch = selectedSubCategory
-      ? product.subcategory.toLowerCase() === selectedSubCategory.toLowerCase()
-      : true;
-
-    // Ürün adı filtresi: Eğer bir ürün adı filtresi varsa, ürün adı filtresini içermelidir. Aksi halde true.
-    const nameMatch = nameFilter
-      ? product.productTitle.toLowerCase().includes(nameFilter.toLowerCase())
-      : true;
-
-    // İl filtresi: Eğer bir il seçilmişse, ürünün ili seçilen ile eşit olmalıdır. Aksi halde true.
-    const provinceMatch = selectedProvince
-      ? product.province.toLowerCase() === selectedProvince.toLowerCase()
-      : true;
-
-    // Marka filtresi: Eğer bir marka seçilmişse ve ürünün markası tanımlıysa, ürün markası seçilen markaya eşit olmalıdır. Aksi halde true.
-    let brandMatch = true;
-    if (selectedBrand.length !== 0 && product.brand !== undefined)
-      selectedBrand.forEach(
-        (brand) =>
-        (brandMatch =
-          brandMatch && product.brand.toLowerCase() === brand.toLowerCase())
-      );
-
-    // Fiyat filtresi: Ürünün fiyatı, seçilen minimum ve maksimum fiyat aralığı içinde olmalıdır. Aksi halde true.
-    const priceMatch =
-      parseInt(product.price) >= minPrice &&
-      parseInt(product.price) <= maxPrice;
-
-    // Tüm filtreleme koşullarının sağlanması durumunda true, aksi halde false döndürülür.
-    return (
-      categoryMatch &&
-      subCategoryMatch &&
-      nameMatch &&
-      provinceMatch &&
-      priceMatch &&
-      brandMatch
-    );
-  });
 
 
   const fetchData = async () => {
@@ -106,7 +48,6 @@ function Products() {
     fetchData();
 
   }, [token]);
-  console.log(allProduct)
   return (
     <>
       <div className="products row">
@@ -126,7 +67,7 @@ function Products() {
                 />
                 <div class="card-body">
                   <h6 className="card-title mt-5">{product.productTitle}</h6>
-                </div>  
+                </div>
               </div>
             </Link>
           </div>

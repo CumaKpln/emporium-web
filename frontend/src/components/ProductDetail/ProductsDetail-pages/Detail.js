@@ -30,7 +30,7 @@ function Detail() {
         <hr style={{ margin: "1px 0px" }} />
         {selectedProduct.subcategory === "land" && (
           <>
-            <li><b>m2 :</b>{productDetail.squareMeters} </li> <hr style={{ margin: "1px 0px" }} />
+            <li><b>m2 :</b>{productDetail.squareMeters} M2 </li> <hr style={{ margin: "1px 0px" }} />
             <li><b>Emlak Tipi :</b>{productDetail.propertyType} </li> <hr style={{ margin: "1px 0px" }} />
           </>
         )}
