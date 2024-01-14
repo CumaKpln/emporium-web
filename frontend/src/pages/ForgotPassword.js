@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Logo from "../images/logo.png";
-import "../Styles/Pages/ForgotPassword.css"
+import "../Styles/Pages/ForgotPassword.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import toast, { Toaster } from "react-hot-toast";
@@ -28,8 +28,11 @@ const ForgotPassword = () => {
       );
 
       if (response.status === 200) {
-        toast.success("Şifre sıfırlama bağlantısı e-posta adresinize gönderildi.");
-        
+        const resetToken = response.data.resetToken;
+        localStorage.setItem("resetToken", resetToken);
+        toast.success(
+          "Şifre sıfırlama bağlantısı e-posta adresinize gönderildi."
+        );
       } else {
         toast.error("Şifre sıfırlama işleminde bir hata oluştu.");
       }
@@ -38,6 +41,12 @@ const ForgotPassword = () => {
       toast.error("Şifre sıfırlama işleminde bir hata oluştu.");
     }
   };
+
+  // Checking if resetToken exists before logging
+  const resetToken = localStorage.getItem("resetToken");
+  if (resetToken) {
+    console.log(resetToken);
+  }
 
   return (
     <>
@@ -63,7 +72,10 @@ const ForgotPassword = () => {
             <button className="ForgotPasswordBtn" type="submit">
               Şifre Sıfırlama Bağlantısı Gönder
             </button>
-            <p className="text-danger">E-posta adresinize bağlantı gönderilecektir lütfen geçerli bir e-posta adresi yazın</p>
+            <p className="text-danger">
+              E-posta adresinize bağlantı gönderilecektir. Lütfen geçerli bir
+              e-posta adresi yazın.
+            </p>
           </form>
         </div>
       </div>
