@@ -28,35 +28,34 @@ function ProductInfo() {
         }
       );
       setUserProducts(response.data.mergedResult);
+      const userProducts = response.data.mergedResult;
+      console.log(userProducts);
     } catch (error) {
       console.error("Kullanıcı hatası:", error);
     }
   };
 
-  // Component yüklendiğinde kullanıcı ürünlerini getir
   useEffect(() => {
     fetchData();
   }, [token]);
 
-  // Kullanıcının bir ürünü silmesini sağlayan fonksiyon
-  const handleDelete = async (product) => {
-    console.log(product)
+  const handleDelete = async (productId) => {
     try {
       await axios.delete(
-        `https://mysql-emporium-deploy1.onrender.com/deleteProduct/:${product}`,
+        `https://mysql-emporium-deploy1.onrender.com/product/${productId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }
       );
-
-      // Ürün silindikten sonra kullanıcının güncellenmiş ürün listesini getir
+  
       fetchData();
     } catch (error) {
       console.error("Kullanıcı hatası:", error);
     }
   };
+  
 
   return (
     <div className="row main-row">

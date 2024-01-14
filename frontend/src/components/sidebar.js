@@ -1,143 +1,27 @@
-import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "../Styles/sidebar.css";
-
-const SidebarCategory = ({ title, isOpen, onToggle, children }) => (
-  <div>
-    <p className="sideberTitle"  onClick={onToggle}>{title}</p>
-    {isOpen && <div>{children}</div>}
-  </div>
-);
-
-const SidebarSubCategory = ({ title, selected, onToggle }) => (
-  <label className="sidebarLabel">
-    <input className="sidebarInput" type="checkbox" checked={selected} onChange={onToggle} />
-    {title}
-  </label>
-);
-
+// Sidebar.js
+import React from "react";
+import { useCategory } from "./Context/CategoryContext";
 
 const Sidebar = () => {
-  const [categories, setCategories] = useState({
-    vehicle: false,
-    subCategories: {
-      car: false,
-      motorcycle: false,
-    },
-    realEstate: false,
-    subCategoriesRealEstate: {
-      home: false,
-      plot: false,
-    },
-    electronicStuff: false,
-    subCategoriesElectronicStuff: {
-      phone: false,
-      pc: false,
-    },
-  });
+  const { handleCategoryClick } = useCategory();
 
-  const toggleCategory = (category) => {
-    setCategories((prevCategories) => {
-      const updatedCategories = { ...prevCategories };
-
-      // Tüm alt kategorilerin checkbox'larını sıfırla
-      if (
-        category === "vehicle" ||
-        category === "realEstate" ||
-        category === "electronicStuff"
-      ) {
-        Object.keys(updatedCategories.subCategories).forEach((key) => {
-          updatedCategories.subCategories[key] = false;
-        });
-
-        Object.keys(updatedCategories.subCategoriesRealEstate).forEach((key) => {
-          updatedCategories.subCategoriesRealEstate[key] = false;
-        });
-
-        Object.keys(updatedCategories.subCategoriesElectronicStuff).forEach((key) => {
-          updatedCategories.subCategoriesElectronicStuff[key] = false;
-        });
-      }
-
-      // Diğer kategorileri sıfırla
-      Object.keys(updatedCategories).forEach((key) => {
-        if (
-          key !== category &&
-          key !== "subCategories" &&
-          key !== "subCategoriesRealEstate" &&
-          key !== "subCategoriesElectronicStuff"
-        ) {
-          updatedCategories[key] = false;
-        }
-      });
-
-      // Seçili kategoriyi toggle et
-      updatedCategories[category] = !prevCategories[category];
-
-      return updatedCategories;
-    });
-  };
-
-  const toggleSubCategory = (category, subCategory) => {
-    setCategories((prevCategories) => {
-      const updatedCategories = { ...prevCategories };
-
-      // Tüm alt kategorilerin checkbox'larını sıfırla
-      Object.keys(updatedCategories[category]).forEach((key) => {
-        updatedCategories[category][key] = false;
-      });
-
-      // Seçili alt kategoriyi toggle et
-      updatedCategories[category][subCategory] = !prevCategories[category][subCategory];
-
-      return updatedCategories;
-    });
+  const handleSidebarClick = (category, subCategory) => {
+    handleCategoryClick({ category, subCategory });
   };
 
   return (
     <div className="sidebarMain">
-      <SidebarCategory title="Vasıta" isOpen={categories.vehicle} onToggle={() => toggleCategory("vehicle")}>
-        <SidebarSubCategory
-          title="Araba"
-          selected={categories.subCategories.car}
-          onToggle={() => toggleSubCategory("subCategories", "car")}
-        />
-        <SidebarSubCategory
-          title="Motorsiklet"
-          selected={categories.subCategories.motorcycle}
-          onToggle={() => toggleSubCategory("subCategories", "motorcycle")}
-        />
-      </SidebarCategory>
-
-      <SidebarCategory title="Emlak" isOpen={categories.realEstate} onToggle={() => toggleCategory("realEstate")}>
-        <SidebarSubCategory
-          title="Ev"
-          selected={categories.subCategoriesRealEstate.home}
-          onToggle={() => toggleSubCategory("subCategoriesRealEstate", "home")}
-        />
-        <SidebarSubCategory
-          title="Arsa"
-          selected={categories.subCategoriesRealEstate.plot}
-          onToggle={() => toggleSubCategory("subCategoriesRealEstate", "plot")}
-        />
-      </SidebarCategory>
-
-      <SidebarCategory title="Elektronik Eşya" isOpen={categories.electronicStuff} onToggle={() => toggleCategory("electronicStuff")}>
-        <SidebarSubCategory
-          title="Telefon"
-          selected={categories.subCategoriesElectronicStuff.phone}
-          onToggle={() => toggleSubCategory("subCategoriesElectronicStuff", "phone")}
-        />
-        <SidebarSubCategory
-          title="Bilgisayar"
-          selected={categories.subCategoriesElectronicStuff.pc}
-          onToggle={() => toggleSubCategory("subCategoriesElectronicStuff", "pc")}
-        />
-      </SidebarCategory>
+      <button onClick={() => handleSidebarClick("vehicle", null)}>Araba</button>
+      <button onClick={() => handleSidebarClick("vehicle", "car")}>Araba - Car</button>
+      <button onClick={() => handleSidebarClick("vehicle", "motorcycle")}>Araba - Motorcycle</button>
+      <button onClick={() => handleSidebarClick("realEstate", null)}>Emlak</button>
+      <button onClick={() => handleSidebarClick("realEstate", "home")}>Emlak - Ev</button>
+      <button onClick={() => handleSidebarClick("realEstate", "plot")}>Emlak - Arsa</button>
+      <button onClick={() => handleSidebarClick("electronicStuff", null)}>Elektronik Eşya</button>
+      <button onClick={() => handleSidebarClick("electronicStuff", "phone")}>Elektronik Eşya - Telefon</button>
+      <button onClick={() => handleSidebarClick("electronicStuff", "pc")}>Elektronik Eşya - PC</button>
     </div>
   );
 };
 
 export default Sidebar;
-
-
