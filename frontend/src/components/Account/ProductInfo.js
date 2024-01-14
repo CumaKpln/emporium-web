@@ -43,7 +43,7 @@ function ProductInfo() {
     console.log(product)
     try {
       await axios.delete(
-        `https://mysql-emporium-deploy1.onrender.com/deleteProduct/:${product}`,
+        `https://mysql-emporium-deploy1.onrender.com/deleteProduct/${product.details.productId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -99,7 +99,7 @@ function ProductInfo() {
                     display: "flex",
                     borderRadius: "5px",
                   }}
-                  onClick={() => handleDelete(product.id)}
+                  onClick={() => handleDelete(product)}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

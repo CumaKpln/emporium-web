@@ -20,7 +20,7 @@ const PasswordChange = () => {
     
     // Şifre değiştirme isteği gönder
     axios
-      .post(`http://localhost:3000/reset-password/${resetToken}`, {
+      .post(`https://mysql-emporium-deploy1.onrender.com/reset-password/${resetToken}`, {
         newPassword: newPassword,
         newPassword2: newPassword2,
       })
@@ -40,7 +40,7 @@ const PasswordChange = () => {
 
   return (
     <>
-    <Toaster/>
+      <Toaster />
       <Navbar />
       <div className="form-container m-auto mt-5">
         <h2>Şifre Değiştirme</h2>
@@ -56,24 +56,26 @@ const PasswordChange = () => {
               }}
             />
           </div>
-          <label>
-            Yeni şifre Giriniz:
+          <div className="form-group">
+            <label htmlFor="newPassword">Yeni şifre Giriniz:</label>
             <input
-              className="newPassword"
+              id="newPassword"
+              className="newPassword form-control"
               type="password"
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)} 
             />
-          </label>
-          <label className="mt-3">
-            Yeni şifreyi Tekrar Giriniz:
+          </div>
+          <div className="form-group mt-3">
+            <label htmlFor="newPassword2">Yeni şifreyi Tekrar Giriniz:</label>
             <input
-              className="newPassword"
+              id="newPassword2"
+              className="newPassword form-control"
               type="password"
               value={newPassword2}
               onChange={(e) => setNewPassword2(e.target.value)} 
             />
-          </label>
+          </div>
           <button className="ForgotPasswordBtn mt-5" type="submit">
             Şifreyi Değiştir
           </button>

@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import Logo from "../images/logo.png";
+import "../Styles/Pages/ForgotPassword.css"
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import "../Styles/Pages/ForgotPassword.css";
 import toast, { Toaster } from "react-hot-toast";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
+  const navigate = useNavigate();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -16,27 +19,31 @@ const ForgotPassword = () => {
     e.preventDefault();
 
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      // Geçerli bir e-posta girilmediğinde veya e-posta alanı boş bırakıldığında
       toast.error("Lütfen geçerli bir e-posta adresi girin.");
-      return; // Mesaj gönderimini engellemek için işlemi burada sonlandırın
+      return;
     }
 
     try {
-      // E-posta geçerli ise mesaj gönderimi yapabilirsiniz
-      toast.success(
-        "Şifre sıfırlama bağlantısı e-posta adresinize gönderildi."
+      const response = await axios.post(
+        "https://mysql-emporium-deploy1.onrender.com/user/forgot-password",
+        { email }
       );
+
+      if (response.status === 200) {
+        toast.success("Şifre sıfırlama bağlantısı e-posta adresinize gönderildi.");
+        
+      } else {
+        toast.error("Şifre sıfırlama işleminde bir hata oluştu.");
+      }
     } catch (error) {
-      toast.error("Şifre sıfırlama işlemi başarısız oldu.");
+      console.error("Şifre sıfırlama işlemi hatası:", error.message);
+      toast.error("Şifre sıfırlama işleminde bir hata oluştu.");
     }
   };
 
   return (
     <>
-    <Toaster
-    position="bottom-right"
-    reverseOrder={false}
-    />
+      <Toaster position="center-top" reverseOrder={false} />
       <Navbar />
       <div className="forgot-password-container">
         <div className="form-container">
@@ -44,11 +51,10 @@ const ForgotPassword = () => {
 
           <form className="form" onSubmit={handleFormSubmit}>
             <div className="image mx-auto">
-              <img  src={Logo} alt="Logo" />
+              <img src={Logo} alt="Logo" />
             </div>
             <div className="inputs">
-             
-              <label>E-posta adresiniz: </label>
+              <label>E-posta adresiniz:</label>
               <input
                 className="ForgotPasswordİnput"
                 type="email"
@@ -56,10 +62,10 @@ const ForgotPassword = () => {
                 onChange={handleEmailChange}
               />
             </div>
-
             <button className="ForgotPasswordBtn" type="submit">
               Şifre Sıfırlama Bağlantısı Gönder
             </button>
+            <p className="text-danger">E-posta adresinize bağlantı gönderilecektir lütfen geçerli bir e-posta adresi yazın</p>
           </form>
         </div>
       </div>
