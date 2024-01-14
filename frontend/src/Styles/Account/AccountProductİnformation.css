@@ -1,0 +1,112 @@
+.card{
+  margin-top: 9%;
+  border: none;
+  margin-bottom: 30px;
+  border-radius: 20px;
+}
+
+.cards{
+cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background: linear-gradient(145.44deg, #F2F4FA 0%, #FAFBFC 100%);
+  border-radius: 20px;
+  padding: 30px;
+  height: auto;
+}
+
+#AccountMenuİmg{
+  /* width: auto;
+  max-height: 150px; */
+  width: auto;
+  height: 150px;
+  image-orientation: from-image;
+}
+.AccountProductButton{
+  margin-left: 30px;
+ float: right;
+ background-color: transparent;
+ padding: 5px;
+ border-radius: 5px;
+ font-size: 16px;
+  --b: 0.1em;   /* the thickness of the line */
+  --c: #49eb34; /* the color */
+  
+  color: #0000;
+  padding-block: var(--b);
+  background: 
+    linear-gradient(var(--c) 50%,#000 0) 0% calc(100% - var(--_p,0%))/100% 200%,
+    linear-gradient(var(--c) 0 0) 0% var(--_p,0%)/var(--_p,0%) var(--b) no-repeat;
+  -webkit-background-clip: text,padding-box;
+          background-clip: text,padding-box;
+  transition: .3s var(--_s,0s) linear,background-size .3s calc(.3s - var(--_s,0s));
+}
+.AccountProductButton:hover {
+  --_p: 100%;
+  --_s: .3s;
+  color: #fff;
+  background-color: #49eb34;
+}
+
+.icon {
+  --b: 0.1em;   /* the thickness of the line */
+  --c: red; /* the color */
+  
+  color: black;
+  padding-block: var(--b);
+  background: 
+    linear-gradient(var(--c) 50%,#000 0) 0% calc(100% - var(--_p,0%))/100% 200%,
+    linear-gradient(var(--c) 0 0) 0% var(--_p,0%)/var(--_p,0%) var(--b) no-repeat;
+  -webkit-background-clip: text,padding-box;
+          background-clip: text,padding-box;
+  transition: .3s var(--_s,0s) linear,background-size .3s calc(.3s - var(--_s,0s));
+  border: none;
+}
+.icon:hover {
+  color: white;
+  --_p: 100%;
+  --_s: .3s;
+  background-color: red;
+}
+
+.İmgEdit{
+  text-align: center;
+}
+
+.modalDelete {
+  position: absolute;
+  right: 5px;
+  background-color: transparent;
+  color: transparent;
+  border: none;
+  height: 100px;
+  width: 100px;
+  top: -36px;
+  left: 5px;
+}
+
+.modalDelete:hover{
+  background-color: #000;
+  color: #b5b1b1;
+  opacity: 0.5;
+}
+
+@media (max-width: 1290px){
+  .card{
+      margin: 0;
+      margin-top: 17%;
+  }
+}
+
+@media (max-width: 1200px){
+  .card{
+      margin: 0;
+      margin-top: 20%;
+  }
+}
+
+@media (max-width: 992px){
+  .card{
+      margin: 0;
+      margin-top: 5%;
+  }
+}

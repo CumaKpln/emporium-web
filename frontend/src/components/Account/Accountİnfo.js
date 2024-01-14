@@ -52,7 +52,6 @@ function İnfo() {
         "https://mysql-emporium-deploy1.onrender.com/user/update",
         {
           username,
-          createdAt,
           email,
           phoneNumber,
         },
@@ -61,10 +60,12 @@ function İnfo() {
             Authorization: `Bearer ${token}`,
           },
         }
-      );
-      setEditMod(false);
-    } catch (error) {
+        );
+        console.log("Güncelleme başarılı:", response.data);
+        setEditMod(false);
 
+    } catch (error) {
+      console.error("Güncelleme hatası:", error);
     }
   };
   
@@ -79,21 +80,38 @@ function İnfo() {
           },
         }
       );
-
-      const data = response.data.UserInfo;
-      setUsername(data.username);
-      setCreatedAt(data.createdAt);
-      setEmail(data.email);
-      setPhoneNumber(data.phoneNumber);
+  
+      const data = response.data.userinfo;
+        console.log(data);
+      if (data) {
+        setUsername(data.username);
+        setCreatedAt(data.createdAt);
+        setEmail(data.email);
+        setPhoneNumber(data.phoneNumber);
+      } else {
+        console.error("Kullanıcı bilgisi alınamadı.");
+        // setData("");
+        setCreatedAt("");
+        setUsername("");
+        setEmail("");
+        setPhoneNumber("");
+      }
     } catch (error) {
-      console.error("Veri çekme hatası:", error);
-      // setData("");
-      setCreatedAt("");
-      setUsername("");
-      setEmail("");
-      setPhoneNumber("");
+      if (error.response && error.response.status === 401) {
+        // Token geçersiz veya süresi dolmuş
+        console.log("Token hatası:", error);
+        navigate("/login");
+      } else {
+        // Diğer hata durumları
+        console.error("Veri çekme hatası:", error);
+        setUsername("");
+        setCreatedAt("");
+        setEmail("");
+        setPhoneNumber("");
+      }
     }
   };
+  
   useEffect(() => {
 
     fetchData();
