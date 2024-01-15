@@ -99,7 +99,11 @@ function ProductInfo() {
                     display: "flex",
                     borderRadius: "5px",
                   }}
+<<<<<<< HEAD
                   onClick={() => handleDelete(product.productId)}
+=======
+                  onClick={() => handleDelete(product.id)}
+>>>>>>> 227b5bc36bab27c328d16b0fcb30461548afbd27
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
