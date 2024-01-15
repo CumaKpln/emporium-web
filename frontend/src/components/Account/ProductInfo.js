@@ -5,7 +5,9 @@ import { useDispatch } from "react-redux";
 import { selectProduct } from "../../control/slices/productSlice";
 import { Link } from "react-router-dom";
 
+
 function ProductInfo() {
+  
   const token = localStorage.getItem("token");
   const [userProducts, setUserProducts] = useState([]);
   const dispatch = useDispatch();
@@ -28,8 +30,6 @@ function ProductInfo() {
         }
       );
       setUserProducts(response.data.mergedResult);
-      const userProducts = response.data.mergedResult;
-      console.log(userProducts);
     } catch (error) {
       console.error("Kullanıcı hatası:", error);
     }
@@ -39,6 +39,7 @@ function ProductInfo() {
     fetchData();
   }, [token]);
 
+  // Ürünü silen fonksiyon
   const handleDelete = async (productId) => {
     try {
       await axios.delete(
@@ -49,13 +50,13 @@ function ProductInfo() {
           },
         }
       );
-  
-      fetchData();
+      fetchData(); // Güncellenmiş ürün listesini getir
     } catch (error) {
       console.error("Kullanıcı hatası:", error);
+      console.log(userProducts.details.productId)
+      console.log(userProducts)
     }
   };
-  
 
   return (
     <div className="row main-row">
@@ -98,7 +99,7 @@ function ProductInfo() {
                     display: "flex",
                     borderRadius: "5px",
                   }}
-                  onClick={() => handleDelete(product)}
+                  onClick={() => handleDelete(product.productId)}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

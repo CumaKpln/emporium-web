@@ -33,7 +33,7 @@ function App() {
           <Route path="/favorilerim" element={<Favorite />} />
           <Route path={`/urun-detayi/${id}`} element={<ProductDetail />} />
           <Route path="/sifremiunuttum" element={<ForgotPassword />} />
-          <Route path="/sifremiunuttum/sifre-degistirme" element={<ChangePassword />} />
+          <Route path="/sifremiunuttum/sifre-degistirme/:token" element={<ChangePassword />} />
 
         </Routes>
       </SearchProvider>

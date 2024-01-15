@@ -1,13 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Logo from "../images/logo.png";
 import toast, { Toaster } from "react-hot-toast";
 import Navbar from "../components/Navbar";
+import { useParams } from "react-router-dom";
 
 const PasswordChange = () => {
+  const { token } = useParams()
+  // const resetToken = localStorage.getItem("resetToken");
+
   const [newPassword, setNewPassword] = useState("");
   const [newPassword2, setNewPassword2] = useState("");
-  const resetToken = localStorage.getItem('resetToken');
+  // const resetToken = localStorage.getItem('resetToken');
 
   const handlePasswordChange = (e) => {
     e.preventDefault();
@@ -20,14 +24,15 @@ const PasswordChange = () => {
 
     // Şifre değiştirme isteği gönder
     axios
-      .post(`https://mysql-emporium-deploy1.onrender.com/user/reset-password/${resetToken}`, {
+      .post(`https://mysql-emporium-deploy1.onrender.com/user/reset-password/${token}`, {
         newPassword: newPassword,
         newPassword2: newPassword2,
       })
       .then((response) => {
         // Şifre değiştirme başarılı olduysa
         toast.success("Şifre başarıyla değiştirildi.");
-       
+
+        console.log(response.data)
         setNewPassword("");
         setNewPassword2("");
       })
@@ -37,7 +42,6 @@ const PasswordChange = () => {
         toast.error("Şifre değiştirme başarısız oldu.");
       });
   };
-  console.log(resetToken)
   return (
     <>
       <Toaster />

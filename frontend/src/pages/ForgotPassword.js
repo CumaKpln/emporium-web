@@ -27,9 +27,13 @@ const ForgotPassword = () => {
         { email }
       );
 
+
       if (response.status === 200) {
+
         const resetToken = response.data.resetToken;
+        console.log(resetToken)
         localStorage.setItem("resetToken", resetToken);
+        console.log(resetToken)
         toast.success(
           "Şifre sıfırlama bağlantısı e-posta adresinize gönderildi."
         );
@@ -41,12 +45,6 @@ const ForgotPassword = () => {
       toast.error("Şifre sıfırlama işleminde bir hata oluştu.");
     }
   };
-
-  // Checking if resetToken exists before logging
-  const resetToken = localStorage.getItem("resetToken");
-  if (resetToken) {
-    console.log(resetToken);
-  }
 
   return (
     <>
