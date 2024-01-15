@@ -402,7 +402,7 @@ const UploadProduct = () => {
                     <label htmlFor="memory">Hafıza:</label>
                     <input
                       name="memory"
-                      type="number"
+                      type="text"
                       id="memory"
                       value={memory}
                       onChange={(e) => setMemory(e.target.value)}
