@@ -10,7 +10,6 @@ const productSlice = createSlice({
   reducers: {
     selectProduct(state, action) {
       state.selectedProduct = action.payload; // Seçilen ürünleri bir dizi içinde saklayın
-    console.log(selectProduct)
     },
   },
 });

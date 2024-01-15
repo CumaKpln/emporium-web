@@ -10,9 +10,11 @@ import { useCategory } from "./Context/CategoryContext";
 function Products() {
   const token = localStorage.getItem("token");
   const [allProduct, setAllProduct] = useState([]);
+
   const { selectedCategory, selectedSubCategory } = useCategory();
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+
   const dispatch = useDispatch();
 
   //redux ile ürün detay sayfasına yönlendirme
@@ -20,6 +22,8 @@ function Products() {
     dispatch(selectProduct(product));
     localStorage.setItem("selectedProduct", JSON.stringify(product));
   };
+
+
 
   const fetchData = async () => {
     try {

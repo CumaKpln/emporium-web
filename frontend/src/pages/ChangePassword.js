@@ -17,17 +17,17 @@ const PasswordChange = () => {
       toast.error("Şifreler uyuşmuyor.");
       return;
     }
-    
+
     // Şifre değiştirme isteği gönder
     axios
-      .post(`https://mysql-emporium-deploy1.onrender.com/reset-password/${resetToken}`, {
+      .post(`https://mysql-emporium-deploy1.onrender.com/user/reset-password/${resetToken}`, {
         newPassword: newPassword,
         newPassword2: newPassword2,
       })
       .then((response) => {
         // Şifre değiştirme başarılı olduysa
         toast.success("Şifre başarıyla değiştirildi.");
-
+       
         setNewPassword("");
         setNewPassword2("");
       })
@@ -37,7 +37,7 @@ const PasswordChange = () => {
         toast.error("Şifre değiştirme başarısız oldu.");
       });
   };
-
+  console.log(resetToken)
   return (
     <>
       <Toaster />
@@ -63,7 +63,7 @@ const PasswordChange = () => {
               className="newPassword form-control"
               type="password"
               value={newPassword}
-              onChange={(e) => setNewPassword(e.target.value)} 
+              onChange={(e) => setNewPassword(e.target.value)}
             />
           </div>
           <div className="form-group mt-3">
@@ -73,7 +73,7 @@ const PasswordChange = () => {
               className="newPassword form-control"
               type="password"
               value={newPassword2}
-              onChange={(e) => setNewPassword2(e.target.value)} 
+              onChange={(e) => setNewPassword2(e.target.value)}
             />
           </div>
           <button className="ForgotPasswordBtn mt-5" type="submit">
