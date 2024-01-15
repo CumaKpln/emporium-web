@@ -52,7 +52,7 @@ function ProductInfo() {
   
       fetchData();
     } catch (error) {
-      console.error("Kullanıcı hatası:", error);
+      console.error("Silme hatası:", error);
     }
   };
   
@@ -98,7 +98,7 @@ function ProductInfo() {
                     display: "flex",
                     borderRadius: "5px",
                   }}
-                  onClick={() => handleDelete(product)}
+                  onClick={() => handleDelete(product.id)}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
