@@ -1,5 +1,14 @@
-  -----> EMPORIUM <-----  
-Kullanılan paketler
+        -----> EMPORIUM <-----  
+Kayıt olup giriş yapabildiğin 
+Şifreni unuttuğunda sıfırlayabildiğin
+İlan verebildiğin,
+İlanıın konumunu görebildiğin,
+İlanı fovorilere alabildiğin,
+Kayıt olurken girdiğin verileri değiştirebildiğin,
+İlanları filtreleyebildiğin 
+web sitesidir.
+
+        --> Kullanılan paketler <--
 -> Reduxjs-toolkit,
 -> Axios, 
 -> Bootstrap, 
