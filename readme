@@ -1,1 +1,15 @@
-Ana klasörlerin dışında "npm i" yapmayın yaparsanız yaklaşık 100.000 dosya indirirsiniz 
+  -----> EMPORIUM <-----  
+Kullanılan paketler
+-> Reduxjs-toolkit,
+-> Axios, 
+-> Bootstrap, 
+-> Reactstrap
+    Bu proje benim hem grup olarak hem de react'ta ilk projem.
+Bu proje de react component yapısını kullanarak web siteyi daha dinamik hale getirmesi açısından kullandım.
+Axios'la backend bağlantısını kurdum.
+Zaman kaybetmemek açısından css kütüphanesi olan reactstrap ve bootstrap kullandım. 
+
+
+
+
+
